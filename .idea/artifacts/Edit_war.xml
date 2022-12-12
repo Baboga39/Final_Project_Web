@@ -1,14 +1,14 @@
 <component name="ArtifactManager">
-  <artifact type="war" name="Final_Project_Web:war">
+  <artifact type="war" name="Edit:war">
     <output-path>$PROJECT_DIR$/target</output-path>
     <properties id="maven-jee-properties">
       <options>
-        <module>Final_Project_Web</module>
+        <module>Edit</module>
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="Final_Project_Web-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="Final_Project_Web:war exploded" />
+    <root id="archive" name="Edit-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Edit:war exploded" />
     </root>
   </artifact>
 </component>

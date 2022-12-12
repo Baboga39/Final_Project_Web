@@ -5,13 +5,13 @@
  Source Server Type    : MySQL
  Source Server Version : 80029 (8.0.29)
  Source Host           : localhost:3306
- Source Schema         : demoweb
+ Source Schema         : final_project_web
 
  Target Server Type    : MySQL
  Target Server Version : 80029 (8.0.29)
  File Encoding         : 65001
 
- Date: 09/12/2022 22:05:41
+ Date: 12/12/2022 22:06:49
 */
 
 SET NAMES utf8mb4;
