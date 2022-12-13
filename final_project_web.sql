@@ -11,7 +11,7 @@
  Target Server Version : 80029 (8.0.29)
  File Encoding         : 65001
 
- Date: 12/12/2022 22:06:49
+ Date: 13/12/2022 17:04:05
 */
 
 SET NAMES utf8mb4;
@@ -181,8 +181,8 @@ CREATE TABLE `users`  (
   `second_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `date_of_birth` datetime NOT NULL,
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `otp` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `otp_exp` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `otp` int NOT NULL,
+  `otp_exp` int NOT NULL,
   PRIMARY KEY (`user_id`) USING BTREE,
   INDEX `role_id`(`role_id` ASC) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = DYNAMIC;
@@ -190,9 +190,9 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'AdminHai', '123456', 'Hải', '2022-12-09 09:47:30', 1, 1, 'Ngọc Hải', '2022-12-13 09:47:20', 'ngochai@gmail', '1', '1');
-INSERT INTO `users` VALUES (2, 'PvKhoa', '123456', 'Khoa', '2022-12-09 09:47:30', 1, 3, 'Khoa', '2022-12-13 09:47:20', 'khoa@gmail', '1', '1');
-INSERT INTO `users` VALUES (3, 'UserLuong', '123456', 'Phúc', '2022-12-09 09:47:30', 1, 2, 'Lương', '2022-12-13 09:47:20', 'Luong@gmail', '1', '1');
-INSERT INTO `users` VALUES (4, 'BTVPhuc', '123456', 'Lương', '2022-12-09 09:47:30', 1, 4, 'Phúc', '2022-12-13 09:47:20', 'Phuc@gmail', '1', '1');
+INSERT INTO `users` VALUES (1, 'AdminHai', '123456', 'Hải', '2022-12-09 09:47:30', 1, 1, 'Ngọc Hải', '2022-12-13 09:47:20', 'ngochai@gmail', 1, 1);
+INSERT INTO `users` VALUES (2, 'PvKhoa', '123456', 'Khoa', '2022-12-09 09:47:30', 1, 3, 'Khoa', '2022-12-13 09:47:20', 'khoa@gmail', 1, 1);
+INSERT INTO `users` VALUES (3, 'UserLuong', '123456', 'Phúc', '2022-12-09 09:47:30', 1, 2, 'Lương', '2022-12-13 09:47:20', 'Luong@gmail', 1, 1);
+INSERT INTO `users` VALUES (4, 'BTVPhuc', '123456', 'Lương', '2022-12-09 09:47:30', 1, 4, 'Phúc', '2022-12-13 09:47:20', 'Phuc@gmail', 1, 1);
 
 SET FOREIGN_KEY_CHECKS = 1;

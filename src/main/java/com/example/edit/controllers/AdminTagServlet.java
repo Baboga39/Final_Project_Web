@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-
 @WebServlet(name = "AdminTagServlet", value = "/Admin/Tag/*")
 public class AdminTagServlet extends HttpServlet {
     @Override
@@ -22,7 +21,6 @@ public class AdminTagServlet extends HttpServlet {
         if (path == null || path.equals("/")) {
             path = "/Index";
         }
-
         switch (path) {
             case "/Index":
                 List<Tag> list = TagModel.findAll();
