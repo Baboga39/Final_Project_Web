@@ -3,7 +3,7 @@
 
 
 
-<div class="footer mt-5" style="background: gainsboro">
+<div class="footer mt-5" >
     <div class="container">
         <div class="row row-cols-2">
             <div class="col-7">

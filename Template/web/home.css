@@ -1,6 +1,6 @@
 
 body{
-    background: whitesmoke ;
+    background: #fff ;
     min-height: 100px;
     margin: 0;
 }
@@ -330,4 +330,16 @@ body{
     padding: 16px;
     margin-top: 80px;
 
+}
+.footer{
+    clear: both;
+    float: left;
+    width: 100%;
+    margin: 0 auto 0;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    color: #888;
+    font-size: 13px;
+    background: #f7f7f7;
 }
