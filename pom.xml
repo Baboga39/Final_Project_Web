@@ -7,7 +7,7 @@
     <groupId>com.example</groupId>
     <artifactId>Edit</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>Edit</name>
+    <name>Web</name>
     <packaging>war</packaging>
 
     <properties>

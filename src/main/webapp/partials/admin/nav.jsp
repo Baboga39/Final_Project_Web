@@ -5,18 +5,6 @@
     <nav class="navbar navbar-expand-xl navbar-dark bg-dark shadow-lg">
         <button type="button" class="close text-right mr-4 " onclick="w3_open()" aria-label="Open"><span aria-hidden="true"><i class="bi bi-list" style="color: white; font-size: 25px"></i></span></button>
         <a href="#" class="navbar-brand">Brand<b>Name</b></a>
-        <form class="form-inline my-2 my-lg-0" >
-            <div class="p-1 rounded rounded-pill shadow-lg mw-100" style="background: white">
-                <div class="input-group text-white">
-                    <input type="search" placeholder="Nhập vào đây" aria-describedby="button-addon1" class="form-control border-0 rounded rounded-pill bg-light">
-                    <div class="input-group-append">
-                        <button id="button-addon1" type="submit" class="btn btn-link"><i class="bi bi-search" style="color: black"></i></button>
-                    </div>
-                </div>
-            </div>
-
-        </form>
-        <!-- Collection of nav links, forms, and other content for toggling -->
         <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
             <div class="navbar-nav ml-auto">
                 <a href="#" class="nav-item nav-link active mr-2"><i class="bi bi-house"></i></a>
