@@ -3,42 +3,42 @@ package com.example.edit.beans;
 import java.util.Date;
 
 public class Comments {
-    private int comment_id;
-    private int article_id;
-    private int user_id;
+    private int commentId;
+    private int articleId;
+    private int userId;
     private String comment;
-    private Date create_day;
+    private Date createDay;
 
-    public Comments(int comment_id, int article_id, int user_id, String comment, Date create_day) {
-        this.comment_id = comment_id;
-        this.article_id = article_id;
-        this.user_id = user_id;
+    public Comments(int commentId, int articleId, int userId, String comment, Date createDay) {
+        this.commentId = commentId;
+        this.articleId = articleId;
+        this.userId = userId;
         this.comment = comment;
-        this.create_day = create_day;
+        this.createDay = createDay;
     }
 
-    public int getComment_id() {
-        return comment_id;
+    public int getCommentId() {
+        return commentId;
     }
 
-    public void setComment_id(int comment_id) {
-        this.comment_id = comment_id;
+    public void setCommentId(int commentId) {
+        this.commentId = commentId;
     }
 
-    public int getArticle_id() {
-        return article_id;
+    public int getArticleId() {
+        return articleId;
     }
 
-    public void setArticle_id(int article_id) {
-        this.article_id = article_id;
+    public void setArticleId(int articleId) {
+        this.articleId = articleId;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getComment() {
@@ -49,12 +49,22 @@ public class Comments {
         this.comment = comment;
     }
 
-    public Date getCreate_day() {
-        return create_day;
+    public Date getCreateDay() {
+        return createDay;
     }
 
-    public void setCreate_day(Date create_day) {
-        this.create_day = create_day;
+    public void setCreateDay(Date createDay) {
+        this.createDay = createDay;
     }
 
+    @Override
+    public String toString() {
+        return "Comments{" +
+                "commentId=" + commentId +
+                ", articleId=" + articleId +
+                ", userId=" + userId +
+                ", comment='" + comment + '\'' +
+                ", createDay=" + createDay +
+                '}';
+    }
 }

@@ -1,22 +1,22 @@
 package com.example.edit.beans;
 
 public class Category {
-    private int category_id;
+    private int categories_id;
     private String name;
     private int parent_id;
 
-    public Category(int category_id, String name, int parent_id) {
-        this.category_id = category_id;
+    public Category(int categories_id, String name, int parent_id) {
+        this.categories_id = categories_id;
         this.name = name;
         this.parent_id = parent_id;
     }
 
-    public int getCategory_id() {
-        return category_id;
+    public int getCategories_id() {
+        return categories_id;
     }
 
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
+    public void setCategories_id(int categories_id) {
+        this.categories_id = categories_id;
     }
 
     public String getName() {
@@ -38,7 +38,7 @@ public class Category {
     @Override
     public String toString() {
         return "Category{" +
-                "category_id=" + category_id +
+                "categories_id=" + categories_id +
                 ", name='" + name + '\'' +
                 ", parent_id=" + parent_id +
                 '}';

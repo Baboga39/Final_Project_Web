@@ -1,7 +1,7 @@
 package com.example.edit.controllers;
 
 import com.example.edit.Utils.ServletUtils;
-import com.example.edit.beans.Tag;
+import com.example.edit.beans.*;
 import com.example.edit.models.TagModel;
 
 import javax.servlet.*;
@@ -21,9 +21,15 @@ public class AdminNewsServlet extends HttpServlet {
 
         switch (path) {
             case "/Index":
-                List<Tag> list = TagModel.findAll();
-                request.setAttribute("tags", list);
-                ServletUtils.forward("/views/viewAdminNews/Index.jsp", request, response);
+               try {
+                   List<Tag> list = TagModel.findAll();
+                   request.setAttribute("tags", list);
+                   ServletUtils.forward("/views/viewAdminNews/Index.jsp", request, response);
+               }
+               catch (Exception e)
+               {
+                   e.printStackTrace();
+               }
                 break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);

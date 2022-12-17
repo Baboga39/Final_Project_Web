@@ -1,42 +1,43 @@
 package com.example.edit.beans;
 
+import javax.xml.crypto.Data;
 import java.util.Date;
 
 public class Articles {
-    private int article_id;
+    private int articleId;
     private String title;
-    private Date publish_date;
+    private Date publishDate;
     private int views;
-    private String astract;
-    private  String content;
-    private int category_id;
-    private boolean prenium;
-    private int writter_id;
-    private int status_id;
-    private String image;
-    private String image_conent;
+    private String abstracts;
+    private String content;
+    private int categoriesId;
+    private boolean premium;
+    private int writerId;
+    private int statusId;
+    private String avatar;
+    private String imageContent;
 
-    public Articles(int article_id, String title, Date publish_date, int views, String astract, String content, int category_id, boolean prenium, int writter_id, int status_id, String image, String image_conent) {
-        this.article_id = article_id;
+    public Articles(int articleId, String title, Date publishDate, int views, String abstracts, String content, int categoriesId, boolean premium, int writerId, int statusId, String avatar, String imageContent) {
+        this.articleId = articleId;
         this.title = title;
-        this.publish_date = publish_date;
+        this.publishDate = publishDate;
         this.views = views;
-        this.astract = astract;
+        this.abstracts = abstracts;
         this.content = content;
-        this.category_id = category_id;
-        this.prenium = prenium;
-        this.writter_id = writter_id;
-        this.status_id = status_id;
-        this.image = image;
-        this.image_conent = image_conent;
+        this.categoriesId = categoriesId;
+        this.premium = premium;
+        this.writerId = writerId;
+        this.statusId = statusId;
+        this.avatar = avatar;
+        this.imageContent = imageContent;
     }
 
-    public int getArticle_id() {
-        return article_id;
+    public int getArticleId() {
+        return articleId;
     }
 
-    public void setArticle_id(int article_id) {
-        this.article_id = article_id;
+    public void setArticleId(int articleId) {
+        this.articleId = articleId;
     }
 
     public String getTitle() {
@@ -47,12 +48,12 @@ public class Articles {
         this.title = title;
     }
 
-    public Date getPublish_date() {
-        return publish_date;
+    public Date getPublishDate() {
+        return publishDate;
     }
 
-    public void setPublish_date(Date publish_date) {
-        this.publish_date = publish_date;
+    public void setPublishDate(Date publishDate) {
+        this.publishDate = publishDate;
     }
 
     public int getViews() {
@@ -63,12 +64,12 @@ public class Articles {
         this.views = views;
     }
 
-    public String getAstract() {
-        return astract;
+    public String getAbstracts() {
+        return abstracts;
     }
 
-    public void setAstract(String astract) {
-        this.astract = astract;
+    public void setAbstracts(String abstracts) {
+        this.abstracts = abstracts;
     }
 
     public String getContent() {
@@ -79,69 +80,69 @@ public class Articles {
         this.content = content;
     }
 
-    public int getCategory_id() {
-        return category_id;
+    public int getCategoriesId() {
+        return categoriesId;
     }
 
-    public void setCategory_id(int category_id) {
-        this.category_id = category_id;
+    public void setCategoriesId(int categoriesId) {
+        this.categoriesId = categoriesId;
     }
 
-    public boolean isPrenium() {
-        return prenium;
+    public boolean isPremium() {
+        return premium;
     }
 
-    public void setPrenium(boolean prenium) {
-        this.prenium = prenium;
+    public void setPremium(boolean premium) {
+        this.premium = premium;
     }
 
-    public int getWritter_id() {
-        return writter_id;
+    public int getWriterId() {
+        return writerId;
     }
 
-    public void setWritter_id(int writter_id) {
-        this.writter_id = writter_id;
+    public void setWriterId(int writerId) {
+        this.writerId = writerId;
     }
 
-    public int getStatus_id() {
-        return status_id;
+    public int getStatusId() {
+        return statusId;
     }
 
-    public void setStatus_id(int status_id) {
-        this.status_id = status_id;
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
     }
 
-    public String getImage() {
-        return image;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
-    public String getImage_conent() {
-        return image_conent;
+    public String getImageContent() {
+        return imageContent;
     }
 
-    public void setImage_conent(String image_conent) {
-        this.image_conent = image_conent;
+    public void setImageContent(String imageContent) {
+        this.imageContent = imageContent;
     }
 
     @Override
     public String toString() {
         return "Articles{" +
-                "article_id=" + article_id +
+                "articleId=" + articleId +
                 ", title='" + title + '\'' +
-                ", publish_date=" + publish_date +
+                ", publishDate=" + publishDate +
                 ", views=" + views +
-                ", astract='" + astract + '\'' +
+                ", abstracts='" + abstracts + '\'' +
                 ", content='" + content + '\'' +
-                ", category_id=" + category_id +
-                ", prenium=" + prenium +
-                ", writter_id=" + writter_id +
-                ", status_id=" + status_id +
-                ", image='" + image + '\'' +
-                ", image_conent='" + image_conent + '\'' +
+                ", categoriesId=" + categoriesId +
+                ", premium=" + premium +
+                ", writerId=" + writerId +
+                ", statusId=" + statusId +
+                ", avatar='" + avatar + '\'' +
+                ", imageContent='" + imageContent + '\'' +
                 '}';
     }
 }
