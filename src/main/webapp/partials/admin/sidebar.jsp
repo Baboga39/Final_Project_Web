@@ -23,13 +23,13 @@ Begin Sidebar
                         <div id="collapseOne1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne1">
                             <div class="panel-body">
                                 <div class="row">
-                                    <a href="#" class="dropdown-item text-par-heading">Chuyên mục</a>
+                                    <a href="${pageContext.request.contextPath}/Admin/Category/" class="dropdown-item text-par-heading">Chuyên mục</a>
                                 </div>
                                 <div class="row">
-                                    <a href="#" class="dropdown-item text-par-heading ">Tag</a>
+                                    <a href="${pageContext.request.contextPath}/Admin/Tag/" class="dropdown-item text-par-heading ">Tag</a>
                                 </div>
                                 <div class="row">
-                                    <a href="#" class="dropdown-item text-par-heading ">Bài viết</a>
+                                    <a href="${pageContext.request.contextPath}/Admin/News/" class="dropdown-item text-par-heading ">Bài viết</a>
                                 </div>
                                 <div class="row">
                                     <a href="#" class="dropdown-item text-par-heading ">Người dùng</a>

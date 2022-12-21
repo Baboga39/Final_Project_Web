@@ -44,10 +44,10 @@
                                 <tr>
                                     <th scope="row">${c.tags_id}</th>
                                     <td>${c.value}</td>
-                                    <td style="font-size: 20px">
-                                        <a href="#" type="button" class="btn btn-secondary btn-sm"><i class="bi bi-pencil-square"></i></a>
-                                        <a href="#" type="button" class="btn btn-secondary btn-sm"><i class="bi bi-trash"></i></a>
-                                        <a href="#" type="button" class="btn btn-secondary btn-sm"><i class="bi bi-eye"></i></a>
+                                    <td class="d-flex " style="font-size: 20px">
+                                        <a href="#" type="button" class="btn link"><i class="bi bi-pencil-square"></i></a>
+                                        <a href="#" type="button" class="btn link"><i class="bi bi-trash"></i></a>
+                                        <a href="#" type="button" class="btn link"><i class="bi bi-eye"></i></a>
                                     </td>
                                 </tr>
                             </c:forEach>

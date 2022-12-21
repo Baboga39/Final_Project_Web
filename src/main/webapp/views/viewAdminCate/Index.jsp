@@ -44,10 +44,10 @@ Begin content
           <tr>
             <th scope="row">1</th>
             <td>Mark</td>
-            <td style="font-size: 20px">
-              <a href="#" type="button" class="btn btn-secondary btn-sm"><i class="bi bi-pencil-square"></i></a>
-              <a href="#" type="button" class="btn btn-secondary btn-sm"><i class="bi bi-trash"></i></a>
-              <a href="#" type="button" class="btn btn-secondary btn-sm"><i class="bi bi-eye"></i></a>
+            <td class="d-flex " style="font-size: 20px">
+              <a href="#" type="button" class="btn link"><i class="bi bi-pencil-square"></i></a>
+              <a href="#" type="button" class="btn link"><i class="bi bi-trash"></i></a>
+              <a href="#" type="button" class="btn link"><i class="bi bi-eye"></i></a>
             </td>
 
           </tr>
