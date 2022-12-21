@@ -1,60 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="d" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<head>
-    <meta charset="utf-8">
-    <title>Article_Detail</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="article_detail.css" rel="stylesheet">
-</head>
-
-<body>
-    <!-- Navbar Start -->
-    <div class="container-fluid p-0" id="main">
-        <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-2 py-lg-0 px-lg-5">
-            <a href="index.html" class="navbar-brand d-block d-lg-none">
-                <h1 class="m-0 display-4 text-uppercase text-primary">Biz<span class="text-white font-weight-normal">News</span></h1>
-            </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between px-0 px-lg-3" id="navbarCollapse">
-                <div class="navbar-nav mr-auto py-0">
-                    <a href="#" class="nav-item nav-link">Home</a>
-                    <a href="#" class="nav-item nav-link">Link</a>
-                    <a href="#" class="nav-item nav-link active">Link</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dropdown</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                            <a href="#" class="dropdown-item">Menu item 1</a>
-                            <a href="#" class="dropdown-item">Menu item 2</a>
-                            <a href="#" class="dropdown-item">Menu item 3</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="input-group ml-auto d-none d-lg-flex" style="width: 100%; max-width: 300px;">
-                    <input type="text" class="form-control border-0" placeholder="Keyword">
-                    <div class="input-group-append">
-                        <button class="input-group-text bg-primary text-dark border-0 px-3"><i
-                                class="fa fa-search"></i></button>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </div>
-    </br>
-    <!-- Navbar End -->
-
-    <!-- News With Sidebar Start -->
+<d:detail>
+    <jsp:body>
+    <br><br><br><br>
     <div class="container-fluid">
         <div class="container">
             <div class="row">
@@ -65,7 +16,7 @@
                         <div class="bg-white border border-top-0 p-4">
                             <div class="mb-3">
                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                    href="">Category</a>
+                                   href="">Category</a>
                                 <a class="text-body" href="">Jan 01, 2045</a>
                             </div>
                             <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">Làn sóng sa thải lan đến ngành ngân hàng</h1>
@@ -123,7 +74,7 @@
                                     <button class="btn btn-sm btn-outline-secondary">Reply</button>
                                     <div class="media mt-4">
                                         <img src="https://cdn.vectorstock.com/i/1000x1000/38/05/male-face-avatar-logo-template-pictograph-vector-11333805.webp" alt="Image" class="img-fluid mr-3 mt-1"
-                                            style="width: 45px;">
+                                             style="width: 45px;">
                                         <div class="media-body">
                                             <h6><a class="text-secondary font-weight-bold" href="#">Johny Dog</a> <small><i>01 Jan 2045</i></small></h6>
                                             <p>Bài Viết Hay</p>
@@ -163,7 +114,7 @@
                                 </div>
                                 <div class="form-group mb-0">
                                     <input type="submit" value="Post a comment"
-                                        class="btn btn-primary font-weight-semi-bold py-2 px-3">
+                                           class="btn btn-primary font-weight-semi-bold py-2 px-3">
                                 </div>
                             </form>
                         </div>
@@ -254,64 +205,5 @@
         </div>
     </div>
     <!-- News With Sidebar End -->
-
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark pt-5 px-sm-3 px-md-5 mt-5">
-        <div class="row py-3">
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Get In Touch</h5>
-                <p class="font-weight-medium"><i class="fa fa-map-marker-alt mr-2"></i>1 Đ. Võ Văn Ngân, Thủ Đức, TP. Hồ Chí Minh</p>
-                <p class="font-weight-medium"><i class="fa fa-phone-alt mr-2"></i>+012 345 67890</p>
-                <p class="font-weight-medium"><i class="fa fa-envelope mr-2"></i>spkt@gmail.com</p>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Categories</h5>
-                <div class="m-n1">
-                    <a href="" class="btn btn-sm btn-secondary m-1">Category</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Category</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Category</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Category</a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="mb-4 text-white text-uppercase font-weight-bold">Tags</h5>
-                <div class="m-n1">
-                    <a href="" class="btn btn-sm btn-secondary m-1">Tags</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Tags</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Tags</a>
-                    <a href="" class="btn btn-sm btn-secondary m-1">Tags</a>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="mb-1 text-white text-uppercase font-weight-bold">Newsletter</h5>
-                <div class="bg-black text-center p-6 mb-3">
-                    <div class="input-group" style="width: 100%;">
-                        <input type="text" class="form-control form-control-lg" placeholder="Your Email">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary">Sign Up</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">
-        <p class="m-0 text-center">&copy; <a href="#">Lập Trình Web</a>. All Rights Reserved.
-    </div>
-    <!-- Footer End -->
-
-
-    <!-- Back to Top -->
-    <a href="#main" class="back-to-top"><i class="fa fa-arrow-up"></i></a>
-
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-
-</body>
-
-</html>
+    </jsp:body>
+</d:detail>

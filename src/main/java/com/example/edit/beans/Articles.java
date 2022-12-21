@@ -4,40 +4,41 @@ import javax.xml.crypto.Data;
 import java.util.Date;
 
 public class Articles {
-    private int articleId;
+    private int article_id;
     private String title;
-    private Date publishDate;
+    private Date publish_date;
     private int views;
     private String abstracts;
     private String content;
-    private int categoriesId;
+    private int categories_id;
     private boolean premium;
-    private int writerId;
-    private int statusId;
+    private int writer_id;
+    private int status_id;
     private String avatar;
-    private String imageContent;
+    private String image_content;
 
-    public Articles(int articleId, String title, Date publishDate, int views, String abstracts, String content, int categoriesId, boolean premium, int writerId, int statusId, String avatar, String imageContent) {
-        this.articleId = articleId;
+    public Articles(int article_id, String title, Date publish_date, int views, String abstracts, String content,
+                    int categories_id, boolean premium, int writer_id, int status_id, String avatar, String image_content) {
+        this.article_id = article_id;
         this.title = title;
-        this.publishDate = publishDate;
+        this.publish_date = publish_date;
         this.views = views;
         this.abstracts = abstracts;
         this.content = content;
-        this.categoriesId = categoriesId;
+        this.categories_id = categories_id;
         this.premium = premium;
-        this.writerId = writerId;
-        this.statusId = statusId;
+        this.writer_id = writer_id;
+        this.status_id = status_id;
         this.avatar = avatar;
-        this.imageContent = imageContent;
+        this.image_content = image_content;
     }
 
     public int getArticleId() {
-        return articleId;
+        return article_id;
     }
 
-    public void setArticleId(int articleId) {
-        this.articleId = articleId;
+    public void setArticleId(int article_id) {
+        this.article_id = article_id;
     }
 
     public String getTitle() {
@@ -49,11 +50,11 @@ public class Articles {
     }
 
     public Date getPublishDate() {
-        return publishDate;
+        return publish_date;
     }
 
-    public void setPublishDate(Date publishDate) {
-        this.publishDate = publishDate;
+    public void setPublishDate(Date publish_date) {
+        this.publish_date = publish_date;
     }
 
     public int getViews() {
@@ -81,11 +82,11 @@ public class Articles {
     }
 
     public int getCategoriesId() {
-        return categoriesId;
+        return categories_id;
     }
 
-    public void setCategoriesId(int categoriesId) {
-        this.categoriesId = categoriesId;
+    public void setCategoriesId(int categories_id) {
+        this.categories_id = categories_id;
     }
 
     public boolean isPremium() {
@@ -97,19 +98,19 @@ public class Articles {
     }
 
     public int getWriterId() {
-        return writerId;
+        return writer_id;
     }
 
-    public void setWriterId(int writerId) {
-        this.writerId = writerId;
+    public void setWriterId(int writer_id) {
+        this.writer_id = writer_id;
     }
 
     public int getStatusId() {
-        return statusId;
+        return status_id;
     }
 
-    public void setStatusId(int statusId) {
-        this.statusId = statusId;
+    public void setStatusId(int status_id) {
+        this.status_id = status_id;
     }
 
     public String getAvatar() {
@@ -121,28 +122,28 @@ public class Articles {
     }
 
     public String getImageContent() {
-        return imageContent;
+        return image_content;
     }
 
-    public void setImageContent(String imageContent) {
-        this.imageContent = imageContent;
+    public void setImageContent(String image_content) {
+        this.image_content = image_content;
     }
 
     @Override
     public String toString() {
         return "Articles{" +
-                "articleId=" + articleId +
+                "article_id=" + article_id +
                 ", title='" + title + '\'' +
-                ", publishDate=" + publishDate +
+                ", publish_date=" + publish_date +
                 ", views=" + views +
                 ", abstracts='" + abstracts + '\'' +
                 ", content='" + content + '\'' +
-                ", categoriesId=" + categoriesId +
+                ", categories_id=" + categories_id +
                 ", premium=" + premium +
-                ", writerId=" + writerId +
-                ", statusId=" + statusId +
+                ", writer_id=" + writer_id +
+                ", status_id=" + status_id +
                 ", avatar='" + avatar + '\'' +
-                ", imageContent='" + imageContent + '\'' +
+                ", image_content='" + image_content + '\'' +
                 '}';
     }
 }
