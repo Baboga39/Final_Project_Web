@@ -11,7 +11,7 @@
  Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 17/12/2022 10:02:16
+ Date: 17/12/2022 10:30:31
 */
 
 SET NAMES utf8mb4;
@@ -51,6 +51,11 @@ INSERT INTO `articles` VALUES (2, 'Thị trường nhà ở Trung Quốc sắp �
 INSERT INTO `articles` VALUES (3, 'Alexander Dang: Tôi về V.League không phải vì tiền', '2022-12-09', 116, 'Lần đầu tiên cầu thủ Việt kiều Na Uy lên tiếng về quyết định trở lại Việt Nam và nhận lời thi đấu cho CLB Nam Định từ mùa giải 2023.', NULL, 4, 0, 4, 102, NULL, NULL);
 INSERT INTO `articles` VALUES (4, '10 nhà mốt xa xỉ có sức ảnh hưởng nhất 2022', '2022-12-09', 110, 'Trong năm 2022, nhiều thương hiệu thời trang trở thành hiện tượng với các thiết kế đình đám. Số khác vướng tranh cãi khi có bê bối.\r\n\r\n', NULL, 5, 0, 4, 101, NULL, NULL);
 INSERT INTO `articles` VALUES (5, 'Nhiều người từ chối công việc không được nghỉ thứ 7', '2022-12-09', 114, 'Công ty Minh Huyền làm việc 9 tiếng/ngày để nghỉ thứ 7, chủ nhật. Việc được thư giãn cuối tuần giúp cô nạp lại năng lượng, có thời gian cho bản thân.\r\n\r\n', NULL, 6, 0, 4, 101, NULL, NULL);
+INSERT INTO `articles` VALUES (6, 'Sự bất công khiến Messi vĩ đại hơn Pele', '2022-12-17', 118, 'So với Maradona hay Messi, thành tích của \"vua bóng đá\" Pele tại World Cup có phần thua kém do những hạn chế về thông tin và thống kê được ghi chép lại.', NULL, 4, 1, 4, 101, 'Messi', 'AMessi');
+INSERT INTO `articles` VALUES (7, 'Đối tác vừa biến mất khỏi áo đấu của Manchester United làm ăn ra sa', '2022-12-17', 256, 'Từng là hãng công nghệ hứa hẹn với vốn hóa đạt đỉnh 10 tỷ euro, sức hút của TeamViewer đã mất dần kể từ khi hợp tác tài trợ với Manchester United.', NULL, 4, 1, 4, 102, 'ARonaldo', 'CRonal');
+INSERT INTO `articles` VALUES (8, 'Apple phá kế hoạch của các hãng Android', '2022-12-17', 98, 'Các thương hiệu Android cố tăng giá điện thoại tầm trung để có lời. Tuy nhiên, kế hoạch không thể thực hiện thuận lợi khi tình hình thay đổi.', NULL, 3, 0, 4, 104, 'AApple', 'CApple');
+INSERT INTO `articles` VALUES (9, 'Ông chủ sàn FTX lên tiếng', '2022-12-17', 512, 'Tối ngày 10/11 (theo giờ Việt Nam), Sam Bankman-Fried lên tiếng xin lỗi người dùng FTX và cho biết đang tìm cách khắc phục vấn đề thanh khoản của sàn giao dịch.', NULL, 10, 0, 4, 101, 'AFTX', 'CFtx');
+INSERT INTO `articles` VALUES (10, 'NSND Công Lý sang Nhật Bản điều trị bệnh lần hai', '2022-12-17', 125, 'Chia sẻ của Ngọc Hà - vợ NSND Công Lý về hành trình sang Nhật Bản điều trị bệnh cho chồng nhận được sự quan tâm của người hâm mộ.', NULL, 5, 1, 4, 102, 'ANsnd', 'CNsnd');
 
 -- ----------------------------
 -- Table structure for categories
