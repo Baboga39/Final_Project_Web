@@ -24,7 +24,7 @@ public class PostsServlet extends HttpServlet {
             case "/Index":
                 List<Articles> list = ArticleModel.findDraftArticles();
                 request.setAttribute("articles", list);
-                ServletUtils.forward("/views/viewArticleDetail/Index.jsp", request, response);
+                ServletUtils.forward("/views/viewPosts/Index.jsp", request, response);
                 break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
