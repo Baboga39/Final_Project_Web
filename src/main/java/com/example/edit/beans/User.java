@@ -1,28 +1,47 @@
 package com.example.edit.beans;
 
 import javax.xml.crypto.Data;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class User {
-    private int userid;
+    private int user_id;
     private String username;
     private String password;
     private String name;
-    private Date issueAt;
+    private LocalDate issue_at;
     private int expiration;
-    private int roleId;
-    private String secondName;
-    private Date dateOfBirth;
+    private int role_id;
+    private String second_name;
+    private LocalDate date_of_birth;
     private String email;
     private int otp;
-    private int otpExp;
+    private int otp_exp;
+    public  User()
+    {}
 
-    public int getUserid() {
-        return userid;
+    public User(int user_id, String username, String password, String name, LocalDate issue_at, int expiration, int role_id, String second_name, LocalDate date_of_birth, String email, int otp, int otp_exp) {
+        this.user_id = user_id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.issue_at = issue_at;
+        this.expiration = expiration;
+        this.role_id = role_id;
+        this.second_name = second_name;
+        this.date_of_birth = date_of_birth;
+        this.email = email;
+        this.otp = otp;
+        this.otp_exp = otp_exp;
     }
 
-    public void setUserid(int userid) {
-        this.userid = userid;
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public String getUsername() {
@@ -49,12 +68,12 @@ public class User {
         this.name = name;
     }
 
-    public Date getIssueAt() {
-        return issueAt;
+    public LocalDate getIssue_at() {
+        return issue_at;
     }
 
-    public void setIssueAt(Date issueAt) {
-        this.issueAt = issueAt;
+    public void setIssue_at(LocalDate issue_at) {
+        this.issue_at = issue_at;
     }
 
     public int getExpiration() {
@@ -65,28 +84,28 @@ public class User {
         this.expiration = expiration;
     }
 
-    public int getRoleId() {
-        return roleId;
+    public int getRole_id() {
+        return role_id;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setRole_id(int role_id) {
+        this.role_id = role_id;
     }
 
-    public String getSecondName() {
-        return secondName;
+    public String getSecond_name() {
+        return second_name;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
+    public void setSecond_name(String second_name) {
+        this.second_name = second_name;
     }
 
-    public Date getDateOfBirth() {
-        return dateOfBirth;
+    public LocalDate getDate_of_birth() {
+        return date_of_birth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setDate_of_birth(LocalDate date_of_birth) {
+        this.date_of_birth = date_of_birth;
     }
 
     public String getEmail() {
@@ -105,44 +124,29 @@ public class User {
         this.otp = otp;
     }
 
-    public int getOtpExp() {
-        return otpExp;
+    public int getOtp_exp() {
+        return otp_exp;
     }
 
-    public void setOtpExp(int otpExp) {
-        this.otpExp = otpExp;
-    }
-
-    public User(int userid, String username, String password, String name, Date issueAt, int expiration, int roleId, String secondName, Date dateOfBirth, String email, int otp, int otpExp) {
-        this.userid = userid;
-        this.username = username;
-        this.password = password;
-        this.name = name;
-        this.issueAt = issueAt;
-        this.expiration = expiration;
-        this.roleId = roleId;
-        this.secondName = secondName;
-        this.dateOfBirth = dateOfBirth;
-        this.email = email;
-        this.otp = otp;
-        this.otpExp = otpExp;
+    public void setOtp_exp(int otp_exp) {
+        this.otp_exp = otp_exp;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "userid=" + userid +
+                "user_id=" + user_id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
-                ", issueAt=" + issueAt +
+                ", issue_at=" + issue_at +
                 ", expiration=" + expiration +
-                ", roleId=" + roleId +
-                ", secondName='" + secondName + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
+                ", role_id=" + role_id +
+                ", second_name='" + second_name + '\'' +
+                ", date_of_birth=" + date_of_birth +
                 ", email='" + email + '\'' +
                 ", otp=" + otp +
-                ", otpExp=" + otpExp +
+                ", otp_exp=" + otp_exp +
                 '}';
     }
 }

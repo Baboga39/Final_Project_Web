@@ -395,7 +395,7 @@
                                                         <button class="btn btn-dark btn-lg btn-block" type="button">Login</button>
                                                     </div>
                                                     <div class="text-center">
-                                                        <p>Not a member? <a href="$">Register</a></p>
+                                                        <p>Not a member? <a href="${pageContext.request.contextPath}/User/Register">Register</a></p>
                                                         <p> <a href="${pageContext.request.contextPath}/views/viewHome/ForgotPass.jsp">Forgot password?</a></p>
                                                         <p>or sign up with:</p>
                                                         <button type="button" class="btn btn-link btn-floating mx-1">

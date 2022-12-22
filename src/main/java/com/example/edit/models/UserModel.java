@@ -15,6 +15,39 @@ import java.util.Properties;
 
 public class UserModel {
 
+    public static void add(User c) {
+        String insertSql = "INSERT INTO users (username, password, name, issue_at, expiration, role_id, second_name, date_of_birth, email, otp, otp_exp) VALUES (:username,:password,:name,:issue_at,:expiration,:role_id,:second_name,:date_of_birth,:email,:otp,:otp_exp)";
+        try (Connection con = DbUtils.getConnection()) {
+            con.createQuery(insertSql)
+                    .addParameter("username", c.getUsername())
+                    .addParameter("password", c.getPassword())
+                    .addParameter("name", c.getName())
+                    .addParameter("issue_at", c.getIssue_at())
+                    .addParameter("expiration", c.getExpiration())
+                    .addParameter("role_id", c.getRole_id())
+                    .addParameter("second_name", c.getSecond_name())
+                    .addParameter("date_of_birth", c.getDate_of_birth())
+                    .addParameter("email", c.getEmail())
+                    .addParameter("otp_exp", c.getOtp_exp())
+                    .addParameter("otp", c.getOtp())
+                    .executeUpdate();
+        }
+    }
+    public static User findByUsername(String username) {
+        final String query = "select * from users where username = :username";
+        try (Connection con = DbUtils.getConnection()) {
+            List<User> list = con.createQuery(query)
+                    .addParameter("username", username)
+                    .executeAndFetch(User.class);
+
+            if (list.size() == 0) {
+                return null;
+            }
+
+            return list.get(0);
+        }
+    }
+
     static final String ACCOUNT = "baboga12@outlook.com";
     static final String PASSWORD = "Ngochai0612";
     static final String SUBJECT = "Quên mật khẩu.";
