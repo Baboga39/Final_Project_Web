@@ -395,18 +395,18 @@
                                                         <button class="btn btn-dark btn-lg btn-block" type="button">Login</button>
                                                     </div>
                                                     <div class="text-center">
-                                                        <p>Not a member? <a href="#!">Register</a></p>
+                                                        <p>Not a member? <a href="$">Register</a></p>
+                                                        <p> <a href="${pageContext.request.contextPath}/views/viewHome/ForgotPass.jsp">Forgot password?</a></p>
                                                         <p>or sign up with:</p>
                                                         <button type="button" class="btn btn-link btn-floating mx-1">
-                                                            <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/Edit/Loging/Google&response_type=code&client_id=1042745399242-4360ia1ghlrnq5ej8cejthrvfjr1n38s.apps.googleusercontent.com&approval_prompt=force">
+                                                                <a href="https://www.facebook.com/dialog/oauth?client_id=515625173274802&redirect_uri=http://localhost:8080/Edit/Loginface">
                                                                 <i class="bi bi-facebook h3"></i>
                                                             </a>
                                                         </button>
 
                                                         <button type="button" class="btn btn-link btn-floating mx-1">
-                                                            <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/DemoWeb1_war_exploded/LoginGoogle&response_type=cod' +
-           'e&client_id=887696650237-u2p1vbv9rnki8bb2auj91akf57hr477c.apps.googleusercontent.com&approval_prompt=force">
-                                                                <i class="bi bi-google h3"></i>
+                                                            <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/Edit/Loging/Google&response_type=code&client_id=1042745399242-4360ia1ghlrnq5ej8cejthrvfjr1n38s.apps.googleusercontent.com&approval_prompt=force">
+                                                            <i class="bi bi-google h3"></i>
                                                             </a>
                                                         </button>
 

@@ -1,11 +1,17 @@
 package com.example.edit.controllers;
 
 import com.example.edit.Utils.ServletUtils;
+import com.example.edit.beans.AccountFace;
 import com.example.edit.beans.AccountGG;
 import com.example.edit.beans.Tag;
+import com.example.edit.beans.User;
 import com.example.edit.models.TagModel;
+import com.example.edit.models.UserModel;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.restfb.DefaultFacebookClient;
+import com.restfb.FacebookClient;
+import com.restfb.Version;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.fluent.Form;
 import org.apache.http.client.fluent.Request;
@@ -19,14 +25,23 @@ import java.util.List;
 @WebServlet(name = "LogingServlet", value = "/Loging/*")
 public class LogingServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    public static String GOOGLE_CLIENT_ID = "1042745399242-haj5b8r1tbkntvodjccuohp8khmrsgm7.apps.googleusercontent.com";
-    public static String GOOGLE_CLIENT_SECRET = "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";
+    public static String GOOGLE_CLIENT_ID = "1042745399242-4360ia1ghlrnq5ej8cejthrvfjr1n38s.apps.googleusercontent.com";
+    public static String GOOGLE_CLIENT_SECRET = "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";
     public static String GOOGLE_REDIRECT_URI = "http://localhost:8080/Edit/Loging/Google";
     public static String GOOGLE_LINK_GET_TOKEN = "https://accounts.google.com/o/oauth2/token";
     public static String GOOGLE_LINK_GET_USER_INFO = "https://www.googleapis.com/oauth2/v1/userinfo?access_token=";
     public static String GOOGLE_GRANT_TYPE = "authorization_code";
+
+
+    public static String FACEBOOK_APP_ID = "679794223823117";
+    public static String FACEBOOK_APP_SECRET = "89af5a27b81649a43fdff1793def59dc";
+    public static String FACEBOOK_REDIRECT_URL = "http://localhost:8080/Edit/Loging/Facebook";
+    public static String FACEBOOK_LINK_GET_TOKEN = "https://graph.facebook.com/oauth/access_token?client_id=%s&client_secret=%s&redirect_uri=%s&code=%s";
+    public static String FACEBOOK_LINK_GET_USER_INFO = "https://graph.facebook.com/me?access_token=";
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String path = request.getPathInfo();
         if (path == null || path.equals("/")) {
             path = "/Index";
@@ -40,15 +55,78 @@ public class LogingServlet extends HttpServlet {
 //                    String accessToken=  getToken(code);
 //                    AccountGG usergg = getUserInfo(accessToken);
 //                    System.out.println(usergg);
-//                    request.setAttribute("usergg", usergg);
                     List<Tag> list = TagModel.findAll();
                     request.setAttribute("tags", list);
+//                    request.setAttribute("usergg", usergg);
                     request.getRequestDispatcher("/views/viewHome/Index.jsp").forward(request,response);
                 }
                 catch (Exception e)
                 {
                     e.printStackTrace();
                 }
+                break;
+
+
+//            case "/Facebook":
+//                try{
+//                    String code = request.getParameter("code");
+//                    String avatar="https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg";
+//                    String accessToken = getTokenFace(code);
+//                    AccountFace user = getUserInfoFace(accessToken);
+//                    System.out.println(user);
+//                    List<Tag> list = TagModel.findAll();
+//                    request.setAttribute("tags", list);
+//                    request.getRequestDispatcher("/views/viewHome/Index.jsp").forward(request,response);
+//                }
+//                catch (Exception e)
+//                {
+//                    e.printStackTrace();
+//                }
+//                break;
+            case "/Email":
+
+              try {
+                  String email =request.getParameter("email");
+                  String otp = UserModel.getOtp(email);
+                  User uForgot = UserModel.getUserByEmail(email);
+                  String name = uForgot.getName();
+                  StringBuilder content = new StringBuilder();
+                  content.append("Dear ").append(name).append("\n");
+                  content.append("Bạn đã lựa chọn mail  ").append(email).append(" để xác nhận mật khẩu của mình.    ");
+                  content.append("Mã xác thực OTP của bạn là:").append("\n");
+                  content.append(otp).append("\n");
+                  content.append("Xin vui lòng nhập chính xác mã OTP. Nếu có gì thắc mắc xin vui lòng liên hệ Email: ngochai06122002@gmail.com");
+                  UserModel.sendMailToEmail(email,content.toString());
+                  request.setAttribute("email",email);
+                  request.getRequestDispatcher("/views/viewHome/OTP.jsp").forward(request,response);
+              }
+              catch (Exception e)
+              {
+
+                  e.printStackTrace();
+              }
+                break;
+            case "/OTP":
+             try{
+                 String email =request.getParameter("email");
+                 String Otp = request.getParameter("OTP");
+                 Boolean check = UserModel.checkOtp(Otp,email);
+                 if(check == true)
+                 {
+                     List<Tag> list = TagModel.findAll();
+                     request.setAttribute("tags", list);
+                     request.getRequestDispatcher("/views/viewHome/Index.jsp").forward(request,response);
+                 }
+                 else{
+                     String note= "Sai OTP vui lòng nhập lại Email.";
+                     request.setAttribute("mess",note);
+                     request.getRequestDispatcher("/views/viewHome/ForgotPass.jsp").forward(request,response);
+                 }
+             }
+             catch (Exception e)
+             {
+                 e.printStackTrace();
+             }
                 break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
@@ -81,5 +159,18 @@ public class LogingServlet extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         AccountGG AccountGoogle = mapper.readValue(response, AccountGG.class);
         return AccountGoogle;
+    }
+    public static AccountFace getUserInfoFace(String accessToken) {
+        FacebookClient facebookClient = new DefaultFacebookClient(accessToken, FACEBOOK_APP_SECRET, Version.LATEST);
+        return facebookClient.fetchObject("me", AccountFace.class);
+    }
+
+
+    public String getTokenFace(final String code) throws ClientProtocolException, IOException {
+        String link = String.format(FACEBOOK_LINK_GET_TOKEN, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET, FACEBOOK_REDIRECT_URL, code);
+        String response = Request.Get(link).execute().returnContent().asString();
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode node = mapper.readTree(response).get("access_token");
+        return node.textValue();
     }
 }
