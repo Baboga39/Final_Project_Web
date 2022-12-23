@@ -28,4 +28,12 @@ public class Tag {
         this.tags_id = -1;
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "Tag{" +
+                "tags_id=" + tags_id +
+                ", value='" + value + '\'' +
+                '}';
+    }
 }

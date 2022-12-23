@@ -33,8 +33,8 @@ public class LogingServlet extends HttpServlet {
     public static String GOOGLE_GRANT_TYPE = "authorization_code";
 
 
-    public static String FACEBOOK_APP_ID = "679794223823117";
-    public static String FACEBOOK_APP_SECRET = "89af5a27b81649a43fdff1793def59dc";
+    public static String FACEBOOK_APP_ID = "515625173274802";
+    public static String FACEBOOK_APP_SECRET = "823031fd00ef84d519ce4826e472de2d";
     public static String FACEBOOK_REDIRECT_URL = "http://localhost:8080/Edit/Loging/Facebook";
     public static String FACEBOOK_LINK_GET_TOKEN = "https://graph.facebook.com/oauth/access_token?client_id=%s&client_secret=%s&redirect_uri=%s&code=%s";
     public static String FACEBOOK_LINK_GET_USER_INFO = "https://graph.facebook.com/me?access_token=";
@@ -50,14 +50,14 @@ public class LogingServlet extends HttpServlet {
         switch (path) {
             case "/Google":
                 try {
-//                    String code=request.getParameter("code");
-//                    System.out.println(code);
-//                    String accessToken=  getToken(code);
-//                    AccountGG usergg = getUserInfo(accessToken);
-//                    System.out.println(usergg);
+                    String code=request.getParameter("code");
+                    System.out.println(code);
+                    String accessToken=  getToken(code);
+                    AccountGG usergg = getUserInfo(accessToken);
+                    System.out.println(usergg);
                     List<Tag> list = TagModel.findAll();
                     request.setAttribute("tags", list);
-//                    request.setAttribute("usergg", usergg);
+                    request.setAttribute("usergg", usergg);
                     request.getRequestDispatcher("/views/viewHome/Index.jsp").forward(request,response);
                 }
                 catch (Exception e)
@@ -65,34 +65,32 @@ public class LogingServlet extends HttpServlet {
                     e.printStackTrace();
                 }
                 break;
-
-
-//            case "/Facebook":
-//                try{
-//                    String code = request.getParameter("code");
-//                    String avatar="https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg";
-//                    String accessToken = getTokenFace(code);
-//                    AccountFace user = getUserInfoFace(accessToken);
-//                    System.out.println(user);
-//                    List<Tag> list = TagModel.findAll();
-//                    request.setAttribute("tags", list);
-//                    request.getRequestDispatcher("/views/viewHome/Index.jsp").forward(request,response);
-//                }
-//                catch (Exception e)
-//                {
-//                    e.printStackTrace();
-//                }
-//                break;
+            case "/Facebook":
+                try{
+                    String code = request.getParameter("code");
+                    String avatar="https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg";
+                    String accessToken = getTokenFace(code);
+                    AccountFace user = getUserInfoFace(accessToken);
+                    System.out.println(user);
+                    List<Tag> list = TagModel.findAll();
+                    request.setAttribute("tags", list);
+                    request.getRequestDispatcher("/views/viewHome/Index.jsp").forward(request,response);
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+                break;
             case "/Email":
 
               try {
                   String email =request.getParameter("email");
                   String otp = UserModel.getOtp(email);
-                  User uForgot = UserModel.getUserByEmail(email);
+                  User uForgot = UserModel.getNameUserByEmail(email);
                   String name = uForgot.getName();
                   StringBuilder content = new StringBuilder();
                   content.append("Dear ").append(name).append("\n");
-                  content.append("Bạn đã lựa chọn mail  ").append(email).append(" để xác nhận mật khẩu của mình.    ");
+                  content.append("Bạn đã lựa chọn mail  ").append(email).append(" để xác nhận mật khẩu của mình. ");
                   content.append("Mã xác thực OTP của bạn là:").append("\n");
                   content.append(otp).append("\n");
                   content.append("Xin vui lòng nhập chính xác mã OTP. Nếu có gì thắc mắc xin vui lòng liên hệ Email: ngochai06122002@gmail.com");
@@ -113,9 +111,8 @@ public class LogingServlet extends HttpServlet {
                  Boolean check = UserModel.checkOtp(Otp,email);
                  if(check == true)
                  {
-                     List<Tag> list = TagModel.findAll();
-                     request.setAttribute("tags", list);
-                     request.getRequestDispatcher("/views/viewHome/Index.jsp").forward(request,response);
+                     request.setAttribute("email",email);
+                     request.getRequestDispatcher("/views/viewHome/ResetPass.jsp").forward(request,response);
                  }
                  else{
                      String note= "Sai OTP vui lòng nhập lại Email.";
@@ -127,6 +124,30 @@ public class LogingServlet extends HttpServlet {
              {
                  e.printStackTrace();
              }
+                break;
+            case "/Reset":
+                try{
+                    String email =request.getParameter("email");
+                    String pass =request.getParameter("pass");
+                    String confirm = request.getParameter("confirm");
+                    User change= UserModel.findByEmail(email);
+                    if(!pass.equals(confirm))
+                    {
+                        String mess= "Nhập mật khẩu không đúng.";
+                        request.setAttribute("mess",mess);
+                        request.getRequestDispatcher("/views/viewHome/ResetPass.jsp").forward(request,response);
+                    }
+                    {
+                        String mess= "Thay đổi thành công. Xin vui lòng đăng nhập";
+                        UserModel.edit(pass,email);
+                        request.setAttribute("mess",mess);
+                        request.getRequestDispatcher("/views/viewHome/ResetPass.jsp").forward(request,response);
+                    }
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
                 break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);

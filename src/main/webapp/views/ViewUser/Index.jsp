@@ -27,9 +27,9 @@
                         <div class="row row-cols-2">
                             <div class="col-4 ml-3 shadow-lg" style="background: #f7f7f7">
                                 <div class="row mt-5">
-              <span class="user-icon" style="margin: 0px auto">
-                <img src="./img/khoa.png" class="img-fluid">
-              </span>
+                      <span class="user-icon" style="margin: 0px auto">
+                        <img src="./img/khoa.png" class="img-fluid">
+                          </span>
                                 </div>
                                 <div class="row mt-3">
                                     <h4 class="" style="margin: 0px auto">Phan Dai Dang Khoa</h4>
@@ -47,7 +47,7 @@
                                         <div class="row mt-4">
                                             <span class="col-4">Full Name: </span>
                                             <div class="col-6">
-                                                <span>Phan Dai Dang Khoa</span>
+                                                <input type="email" id="txtEmail" name="email" placeholder="Email"class="form-control" />
                                             </div>
                                         </div>
                                     </li>
@@ -55,7 +55,7 @@
                                         <div class="row mt-4">
                                             <span class="col-4">Name Writer: </span>
                                             <div class="col-6">
-                                                <span>Phan Dai Dang Khoa</span>
+                                                <input type="email"  name="email" placeholder="Email"class="form-control" />
                                             </div>
                                         </div>
                                     </li>
@@ -63,7 +63,7 @@
                                         <div class="row mt-4">
                                             <span class="col-4">Email: </span>
                                             <div class="col-6">
-                                                <span>khoadang88vn@gmail.com</span>
+                                                <input type="email"  name="email" placeholder="Email"class="form-control" />>
                                             </div>
                                         </div>
                                     </li>
@@ -71,7 +71,7 @@
                                         <div class="row mt-4 mb-2">
                                             <span class="col-4">Birthday: </span>
                                             <div class="col-6">
-                                                <span>25/05/2002</span>
+                                                <input type="email"  name="email" placeholder="Email"class="form-control" />
                                             </div>
                                         </div>
                                     </li>
@@ -93,7 +93,7 @@
                                         <div class="row">
                                             <span class="col-4">User: </span>
                                             <div class="col-8">
-                                                <span>Phan Dai Dang Khoa</span>
+                                                <input type="email" name="email" placeholder="Email"class="form-control" />
                                             </div>
                                         </div>
                                     </li>
@@ -101,7 +101,7 @@
                                         <div class="row">
                                             <span class="col-4">Password: </span>
                                             <div class="col-8">
-                                                <span>Phan Dai Dang Khoa</span>
+                                                <input type="email"  name="email" placeholder="Email"class="form-control" />
                                             </div>
                                         </div>
                                     </li>
@@ -109,7 +109,7 @@
                                         <div class="row">
                                             <span class="col-4">Status: </span>
                                             <div class="col-8">
-                                                <span>Vip</span>
+                                                <input type="email"  name="email" placeholder="Email"class="form-control" />
                                             </div>
                                         </div>
                                     </li>
@@ -117,7 +117,7 @@
                                         <div class="row">
                                             <span class="col-4">Date: </span>
                                             <div class="col-8">
-                                                <span>3 Day left</span>
+                                                <input type="email"  name="email" placeholder="Email"class="form-control" />
                                             </div>
                                         </div>
                                     </li>

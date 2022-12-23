@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -20,6 +21,9 @@
           <div class="text-center">
             <h3><i class="fa fa-lock fa-4x"></i></h3>
             <h2 class="text-center">Forgot your password</h2>
+            <c:if test="${mess == null}">
+              <p>Enter your Email.</p>
+            </c:if>
             <c:if test="${mess ne null}">
               <div style="color: red;">
                 <p>${mess}</p>
@@ -36,7 +40,7 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit">
+                  <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="OTP CODE" type="submit">
                 </div>
 
                 <input type="hidden" class="hide" name="token" id="token" value="">

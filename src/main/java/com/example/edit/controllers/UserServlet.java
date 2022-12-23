@@ -64,7 +64,7 @@ public class UserServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         //System.out.println(username);
-        User user = UserModel.findByUserName(username);
+        User user = UserModel.findByUsername(username);
         boolean check = UserModel.checkByUserName(username);
         //System.out.println(check);
 

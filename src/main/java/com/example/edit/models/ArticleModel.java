@@ -2,9 +2,12 @@ package com.example.edit.models;
 
 import com.example.edit.Utils.DbUtils;
 import com.example.edit.beans.Articles;
+import com.example.edit.beans.Category;
 import com.example.edit.beans.User;
 import org.sql2o.Connection;
 
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleModel {
@@ -15,5 +18,84 @@ public class ArticleModel {
             return con.createQuery(query)
                     .executeAndFetch(Articles.class);
         }
+    }
+
+    public static List<Articles> findTop5() {
+        final String query = "SELECT * FROM articles ORDER BY views DESC LIMIT 0,5";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .executeAndFetch(Articles.class);
+        }
+    }
+
+    public static List<Articles> findTop10() {
+        final String query = "SELECT * FROM articles ORDER BY views DESC LIMIT 5,5";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .executeAndFetch(Articles.class);
+        }
+    }
+
+    public static List<Articles> findTop4() {
+        final String query = "SELECT \n" +
+                "    *\n" +
+                "FROM\n" +
+                "    articles\n" +
+                "WHERE\n" +
+                "    publish_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 10080 MINUTE)\n" +
+                "ORDER BY views DESC\n" +
+                "LIMIT 0,4\n";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .executeAndFetch(Articles.class);
+        }
+    }
+
+    public static List<Articles> findTop12New() {
+        final String query = "SELECT \n" +
+                "    *\n" +
+                "FROM\n" +
+                "    articles\n" +
+                "WHERE\n" +
+                "    publish_date <=CURRENT_DATE()\n" +
+                "ORDER BY publish_date DESC\n" +
+                "LIMIT 10\n";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .executeAndFetch(Articles.class);
+        }
+    }
+
+    public static int getAllCate() {
+        final String query = "SELECT * FROM categories";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Category> list = con.createQuery(query)
+                    .executeAndFetch(Category.class);
+            return  list.size();
+        }
+    }
+    public static Articles  findTopCate(int categories_id)
+    {
+
+        final String query="SELECT * FROM articles WHERE categories_id= :categories_id ORDER BY views DESC LIMIT 1";
+        try (Connection con = DbUtils.getConnection()) {
+           List<Articles> list = con.createQuery(query)
+                   .addParameter("categories_id",categories_id)
+                   .executeAndFetch(Articles.class);
+            if (list.size() == 0) {
+                return null;
+            } else {
+                return list.get(0);
+            }
+        }
+    }
+    public static List<Articles> findTop10Cate() {
+        int count = getAllCate();
+        List<Articles> list= new ArrayList<>();
+        for(int i= 1 ; i<= count;i++)
+        {
+            list.add(findTopCate(i));
+        }
+        return list;
     }
 }

@@ -1,13 +1,24 @@
 package com.example.edit;
 
+import com.example.edit.Utils.DbUtils;
+import com.example.edit.beans.Articles;
+import com.example.edit.beans.Category;
+import com.example.edit.beans.Tag;
 import com.example.edit.beans.User;
+import com.example.edit.models.ArticleModel;
+import com.example.edit.models.CategoryModel;
+import com.example.edit.models.TagModel;
 import com.example.edit.models.UserModel;
+import org.sql2o.Connection;
+
+import java.util.List;
 
 public class test {
+
     public static void main(String[] args) {
-        String v = "1";
-        String m = "ngochai06122002@gmail.com";
-       boolean d= UserModel.checkOtp(v,m);
-      System.out.println(d);
-    }
+   List<Articles> list = ArticleModel.findTop10Cate();
+   for (Articles a : list)
+   {
+       System.out.println(a.toString());
+   }}
 }

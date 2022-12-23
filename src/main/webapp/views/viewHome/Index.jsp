@@ -12,21 +12,16 @@
                     <a class="navbar-brand mb-0 h1 mt-1" href="#"><i class="bi bi-backspace-reverse-fill" style="color: #3f3f3f"></i></a>
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a href="#" class=" link-cate mr-3" style="font-size: 10px; color: black;">#Secondary</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class=" link-cate mr-3" style="font-size: 10px; color: black;">#Secondary</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class=" link-cate mr-3" style="font-size: 10px; color: black;">#Secondary</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class=" link-cate mr-3" style="font-size: 10px; color: black;">#Secondary</a>
-                            </li>
+                            <c:forEach items="${tags}" var="o">
+                                <li class="nav-item active">
+                                    <a href="#" class=" link-cate mr-3" style="font-size: 10px; color: black;">${o.value}</a>
+                                </li>
+                            </c:forEach>
+
+
                         </ul>
                     </div>
-                    <div class="weather-item text-heading border-danger">TP.HCM 27°C  - CHỦ NHẬT - 25/12/2022</div>
+                    <div class="weather-item text-heading border-danger">TP.HCM 27°C  - CHỦ NHẬT - ${Day}</div>
                 </div>
             </div>
         </div>
@@ -143,73 +138,27 @@
                         <div id="blogCarousel" class="carousel slide" data-ride="carousel">
 
                             <!-- Carousel items -->
-                            <div class="carousel-inner">
+<%--                            <div class="carousel-inner">--%>
+<%--                                <c:forEach items="${listtop}" var="o">--%>
+<%--                                    <div class="carousel-item active">--%>
+<%--                                        <div class="row row-cols-5">--%>
+<%--                                            <div class="col">--%>
+<%--                                                <div class="card h-100 shadow" style="width: 13rem;">--%>
+<%--                                                    <a href="#">--%>
+<%--                                                        <img src="${pageContext.request.contextPath}/image/bongbauduc.jpg" class="card-img-top h-50" alt="...">--%>
+<%--                                                        <div class="card-body">--%>
+<%--                                                            <p class="card-title">${o.title}</p>--%>
+<%--                                                            <p><i class="bi bi-hash mr-2"></i>${o.avatar}</p>--%>
+<%--                                                            <p><i class="bi bi-calendar mr-2">${o.avatar}</i></p>--%>
+<%--                                                        </div>--%>
+<%--                                                    </a>--%>
+<%--                                                </div>--%>
+<%--                                            </div>--%>
+<%--                                        </div>--%>
+<%--                                        <!--.row-->--%>
+<%--                                    </div>--%>
+<%--                                </c:forEach>--%>
 
-                                <div class="carousel-item active">
-                                    <div class="row row-cols-5">
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="${pageContext.request.contextPath}/image/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="${pageContext.request.contextPath}/image/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="${pageContext.request.contextPath}/image/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="${pageContext.request.contextPath}/image/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="${pageContext.request.contextPath}/image/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--.row-->
-                                </div>
                                 <!--.item-->
 
                                 <div class="carousel-item ">
