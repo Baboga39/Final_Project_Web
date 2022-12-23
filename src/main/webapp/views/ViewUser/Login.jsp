@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="t" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,19 +33,21 @@
               <div class="form-outline mb-3">
                 <input type="password" id="txtPassword" name="password" placeholder="Password" class="form-control form-control-lg" />
               </div>
-             <c:if test="${hasError}">
-               <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                 <strong>Login fail!</strong> ${errorMessage}
-                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                   <span aria-hidden="true">&times;</span>
-                 </button>
-               </div>
-             </c:if>
+
+               <t:if test="${hasError}">
+                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                   <strong>Login fail!</strong> ${errorMessage}
+                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                   </button>
+                 </div>
+               </t:if>
+
               <div class="pt-1 mb-3 mt-3">
                 <button class="btn btn-dark btn-lg btn-block" type="submit">Login </button>
               </div>
               <div class="text-center">
-                <p>Not a member? <a href="#!">Register</a></p>
+                <p>Not a member? <a href="${pageContext.request.contextPath}/User/Register">Register</a></p>
                 <p>or sign up with:</p>
                 <button type="button" class="btn btn-link btn-floating mx-1">
                   <i class="bi bi-facebook h3"></i>

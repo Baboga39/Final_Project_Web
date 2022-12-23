@@ -15,4 +15,12 @@
         <servlet-name>default</servlet-name>
         <url-pattern>/image/*</url-pattern>
     </servlet-mapping>
+    <filter-mapping>
+        <filter-name>AuthSession</filter-name>
+        <url-pattern>/User/Index</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>SessionFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

@@ -1,11 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="d" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:useBean id="authUser" scope="session" type="com.example.edit.beans.User"/>
 
-
-<d:user>
+<d:web>
+    <jsp:attribute name="css">
+        <style>
+            .user-icon img{
+                border-radius: 50%;
+                width: 150px;
+                margin-right: 10px;
+            }
+        </style>
+    </jsp:attribute>
     <jsp:body>
-        <br><br><br><br>
         <div class="content">
             <div class="container">
                 <!-- Background image -->
@@ -27,15 +35,15 @@
                         <div class="row row-cols-2">
                             <div class="col-4 ml-3 shadow-lg" style="background: #f7f7f7">
                                 <div class="row mt-5">
-                      <span class="user-icon" style="margin: 0px auto">
-                        <img src="./img/khoa.png" class="img-fluid">
-                          </span>
+              <span class="user-icon" style="margin: 0px auto">
+                <img src="${pageContext.request.contextPath}/image/user.png" class="img-fluid">
+              </span>
                                 </div>
                                 <div class="row mt-3">
-                                    <h4 class="" style="margin: 0px auto">Phan Dai Dang Khoa</h4>
+                                    <h4 class="" style="margin: 0px auto">${authUser.name}</h4>
                                 </div>
                                 <div class="row mt-2">
-                                    <p class="" style="margin: 0px auto">Name Writer</p>
+                                    <p class="" style="margin: 0px auto">${authUser.second_name}</p>
                                 </div>
                                 <div class="row mt-2 mb-5">
                                     <p class="" style="margin: 0px auto">Name Role</p>
@@ -45,9 +53,9 @@
                                 <ul class="list-group list-group-flush mt-3">
                                     <li class="list-group-item">
                                         <div class="row mt-4">
-                                            <span class="col-4">Full Name: </span>
+                                            <span class="col-4">Name: </span>
                                             <div class="col-6">
-                                                <input type="email" id="txtEmail" name="email" placeholder="Email"class="form-control" />
+                                                <span>${authUser.name}</span>
                                             </div>
                                         </div>
                                     </li>
@@ -55,7 +63,7 @@
                                         <div class="row mt-4">
                                             <span class="col-4">Name Writer: </span>
                                             <div class="col-6">
-                                                <input type="email"  name="email" placeholder="Email"class="form-control" />
+                                                <span>${authUser.second_name}</span>
                                             </div>
                                         </div>
                                     </li>
@@ -63,7 +71,7 @@
                                         <div class="row mt-4">
                                             <span class="col-4">Email: </span>
                                             <div class="col-6">
-                                                <input type="email"  name="email" placeholder="Email"class="form-control" />>
+                                                <span>${authUser.email}</span>
                                             </div>
                                         </div>
                                     </li>
@@ -71,7 +79,7 @@
                                         <div class="row mt-4 mb-2">
                                             <span class="col-4">Birthday: </span>
                                             <div class="col-6">
-                                                <input type="email"  name="email" placeholder="Email"class="form-control" />
+                                                <span>${authUser.dateOfBirth}</span>
                                             </div>
                                         </div>
                                     </li>
@@ -93,7 +101,7 @@
                                         <div class="row">
                                             <span class="col-4">User: </span>
                                             <div class="col-8">
-                                                <input type="email" name="email" placeholder="Email"class="form-control" />
+                                                <span>${authUser.username}</span>
                                             </div>
                                         </div>
                                     </li>
@@ -101,7 +109,7 @@
                                         <div class="row">
                                             <span class="col-4">Password: </span>
                                             <div class="col-8">
-                                                <input type="email"  name="email" placeholder="Email"class="form-control" />
+                                                <span>${authUser.password}</span>
                                             </div>
                                         </div>
                                     </li>
@@ -109,7 +117,7 @@
                                         <div class="row">
                                             <span class="col-4">Status: </span>
                                             <div class="col-8">
-                                                <input type="email"  name="email" placeholder="Email"class="form-control" />
+                                                <span>Vip</span>
                                             </div>
                                         </div>
                                     </li>
@@ -117,7 +125,7 @@
                                         <div class="row">
                                             <span class="col-4">Date: </span>
                                             <div class="col-8">
-                                                <input type="email"  name="email" placeholder="Email"class="form-control" />
+                                                <span>3 Day left</span>
                                             </div>
                                         </div>
                                     </li>
@@ -135,4 +143,4 @@
 
         </div>
     </jsp:body>
-</d:user>
+</d:web>

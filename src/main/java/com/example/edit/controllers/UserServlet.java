@@ -2,7 +2,13 @@ package com.example.edit.controllers;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.example.edit.Utils.ServletUtils;
+import com.example.edit.beans.Articles;
+import com.example.edit.beans.Category;
+import com.example.edit.beans.Tag;
 import com.example.edit.beans.User;
+import com.example.edit.models.ArticleModel;
+import com.example.edit.models.CategoryModel;
+import com.example.edit.models.TagModel;
 import com.example.edit.models.UserModel;
 
 import javax.servlet.ServletException;
@@ -10,11 +16,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @WebServlet(name = "UserServlet", value = "/User/*")
 public class UserServlet extends HttpServlet {
@@ -22,6 +30,9 @@ public class UserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();
         switch (path) {
+            case "/Index":
+                ServletUtils.forward("/views/ViewUser/Index.jsp",request,response);
+                break;
             case "/Register":
                 ServletUtils.forward("/views/ViewUser/Register.jsp",request,response);
                 break;
@@ -55,11 +66,19 @@ public class UserServlet extends HttpServlet {
             case "/Login":
                 login(request,response);
                 break;
+            case "/Logout":
+                logout(request,response);
+                break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
                 break;
         }
     }
+    private static java.sql.Date getCurrentDate() {
+        java.util.Date today = new java.util.Date();
+        return new java.sql.Date(today.getTime());
+    }
+
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -68,28 +87,43 @@ public class UserServlet extends HttpServlet {
         boolean check = UserModel.checkByUserName(username);
         //System.out.println(check);
 
-        if(check == true)
+        if(user != null)
         {
             BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
             if(result.verified)
             {
-               ServletUtils.forward("/views/ViewUser/Index.jsp",request,response);
+                HttpSession session = request.getSession();
+                session.setAttribute("auth", true);
+                session.setAttribute("authUser",user);;
+                String url = "/Home";
+                ServletUtils.redirect(url,request,response);
             }
             else
             {
-                request.setAttribute("hashError",true);
-                request.setAttribute("errorMessage","Invalid Login");
+                request.setAttribute("hasError",true);
+                request.setAttribute("errorMessage","Username or password is incorrect");
                 ServletUtils.forward("/views/ViewUser/Login.jsp",request,response);
             }
         }
         else
         {
-            request.setAttribute("hashError",true);
-            request.setAttribute("errorMessage","Invalid Login");
+            request.setAttribute("hasError",true);
+            request.setAttribute("errorMessage","Username or password is incorrect");
             ServletUtils.forward("/views/ViewUser/Login.jsp",request,response);
         }
+    }
+    private void logout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        session.setAttribute("auth",false);
+        session.setAttribute("authUser",new User());
 
-        ServletUtils.forward("/views/ViewUser/Login.jsp", request, response);
+
+        String url = request.getHeader("referer");
+        if(url == null)
+        {
+            url="/Home";
+        }
+        ServletUtils.redirect(url,request,response);
     }
 
     private void registerUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
