@@ -44,25 +44,39 @@ public class ArticleModel {
                 "WHERE\n" +
                 "    publish_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 10080 MINUTE)\n" +
                 "ORDER BY views DESC\n" +
-                "LIMIT 0,4\n";
+                "LIMIT 4,4\n";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .executeAndFetch(Articles.class);
         }
     }
-
-    public static List<Articles> findTop5New() {
+    public static List<Articles> findTop3() {
         final String query = "SELECT \n" +
                 "    *\n" +
                 "FROM\n" +
                 "    articles\n" +
                 "WHERE\n" +
-                "    publish_date <=CURRENT_DATE()\n" +
-                "ORDER BY publish_date DESC\n" +
-                "LIMIT 5";
+                "    publish_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 10080 MINUTE)\n" +
+                "ORDER BY views DESC\n" +
+                "LIMIT 0,3\n";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .executeAndFetch(Articles.class);
+        }
+    }
+    public static List<Articles> findTop5New() {
+        final String query = "SELECT *  FROM articles WHERE publish_date <=CURRENT_DATE() ORDER BY publish_date DESC LIMIT 2,4";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .executeAndFetch(Articles.class);
+        }
+    }
+    public static Articles fin1() {
+        final String query = "SELECT *  FROM articles WHERE publish_date <=CURRENT_DATE() ORDER BY publish_date DESC LIMIT 5";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Articles> list = con.createQuery(query)
+                    .executeAndFetch(Articles.class);
+            return  list.get(0);
         }
     }
     public static List<Articles> findTop5NewNext() {
@@ -72,7 +86,7 @@ public class ArticleModel {
                 "                WHERE\n" +
                 "                    publish_date <=CURRENT_DATE()\n" +
                 "                ORDER BY publish_date DESC\n" +
-                "                LIMIT 5,5";
+                "                LIMIT 6,5";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .executeAndFetch(Articles.class);
@@ -111,4 +125,5 @@ public class ArticleModel {
         }
         return list;
     }
+
 }

@@ -36,39 +36,20 @@
                                 <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
                             </ol>
                             <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div class="box">
-                                        <div class="overlay-img"> <img src="${pageContext.request.contextPath}/image/tintuc.jpg" class="img-fluid d-block w-100" alt="..."></div>
-                                        <div class="carousel-caption d-none d-md-block text-img text-left">
-                                            <h5>Chuyên Mục</h5>
-                                            <p>Some representative placeholder content for the first slide.</p>
-                                            <h5>12/09/2022</h5>
-                                            <button class="btn btn-sm btn-outline-light">Xem Thêm</button>
+                                <c:forEach items="${listtop3}" var="o">
+                                    <div class="carousel-item ">
+                                        <div class="box">
+                                            <div class="overlay-img"> <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="img-fluid d-block w-100" alt="..."></div>
+                                            <div class="carousel-caption d-none d-md-block text-img text-left">
+                                                <h5> ${o.categoryName} </h5>
+                                                <p> ${o.title}.</p>
+                                                <h5>${o.publish_date}</h5>
+                                                <button class="btn btn-sm btn-outline-light">Xem Thêm</button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="box">
-                                        <div class="overlay-img"> <img src="${pageContext.request.contextPath}/image/tintuc.jpg" class="img-fluid d-block w-100" alt="..."></div>
-                                        <div class="carousel-caption d-none d-md-block text-img text-left">
-                                            <h5>Chuyên Mục</h5>
-                                            <p>Some representative placeholder content for the first slide.</p>
-                                            <h5>12/09/2022</h5>
-                                            <button class="btn btn-sm btn-outline-light">Xem Thêm</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="box">
-                                        <div class="overlay-img"> <img src="${pageContext.request.contextPath}/image/tintuc.jpg" class="img-fluid d-block w-100" alt="..."></div>
-                                        <div class="carousel-caption d-none d-md-block text-img text-left">
-                                            <h5>Chuyên Mục</h5>
-                                            <p>Some representative placeholder content for the first slide.</p>
-                                            <h5>12/09/2022</h5>
-                                            <button class="btn btn-sm btn-outline-light">Xem Thêm</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                </c:forEach>
+
                             </div>
                             <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -192,84 +173,38 @@
                     <div class="col-6">
                         <div class="box-new h-100">
                             <a href="#">
-                                <img src="${pageContext.request.contextPath}/image/bongbauduc.jpg" class="card-img-top" alt="...">
+                                <img src="${pageContext.request.contextPath}/image/Article/${find1.avatar}" class="card-img-top" alt="...">
                             </a>
                             <div class="box-new-menu">
                                 <a href="#">
-                                    <h4>Some quick example text to build on the card title and make up the bulk</h4>
+                                    <h4> ${find1.title} </h4>
                                 </a>
-                                <p style="font-size: 15px">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
+                                <p style="font-size: 15px"> ${find1.abstracts}  </p>
+                                <p><i class="bi bi-hash mr-2"></i>  ${find1.categoryName} </p>
+                                <p><i class="bi bi-calendar mr-2"></i> ${find1.publish_date} </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="row row-cols-1 row-cols-md-2">
+                            <c:forEach items="${listtop5New}" var="o">
                             <div class="col mb-4">
                                 <div class="box-new">
                                     <a href="#">
-                                        <img src="${pageContext.request.contextPath}/image/bongbauduc.jpg" class="card-img-top h-100" alt="...">
+                                        <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="card-img-top h-100" alt="...">
                                     </a>
                                     <div class="box-new-content-sm">
                                         <a href="#">
-                                            <span class="" style="font-size: 15px">Some quick example text to build on the card title and make up the bulk of the card's content.</span>
+                                            <span class="" style="font-size: 15px"> ${o.title} </span>
                                         </a>
                                         <div class="d-flex justify-content-between">
-                                            <span><i class="bi bi-hash mr-2"></i>Chuyên mục</span>
-                                            <span><i class="bi bi-calendar mr-2"></i>12/09/2022</span>
+                                            <span><i class="bi bi-hash mr-2"></i>  ${o.categoryName} </span>
+                                            <span><i class="bi bi-calendar mr-2"></i> ${o.publish_date} </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col mb-4">
-                                <div class="box-new">
-                                    <a href="#">
-                                        <img src="${pageContext.request.contextPath}/image/bongbauduc.jpg" class="card-img-top h-100" alt="...">
-                                    </a>
-                                    <div class="box-new-content-sm">
-                                        <a href="#">
-                                            <span class="" style="font-size: 15px">Some quick example text to build on the card title and make up the bulk of the card's content.</span>
-                                        </a>
-                                        <div class="d-flex justify-content-between">
-                                            <span><i class="bi bi-hash mr-2"></i>Chuyên mục</span>
-                                            <span><i class="bi bi-calendar mr-2"></i>12/09/2022</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col mb-4">
-                                <div class="box-new">
-                                    <a href="#">
-                                        <img src="${pageContext.request.contextPath}/image/bongbauduc.jpg" class="card-img-top h-100" alt="...">
-                                    </a>
-                                    <div class="box-new-content-sm">
-                                        <a href="#">
-                                            <span class="" style="font-size: 15px">Some quick example text to build on the card title and make up the bulk of the card's content.</span>
-                                        </a>
-                                        <div class="d-flex justify-content-between">
-                                            <span><i class="bi bi-hash mr-2"></i>Chuyên mục</span>
-                                            <span><i class="bi bi-calendar mr-2"></i>12/09/2022</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col mb-4">
-                                <div class="box-new">
-                                    <a href="#">
-                                        <img src="${pageContext.request.contextPath}/image/bongbauduc.jpg" class="card-img-top h-100" alt="...">
-                                    </a>
-                                    <div class="box-new-content-sm">
-                                        <a href="#">
-                                            <span class="" style="font-size: 15px">Some quick example text to build on the card title and make up the bulk of the card's content.</span>
-                                        </a>
-                                        <div class="d-flex justify-content-between">
-                                            <span><i class="bi bi-hash mr-2"></i>Chuyên mục</span>
-                                            <span><i class="bi bi-calendar mr-2"></i>12/09/2022</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </c:forEach>
                         </div>
                     </div>
 

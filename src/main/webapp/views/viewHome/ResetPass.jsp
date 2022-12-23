@@ -46,15 +46,13 @@
                                 <div class="form-group">
                                     <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit">
                                 </div>
-                                <c:if test="${mess == null}">
                                     <div class="row mt-2 mb-2" style="    float: right;
                                                                       margin-right: 1px;">
                                         <button type="button" class="btn btn-success">
-                                            <a href="#" style="    text-decoration: none;
+                                            <a href="${pageContext.request.contextPath}/views/ViewUser/Login.jsp" style="    text-decoration: none;
                                                              color: #ffff;">Home</a>
                                         </button>
                                     </div>
-                                </c:if>
                                 <input type="hidden" class="hide" name="email" id="token" value="${email}">
                             </form>
 

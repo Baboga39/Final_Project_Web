@@ -68,3 +68,6 @@ Article
 102.Đã xuất bản
 103.Bị từ chối
 104.Chưa được duyệt
+
+Tagindex
+1.TagHome

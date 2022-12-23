@@ -1,5 +1,6 @@
 package com.example.edit.controllers;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.example.edit.Utils.ServletUtils;
 import com.example.edit.beans.AccountFace;
 import com.example.edit.beans.AccountGG;
@@ -139,7 +140,8 @@ public class LogingServlet extends HttpServlet {
                     }
                     {
                         String mess= "Thay đổi thành công. Xin vui lòng đăng nhập";
-                        UserModel.edit(pass,email);
+                        String bcryptHashString = BCrypt.withDefaults().hashToString(12, pass.toCharArray());
+                        UserModel.edit(bcryptHashString,email);
                         request.setAttribute("mess",mess);
                         request.getRequestDispatcher("/views/viewHome/ResetPass.jsp").forward(request,response);
                     }

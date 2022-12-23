@@ -38,8 +38,12 @@ public class HomeServlet extends HttpServlet {
                 List<Articles> listtop5 = ArticleModel.findTop5();
                 List<Articles> listtop10 = ArticleModel.findTop10();
                 List<Articles> listtop4 = ArticleModel.findTop4();
+                List<Articles> listtop3 = ArticleModel.findTop3();
                 List<Articles> listtop5New = ArticleModel.findTop5New();
                 List<Articles> listtop5NewNext = ArticleModel.findTop5NewNext();
+                Articles find1 = ArticleModel.fin1();
+                request.setAttribute("listtop3", listtop3);
+                request.setAttribute("find1", find1);
                 request.setAttribute("listtop5New", listtop5New);
                 request.setAttribute("listtop5NewNext", listtop5NewNext);
                 request.setAttribute("listtop4", listtop4);
