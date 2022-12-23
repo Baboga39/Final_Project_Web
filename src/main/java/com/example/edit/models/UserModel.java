@@ -1,50 +1,59 @@
 package com.example.edit.models;
 
 import com.example.edit.Utils.DbUtils;
-import com.example.edit.beans.Tag;
 import com.example.edit.beans.User;
 import org.sql2o.Connection;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.List;
 import java.util.Properties;
 
 public class UserModel {
 
+    public static boolean checkByUserName(String username) {
+      String query = "select * from users where username = :username";
+        try (Connection con = DbUtils.getConnection()) {
+            List<User> list = con.createQuery(query)
+                    .addParameter("username",username)
+                    .executeAndFetch(User.class);
+            if (list.size() == 0) {
+                return false;
+            }
+            return true;
+        }
+
+    }
+    public static User findByUserName(String username) {
+        String query = "select * from users where username = :username";
+        try (Connection con = DbUtils.getConnection()) {
+            List<User> list = con.createQuery(query)
+                    .addParameter("username",username)
+                    .executeAndFetch(User.class);
+            if (list.size() == 0) {
+                return null;
+            }
+            return list.get(0);
+        }
+
+    }
     public static void add(User c) {
-        String insertSql = "INSERT INTO users (username, password, name, issue_at, expiration, role_id, second_name, date_of_birth, email, otp, otp_exp) VALUES (:username,:password,:name,:issue_at,:expiration,:role_id,:second_name,:date_of_birth,:email,:otp,:otp_exp)";
+        String insertSql ="INSERT INTO users ( username, password, name, issue_at, expiration, role_id, second_name, date_of_birth, email, otp, otp_exp) VALUES (:username,:password,:name,:issueAt,:expiration,:role_id,:second_name,:dateOfBirth,:email,:otp,:otp_exp)\n";
         try (Connection con = DbUtils.getConnection()) {
             con.createQuery(insertSql)
                     .addParameter("username", c.getUsername())
                     .addParameter("password", c.getPassword())
                     .addParameter("name", c.getName())
-                    .addParameter("issue_at", c.getIssue_at())
+                    .addParameter("issueAt", c.getIssueAt())
                     .addParameter("expiration", c.getExpiration())
-                    .addParameter("role_id", c.getRole_id())
+                    .addParameter("role_id",c.getRole_id())
                     .addParameter("second_name", c.getSecond_name())
-                    .addParameter("date_of_birth", c.getDate_of_birth())
-                    .addParameter("email", c.getEmail())
-                    .addParameter("otp_exp", c.getOtp_exp())
-                    .addParameter("otp", c.getOtp())
+                    .addParameter("dateOfBirth",c.getDateOfBirth())
+                    .addParameter("email",c.getEmail())
+                    .addParameter("otp",c.getOtp())
+                    .addParameter("otp_exp",c.getOtp_exp())
                     .executeUpdate();
-        }
-    }
-    public static User findByUsername(String username) {
-        final String query = "select * from users where username = :username";
-        try (Connection con = DbUtils.getConnection()) {
-            List<User> list = con.createQuery(query)
-                    .addParameter("username", username)
-                    .executeAndFetch(User.class);
-
-            if (list.size() == 0) {
-                return null;
-            }
-
-            return list.get(0);
         }
     }
 

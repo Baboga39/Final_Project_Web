@@ -1,7 +1,7 @@
 package com.example.edit.beans;
 
-import javax.xml.crypto.Data;
 import java.time.LocalDate;
+
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -14,14 +14,14 @@ public class User {
     private int expiration;
     private int role_id;
     private String second_name;
-    private LocalDate date_of_birth;
+    private LocalDate date_of_Birth;
     private String email;
     private int otp;
     private int otp_exp;
-    public  User()
-    {}
 
-    public User(int user_id, String username, String password, String name, LocalDate issue_at, int expiration, int role_id, String second_name, LocalDate date_of_birth, String email, int otp, int otp_exp) {
+    public User() {     }
+
+    public User(int user_id, String username, String password, String name, LocalDate issue_at, int expiration, int role_id, String second_name, LocalDate dateOfBirth, String email, int otp, int otp_exp) {
         this.user_id = user_id;
         this.username = username;
         this.password = password;
@@ -30,17 +30,17 @@ public class User {
         this.expiration = expiration;
         this.role_id = role_id;
         this.second_name = second_name;
-        this.date_of_birth = date_of_birth;
+        this.date_of_Birth = dateOfBirth;
         this.email = email;
         this.otp = otp;
         this.otp_exp = otp_exp;
     }
 
-    public int getUser_id() {
+    public int getUserId() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUserId(int user_id) {
         this.user_id = user_id;
     }
 
@@ -68,11 +68,11 @@ public class User {
         this.name = name;
     }
 
-    public LocalDate getIssue_at() {
+    public LocalDate getIssueAt() {
         return issue_at;
     }
 
-    public void setIssue_at(LocalDate issue_at) {
+    public void setIssueAt(LocalDate issue_at) {
         this.issue_at = issue_at;
     }
 
@@ -100,12 +100,12 @@ public class User {
         this.second_name = second_name;
     }
 
-    public LocalDate getDate_of_birth() {
-        return date_of_birth;
+    public LocalDate getDateOfBirth() {
+        return date_of_Birth;
     }
 
-    public void setDate_of_birth(LocalDate date_of_birth) {
-        this.date_of_birth = date_of_birth;
+    public void setDateOfBirth(LocalDate date_of_Birth) {
+        this.date_of_Birth = date_of_Birth;
     }
 
     public String getEmail() {
@@ -130,23 +130,5 @@ public class User {
 
     public void setOtp_exp(int otp_exp) {
         this.otp_exp = otp_exp;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "user_id=" + user_id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", issue_at=" + issue_at +
-                ", expiration=" + expiration +
-                ", role_id=" + role_id +
-                ", second_name='" + second_name + '\'' +
-                ", date_of_birth=" + date_of_birth +
-                ", email='" + email + '\'' +
-                ", otp=" + otp +
-                ", otp_exp=" + otp_exp +
-                '}';
     }
 }

@@ -4,11 +4,12 @@
 
 <d:web>
     <jsp:attribute name="css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha512-f0tzWhCwVFS3WeYaofoLWkTP62ObhewQ1EZn65oSYDZUg1+CyywGKkWzm8BxaJj5HGKI72PnMH9jYyIFz+GH7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha512-f0tzWhCwVFS3WeYaofoLWkTP62ObhewQ1EZn65oSYDZUg1+CyywGKkWzm8BxaJj5HGKI72PnMH9jYyIFz+GH7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </jsp:attribute>
     <jsp:attribute name="js">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
+
         $('#frmRegister').on('submit', function (e) {
             e.preventDefault();
 
@@ -17,15 +18,14 @@
                 alert('Invalid username.');
                 return;
             }
-
-            $.getJSON('${pageContext.request.contextPath}/User/IsAvailable?username=' + username , function (data) {
+            $.getJSON('${pageContext.request.contextPath}/User/IsAvailable?user=' + username, function (data) {
                 if (data === false) {
-                    alert('Username is not available.');
-
-                } else {
                     $('#frmRegister').off('submit').submit();
+                } else {
+                    alert('Username is not available.');
                 }
-            });
+
+        });
         });
 
         $('#date').datetimepicker({
@@ -37,25 +37,25 @@
   </jsp:attribute>
    <jsp:body>
        <div class="content">
-           <div class="container text-center">
-               <!-- Background image -->
-               <div class="p-5 bg-image" style="
+           <form action="" id="frmRegister" method="post">
+               <div class="container text-center">
+                   <!-- Background image -->
+                   <div class="p-5 bg-image" style="
         background: bisque;
         height: 300px;
         "></div>
-               <!-- Background image -->
+                   <!-- Background image -->
 
-               <div class="card mx-4 mx-md-5 shadow" style="
+                   <div class="card mx-4 mx-md-5 shadow" style="
         margin-top: -170px;
         background: hsla(0, 0%, 100%, 0.8);
         backdrop-filter: blur(30px);
         ">
-                   <div class="card-body py-5 px-md-5">
+                       <div class="card-body py-5 px-md-5">
 
-                       <div class="row d-flex justify-content-center">
-                           <div class="col-lg-8">
-                               <h2 class="fw-bold mb-5">Sign up now</h2>
-                               <form id="frmRegister" method="post" action="">
+                           <div class="row d-flex justify-content-center">
+                               <div class="col-lg-8">
+                                   <h2 class="fw-bold mb-5">Sign up now</h2>
                                    <!-- 2 column grid layout with text inputs for the first and last names -->
                                    <div class="row">
                                        <div class="col-md-6 mb-4">
@@ -76,7 +76,7 @@
 
                                    <!-- Email input -->
                                    <div class="form-outline mb-4">
-                                       <input type="email" id="txtEmail" name="email" placeholder="Email"class="form-control" />
+                                       <input type="text" id="txtEmail" name="email" placeholder="Email"class="form-control" />
 
                                    </div>
 
@@ -116,12 +116,12 @@
                                            <i class="bi bi-github h3"></i>
                                        </button>
                                    </div>
-                               </form>
+                               </div>
                            </div>
                        </div>
                    </div>
                </div>
-           </div>
+           </form>
 
        </div>
    </jsp:body>
