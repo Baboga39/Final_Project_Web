@@ -37,6 +37,12 @@ public class HomeServlet extends HttpServlet {
                 List<Tag> list = TagModel.findByindex();
                 List<Articles> listtop5 = ArticleModel.findTop5();
                 List<Articles> listtop10 = ArticleModel.findTop10();
+                List<Articles> listtop4 = ArticleModel.findTop4();
+                List<Articles> listtop5New = ArticleModel.findTop5New();
+                List<Articles> listtop5NewNext = ArticleModel.findTop5NewNext();
+                request.setAttribute("listtop5New", listtop5New);
+                request.setAttribute("listtop5NewNext", listtop5NewNext);
+                request.setAttribute("listtop4", listtop4);
                 request.setAttribute("Day",getCurrentDate());
                 request.setAttribute("listtop", listtop5);
                 request.setAttribute("listtopnext", listtop10);

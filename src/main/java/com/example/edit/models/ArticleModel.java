@@ -51,7 +51,7 @@ public class ArticleModel {
         }
     }
 
-    public static List<Articles> findTop12New() {
+    public static List<Articles> findTop5New() {
         final String query = "SELECT \n" +
                 "    *\n" +
                 "FROM\n" +
@@ -59,7 +59,20 @@ public class ArticleModel {
                 "WHERE\n" +
                 "    publish_date <=CURRENT_DATE()\n" +
                 "ORDER BY publish_date DESC\n" +
-                "LIMIT 10\n";
+                "LIMIT 5";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .executeAndFetch(Articles.class);
+        }
+    }
+    public static List<Articles> findTop5NewNext() {
+        final String query = "SELECT *\n" +
+                "FROM\n" +
+                "               articles\n" +
+                "                WHERE\n" +
+                "                    publish_date <=CURRENT_DATE()\n" +
+                "                ORDER BY publish_date DESC\n" +
+                "                LIMIT 5,5";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .executeAndFetch(Articles.class);

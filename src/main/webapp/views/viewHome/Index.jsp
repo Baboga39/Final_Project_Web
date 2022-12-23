@@ -87,40 +87,19 @@
                             </div>
                             <div class="card-body">
                                 <ul class="list-unstyled">
+                                    <c:forEach items="${listtop4}" var="o">
                                     <li class="media">
-                                        <img src="${pageContext.request.contextPath}/image/tintuc.jpg" href="#" for="media-body" class="mr-3 img-fluid w-50" alt="...">
+                                        <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" style="height: 115px !important" class="mr-3 img-fluid w-50" alt="...">
                                         <div class="media-body">
                                             <a class="mt-0 mb-1">
-                                                List-based media object List-based media object
+                                                    ${o.title}
                                             </a>
                                             <div class="row mt-1 mb-1 ml-1">
-                                                <span>Chuyên mục</span><span>-</span><span>12/09/2022</span>
+                                                <span>${o.categoryName}</span><span> - </span><span>${o.publish_date}</span>
                                             </div>
                                         </div>
                                     </li>
-
-                                    <li class="media my-4">
-                                        <img src="${pageContext.request.contextPath}/image/tintuc.jpg" class="mr-3 img-fluid w-50" alt="...">
-                                        <div class="media-body">
-                                            <a class="mt-0 mb-1">
-                                                List-based media object List-based media object
-                                            </a>
-                                            <div class="row mt-1 mb-1 ml-1">
-                                                <span>Chuyên mục</span><span>-</span><span>12/09/2022</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="media">
-                                        <img src="${pageContext.request.contextPath}/image/tintuc.jpg" class="mr-3 img-fluid w-50" alt="...">
-                                        <div class="media-body">
-                                            <a class="mt-0 mb-1">
-                                                List-based media object List-based media object
-                                            </a>
-                                            <div class="row mt-1 mb-1 ml-1">
-                                                <span>Chuyên mục</span><span>-</span><span>12/09/2022</span>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    </c:forEach>
                                 </ul>
                             </div>
                         </div>
@@ -138,92 +117,52 @@
                         <div id="blogCarousel" class="carousel slide" data-ride="carousel">
 
                             <!-- Carousel items -->
-<%--                            <div class="carousel-inner">--%>
-<%--                                <c:forEach items="${listtop}" var="o">--%>
-<%--                                    <div class="carousel-item active">--%>
-<%--                                        <div class="row row-cols-5">--%>
-<%--                                            <div class="col">--%>
-<%--                                                <div class="card h-100 shadow" style="width: 13rem;">--%>
-<%--                                                    <a href="#">--%>
-<%--                                                        <img src="${pageContext.request.contextPath}/image/bongbauduc.jpg" class="card-img-top h-50" alt="...">--%>
-<%--                                                        <div class="card-body">--%>
-<%--                                                            <p class="card-title">${o.title}</p>--%>
-<%--                                                            <p><i class="bi bi-hash mr-2"></i>${o.avatar}</p>--%>
-<%--                                                            <p><i class="bi bi-calendar mr-2">${o.avatar}</i></p>--%>
-<%--                                                        </div>--%>
-<%--                                                    </a>--%>
-<%--                                                </div>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                        <!--.row-->--%>
-<%--                                    </div>--%>
-<%--                                </c:forEach>--%>
+                            <div class="carousel-inner">
+
+                                    <div class="carousel-item active">
+
+                                        <div class="row row-cols-5">
+                                            <c:forEach items="${listtop}" var="o">
+                                            <div class="col">
+                                                <div class="card h-100 shadow" style="width: 13rem;">
+                                                    <a href="#">
+                                                        <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" style="height: 164px !important" class="card-img-top h-50" alt="...">
+                                                        <div class="card-body">
+                                                            <p class="card-title">${o.title}</p>
+                                                            <p><i class="bi bi-hash mr-2"></i>${o.categoryName}</p>
+                                                            <p><i class="bi bi-calendar mr-2"></i> ${o.publish_date} </p>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            </c:forEach>
+                                        </div>
+
+                                        <!--.row-->
+                                    </div>
+
 
                                 <!--.item-->
 
                                 <div class="carousel-item ">
                                     <div class="row row-cols-5">
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="${pageContext.request.contextPath}/image/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
+                                        <c:forEach items="${listtopnext}" var="o">
+                                            <div class="col">
+                                                <div class="card h-100 shadow" style="width: 13rem;">
+                                                    <a href="#">
+                                                        <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" style="height: 164px !important" class="card-img-top h-50" alt="...">
+                                                        <div class="card-body">
+                                                            <p class="card-title">${o.title}</p>
+                                                            <p><i class="bi bi-hash mr-2"></i>${o.categoryName}</p>
+                                                            <p><i class="bi bi-calendar mr-2"></i> ${o.publish_date} </p>
+                                                        </div>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="${pageContext.request.contextPath}/image/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="${pageContext.request.contextPath}/image/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="${pageContext.request.contextPath}/image/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="${pageContext.request.contextPath}/image/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
+                                        </c:forEach>
                                     </div>
+
+
 
                                     <!--.row-->
                                 </div>
@@ -337,66 +276,20 @@
                 </div>
                 <div class="row mt-5">
                     <ul class="list-unstyled mt-5">
-                        <li class="media">
-                            <img src="${pageContext.request.contextPath}/image/news.jpg" class="mr-3 img-fluid d-block w-25  " alt="...">
-                            <div class="media-body">
-                                <a href="#">
-                                    <h4 class="mt-0 mb-1">List-based media object</h4>
-                                </a>
-                                <p>All my girls vintage Chanel baby. So you can have your cake. Tonight, tonight, tonight, I'm walking on air. Slowly swallowing down my fear, yeah yeah. Growing fast into a bolt of lightning. So hot and heavy, 'Til dawn. That fairy tale ending with a knight in shining armor. Heavy is the head that wears the crown.</p>
-                                <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                            </div>
-                        </li>
-                        <hr>
+                        <c:forEach items="${listtop5NewNext}" var="o">
                         <li class="media my-4">
-                            <img src="${pageContext.request.contextPath}/image/news.jpg" class="mr-3 img-fluid d-block w-25  " alt="...">
+                            <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="mr-3 img-fluid d-block w-25  " alt="...">
                             <div class="media-body">
                                 <a href="#">
-                                    <h4 class="mt-0 mb-1">List-based media object</h4>
+                                    <h4 class="mt-0 mb-1">${o.title}</h4>
                                 </a>
-                                <p>All my girls vintage Chanel baby. So you can have your cake. Tonight, tonight, tonight, I'm walking on air. Slowly swallowing down my fear, yeah yeah. Growing fast into a bolt of lightning. So hot and heavy, 'Til dawn. That fairy tale ending with a knight in shining armor. Heavy is the head that wears the crown.</p>
-                                <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
+                                <p> ${o.abstracts} </p>
+                                <p><i class="bi bi-hash mr-2"></i>${o.categoryName}</p>
+                                <p><i class="bi bi-calendar mr-2"></i> ${o.publish_date} </p>
                             </div>
                         </li>
                         <hr>
-                        <li class="media">
-                            <img src="${pageContext.request.contextPath}/image/news.jpg" class="mr-3 img-fluid d-block w-25  " alt="...">
-                            <div class="media-body">
-                                <a href="#">
-                                    <h4 class="mt-0 mb-1">List-based media object</h4>
-                                </a>
-                                <p>All my girls vintage Chanel baby. So you can have your cake. Tonight, tonight, tonight, I'm walking on air. Slowly swallowing down my fear, yeah yeah. Growing fast into a bolt of lightning. So hot and heavy, 'Til dawn. That fairy tale ending with a knight in shining armor. Heavy is the head that wears the crown.</p>
-                                <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                            </div>
-                        </li>
-                        <hr>
-                        <li class="media my-4">
-                            <img src="${pageContext.request.contextPath}/image/news.jpg" class="mr-3 img-fluid d-block w-25  " alt="...">
-                            <div class="media-body">
-                                <a href="#">
-                                    <h4 class="mt-0 mb-1">List-based media object</h4>
-                                </a>
-                                <p>All my girls vintage Chanel baby. So you can have your cake. Tonight, tonight, tonight, I'm walking on air. Slowly swallowing down my fear, yeah yeah. Growing fast into a bolt of lightning. So hot and heavy, 'Til dawn. That fairy tale ending with a knight in shining armor. Heavy is the head that wears the crown.</p>
-                                <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                            </div>
-                        </li>
-                        <hr>
-                        <li class="media my-4">
-                            <img src="${pageContext.request.contextPath}/image/news.jpg" class="mr-3 img-fluid d-block w-25  " alt="...">
-                            <div class="media-body">
-                                <a href="#">
-                                    <h4 class="mt-0 mb-1">List-based media object</h4>
-                                </a>
-                                <p>All my girls vintage Chanel baby. So you can have your cake. Tonight, tonight, tonight, I'm walking on air. Slowly swallowing down my fear, yeah yeah. Growing fast into a bolt of lightning. So hot and heavy, 'Til dawn. That fairy tale ending with a knight in shining armor. Heavy is the head that wears the crown.</p>
-                                <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                            </div>
-                        </li>
-
+                        </c:forEach>
                     </ul>
                 </div>
             </div>
@@ -422,54 +315,7 @@
 
                                 <div class="carousel-item active">
                                     <div class="row row-cols-4">
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="${pageContext.request.contextPath}/image/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="${pageContext.request.contextPath}/image/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="${pageContext.request.contextPath}/image/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+
                                         <div class="col">
                                             <div class="card h-100 shadow" style="width: 15rem;">
                                                 <div class="box-cate">
