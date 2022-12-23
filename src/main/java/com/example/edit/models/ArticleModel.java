@@ -125,5 +125,12 @@ public class ArticleModel {
         }
         return list;
     }
-
+    public static List<Articles> findSearch(String text) {
+        final String query = "SELECT * FROM articles WHERE MATCH(title,content,abstracts) AGAINST(:text)";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .addParameter("text",text)
+                    .executeAndFetch(Articles.class);
+        }
+    }
 }

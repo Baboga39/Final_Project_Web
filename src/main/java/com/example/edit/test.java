@@ -16,9 +16,10 @@ import java.util.List;
 public class test {
 
     public static void main(String[] args) {
-   List<Articles> list = ArticleModel.findTop10Cate();
-   for (Articles a : list)
+        String a = "Messi";
+   List<Articles> list = ArticleModel.findSearch(a);
+   for (Articles b : list)
    {
-       System.out.println(a.toString());
+       System.out.println(b.toString());
    }}
 }
