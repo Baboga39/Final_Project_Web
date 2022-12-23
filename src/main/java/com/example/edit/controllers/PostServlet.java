@@ -1,6 +1,8 @@
 package com.example.edit.controllers;
 
 import com.example.edit.Utils.ServletUtils;
+import com.example.edit.beans.Category;
+import com.example.edit.models.CategoryModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "PostServlet", value = "/Post/*")
 @MultipartConfig(
@@ -31,6 +34,7 @@ public class PostServlet extends HttpServlet {
             case "/Upload":
                 ServletUtils.forward("/views/viewPost/Upload.jsp", request, response);
                 break;
+
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
                 break;

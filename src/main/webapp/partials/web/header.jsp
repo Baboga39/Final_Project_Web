@@ -54,10 +54,10 @@
                         </div>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0" >
+                <form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/Posts/Search" >
                     <div class="p-1 rounded rounded-pill shadow-lg mw-100" style="background: snow">
                         <div class="input-group text-white">
-                            <input type="search" placeholder="Nhập vào đây" aria-describedby="button-addon1" class="form-control border-0 rounded rounded-pill bg-light">
+                            <input name="search" type="search" placeholder="Nhập vào đây" aria-describedby="button-addon1" class="form-control border-0 rounded rounded-pill bg-light">
                             <div class="input-group-append">
                                 <button id="button-addon1" type="submit" class="btn btn-link"><i class="bi bi-search" style="color: black"></i></button>
                             </div>
