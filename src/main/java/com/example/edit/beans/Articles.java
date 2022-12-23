@@ -16,9 +16,9 @@ public class Articles {
     private int status_id;
     private String avatar;
     private String image_content;
+    private String categoryName;
 
-    public Articles(int article_id, String title, Date publish_date, int views, String abstracts, String content,
-                    int categories_id, boolean premium, int writer_id, int status_id, String avatar, String image_content) {
+    public Articles(int article_id, String title, Date publish_date, int views, String abstracts, String content, int categories_id, boolean premium, int writer_id, int status_id, String avatar, String image_content, String categoryName) {
         this.article_id = article_id;
         this.title = title;
         this.publish_date = publish_date;
@@ -31,13 +31,14 @@ public class Articles {
         this.status_id = status_id;
         this.avatar = avatar;
         this.image_content = image_content;
+        this.categoryName = categoryName;
     }
 
-    public int getArticleId() {
+    public int getArticle_id() {
         return article_id;
     }
 
-    public void setArticleId(int article_id) {
+    public void setArticle_id(int article_id) {
         this.article_id = article_id;
     }
 
@@ -49,11 +50,11 @@ public class Articles {
         this.title = title;
     }
 
-    public Date getPublishDate() {
+    public Date getPublish_date() {
         return publish_date;
     }
 
-    public void setPublishDate(Date publish_date) {
+    public void setPublish_date(Date publish_date) {
         this.publish_date = publish_date;
     }
 
@@ -81,11 +82,11 @@ public class Articles {
         this.content = content;
     }
 
-    public int getCategoriesId() {
+    public int getCategories_id() {
         return categories_id;
     }
 
-    public void setCategoriesId(int categories_id) {
+    public void setCategories_id(int categories_id) {
         this.categories_id = categories_id;
     }
 
@@ -97,19 +98,19 @@ public class Articles {
         this.premium = premium;
     }
 
-    public int getWriterId() {
+    public int getWriter_id() {
         return writer_id;
     }
 
-    public void setWriterId(int writer_id) {
+    public void setWriter_id(int writer_id) {
         this.writer_id = writer_id;
     }
 
-    public int getStatusId() {
+    public int getStatus_id() {
         return status_id;
     }
 
-    public void setStatusId(int status_id) {
+    public void setStatus_id(int status_id) {
         this.status_id = status_id;
     }
 
@@ -121,12 +122,20 @@ public class Articles {
         this.avatar = avatar;
     }
 
-    public String getImageContent() {
+    public String getImage_content() {
         return image_content;
     }
 
-    public void setImageContent(String image_content) {
+    public void setImage_content(String image_content) {
         this.image_content = image_content;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     @Override
@@ -144,6 +153,7 @@ public class Articles {
                 ", status_id=" + status_id +
                 ", avatar='" + avatar + '\'' +
                 ", image_content='" + image_content + '\'' +
+                ", categoryName='" + categoryName + '\'' +
                 '}';
     }
 }
