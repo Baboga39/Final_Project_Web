@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="authUser" scope="session" type="com.example.edit.beans.User"/>
-
 <div class="header">
     <nav class="navbar navbar-expand-lg navbar-light  shadow-sm sticky-top" style="background: #EAE9E8">
         <div class="container d-flex justify-content-between">
@@ -43,300 +42,28 @@
                                     <button type="button" class="close text-right mr-2" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                     <div class="modal-body w-100 h-100">
                                         <div class="container">
-                                            <div class="row row-cols-4">
-                                                <div class="col-3">
-                                                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                                        <div class="panel panel-default">
-                                                            <div class="panel-heading" role="tab" id="headingOne">
-                                                                <div class="row">
-                                                                    <a href="#" class="link nav-link">Danh Mục 1</a>
-                                                                    <div role="button" class="nav-link" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                                        <i class="bi bi-caret-down-fill"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                                                <div class="panel-body">
-                                                                    <div class="row">
-                                                                        <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
-                                                        <div class="panel panel-default">
-                                                            <div class="panel-heading" role="tab" id="headingTwo">
-                                                                <div class="row">
-                                                                    <a href="#" class="link nav-link">Danh Mục 1</a>
-                                                                    <div role="button" class="nav-link" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
-                                                                        <i class="bi bi-caret-down-fill"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div id="collapseOne2" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
-                                                                <div class="panel-body">
-                                                                    <div class="panel-body">
-                                                                        <div class="row">
-                                                                            <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div  class="col-3">
-                                                    <div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true">
-                                                        <div class="panel panel-default">
-                                                            <div class="panel-heading" role="tab" id="heading3">
-                                                                <div class="row">
-                                                                    <a href="#" class="link nav-link">Danh Mục 1</a>
-                                                                    <div role="button" class="nav-link" data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3">
-                                                                        <i class="bi bi-caret-down-fill"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div id="collapseOne3" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading3">
-                                                                <div class="panel-body">
-                                                                    <div class="panel-body">
-                                                                        <div class="row">
-                                                                            <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
-                                                        <div class="panel panel-default">
-                                                            <div class="panel-heading" role="tab" id="headingOne4">
-                                                                <div class="row">
-                                                                    <a href="#" class="link nav-link">Danh Mục 1</a>
-                                                                    <div role="button" class="nav-link" data-toggle="collapse" data-parent="#accordion4" href="#collapseOne4" aria-expanded="true" aria-controls="collapseOne4">
-                                                                        <i class="bi bi-caret-down-fill"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div id="collapseOne4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne4">
-                                                                <div class="panel-body">
-                                                                    <div class="panel-body">
-                                                                        <div class="row">
-                                                                            <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row row-cols-4 mt-5">
-                                                <div class="col-3">
-                                                    <div class="panel-group" id="accordion5" role="tablist" aria-multiselectable="true">
-                                                        <div class="panel panel-default">
-                                                            <div class="panel-heading" role="tab" id="headingOne5">
-                                                                <div class="row">
-                                                                    <a href="#" class="link nav-link">Danh Mục 1</a>
-                                                                    <div role="button" class="nav-link" data-toggle="collapse" data-parent="#accordion5" href="#collapseOne5" aria-expanded="true" aria-controls="collapseOne5">
-                                                                        <i class="bi bi-caret-down-fill"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div id="collapseOne5" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne5">
-                                                                <div class="panel-body">
-                                                                    <div class="row">
-                                                                        <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="panel-group" id="accordion6" role="tablist" aria-multiselectable="true">
-                                                        <div class="panel panel-default">
-                                                            <div class="panel-heading" role="tab" id="headingOne6">
-                                                                <div class="row">
-                                                                    <a href="#" class="link nav-link">Danh Mục 1</a>
-                                                                    <div role="button" class="nav-link navbar-expand-sm" data-toggle="collapse" data-parent="#accordion6" href="#collapseOne6" aria-expanded="true" aria-controls="collapseOne6">
-                                                                        <i class="bi bi-caret-down-fill"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div id="collapseOne6" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne6">
-                                                                <div class="panel-body">
-                                                                    <div class="row">
-                                                                        <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="panel-group" id="accordion7" role="tablist" aria-multiselectable="true">
-                                                        <div class="panel panel-default">
-                                                            <div class="panel-heading" role="tab" id="headingOne7">
-                                                                <div class="row">
-                                                                    <a href="#" class="link nav-link">Danh Mục 1</a>
-                                                                    <div role="button" class="nav-link navbar-expand-sm" data-toggle="collapse" data-parent="#accordion7" href="#collapseOne7" aria-expanded="true" aria-controls="collapseOne7">
-                                                                        <i class="bi bi-caret-down-fill"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div id="collapseOne7" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne7">
-                                                                <div class="panel-body">
-                                                                    <div class="row">
-                                                                        <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="panel-group" id="accordion8" role="tablist" aria-multiselectable="true">
-                                                        <div class="panel panel-default">
-                                                            <div class="panel-heading" role="tab" id="headingOne8">
-                                                                <div class="row">
-                                                                    <a href="#" class="link nav-link">Danh Mục 1</a>
-                                                                    <div role="button" class="nav-link navbar-expand-sm" data-toggle="collapse" data-parent="#accordion8" href="#collapseOne8" aria-expanded="true" aria-controls="collapseOne8">
-                                                                        <i class="bi bi-caret-down-fill"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div id="collapseOne8" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne8">
-                                                                <div class="panel-body">
-                                                                    <div class="row">
-                                                                        <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                             <div class="row row-cols-4 mt-5">
                                                 <div class="col-3">
                                                     <div class="panel-group" id="accordion9" role="tablist" aria-multiselectable="true">
                                                         <div class="panel panel-default">
+                                                            <c:forEach items="${listC}" var="o">
                                                             <div class="panel-heading" role="tab" id="headingOne9">
                                                                 <div class="row">
-                                                                    <a href="#" class="link nav-link">Danh Mục 1</a>
+                                                                    <a href="#" class="link nav-link">${o.name}</a>
                                                                     <div role="button" class="nav-link navbar-expand-sm" data-toggle="collapse" data-parent="#accordion9" href="#collapseOne9" aria-expanded="true" aria-controls="collapseOne9">
                                                                         <i class="bi bi-caret-down-fill"></i>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            </c:forEach>
                                                             <div id="collapseOne9" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne9">
                                                                 <div class="panel-body">
+                                                                    <c:forEach items="${listP}" var="o">
                                                                     <div class="row">
-                                                                        <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
+                                                                        <a href="#" class="dropdown-item text-par-heading mr-1"> ${o.name} </a>
                                                                     </div>
-                                                                    <div class="row">
-                                                                        <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="panel-group" id="accordion10" role="tablist" aria-multiselectable="true">
-                                                        <div class="panel panel-default">
-                                                            <div class="panel-heading" role="tab" id="headingOne10">
-                                                                <div class="row">
-                                                                    <a href="#" class="link nav-link">Danh Mục 1</a>
-                                                                    <div role="button" class="nav-link navbar-expand-sm" data-toggle="collapse" data-parent="#accordion10" href="#collapseOne10" aria-expanded="true" aria-controls="collapseOne10">
-                                                                        <i class="bi bi-caret-down-fill"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div id="collapseOne10" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne10">
-                                                                <div class="panel-body">
-                                                                    <div class="row">
-                                                                        <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="panel-group" id="accordion11" role="tablist" aria-multiselectable="true">
-                                                        <div class="panel panel-default">
-                                                            <div class="panel-heading" role="tab" id="headingOne11">
-                                                                <div class="row">
-                                                                    <a href="#" class="link nav-link">Danh Mục 1</a>
-                                                                    <div role="button" class="nav-link navbar-expand-sm" data-toggle="collapse" data-parent="#accordion11" href="#collapseOne11" aria-expanded="true" aria-controls="collapseOne11">
-                                                                        <i class="bi bi-caret-down-fill"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div id="collapseOne11" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne11">
-                                                                <div class="panel-body">
-                                                                    <div class="row">
-                                                                        <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-3">
-                                                    <div class="panel-group" id="accordion12" role="tablist" aria-multiselectable="true">
-                                                        <div class="panel panel-default">
-                                                            <div class="panel-heading" role="tab" id="headingOne12">
-                                                                <div class="row">
-                                                                    <a href="#" class="link nav-link">Danh Mục 1</a>
-                                                                    <div role="button" class="nav-link navbar-expand-sm" data-toggle="collapse" data-parent="#accordion12" href="#collapseOne12" aria-expanded="true" aria-controls="collapseOne12">
-                                                                        <i class="bi bi-caret-down-fill"></i>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div id="collapseOne12" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne12">
-                                                                <div class="panel-body">
-                                                                    <div class="row">
-                                                                        <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                    </div>
+                                                                    </c:forEach>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -352,10 +79,10 @@
                 </ul>
                 <ul class="navbar-nav mr-auto mt-2">
                     <li class="nav-item dropdown text-category">
-                        <form class="form-inline my-2 my-lg-0" >
+                        <form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/Posts/Search" >
                             <div class="p-1 rounded rounded-pill shadow-lg mw-100" style="background: snow">
                                 <div class="input-group text-white">
-                                    <input type="search" placeholder="Nhập vào đây" aria-describedby="button-addon1" class="form-control border-0 rounded rounded-pill bg-light">
+                                    <input type="search" name="search" placeholder="Nhập vào đây" aria-describedby="button-addon1" class="form-control border-0 rounded rounded-pill bg-light">
                                     <div class="input-group-append">
                                         <button id="button-addon1" type="submit" class="btn btn-link"><i class="bi bi-search" style="color: black"></i></button>
                                     </div>
@@ -369,10 +96,37 @@
                             <li class="nav-item dropdown text-category">
                                 <div class="nav-item dropdown text-category mt-1 ml-4">
                                     <a class="nav-link" href="#" data-toggle="dropdown" role="button"  aria-expanded="false">
+                                        <c:url value="${authUser.picture}" var="imgUrl"></c:url>
+
                                         <div class="row">
+                                            <c:if test="${auth.picture eq null }">
                                             <span class="user-action"><img src="${pageContext.request.contextPath}/image/user.png" class="avatar" alt="Avatar"></span>
+                                            </c:if>
+                                            <c:if test="${auth.picture ne null }">
+                                                <span class="user-action"><img src="${sessionScope.authUser.picture}/" class="avatar" alt="Avatar"></span>
+                                            </c:if>
                                             <h5 class="text-category mt-2" style="font-size: 14px">Hi, <b>${authUser.name}</b></h5>
                                         </div>
+
+                                    </a>
+                                    <div class="dropdown-menu" class="navbarDropdown">
+                                        <a href="${pageContext.request.contextPath}/User/Index" class="dropdown-item">Profile</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a href="javascript: $('#frmLogout').submit()" class="dropdown-item">Logout</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </c:when>
+                        <c:when test="${authGg}">
+                            <form action="${pageContext.request.contextPath}/User/Logout" method="post" id="frmLogout"></form>
+                            <li class="nav-item dropdown text-category">
+                                <div class="nav-item dropdown text-category mt-1 ml-4">
+                                    <a class="nav-link" href="#" data-toggle="dropdown" role="button"  aria-expanded="false">
+                                        <div class="row">
+                                                <span class="user-action"><img src="${sessionScope.authUserGg.picture}" class="avatar" alt="Avatar"></span>
+                                            <h5 class="text-category mt-2" style="font-size: 14px">Hi, <b>${sessionScope.authUserGg.name}</b></h5>
+                                        </div>
+
                                     </a>
                                     <div class="dropdown-menu" class="navbarDropdown">
                                         <a href="${pageContext.request.contextPath}/User/Index" class="dropdown-item">Profile</a>

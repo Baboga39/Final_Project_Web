@@ -52,14 +52,17 @@ public class LogingServlet extends HttpServlet {
             case "/Google":
                 try {
                     String code=request.getParameter("code");
-                    System.out.println(code);
                     String accessToken=  getToken(code);
                     AccountGG usergg = getUserInfo(accessToken);
-                    System.out.println(usergg);
                     List<Tag> list = TagModel.findAll();
+
+                    System.out.println(usergg.getPicture());
                     request.setAttribute("tags", list);
-                    request.setAttribute("usergg", usergg);
-                    request.getRequestDispatcher("/views/viewHome/Index.jsp").forward(request,response);
+                    HttpSession session = request.getSession();
+                    session.setAttribute("authGg", true);
+                    session.setAttribute("authUserGg",usergg);;
+                    String url = "/Home";
+                    ServletUtils.forward(url,request,response);
                 }
                 catch (Exception e)
                 {
@@ -72,10 +75,12 @@ public class LogingServlet extends HttpServlet {
                     String avatar="https://static2.yan.vn/YanNews/2167221/202102/facebook-cap-nhat-avatar-doi-voi-tai-khoan-khong-su-dung-anh-dai-dien-e4abd14d.jpg";
                     String accessToken = getTokenFace(code);
                     AccountFace user = getUserInfoFace(accessToken);
-                    System.out.println(user);
                     List<Tag> list = TagModel.findAll();
-                    request.setAttribute("tags", list);
-                    request.getRequestDispatcher("/views/viewHome/Index.jsp").forward(request,response);
+                    HttpSession session = request.getSession();
+                    session.setAttribute("auth", true);
+                    session.setAttribute("authUser",user);;
+                    String url = "/Home";
+                    ServletUtils.forward(url,request,response);
                 }
                 catch (Exception e)
                 {

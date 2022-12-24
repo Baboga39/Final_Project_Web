@@ -17,8 +17,6 @@
                                     <a href="#" class=" link-cate mr-3" style="font-size: 10px; color: black;">${o.value}</a>
                                 </li>
                             </c:forEach>
-
-
                         </ul>
                     </div>
                     <div class="weather-item text-heading border-danger">TP.HCM 27°C  - CHỦ NHẬT - ${Day}</div>

@@ -48,12 +48,16 @@
               </div>
               <div class="text-center">
                 <p>Not a member? <a href="${pageContext.request.contextPath}/User/Register">Register</a></p>
+                <p>Forgot Passs? <a href="${pageContext.request.contextPath}/views/viewHome/ForgotPass.jsp">Reset Passs</a></p>
                 <p>or sign up with:</p>
-                <button type="button" class="btn btn-link btn-floating mx-1">
+                <button type="button" class="btn btn-link btn-floating mx-1"
+                        onclick="location.href='https://www.facebook.com/dialog/oauth?client_id=515625173274802&redirect_uri=http://localhost:8080/Edit/Loging/Facebook'">
+                <a href=""></a>
                   <i class="bi bi-facebook h3"></i>
                 </button>
 
-                <button type="button" class="btn btn-link btn-floating mx-1">
+                <button type="button" class="btn btn-link btn-floating mx-1"
+                        onclick="location.href='https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/Edit/Loging/Google&response_type=code&client_id=1042745399242-4360ia1ghlrnq5ej8cejthrvfjr1n38s.apps.googleusercontent.com&approval_prompt=force'">
                   <i class="bi bi-google h3"></i>
                 </button>
 
