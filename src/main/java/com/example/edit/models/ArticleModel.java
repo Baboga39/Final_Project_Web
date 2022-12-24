@@ -1,9 +1,7 @@
 package com.example.edit.models;
 
 import com.example.edit.Utils.DbUtils;
-import com.example.edit.beans.Articles;
-import com.example.edit.beans.Category;
-import com.example.edit.beans.User;
+import com.example.edit.beans.*;
 import org.sql2o.Connection;
 
 import java.sql.ResultSet;
@@ -19,7 +17,66 @@ public class ArticleModel {
                     .executeAndFetch(Articles.class);
         }
     }
-
+    public static Articles findById(int article_id) {
+        final String query = "select * from articles where article_id = :article_id";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Articles> list = con.createQuery(query)
+                    .addParameter("article_id", article_id)
+                    .executeAndFetch(Articles.class);
+            if (list.size() == 0){
+                return null;
+            }
+            return list.get(0);
+        }
+    }
+    public static List<Articles> findRand5SameCat(int article_id){
+        final String query = "SELECT * FROM articles WHERE categories_id=" +
+                "(SELECT categories_id FROM articles WHERE article_id= :article_id) ORDER BY RAND() LIMIT 5";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Articles> list = con.createQuery(query)
+                    .addParameter("article_id", article_id)
+                    .executeAndFetch(Articles.class);
+            if (list.size() == 0){
+                return null;
+            }
+            return list;
+        }
+    }
+    public static List<Tag> findTagByArtId(int article_id){
+        final String query = "SELECT tags.`value` from tags INNER JOIN tags_articles " +
+                "ON tags.tags_id=tags_articles.tags_id WHERE tags_articles.article_id= :article_id";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Tag> list = con.createQuery(query)
+                    .addParameter("article_id", article_id)
+                    .executeAndFetch(Tag.class);
+            if (list.size() == 0){
+                return null;
+            }
+            return list;
+        }
+    }
+    public static User findAuthor(int article_id) {
+        final String query = "SELECT users.second_name FROM articles INNER JOIN users " +
+                "ON articles.writer_id=users.user_id WHERE articles.article_id= :article_id";
+        try (Connection con = DbUtils.getConnection()) {
+            List<User> list = con.createQuery(query)
+                    .addParameter("article_id", article_id)
+                    .executeAndFetch(User.class);
+            if (list.size() == 0){
+                return null;
+            }
+            return list.get(0);
+        }
+    }
+    public static List<Comments> findComment(int article_id){
+        final String query = "SELECT users.user_id,comment,create_date from comments " +
+                "INNER JOIN users ON comments.user_id=users.user_id WHERE article_id= :article_id";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .addParameter("article_id",article_id)
+                    .executeAndFetch(Comments.class);
+        }
+    }
     public static List<Articles> findTop5() {
         final String query = "SELECT * FROM articles ORDER BY views DESC LIMIT 0,5";
         try (Connection con = DbUtils.getConnection()) {
