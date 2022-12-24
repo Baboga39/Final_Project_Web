@@ -32,12 +32,24 @@
                                 <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
                                 <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
                                 <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                                <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
                             </ol>
                             <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="box" style="height:  600px">
+                                        <div class="overlay-img" style="height:  600px"> <img src="${pageContext.request.contextPath}/image/Article/${find1.avatar}" class="img-fluid h-100" alt="..."></div>
+                                        <div class="carousel-caption d-none d-md-block text-img text-left">
+                                            <h5> ${find1.categoryName} </h5>
+                                            <p> ${find1.title}.</p>
+                                            <h5>${find1.publish_date}</h5>
+                                            <button class="btn btn-sm btn-outline-light">Xem Thêm</button>
+                                        </div>
+                                    </div>
+                                </div>
                                 <c:forEach items="${listtop3}" var="o">
-                                    <div class="carousel-item ">
-                                        <div class="box">
-                                            <div class="overlay-img"> <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="img-fluid d-block w-100" alt="..."></div>
+                                    <div class="carousel-item">
+                                        <div class="box" style="height:  600px">
+                                            <div class="overlay-img h-100" style="height:  600px"> <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="img-fluid h-100" alt="..."></div>
                                             <div class="carousel-caption d-none d-md-block text-img text-left">
                                                 <h5> ${o.categoryName} </h5>
                                                 <p> ${o.title}.</p>
@@ -250,23 +262,25 @@
 
                                 <div class="carousel-item active">
                                     <div class="row row-cols-4">
+                                       <c:forEach items="${list4cate}" var="k">
+                                           <div class="col">
+                                               <div class="card h-100 shadow" style="width: 15rem;">
+                                                   <div class="box-cate">
+                                                       <a href="#">
+                                                           <img src="${pageContext.request.contextPath}/image/xehoi.jpg" alt="" class="d-block img-fluid h-100">
+                                                           <div class="box-cate-content carousel-caption d-none d-md-block text-img">
+                                                               <span href="#" class="link-cate">Chuyên mục</span>
+                                                           </div>
+                                                           <div class="overlay-content">
+                                                               <h5 class="title">Some representative placeholder content for the second slide.</h5>
+                                                               <p class="description">Some representative placeholder content for the first slide.</p>
+                                                           </div>
+                                                       </a>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </c:forEach>
 
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="${pageContext.request.contextPath}/image/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <!--.row-->
                                 </div>

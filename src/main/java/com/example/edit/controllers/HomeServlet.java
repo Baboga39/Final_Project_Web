@@ -32,6 +32,9 @@ public class HomeServlet extends HttpServlet {
 
         switch (path) {
             case "/Index":
+                List<Category> lisAllCate = CategoryModel.findAllIn();
+                List<Category> list5cate  = CategoryModel.find5Cate();
+                List<Category> list4cate  = CategoryModel.find4Cate();
                 List<Category> listC = CategoryModel.findAll();
                 List<Category> listP = CategoryModel.findByParentId(2);
                 List<Tag> list = TagModel.findByindex();
@@ -42,6 +45,7 @@ public class HomeServlet extends HttpServlet {
                 List<Articles> listtop5New = ArticleModel.findTop5New();
                 List<Articles> listtop5NewNext = ArticleModel.findTop5NewNext();
                 Articles find1 = ArticleModel.fin1();
+                request.setAttribute("list5cate",list5cate);
                 request.setAttribute("listtop3", listtop3);
                 request.setAttribute("find1", find1);
                 request.setAttribute("listtop5New", listtop5New);
@@ -53,6 +57,8 @@ public class HomeServlet extends HttpServlet {
                 request.setAttribute("tags", list);
                 request.setAttribute("listC", listC);
                 request.setAttribute("listP", listP);
+                request.setAttribute("listAllCate", lisAllCate);
+                request.setAttribute("list4cate",list4cate);
                 ServletUtils.forward("/views/viewHome/Index.jsp", request, response);
                 break;
             default:

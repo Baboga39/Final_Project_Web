@@ -8,9 +8,9 @@
             <a class="navbar-brand mb-0 h1" href="${pageContext.request.contextPath}/Home/Index">Brand Name</a>
             <div class="collapse navbar-collapse ml-5">
                 <ul class="navbar-nav mr-auto mt-2">
-                    <c:forEach items="${listC}" var="o">
-                    <li class="nav-item dropdown text-category " style="font-size: 14px;">
-                        <a class="link nav-link" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                    <c:forEach items="${list5cate}" var="o">
+                    <li class="nav-item text-category " style="font-size: 14px;">
+                        <a class="link nav-link" href="${pageContext.request.contextPath}/User/Index" aria-expanded="false">
                                 ${o.name}
                         </a>
                     </li>
@@ -25,22 +25,33 @@
                                     <button type="button" class="close text-right mr-2" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                     <div class="modal-body w-100 h-100">
                                         <div class="container">
-                                            <div class="row row-cols-4 mt-5">
-                                                <div class="col-3">
-                                                    <div class="panel-group" id="accordion9" role="tablist" aria-multiselectable="true">
-                                                        <div class="panel panel-default">
-                                                            <div id="collapseOne9" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne9">
-                                                                <div class="panel-body">
-                                                                    <c:forEach items="${listP}" var="o">
+                                            <div class="row row-cols-4">
+                                                <c:forEach items="${listAllCate}" var="k">
+                                                    <div class="col-3">
+                                                        <div class="panel-group" id="a${k.categories_id}" role="tablist" aria-multiselectable="true">
+                                                            <div class="panel panel-default">
+                                                                <div class="panel-heading" role="tab" id="b${k.categories_id}">
                                                                     <div class="row">
-                                                                        <a href="#" class="dropdown-item text-par-heading mr-1"> ${o.name} </a>
+                                                                        <a href="#" class="link nav-link">${k.name}</a>
+                                                                        <div role="button" class="nav-link" data-toggle="collapse" data-parent="#a${k.categories_id}" href="#c${k.categories_id}" aria-expanded="true" aria-controls="c${k.categories_id}">
+                                                                            <i class="bi bi-chevron-compact-down"></i>
+                                                                        </div>
                                                                     </div>
-                                                                    </c:forEach>
+                                                                </div>
+                                                                <div id="c${k.categories_id}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="b${k.categories_id}">
+                                                                    <div class="panel-body">
+                                                                        <div class="row">
+                                                                            <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </c:forEach>
                                             </div>
                                         </div>
                                     </div>

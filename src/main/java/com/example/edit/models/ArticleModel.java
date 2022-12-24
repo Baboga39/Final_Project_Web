@@ -101,6 +101,7 @@ public class ArticleModel {
             return  list.size();
         }
     }
+
     public static Articles  findTopCate(int categories_id)
     {
 
