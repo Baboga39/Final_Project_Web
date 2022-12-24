@@ -136,6 +136,7 @@ public class UserServlet extends HttpServlet {
         ServletUtils.redirect(url,request,response);
     }
     private void registerUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String rawpwd = request.getParameter("pass");
 
         String bcryptHashString = BCrypt.withDefaults().hashToString(12, rawpwd.toCharArray());
@@ -161,8 +162,8 @@ public class UserServlet extends HttpServlet {
         ServletUtils.forward("/views/ViewUser/Register.jsp", request, response);
     }
     private void editUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
         String secondName = request.getParameter("secondName");
         String email = request.getParameter("email");

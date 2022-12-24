@@ -32,10 +32,14 @@ public class HomeServlet extends HttpServlet {
 
         switch (path) {
             case "/Index":
+                HttpSession session = request.getSession();
                 List<Articles> listTop10CateNext = ArticleModel.findTop10CateNext();
                 List<Articles> listTop10Cate = ArticleModel.findTop10Cate();
                 List<Category> lisAllCate = CategoryModel.findAllIn();
                 List<Category> list5cate  = CategoryModel.find5Cate();
+                session.setAttribute("list5cate",list5cate);
+                session.setAttribute("lisAllCate",lisAllCate);
+                session.setMaxInactiveInterval(6000);
                 List<Category> list4cate  = CategoryModel.find4Cate();
                 List<Category> listC = CategoryModel.findAll();
                 List<Category> listP = CategoryModel.findByParentId(2);

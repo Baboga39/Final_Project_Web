@@ -8,7 +8,7 @@
             <a class="navbar-brand mb-0 h1" href="${pageContext.request.contextPath}/Home/Index">Brand Name</a>
             <div class="collapse navbar-collapse ml-5">
                 <ul class="navbar-nav mr-auto mt-2">
-                    <c:forEach items="${list5cate}" var="o">
+                    <c:forEach items="${sessionScope.list5cate}" var="o">
                     <li class="nav-item text-category " style="font-size: 14px;">
                         <a class="link nav-link" href="${pageContext.request.contextPath}/User/Index" aria-expanded="false">
                                 ${o.name}
@@ -26,7 +26,7 @@
                                     <div class="modal-body w-100 h-100">
                                         <div class="container">
                                             <div class="row row-cols-4">
-                                                <c:forEach items="${listAllCate}" var="k">
+                                                <c:forEach items="${sessionScope.lisAllCate}" var="k">
                                                     <div class="col-3">
                                                         <div class="panel-group" id="a${k.categories_id}" role="tablist" aria-multiselectable="true">
                                                             <div class="panel panel-default">
