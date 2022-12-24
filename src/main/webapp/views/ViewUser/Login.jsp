@@ -14,7 +14,7 @@
 <body>
 <div class="login">
   <div class="container">
-    <form action="" method="post" id="frmLogin">
+    <form action="${pageContext.request.contextPath}/User/Login" method="post" id="frmLogin">
       <div class="container h-100 w-100 shadow-lg mt-5 mb-5">
         <div class="row justify-content-center align-items-center h-100">
           <div class="col-md-6 col-lg-7">

@@ -16,10 +16,7 @@ import java.util.List;
 public class test {
 
     public static void main(String[] args) {
-        String a = "Messi";
-   List<Articles> list = ArticleModel.findSearch(a);
-   for (Articles b : list)
-   {
-       System.out.println(b.toString());
-   }}
+       boolean a = UserModel.checkEx(1);
+       System.out.println(a);
+    }
 }

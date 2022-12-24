@@ -69,6 +69,7 @@ public class UserServlet extends HttpServlet {
             case "/Logout":
                 logout(request,response);
                 break;
+
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
                 break;
@@ -82,17 +83,23 @@ public class UserServlet extends HttpServlet {
     private void login(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        //System.out.println(username);
         User user = UserModel.findByUsername(username);
         boolean check = UserModel.checkByUserName(username);
-        //System.out.println(check);
-
         if(user != null)
         {
             BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
             if(result.verified)
             {
                 HttpSession session = request.getSession();
+                int Ex = user.getExpiration();
+                if (UserModel.checkEx(Ex))
+                {
+                    session.setAttribute("checkEx", true);
+                }
+                else
+                {
+                    session.setAttribute("checkEx", false);
+                }
                 session.setAttribute("auth", true);
                 session.setAttribute("authUser",user);;
                 String url = "/Home";
@@ -123,7 +130,6 @@ public class UserServlet extends HttpServlet {
         }
         ServletUtils.redirect(url,request,response);
     }
-
     private void registerUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String rawpwd = request.getParameter("pass");
 
@@ -149,4 +155,5 @@ public class UserServlet extends HttpServlet {
         UserModel.add(user);
         ServletUtils.forward("/views/ViewUser/Register.jsp", request, response);
     }
+
 }

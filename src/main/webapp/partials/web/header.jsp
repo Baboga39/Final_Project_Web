@@ -48,6 +48,7 @@
                             </div>
                         </div>
                     </li>
+
                 </ul>
                 <ul class="navbar-nav mr-auto mt-2">
                     <li class="nav-item dropdown text-category">
@@ -68,15 +69,8 @@
                             <li class="nav-item dropdown text-category">
                                 <div class="nav-item dropdown text-category mt-1 ml-4">
                                     <a class="nav-link" href="#" data-toggle="dropdown" role="button"  aria-expanded="false">
-                                        <c:url value="${authUser.picture}" var="imgUrl"></c:url>
-
                                         <div class="row">
-                                            <c:if test="${auth.picture eq null }">
                                             <span class="user-action"><img src="${pageContext.request.contextPath}/image/user.png" class="avatar" alt="Avatar"></span>
-                                            </c:if>
-                                            <c:if test="${auth.picture ne null }">
-                                                <span class="user-action"><img src="${sessionScope.authUser.picture}/" class="avatar" alt="Avatar"></span>
-                                            </c:if>
                                             <h5 class="text-category mt-2" style="font-size: 14px">Hi, <b>${authUser.name}</b></h5>
                                         </div>
 

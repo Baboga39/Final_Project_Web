@@ -131,4 +131,22 @@ public class User {
     public void setOtp_exp(int otp_exp) {
         this.otp_exp = otp_exp;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "user_id=" + user_id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", issue_at=" + issue_at +
+                ", expiration=" + expiration +
+                ", role_id=" + role_id +
+                ", second_name='" + second_name + '\'' +
+                ", date_of_Birth=" + date_of_Birth +
+                ", email='" + email + '\'' +
+                ", otp=" + otp +
+                ", otp_exp=" + otp_exp +
+                '}';
+    }
 }

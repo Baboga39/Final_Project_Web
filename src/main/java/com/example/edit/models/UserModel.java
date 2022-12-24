@@ -75,17 +75,29 @@ public class UserModel {
         }
     }
 
+
     public static User findByUsername(String username) {
         final String query = "select * from users where username = :username";
         try (Connection con = DbUtils.getConnection()) {
             List<User> list = con.createQuery(query)
                     .addParameter("username", username)
                     .executeAndFetch(User.class);
-
             if (list.size() == 0) {
                 return null;
             }
 
+            return list.get(0);
+        }
+    }
+    public static User findById(int user_id) {
+        final String query = "select * from users where user_id = :user_id";
+        try (Connection con = DbUtils.getConnection()) {
+            List<User> list = con.createQuery(query)
+                    .addParameter("user_id", user_id)
+                    .executeAndFetch(User.class);
+            if (list.size() == 0) {
+                return null;
+            }
             return list.get(0);
         }
     }
@@ -174,6 +186,18 @@ public class UserModel {
         try (Connection con = DbUtils.getConnection()) {
             List<User> list = con.createQuery(query)
                     .addParameter("username", username)
+                    .executeAndFetch(User.class);
+            if (list.size() == 0) {
+                return false;
+            }
+            return true;
+        }
+    }
+    public static boolean checkEx(int user_id) {
+        String query = "SELECT * FROM users WHERE expiration <  DATEDIFF (issue_at,CURRENT_DATE()) AND user_id = :user_id";
+        try (Connection con = DbUtils.getConnection()) {
+            List<User> list = con.createQuery(query)
+                    .addParameter("user_id", user_id)
                     .executeAndFetch(User.class);
             if (list.size() == 0) {
                 return false;
