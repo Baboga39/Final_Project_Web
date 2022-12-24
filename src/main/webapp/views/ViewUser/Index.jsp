@@ -44,12 +44,32 @@
                                 <div class="row mt-3">
                                     <h4 class="" style="margin: 0px auto">${authUser.name}</h4>
                                 </div>
+                                <c:if test="${authUser.role_id == 3}">
                                 <div class="row mt-2">
                                     <p class="" style="margin: 0px auto">${authUser.second_name}</p>
                                 </div>
-                                <div class="row mt-2 mb-5">
-                                    <p class="" style="margin: 0px auto">Name Role</p>
-                                </div>
+
+                                </c:if>
+                                <c:if test="${authUser.role_id == 1}">
+                                    <div class="row mt-5">
+                                        <p class="" style="margin: 0px auto">Administrator</p>
+                                    </div>
+                                </c:if>
+                                <c:if test="${authUser.role_id == 2}">
+                                    <div class="row mt-5">
+                                        <p class="" style="margin: 0px auto">User</p>
+                                    </div>
+                                </c:if>
+                                <c:if test="${authUser.role_id == 3}">
+                                    <div class="row mt-5">
+                                        <p class="" style="margin: 0px auto">Reporter</p>
+                                    </div>
+                                </c:if>
+                                <c:if test="${authUser.role_id == 4}">
+                                    <div class="row mt-5">
+                                        <p class="" style="margin: 0px auto">Editor</p>
+                                    </div>
+                                </c:if>
                             </div>
                             <div class="col-7 ml-5" style="background: #eee">
                                 <ul class="list-group list-group-flush mt-3">
@@ -61,14 +81,16 @@
                                             </div>
                                         </div>
                                     </li>
+                                    <c:if test="${authUser.role_id == 3} ">
                                     <li class="list-group-item">
                                         <div class="row mt-4">
-                                            <span class="col-4">Name Writer: </span>
-                                            <div class="col-6">
-                                                <span>${authUser.second_name}</span>
-                                            </div>
+                                                <span class="col-4">Name Writer: </span>
+                                                <div class="col-6">
+                                                    <span>${authUser.second_name}</span>
+                                                </div>
                                         </div>
                                     </li>
+                                    </c:if>
                                     <li class="list-group-item">
                                         <div class="row mt-4">
                                             <span class="col-4">Email: </span>
@@ -111,7 +133,7 @@
                                         <div class="row">
                                             <span class="col-4">Password: </span>
                                             <div class="col-8">
-                                                <span type="password">${authUser.password}</span>
+                                                <span>${authUser.password}</span>
                                             </div>
                                         </div>
                                     </li>

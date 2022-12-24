@@ -5,7 +5,7 @@
 <div class="header">
     <nav class="navbar navbar-expand-lg navbar-light  shadow-sm sticky-top" style="background: #EAE9E8">
         <div class="container d-flex justify-content-between">
-            <a class="navbar-brand mb-0 h1" href="#">Brand Name</a>
+            <a class="navbar-brand mb-0 h1" href="${pageContext.request.contextPath}/Home/Index">Brand Name</a>
             <div class="collapse navbar-collapse ml-5">
                 <ul class="navbar-nav mr-auto mt-2">
                     <c:forEach items="${listC}" var="o">
