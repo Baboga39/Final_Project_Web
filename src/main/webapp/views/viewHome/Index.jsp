@@ -68,7 +68,8 @@
                                 <ul class="list-unstyled">
                                     <c:forEach items="${listtop4}" var="o">
                                     <li class="media">
-                                        <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" style="height: 115px !important" class="mr-3 img-fluid w-50" alt="...">
+                                        <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" style="height: 115px !important  ;   margin-bottom: 12px;
+}" class="mr-3 img-fluid w-50" alt="...">
                                         <div class="media-body">
                                             <a class="mt-0 mb-1">
                                                     ${o.title}
@@ -171,7 +172,8 @@
                     <div class="col-6">
                         <div class="box-new h-100">
                             <a href="#">
-                                <img src="${pageContext.request.contextPath}/image/Article/${find1.avatar}" class="card-img-top" alt="...">
+                                <img src="${pageContext.request.contextPath}/image/Article/${find1.avatar}" style="height: 504px !important;
+}" class="card-img-top" alt="...">
                             </a>
                             <div class="box-new-menu">
                                 <a href="#">

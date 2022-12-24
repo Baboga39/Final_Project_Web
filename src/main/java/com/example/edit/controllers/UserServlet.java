@@ -116,8 +116,6 @@ public class UserServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("auth",false);
         session.setAttribute("authUser",new User());
-
-
         String url = request.getHeader("referer");
         if(url == null)
         {

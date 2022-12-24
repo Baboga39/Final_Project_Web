@@ -60,6 +60,7 @@ public class UserModel {
         }
     }
 
+
     public static User getNameUserByEmail(String email) {
         String query = "SELECT name FROM users WHERE email= :email";
         try (Connection con = DbUtils.getConnection()) {
