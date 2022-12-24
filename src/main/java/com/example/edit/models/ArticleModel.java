@@ -120,7 +120,16 @@ public class ArticleModel {
     public static List<Articles> findTop10Cate() {
         int count = getAllCate();
         List<Articles> list= new ArrayList<>();
-        for(int i= 1 ; i<= count;i++)
+        for(int i= 1 ; i<= 5;i++)
+        {
+            list.add(findTopCate(i));
+        }
+        return list;
+    }
+    public static List<Articles> findTop10CateNext() {
+        int count = getAllCate();
+        List<Articles> list= new ArrayList<>();
+        for(int i= 6 ; i<= 10 ;i++)
         {
             list.add(findTopCate(i));
         }

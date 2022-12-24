@@ -38,7 +38,7 @@
                                     <div class="box" style="height:  600px">
                                         <div class="overlay-img" style="height:  600px"> <img src="${pageContext.request.contextPath}/image/Article/${find1.avatar}" class="img-fluid h-100" alt="..."></div>
                                         <div class="carousel-caption d-none d-md-block text-img text-left">
-                                            <h5> ${find1.categoryName} </h5>
+                                            <a href="#" class="link-cate nav-link"> ${find1.categoryName} </a>
                                             <p> ${find1.title}.</p>
                                             <h5>${find1.publish_date}</h5>
                                             <button class="btn btn-sm btn-outline-light">Xem Thêm</button>
@@ -50,7 +50,7 @@
                                         <div class="box" style="height:  600px">
                                             <div class="overlay-img h-100" style="height:  600px"> <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="img-fluid h-100" alt="..."></div>
                                             <div class="carousel-caption d-none d-md-block text-img text-left">
-                                                <h5> ${o.categoryName} </h5>
+                                                <a href="#" class="link-cate nav-link"> ${o.categoryName} </a>
                                                 <p> ${o.title}.</p>
                                                 <h5>${o.publish_date}</h5>
                                                 <button class="btn btn-sm btn-outline-light">Xem Thêm</button>
@@ -253,26 +253,25 @@
                             <ol class="carousel-indicators">
                                 <li data-target="#blogCate" data-slide-to="0" class="active"></li>
                                 <li data-target="#blogCate" data-slide-to="1"></li>
-                                <li data-target="#blogCate" data-slide-to="2"></li>
                             </ol>
 
                             <!-- Carousel items -->
                             <div class="carousel-inner d-flex ml-3">
 
                                 <div class="carousel-item active">
-                                    <div class="row row-cols-4">
-                                       <c:forEach items="${list4cate}" var="k">
+                                    <div class="row row-cols-5">
+                                       <c:forEach items="${list10Cate}" var="k">
                                            <div class="col">
-                                               <div class="card h-100 shadow" style="width: 15rem;">
-                                                   <div class="box-cate">
+                                               <div class="card h-100 shadow" style="width: 13rem;">
+                                                   <div class="box-cate" style="height: 350px">
                                                        <a href="#">
-                                                           <img src="${pageContext.request.contextPath}/image/xehoi.jpg" alt="" class="d-block img-fluid h-100">
+                                                           <img src="${pageContext.request.contextPath}/image/Article/${k.avatar}" alt="" class="d-block img-fluid h-100">
                                                            <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                               <span href="#" class="link-cate">Chuyên mục</span>
+                                                               <span href="#" class="link-cate">${k.categoryName}</span>
                                                            </div>
                                                            <div class="overlay-content">
-                                                               <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                               <p class="description">Some representative placeholder content for the first slide.</p>
+                                                               <h5 class="title"  style="font-size: 15px">${k.title}</h5>
+                                                               <p class="description">${k.publish_date}</p>
                                                            </div>
                                                        </a>
                                                    </div>
@@ -283,144 +282,27 @@
                                     </div>
                                     <!--.row-->
                                 </div>
-                                <!--.item-->
+                                <div class="carousel-item ">
+                                    <div class="row row-cols-5">
+                                        <c:forEach items="${list10CateNext}" var="k">
+                                            <div class="col">
+                                                <div class="card h-100 shadow" style="width: 13rem;">
+                                                    <div class="box-cate" style="height: 350px">
+                                                        <a href="#">
+                                                            <img src="${pageContext.request.contextPath}/image/Article/${k.avatar}" alt="" class="d-block img-fluid h-100">
+                                                            <div class="box-cate-content carousel-caption d-none d-md-block text-img">
+                                                                <span href="#" class="link-cate">${k.categoryName}</span>
+                                                            </div>
+                                                            <div class="overlay-content">
+                                                                <h5 class="title" style="font-size: 15px">${k.title}</h5>
+                                                                <p class="description">${k.publish_date}</p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </c:forEach>
 
-                                <div class="carousel-item">
-                                    <div class="row row-cols-4">
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="${pageContext.request.contextPath}/image/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="${pageContext.request.contextPath}/image/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="${pageContext.request.contextPath}/image/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="${pageContext.request.contextPath}/image/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--.row-->
-                                </div>
-                                <!--.item-->
-                                <div class="carousel-item">
-                                    <div class="row row-cols-4">
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="${pageContext.request.contextPath}/image/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="${pageContext.request.contextPath}/image/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="${pageContext.request.contextPath}/image/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="${pageContext.request.contextPath}/image/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                     <!--.row-->
                                 </div>
@@ -430,7 +312,7 @@
                                 <span class="" style="margin-right: 180px; color: black ;" aria-hidden="true"><i class="bi bi-arrow-left-square"></i></span>
                             </button>
                             <button class="carousel-control-next" type="button" data-target="#blogCate" data-slide="next">
-                                <span class="" style="margin-left: 210px ;color: black" aria-hidden="true"><i class="bi bi-arrow-right-square"></i></span>
+                                <span class="" style="margin-left: 250px ;color: black" aria-hidden="true"><i class="bi bi-arrow-right-square"></i></span>
                             </button>
                         </div>
                         <!--.Carousel-->
