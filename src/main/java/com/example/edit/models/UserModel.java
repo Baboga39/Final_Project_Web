@@ -104,16 +104,14 @@ public class UserModel {
             return list.get(0);
         }
     }
-    public static void editUser(int user_id, String name , String email, LocalDate date_of_birth, String username, String password, String second_name) {
+    public static void editUser(int user_id, String name , String email, LocalDate date_of_birth, String second_name) {
 
-        String updateSql = "UPDATE users SET password = :password,email=:email,second_name= :second_name ,date_of_birth= :date_of_birth,`name`= :name,username =:username WHERE user_id= :user_id";
+        String updateSql = "UPDATE users SET email=:email,second_name= :second_name ,date_of_birth= :date_of_birth,`name`= :name WHERE user_id= :user_id";
         try (Connection con = DbUtils.getConnection()) {
             con.createQuery(updateSql)
-                    .addParameter("password", password)
                     .addParameter("email", email)
                     .addParameter("date_of_birth", date_of_birth)
                     .addParameter("name", name)
-                    .addParameter("username", username)
                     .addParameter("user_id", user_id)
                     .addParameter("second_name",second_name)
                     .executeUpdate();

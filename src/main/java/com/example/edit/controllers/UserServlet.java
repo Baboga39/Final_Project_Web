@@ -52,6 +52,7 @@ public class UserServlet extends HttpServlet {
                 break;
             case "/EditProfile":
                 ServletUtils.forward("/views/ViewUser/EditProfile.jsp",request,response);
+                break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
                 break;
@@ -71,7 +72,7 @@ public class UserServlet extends HttpServlet {
             case "/Logout":
                 logout(request,response);
                 break;
-            case "Edit":
+            case "/EditProfile":
                 editUser(request,response);
                 break;
             default:
@@ -161,24 +162,27 @@ public class UserServlet extends HttpServlet {
     }
     private void editUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String pass = request.getParameter("pass");
+
         String name = request.getParameter("name");
         String secondName = request.getParameter("secondName");
         String email = request.getParameter("email");
-        String username = request.getParameter("username");
-        String bcryptHashString = BCrypt.withDefaults().hashToString(12, pass.toCharArray());
+
 
         String strDate = request.getParameter("birthDay");
         DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate date_of_birth = LocalDate.parse(strDate, df);
+
+        System.out.println(name);
+
+        System.out.println(date_of_birth);
+
         HttpSession session = request.getSession();
-        int otpExp = 1;
-        int otp = 1;
-        int expiration = 1;
-        int roleId = 2;
+
 
         User edit = (User) session.getAttribute("authUser");
-        UserModel.editUser(edit.getUserId(),name,email,date_of_birth,username,bcryptHashString,secondName);
-        ServletUtils.forward("/views/ViewUser/EditProfile.jsp", request, response);
+        UserModel.editUser(edit.getUserId(),name,email,date_of_birth,secondName);
+        session.setAttribute("auth", true);
+        session.setAttribute("authUser",new User(edit.getUserId(),edit.getUsername(),edit.getPassword(),name,edit.getIssueAt(),edit.getExpiration(),edit.getRole_id(),secondName,date_of_birth,email,edit.getOtp(),edit.getOtp_exp()));
+        ServletUtils.forward("/views/ViewUser/Index.jsp", request, response);
     }
 }

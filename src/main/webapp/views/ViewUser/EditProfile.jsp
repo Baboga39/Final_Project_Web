@@ -12,7 +12,24 @@
             margin-right: 10px;
           }
         </style>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha512-f0tzWhCwVFS3WeYaofoLWkTP62ObhewQ1EZn65oSYDZUg1+CyywGKkWzm8BxaJj5HGKI72PnMH9jYyIFz+GH7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </jsp:attribute>
+  <jsp:attribute name="js">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+
+      $('#frmEdit').on('submit', function (e) {
+        e.preventDefault();
+        $('#frmEdit').off('submit').submit();
+
+      });
+      $('#txtbirthday').datetimepicker({
+        format: 'd/m/Y',
+        timepicker: false,
+        mask: true
+      });
+    </script>
+  </jsp:attribute>
   <jsp:body>
     <div class="content">
       <div class="container">
@@ -70,49 +87,49 @@
                       </div>
                     </c:if>
                   </div>
-                  <div class="col-7 ml-5" style="background: #eee">
-                    <ul class="list-group list-group-flush mt-3">
-                      <li class="list-group-item">
-                        <div class="row mt-4">
-                          <span class="col-4">Name: </span>
-                          <div class="col-8">
-                            <input style="    width: 100% !important" type="text" name="name" placeholder="${authUser.name}">
-                          </div>
-                        </div>
-                      </li>
-                      <c:if test="${authUser.role_id == 3} ">
-                        <li class="list-group-item">
+                  <form action="" method="post" id="frmEdit">
+                    <div class="col-7 ml-5 w-100" style="background: #eee">
+                      <ul class="list-group list-group-flush mt-3" style="width: 450px">
+                        <li class="list-group-item ">
                           <div class="row mt-4">
-                            <span class="col-4">Name Writer: </span>
-                            <div class="col-8">
-                              <input style="    width: 100% !important" type="text" name="secondName" placeholder="${authUser.second_name}">
+                            <span class="col-4">Name: </span>
+                            <div class="col-4">
+                              <input  type="text" name="name" placeholder="${authUser.name}">
                             </div>
                           </div>
                         </li>
-                      </c:if>
-                      <li class="list-group-item">
-                        <div class="row mt-4">
-                          <span class="col-4">Email: </span>
-                          <div class="col-8">
-                            <input style="    width: 100% !important" type="text" name="email" placeholder="${authUser.email}">
+                          <li class="list-group-item">
+                            <div class="row mt-4">
+                              <span class="col-4">Name Writer: </span>
+                              <div class="col-8">
+                                <input type="text" name="secondName" placeholder="${authUser.second_name}">
+                              </div>
+                            </div>
+                          </li>
+                        <li class="list-group-item">
+                          <div class="row mt-4">
+                            <span class="col-4">Email: </span>
+                            <div class="col-8">
+                              <input  type="text" name="email" placeholder="${authUser.email}">
+                            </div>
                           </div>
-                        </div>
-                      </li>
-                      <li class="list-group-item">
-                        <div class="row mt-4 mb-2">
-                          <span class="col-4">Birthday: </span>
-                          <div class="col-8">
-                            <input style="    width: 100% !important" type="text" name="birthDay" style="    width: 100% !important" placeholder="${authUser.dateOfBirth}">
+                        </li>
+                        <li class="list-group-item">
+                          <div class="row mt-4 mb-2">
+                            <span class="col-4">Birthday: </span>
+                            <div class="col-8">
+                              <input  type="text" id="txtbirthday" name="birthDay" style="    width: 100% !important" placeholder="${authUser.dateOfBirth}">
+                            </div>
                           </div>
+                        </li>
+                      </ul>
+                      <div class="row mt-2 mb-2">
+                        <div class="col text-right">
+                          <button type="submit" class="btn btn-sm btn-outline-secondary alert-link nav-link text-heading">Cật nhập thông tin</button>
                         </div>
-                      </li>
-                    </ul>
-                    <div class="row mt-2 mb-2">
-                      <div class="col text-right">
-                        <a href="${pageContext.request.contextPath}/User/EditProfile" class="btn btn-sm btn-outline-secondary alert-link nav-link text-heading">Cật nhập thông tin</a>
                       </div>
                     </div>
-                  </div>
+                  </form>
                 </div>
                 <div class="mt-5">
                   <h4 class="fw-bold text-heading">Information Account</h4>
@@ -124,7 +141,7 @@
                         <div class="row">
                           <span class="col-4">User: </span>
                           <div class="col-8">
-                            <input style="    width: 100% !important" type="text" name="birthDay" placeholder="${authUser.username}">
+                            <span>${authUser.username}</span>
                           </div>
                         </div>
                       </li>
@@ -132,7 +149,7 @@
                         <div class="row">
                           <span class="col-4">Password: </span>
                           <div class="col-8">
-                            <input type="password"style="    width: 100% !important" name="birthDay" placeholder="${authUser.password}">
+                            <span>${authUser.password}</span>
                           </div>
                         </div>
                       </li>
