@@ -53,6 +53,12 @@ public class UserServlet extends HttpServlet {
             case "/EditProfile":
                 ServletUtils.forward("/views/ViewUser/EditProfile.jsp",request,response);
                 break;
+            case "/EditAcc":
+                ServletUtils.forward("/views/ViewUser/EditAcc.jsp",request,response);
+                break;
+            case "/Extend":
+                ServletUtils.forward("/views/ViewUser/Extend.jsp",request,response);
+                break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
                 break;
@@ -181,6 +187,7 @@ public class UserServlet extends HttpServlet {
 
 
         User edit = (User) session.getAttribute("authUser");
+        BCrypt.Result result = BCrypt.verifyer().verify(edit.getPassword().toCharArray(), edit.getPassword());
         UserModel.editUser(edit.getUserId(),name,email,date_of_birth,secondName);
         session.setAttribute("auth", true);
         session.setAttribute("authUser",new User(edit.getUserId(),edit.getUsername(),edit.getPassword(),name,edit.getIssueAt(),edit.getExpiration(),edit.getRole_id(),secondName,date_of_birth,email,edit.getOtp(),edit.getOtp_exp()));

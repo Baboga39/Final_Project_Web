@@ -12,24 +12,7 @@
             margin-right: 10px;
           }
         </style>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha512-f0tzWhCwVFS3WeYaofoLWkTP62ObhewQ1EZn65oSYDZUg1+CyywGKkWzm8BxaJj5HGKI72PnMH9jYyIFz+GH7g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </jsp:attribute>
-  <jsp:attribute name="js">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
-
-      $('#frmEdit').on('submit', function (e) {
-        e.preventDefault();
-        $('#frmEdit').off('submit').submit();
-
-      });
-      $('#txtbirthday').datetimepicker({
-        format: 'd/m/Y',
-        timepicker: false,
-        mask: true
-      });
-    </script>
-  </jsp:attribute>
   <jsp:body>
     <div class="content">
       <div class="container">
@@ -61,11 +44,12 @@
                     <div class="row mt-3">
                       <h4 class="" style="margin: 0px auto">${authUser.name}</h4>
                     </div>
+
                     <c:if test="${authUser.role_id == 1}">
                       <div class="row mt-2">
                         <p class="" style="margin: 0px auto">${authUser.second_name}</p>
                       </div>
-                      <div class="row mt-2 ">
+                      <div class="row mt-2 mb-2">
                         <p class="" style="margin: 0px auto">Administrator</p>
                       </div>
                     </c:if>
@@ -73,7 +57,7 @@
                       <div class="row mt-2">
                         <p class="" style="margin: 0px auto">${authUser.second_name}</p>
                       </div>
-                      <div class="row mt-2 ">
+                      <div class="row mt-2 mb-2">
                         <p class="" style="margin: 0px auto">User</p>
                       </div>
                     </c:if>
@@ -81,7 +65,7 @@
                       <div class="row mt-2">
                         <p class="" style="margin: 0px auto">${authUser.second_name}</p>
                       </div>
-                      <div class="row mt-2 ">
+                      <div class="row mt-2 mb-2">
                         <p class="" style="margin: 0px auto">Reporter</p>
                       </div>
                     </c:if>
@@ -89,54 +73,52 @@
                       <div class="row mt-2">
                         <p class="" style="margin: 0px auto">${authUser.second_name}</p>
                       </div>
-                      <div class="row mt-2 ">
+                      <div class="row mt-2 mb-2">
                         <p class="" style="margin: 0px auto">Editor</p>
                       </div>
                     </c:if>
                   </div>
-                  <form action="" method="post" id="frmEdit">
-                    <div class="col-7 ml-5 w-100" style="background: #eee">
-                      <ul class="list-group list-group-flush mt-3" style="width: 450px">
-                        <li class="list-group-item ">
-                          <div class="row mt-4">
-                            <span class="col-4">Name: </span>
-                            <div class="col-4">
-                              <input  type="text" name="name" placeholder="${authUser.name}">
-                            </div>
+                  <div class="col-7 ml-5" style="background: #eee">
+                    <ul class="list-group list-group-flush mt-3">
+                      <li class="list-group-item">
+                        <div class="row mt-4">
+                          <span class="col-4">Name: </span>
+                          <div class="col-6">
+                            <span>${authUser.name}</span>
                           </div>
-                        </li>
-                          <li class="list-group-item">
-                            <div class="row mt-4">
-                              <span class="col-4">Name Writer: </span>
-                              <div class="col-8">
-                                <input type="text" name="secondName" placeholder="${authUser.second_name}">
-                              </div>
-                            </div>
-                          </li>
-                        <li class="list-group-item">
-                          <div class="row mt-4">
-                            <span class="col-4">Email: </span>
-                            <div class="col-8">
-                              <input  type="text" name="email" placeholder="${authUser.email}">
-                            </div>
-                          </div>
-                        </li>
-                        <li class="list-group-item">
-                          <div class="row mt-4 mb-2">
-                            <span class="col-4">Birthday: </span>
-                            <div class="col-8">
-                              <input  type="text" id="txtbirthday" name="birthDay" style="    width: 100% !important" placeholder="${authUser.dateOfBirth}">
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                      <div class="row mt-2 mb-2">
-                        <div class="col text-right">
-                          <button type="submit" class="btn btn-sm btn-outline-secondary alert-link nav-link text-heading">Cật nhập thông tin</button>
                         </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="row mt-4">
+                          <span class="col-4">Name Writer: </span>
+                          <div class="col-6">
+                            <span>${authUser.second_name}</span>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="row mt-4">
+                          <span class="col-4">Email: </span>
+                          <div class="col-6">
+                            <span>${authUser.email}</span>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="row mt-4 mb-2">
+                          <span class="col-4">Birthday: </span>
+                          <div class="col-6">
+                            <span>${authUser.dateOfBirth}</span>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                    <div class="row mt-2 mb-2">
+                      <div class="col text-right">
+                        <a href="${pageContext.request.contextPath}/User/EditProfile" class="btn btn-sm btn-outline-secondary alert-link nav-link text-heading">Cật nhập thông tin</a>
                       </div>
                     </div>
-                  </form>
+                  </div>
                 </div>
                 <div class="mt-5">
                   <h4 class="fw-bold text-heading">Information Account</h4>
@@ -148,7 +130,7 @@
                         <div class="row">
                           <span class="col-4">User: </span>
                           <div class="col-8">
-                            <span>${authUser.username}</span>
+                            <input class="w-75" type="text" name="username" id="#txtUsername" placeholder="${authUser.username}">
                           </div>
                         </div>
                       </li>
@@ -156,7 +138,7 @@
                         <div class="row">
                           <span class="col-4">Password: </span>
                           <div class="col-8">
-                            <span>${authUser.password}</span>
+                            <input class="w-75" type="password" name="password" id="#txtPass" placeholder="${authUser.password}">
                           </div>
                         </div>
                       </li>
@@ -164,13 +146,15 @@
                         <div class="row">
                           <span class="col-4">Status: </span>
                           <c:if test="${checkEx eq true}">
-                            <div class="col-8">
+                            <div class="col-6 d-flex justify-content-between">
                               <span>Vip</span>
+                              <a href="${pageContext.request.contextPath}/User/Extend"><i class="bi bi-plus-circle"></i></a>
                             </div>
                           </c:if>
                           <c:if test="${checkEx eq false}">
-                            <div class="col-8">
+                            <div class="col-6 d-flex justify-content-between">
                               <span>Hết hạn</span>
+                              <a href="${pageContext.request.contextPath}/User/Extend" class=""><i class="bi bi-plus-circle"></i></a>
                             </div>
                           </c:if>
                         </div>
@@ -179,13 +163,15 @@
                         <div class="row">
                           <span class="col-4">Date: </span>
                           <c:if test="${checkEx eq true}">
-                            <div class="col-8">
+                            <div class="col-6 d-flex justify-content-between">
                               <span>Vip</span>
+                              <a href="${pageContext.request.contextPath}/User/Extend"><i class="bi bi-plus-circle"></i></a>
                             </div>
                           </c:if>
                           <c:if test="${checkEx eq false}">
-                            <div class="col-8">
+                            <div class="col-6 d-flex justify-content-between">
                               <span>Hết hạn</span>
+                              <a href="${pageContext.request.contextPath}/User/Extend" class=""><i class="bi bi-plus-circle"></i></a>
                             </div>
                           </c:if>
                         </div>
@@ -195,18 +181,15 @@
                 </div>
                 <div class="row mt-2">
                   <div class="col text-right">
-                    <button class="btn btn-lg btn-warning ">Nâng Cấp Tài Khoản</button>
+                   <a href="${pageContext.request.contextPath}/User/Index" class="btn btn-lg btn-success ">Back</a>
+                    <button type="submit" class="btn btn-lg btn-warning ">Thay Đổi</button>
                   </div>
                 </div>
+              </div>
             </c:when>
             <c:when test="${authGg}">
               <div class="card-body py-5 px-md-5">
                 <div>
-                  <c:if test="${sessionScope.mess ne null}">
-                    <div style="color: red;">
-                      <p>${sessionScope.mess}</p>
-                    </div>
-                  </c:if>
                   <h1 class="fw-bold mb-5 text-heading">User Profile</h1>
                 </div>
                 <div class="row row-cols-2">
@@ -244,7 +227,7 @@
                     </ul>
                     <div class="row mt-2 mb-2">
                       <div class="col text-right">
-                        <a href="" class="btn btn-sm btn-outline-secondary alert-link nav-link text-heading">Cật nhập thông tin</a>
+                        <a href="#" class="btn btn-sm btn-outline-secondary alert-link nav-link text-heading">Cật nhập thông tin</a>
                       </div>
                     </div>
                   </div>
@@ -292,11 +275,17 @@
                 </div>
                 <div class="row mt-2">
                   <div class="col text-right">
-                    <button class="btn btn-lg btn-warning ">Nâng Cấp Tài Khoản</button>
+                    <button class="btn btn-lg btn-success ">Back</button>
+                    <button class="btn btn-lg btn-warning ">Thay Đổi</button>
                   </div>
                 </div>
               </div>
             </c:when>
           </c:choose>
+        </div>
+
+      </div>
+
+    </div>
   </jsp:body>
 </d:web>
