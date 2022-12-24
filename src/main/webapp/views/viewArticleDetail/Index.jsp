@@ -17,8 +17,7 @@
                             <img class="img-fluid w-100" src="${pageContext.request.contextPath}/image/Article/${article.avatar}" style="object-fit: cover;">
                             <div class="bg-white border border-top-0 p-4">
                                 <div class="mb-3">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
-                                       href="">${article.categoryName}</a>
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">${article.categoryName}</a>
                                     <a class="text-body" href="">${article.publish_date}</a>
                                 </div>
                                 <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">${article.title}</h1>
@@ -107,7 +106,8 @@
                                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">${r.categoryName}</a>
                                                 <a class="text-body" href=""><small>${r.publish_date}</small></a>
                                             </div>
-                                            <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="">${r.title}</a>
+                                            <a class="h6 m-0 text-secondary text-uppercase font-weight-bold"
+                                               href="${pageContext.request.contextPath}/Detail?article_id=${r.article_id}">${r.title}</a>
                                         </div>
                                     </div>
                                 </div>
