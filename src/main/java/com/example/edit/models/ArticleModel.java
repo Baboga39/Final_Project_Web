@@ -58,7 +58,7 @@ public class ArticleModel {
                 "WHERE\n" +
                 "    publish_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 10080 MINUTE)\n" +
                 "ORDER BY views DESC\n" +
-                "LIMIT 0,3\n";
+                "LIMIT 2,2\n";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .executeAndFetch(Articles.class);

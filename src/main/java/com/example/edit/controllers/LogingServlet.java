@@ -55,10 +55,10 @@ public class LogingServlet extends HttpServlet {
                     String accessToken=  getToken(code);
                     AccountGG usergg = getUserInfo(accessToken);
                     List<Tag> list = TagModel.findAll();
-
-                    System.out.println(usergg.getPicture());
+                    String mess = "Bạn không được sửa đổi thông tin do chính sách của Google";
                     request.setAttribute("tags", list);
                     HttpSession session = request.getSession();
+                    session.setAttribute("mess", mess);
                     session.setAttribute("authGg", true);
                     session.setAttribute("authUserGg",usergg);;
                     String url = "/Home";

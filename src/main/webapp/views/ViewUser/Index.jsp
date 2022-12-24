@@ -110,7 +110,7 @@
                                 </ul>
                                 <div class="row mt-2 mb-2">
                                     <div class="col text-right">
-                                        <a href="#" class="btn btn-sm btn-outline-secondary alert-link nav-link text-heading">Cật nhập thông tin</a>
+                                        <a href="${pageContext.request.contextPath}/views/ViewUser/EditProfile.jsp" class="btn btn-sm btn-outline-secondary alert-link nav-link text-heading">Cật nhập thông tin</a>
                                     </div>
                                 </div>
                             </div>

@@ -10,7 +10,10 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Properties;
 
 public class UserModel {
@@ -101,7 +104,22 @@ public class UserModel {
             return list.get(0);
         }
     }
+    public static void editUser(int user_id, String name , String email, LocalDate date_of_birth, String username, String password, String second_name) {
 
+        String updateSql = "UPDATE users SET password = :password,email=:email,second_name= :second_name ,date_of_birth= :date_of_birth,`name`= :name,username =:username WHERE user_id= :user_id";
+        try (Connection con = DbUtils.getConnection()) {
+            con.createQuery(updateSql)
+                    .addParameter("password", password)
+                    .addParameter("email", email)
+                    .addParameter("date_of_birth", date_of_birth)
+                    .addParameter("name", name)
+                    .addParameter("username", username)
+                    .addParameter("user_id", user_id)
+                    .addParameter("second_name",second_name)
+                    .executeUpdate();
+        }
+
+    }
     static final String ACCOUNT = "baboga12@outlook.com";
     static final String PASSWORD = "Ngochai0612";
     static final String SUBJECT = "Quên mật khẩu.";
