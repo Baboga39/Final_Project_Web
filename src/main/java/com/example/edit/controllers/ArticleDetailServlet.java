@@ -36,6 +36,9 @@ public class ArticleDetailServlet extends HttpServlet {
                 List<Comments> listComment = ArticleModel.findComment(articleID);
                 request.setAttribute("listComment",listComment);
 
+                List<User> listAuthor = ArticleModel.findAuthorComment(articleID);
+                request.setAttribute("listAuthor",listAuthor);
+
                 User user = ArticleModel.findAuthor(articleID);
                 Articles article = ArticleModel.findById(articleID);
                 if(article==null){
