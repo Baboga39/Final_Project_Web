@@ -22,6 +22,8 @@ import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "UserServlet", value = "/User/*")
@@ -81,6 +83,12 @@ public class UserServlet extends HttpServlet {
             case "/EditProfile":
                 editUser(request,response);
                 break;
+            case "/EditAcc":
+                editAcc(request,response);
+                break;
+            case "/UpdatePre":
+                editPre(request,response);
+                break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
                 break;
@@ -102,8 +110,9 @@ public class UserServlet extends HttpServlet {
             if(result.verified)
             {
                 HttpSession session = request.getSession();
-                int Ex = user.getExpiration();
-                if (UserModel.checkEx(Ex))
+                int Ex = user.getUserId();
+                boolean a = UserModel.checkEx(Ex);
+                if (UserModel.checkEx(Ex) == true)
                 {
                     session.setAttribute("checkEx", true);
                 }
@@ -191,6 +200,52 @@ public class UserServlet extends HttpServlet {
         UserModel.editUser(edit.getUserId(),name,email,date_of_birth,secondName);
         session.setAttribute("auth", true);
         session.setAttribute("authUser",new User(edit.getUserId(),edit.getUsername(),edit.getPassword(),name,edit.getIssueAt(),edit.getExpiration(),edit.getRole_id(),secondName,date_of_birth,email,edit.getOtp(),edit.getOtp_exp()));
+        ServletUtils.forward("/views/ViewUser/Index.jsp", request, response);
+    }
+    private void editAcc(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
+        HttpSession session = request.getSession();
+        User edit = (User) session.getAttribute("authUser");
+        UserModel.editAcc(edit.getUserId(),bcryptHashString,username);
+        User a = UserModel.findById(edit.getUserId());
+        session.setAttribute("auth", true);
+        session.setAttribute("authUser",new User(edit.getUserId(),username,bcryptHashString,edit.getName(),edit.getIssueAt(),edit.getExpiration(),edit.getRole_id(),edit.getSecond_name(),edit.getDateOfBirth(),edit.getEmail(),edit.getOtp(),edit.getOtp_exp()));
+        ServletUtils.forward("/views/ViewUser/Index.jsp", request, response);
+    }
+    private void editPre(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        String txt = request.getParameter("txt");
+        String email = request.getParameter("email");
+        User uRes = UserModel.getNameUserByEmail(email);
+        String name = uRes.getName();
+        StringBuilder content = new StringBuilder();
+        content.append("Dear ").append(uRes.getName()).append("\n");
+        content.append("Cảm ơn khách hàng đã gia hạn tài khoản của mình. Với email ").append(email).append(". Chúng tôi đã kiểm tra giao dịch. Với số tài khoản ")
+                .append(txt).append("\n");
+        content.append("Tài khoản của quý được gia hạn 7 ngày để từ ngày gia hạn ").append(getCurrentDate()).append("\n");
+        content.append("Nếu có gì thắc mắc xin vui lòng liên hệ Email: ngochai06122002@gmail.com");
+        UserModel.sendMailToEmailConfirm(email, content.toString());
+        request.setAttribute("email", email);
+        HttpSession session = request.getSession();
+        LocalDate date = java.time.LocalDate.now();
+        User edit = (User) session.getAttribute("authUser");
+        UserModel.editAccPre(edit.getUserId(),date);
+        int Ex = edit.getUserId();
+        if (UserModel.checkEx(Ex) == true)
+        {
+            session.setAttribute("checkEx", true);
+        }
+        else
+        {
+            session.setAttribute("checkEx", false);
+        }
+        session.setAttribute("auth", true);
+        session.setAttribute("authUser",new User(edit.getUserId(),edit.getUsername(),edit.getPassword(),edit.getName(),date,edit.getExpiration(),edit.getRole_id(),edit.getSecond_name(),edit.getDateOfBirth(),edit.getEmail(),edit.getOtp(),edit.getOtp_exp()));
         ServletUtils.forward("/views/ViewUser/Index.jsp", request, response);
     }
 }

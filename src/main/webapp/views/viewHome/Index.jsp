@@ -268,7 +268,7 @@
                                                             <a href="${pageContext.request.contextPath}/Detail?article_id=${k.article_id}">
                                                                 <img src="${pageContext.request.contextPath}/image/Article/${k.avatar}" alt="" class="d-block img-fluid h-100">
                                                                 <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                                    <span href="#" class="link-cate">${k.categoryName}</span>
+                                                                    <span href="${pageContext.request.contextPath}/Post/Category?cid=${k.categories_id}" class="link-cate">${k.categoryName}</span>
                                                                 </div>
                                                                 <div class="overlay-content">
                                                                     <h5 class="title"  style="font-size: 15px">${k.title}</h5>
@@ -292,7 +292,7 @@
                                                             <a href="${pageContext.request.contextPath}/Detail?article_id=${k.article_id}">
                                                                 <img src="${pageContext.request.contextPath}/image/Article/${k.avatar}" alt="" class="d-block img-fluid h-100">
                                                                 <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                                    <span href="#" class="link-cate">${k.categoryName}</span>
+                                                                    <span href="${pageContext.request.contextPath}/Post/Category?cid=${k.categories_id}" class="link-cate">${k.categoryName}</span>
                                                                 </div>
                                                                 <div class="overlay-content">
                                                                     <h5 class="title" style="font-size: 15px">${k.title}</h5>

@@ -200,4 +200,20 @@ public class ArticleModel {
                     .executeAndFetch(Articles.class);
         }
     }
+    public static List<Articles> getArticleByCate(int categories_id) {
+        final String query = "SELECT * FROM articles WHERE categories_id = :categories_id ";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .addParameter("categories_id",categories_id)
+                    .executeAndFetch(Articles.class);
+        }
+    }
+    public static List<Articles> getArticleByCateList3(int categories_id) {
+        final String query = "SELECT * FROM articles WHERE categories_id = :categories_id LIMIT 2,3 ";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .addParameter("categories_id",categories_id)
+                    .executeAndFetch(Articles.class);
+        }
+    }
 }

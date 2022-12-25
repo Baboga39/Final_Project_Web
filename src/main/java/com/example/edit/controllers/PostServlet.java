@@ -1,7 +1,9 @@
 package com.example.edit.controllers;
 
 import com.example.edit.Utils.ServletUtils;
+import com.example.edit.beans.Articles;
 import com.example.edit.beans.Category;
+import com.example.edit.models.ArticleModel;
 import com.example.edit.models.CategoryModel;
 
 import javax.servlet.ServletException;
@@ -34,7 +36,9 @@ public class PostServlet extends HttpServlet {
             case "/Upload":
                 ServletUtils.forward("/views/viewPost/Upload.jsp", request, response);
                 break;
-
+            case "/Category":
+                getArticleByCate(request,response);
+                break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
                 break;
@@ -62,7 +66,23 @@ public class PostServlet extends HttpServlet {
     private void postArticles(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String content = request.getParameter("Content");
         System.out.println(content);
-
         ServletUtils.forward("/views/viewPost/Index.jsp", request, response);
+    }
+    private void getArticleByCate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String cid = request.getParameter("cid");
+        int cateId = Integer.parseInt(cid);
+        List<Articles> list = ArticleModel.getArticleByCate(cateId);
+        Articles listOne = ArticleModel.findTopCate(cateId);
+        boolean check = CategoryModel.checkCate(cateId);
+        List<Articles> listT = ArticleModel.getArticleByCateList3(cateId);
+        List<Category> listC =CategoryModel.getCateChilds(cateId);
+        List<Category> listCa =CategoryModel.getCateByID(cateId);
+        request.setAttribute("listC", listC);
+        request.setAttribute("listT", listT);
+        request.setAttribute("listOne", listOne);
+        request.setAttribute("check", check);
+        request.setAttribute("list", list);
+        request.setAttribute("listCa", listCa);
+        ServletUtils.forward("/views/viewArticlePosts/Index.jsp", request, response);
     }
 }

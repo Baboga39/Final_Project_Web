@@ -123,6 +123,7 @@
                 <div class="mt-5">
                   <h4 class="fw-bold text-heading">Information Account</h4>
                 </div>
+                <form action="${pageContext.request.contextPath}/User/EditAcc" method="post">
                 <div class="row mt-1 w-100">
                   <div class="card-body">
                     <ul class="list-group list-group-flush">
@@ -159,33 +160,18 @@
                           </c:if>
                         </div>
                       </li>
-                      <li class="list-group-item">
-                        <div class="row">
-                          <span class="col-4">Date: </span>
-                          <c:if test="${checkEx eq true}">
-                            <div class="col-6 d-flex justify-content-between">
-                              <span>Vip</span>
-                              <a href="${pageContext.request.contextPath}/User/Extend"><i class="bi bi-plus-circle"></i></a>
-                            </div>
-                          </c:if>
-                          <c:if test="${checkEx eq false}">
-                            <div class="col-6 d-flex justify-content-between">
-                              <span>Hết hạn</span>
-                              <a href="${pageContext.request.contextPath}/User/Extend" class=""><i class="bi bi-plus-circle"></i></a>
-                            </div>
-                          </c:if>
-                        </div>
-                      </li>
+                    
                     </ul>
                   </div>
                 </div>
+
                 <div class="row mt-2">
                   <div class="col text-right">
                    <a href="${pageContext.request.contextPath}/User/Index" class="btn btn-lg btn-success ">Back</a>
-                    <button type="submit" class="btn btn-lg btn-warning ">Thay Đổi</button>
+                    <button type="submit"  class="btn btn-lg btn-warning ">Thay Đổi</button>
                   </div>
                 </div>
-              </div>
+              </form>
             </c:when>
             <c:when test="${authGg}">
               <div class="card-body py-5 px-md-5">
@@ -259,14 +245,6 @@
                           <span class="col-4">Status: </span>
                           <div class="col-8">
                             <span>Vip</span>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="list-group-item">
-                        <div class="row">
-                          <span class="col-4">Date: </span>
-                          <div class="col-8">
-                            <span>3 Day left</span>
                           </div>
                         </div>
                       </li>

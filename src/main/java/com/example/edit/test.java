@@ -16,7 +16,7 @@ import java.util.List;
 public class test {
 
     public static void main(String[] args) {
-       boolean a = UserModel.checkEx(1);
-       System.out.println(a);
+        boolean a = UserModel.checkEx(5);
+        System.out.println(a);
     }
 }

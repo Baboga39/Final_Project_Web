@@ -175,21 +175,7 @@
                           </c:if>
                         </div>
                       </li>
-                      <li class="list-group-item">
-                        <div class="row">
-                          <span class="col-4">Date: </span>
-                          <c:if test="${checkEx eq true}">
-                            <div class="col-8">
-                              <span>Vip</span>
-                            </div>
-                          </c:if>
-                          <c:if test="${checkEx eq false}">
-                            <div class="col-8">
-                              <span>Hết hạn</span>
-                            </div>
-                          </c:if>
-                        </div>
-                      </li>
+
                     </ul>
                   </div>
                 </div>

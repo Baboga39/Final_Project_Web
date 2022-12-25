@@ -10,7 +10,7 @@
                 <ul class="navbar-nav mr-auto mt-2">
                     <c:forEach items="${sessionScope.list5cate}" var="o">
                     <li class="nav-item text-category " style="font-size: 14px;">
-                        <a class="link nav-link" href="${pageContext.request.contextPath}/User/Index" aria-expanded="false">
+                        <a class="link nav-link" href="${pageContext.request.contextPath}/Post/Category?cid=${o.categories_id}" aria-expanded="false">
                                 ${o.name}
                         </a>
                     </li>
@@ -32,22 +32,13 @@
                                                             <div class="panel panel-default">
                                                                 <div class="panel-heading" role="tab" id="b${k.categories_id}">
                                                                     <div class="row">
-                                                                        <a href="#" class="link nav-link">${k.name}</a>
+                                                                        <a href="${pageContext.request.contextPath}/Post/Category?cid=${k.categories_id}" style="font-size: 19px;" class="link nav-link">${k.name}</a>
                                                                         <div role="button" class="nav-link" data-toggle="collapse" data-parent="#a${k.categories_id}" href="#c${k.categories_id}" aria-expanded="true" aria-controls="c${k.categories_id}">
                                                                             <i class="bi bi-chevron-compact-down"></i>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div id="c${k.categories_id}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="b${k.categories_id}">
-                                                                    <div class="panel-body">
-                                                                        <div class="row">
-                                                                            <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <a href="#" class="dropdown-item text-par-heading mr-1">Danh Mục Con 1</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -59,7 +50,6 @@
                             </div>
                         </div>
                     </li>
-
                 </ul>
                 <ul class="navbar-nav mr-auto mt-2">
                     <li class="nav-item dropdown text-category">

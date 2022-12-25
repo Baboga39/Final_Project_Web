@@ -157,28 +157,13 @@
                                             </c:if>
                                         </div>
                                     </li>
-                                    <li class="list-group-item">
-                                        <div class="row">
-                                            <span class="col-4">Date: </span>
-                                            <c:if test="${checkEx eq true}">
-                                                <div class="col-8">
-                                                    <span>Vip</span>
-                                                </div>
-                                            </c:if>
-                                            <c:if test="${checkEx eq false}">
-                                                <div class="col-8">
-                                                    <span>Hết hạn</span>
-                                                </div>
-                                            </c:if>
-                                        </div>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
                         <div class="row mt-2">
                             <div class="col text-right">
-                                <a href="${pageContext.request.contextPath}/User/EditAcc" class="btn btn-lg btn-success ">Sửa Thông Tin Tài Khoản</a>
-                                <button class="btn btn-lg btn-warning ">Nâng Cấp Tài Khoản</button>
+                                <a href="${pageContext.request.contextPath}/views/ViewUser/EditAcc.jsp" class="btn btn-lg btn-success ">Sửa Thông Tin Tài Khoản</a>
+                                <button onclick="location.href='${pageContext.request.contextPath}/User/Extend'" class="btn btn-lg btn-warning ">Nâng Cấp Tài Khoản</button>
                             </div>
                         </div>
                     </div>
