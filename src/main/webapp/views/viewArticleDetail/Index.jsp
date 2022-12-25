@@ -127,7 +127,7 @@
                             <c:forEach items="${tags}" var="t">
                                 <div class="bg-white border border-top-0 p-3">
                                     <div class="d-flex flex-wrap m-n1">
-                                        <a href="" class="btn btn-sm btn-outline-secondary m-1">${t.value}</a>
+                                        <a href="${pageContext.request.contextPath}/Post/Tag?tid=${t.tags_id}" class="btn btn-sm btn-outline-secondary m-1">${t.value}</a>
                                     </div>
                                 </div>
                             </c:forEach>
