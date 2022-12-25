@@ -88,6 +88,15 @@ public class ArticleModel {
                     .executeAndFetch(Comments.class);
         }
     }
+    public static List<User> findAuthorComment(int article_id){
+        final String query = "SELECT users.second_name from comments INNER JOIN " +
+                "users on comments.user_id=users.user_id WHERE article_id= :article_id";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .addParameter("article_id",article_id)
+                    .executeAndFetch(User.class);
+        }
+    }
     public static List<Articles> findTop5() {
         final String query = "SELECT * FROM articles ORDER BY views DESC LIMIT 0,5";
         try (Connection con = DbUtils.getConnection()) {
