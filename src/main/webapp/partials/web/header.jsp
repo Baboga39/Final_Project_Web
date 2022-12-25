@@ -17,21 +17,21 @@
                     </c:forEach>
                             <c:if test="${authUser.role_id == 1}">
                             <li class="nav-item text-category " style="font-size: 14px;">
-                                <a class="link nav-link" href="${pageContext.request.contextPath}/views/viewAdminHome/Index.jsp" aria-expanded="false">
+                                <a class="link nav-link" href="${pageContext.request.contextPath}/Admin/Home/Index" aria-expanded="false">
                                     Administrator
                                 </a>
                             </li>
                         </c:if>
                         <c:if test="${authUser.role_id == 3} ">
                             <li class="nav-item text-category " style="font-size: 14px;">
-                                <a class="link nav-link" href="${pageContext.request.contextPath}/views/viewAdminHome/Index.jsp" aria-expanded="false">
+                                <a class="link nav-link" href="${pageContext.request.contextPath}/Admin/Home/Index" aria-expanded="false">
                                     Reporter
                                 </a>
                             </li>
                         </c:if>
                         <c:if test="${authUser.role_id == 4}">
                             <li class="nav-item text-category " style="font-size: 14px;">
-                                <a class="link nav-link" href="${pageContext.request.contextPath}/Post/Category?cid=${o.categories_id}" aria-expanded="false">
+                                <a class="link nav-link" href="${pageContext.request.contextPath}/Admin/Home/Index" aria-expanded="false">
                                     Editor
                                 </a>
                             </li>
