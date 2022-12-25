@@ -1,8 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="d" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<t:misc>
+
+
+<d:web>
   <jsp:attribute name="js">
     <script src="https://cdn.tiny.cloud/1/x0hb0bn8pkdrphzctxpeuv04rxybmsnkj27z60lwkvfkum2s/tinymce/5/tinymce.min.js"
             referrerpolicy="origin"></script>
@@ -57,4 +59,4 @@
             </div>
         </form>
     </jsp:body>
-</t:misc>
+</d:web>

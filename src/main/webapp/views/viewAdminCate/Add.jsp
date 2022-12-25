@@ -23,12 +23,7 @@
                 <label for="txtName">Categories Name</label>
                 <input type="text" class="form-control w-50" id="txtName" name="name" placeholder="Nhập vào đây..">
               </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" name="checkParent" id="exampleRadios1" value="" checked>
-              <label class="form-check-label" for="exampleRadios1">
-                Có Danh Mục Con
-              </label>
-            </div>
+
         </div>
         <div class="card-footer">
           <div class="row float-right mr-5">

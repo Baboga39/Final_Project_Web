@@ -27,7 +27,7 @@ Begin content
               </div>
             </div>
           </form>
-          <a href="${pageContext.request.contextPath}/Admin/Category/Add" class="btn btn-success btn-lg ml-5 "><i class="bi bi-plus-square "></i></a>
+          <a href="${pageContext.request.contextPath}/Admin/Category/Add" class="btn btn-success btn-lg ml-3 ">Add Categories<i class="bi bi-plus-square ml-3"></i></a>
         </div>
       </div>
       <div class="body">
@@ -48,7 +48,7 @@ Begin content
               <td class="d-flex " style="font-size: 20px">
                 <a href="${pageContext.request.contextPath}/Admin/Category/Update?id=${k.categories_id}" type="button" class="btn link"><i class="bi bi-pencil-square"></i></a>
                 <a href="${pageContext.request.contextPath}/Admin/Category/Delete?id=${k.categories_id}" role="button" class="btn link"><i class="bi bi-trash"></i></a>
-                <a href="${pageContext.request.contextPath}/Admin/Category/Update?id=${k.categories_id}" type="button" class="btn link"><i class="bi bi-eye"></i></a>
+                <a href="${pageContext.request.contextPath}/Admin/Category/Detail?id=${k.categories_id}" type="button" class="btn link"><i class="bi bi-eye"></i></a>
               </td>
             </tr>
           </c:forEach>

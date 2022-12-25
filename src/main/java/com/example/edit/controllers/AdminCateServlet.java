@@ -23,7 +23,7 @@ public class AdminCateServlet extends HttpServlet {
 
         switch (path) {
             case "/Index":
-                List<Category> list = CategoryModel.findAllIn();
+                List<Category> list = CategoryModel.findAll();
                 request.setAttribute("categories", list);
                 ServletUtils.forward("/views/viewAdminCate/Index.jsp", request, response);
                 break;
@@ -39,6 +39,7 @@ public class AdminCateServlet extends HttpServlet {
             case "/Add":
                 ServletUtils.forward("/views/viewAdminCate/Add.jsp", request, response);
                 break;
+
             case "/Update":
                 int idCate = 0;
                 try {
@@ -53,6 +54,33 @@ public class AdminCateServlet extends HttpServlet {
                 } else {
                     ServletUtils.redirect("/Admin/Category", request, response);
                 }
+                break;
+            case "/Detail":
+                response.setContentType("text/html;charset=UTF-8");
+                request.setCharacterEncoding("UTF-8");
+                int id3 = 0;
+                try {
+                    id3 = Integer.parseInt(request.getParameter("id"));
+                } catch (NumberFormatException e) {
+                }
+                Category c3 = CategoryModel.findCateById(id3);
+                if (c3 != null) {
+                    List<Category> listCon = CategoryModel.getCateChilds(id3);
+                    request.setAttribute("categories", listCon);
+                    request.setAttribute("category", c3);
+                    ServletUtils.forward("/views/viewAdminCate/Detail.jsp", request, response);
+                } else {
+                    ServletUtils.redirect("/Admin/Category", request, response);
+                }
+                break;
+            case "/Detail/Delete":
+                int id5 = 0;
+                try {
+                    id5 = Integer.parseInt(request.getParameter("id"));
+                } catch (NumberFormatException e) {
+                }
+                CategoryModel.deleteCate(id5);
+                ServletUtils.redirect("/Admin/Category/Detail",request,response);
                 break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
@@ -71,6 +99,9 @@ public class AdminCateServlet extends HttpServlet {
             case "/Update":
                 updateCate(request, response);
                 break;
+            case "/Detail":
+                addCateCon(request,response);
+                break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
                 break;
@@ -81,15 +112,19 @@ public class AdminCateServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
-        boolean checkParent = request.getParameter("checkParent") != null;
-        int parent_id = 0;
-        if(checkParent == true)
-        {
-            parent_id = 2;
-        }
-        Category category = new Category(0,name,parent_id);
+        Category category = new Category(0,name,0);
         CategoryModel.addCate(category);
-        ServletUtils.forward("/views/viewAdminCate/Add.jsp",request, response);
+        ServletUtils.redirect("/Admin/Category",request,response);
+    }
+    private void addCateCon(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        int parent_id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        Category category = new Category(0,name,parent_id);
+        CategoryModel.addCateCon(category);
+        ServletUtils.redirect("/Admin/Category",request,response);
     }
     private void updateCate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

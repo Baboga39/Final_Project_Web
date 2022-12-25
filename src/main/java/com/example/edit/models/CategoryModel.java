@@ -47,11 +47,11 @@ public class CategoryModel {
                     .executeAndFetch(Category.class);
         }
     }
-    public static List<Category> getCateChilds(int cateId) {
-        final String query = "SELECT * FROM categories WHERE parent_id = :cateId";
+    public static List<Category> getCateChilds(int categories_id) {
+        final String query = "SELECT * FROM categories WHERE parent_id = :categories_id";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
-                    .addParameter("cateId",cateId)
+                    .addParameter("categories_id",categories_id)
                     .executeAndFetch(Category.class);
         }
     }
@@ -92,15 +92,26 @@ public class CategoryModel {
     }
     public static void addCate(Category category)
     {
-        final String query = "INSERT INTO categories (name, parent_id) VALUES (:name,:parent_id)";
+        final String query = "INSERT INTO categories (name) VALUES (:name)";
         try(Connection con = DbUtils.getConnection()){
                         con.createQuery(query)
+                    .addParameter("name", category.getName())
+                    .executeUpdate();
+
+        }
+    }
+    public static void addCateCon(Category category)
+    {
+        final String query = "INSERT INTO categories (name,parent_id) VALUES (:name,:parent_id)";
+        try(Connection con = DbUtils.getConnection()){
+            con.createQuery(query)
                     .addParameter("name", category.getName())
                     .addParameter("parent_id",category.getParent_id())
                     .executeUpdate();
 
         }
     }
+
     public static void updateCate(Category category)
     {
         final String query = "UPDATE categories SET  name = :name, parent_id = :parent_id WHERE categories_id = :categories_id";
