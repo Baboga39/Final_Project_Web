@@ -2,7 +2,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<t:misc>
+<t:web>
   <jsp:attribute name="css">
     <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
   </jsp:attribute>
@@ -43,4 +43,4 @@
       </div>
     </form>
   </jsp:body>
-</t:misc>
+</t:web>

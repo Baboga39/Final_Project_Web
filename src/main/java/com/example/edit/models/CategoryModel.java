@@ -76,5 +76,53 @@ public class CategoryModel {
                     .executeAndFetch(Category.class);
         }
     }
+    public static Category findCateById(int categories_id) {
+        final String query = "SELECT * FROM categories WHERE categories_id = :categories_id";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Category> list = con.createQuery(query)
+                    .addParameter("categories_id", categories_id)
+                    .executeAndFetch(Category.class);
+
+            if (list.size() == 0) {
+                return null;
+            }
+
+            return list.get(0);
+        }
+    }
+    public static void addCate(Category category)
+    {
+        final String query = "INSERT INTO categories (name, parent_id) VALUES (:name,:parent_id)";
+        try(Connection con = DbUtils.getConnection()){
+                        con.createQuery(query)
+                    .addParameter("name", category.getName())
+                    .addParameter("parent_id",category.getParent_id())
+                    .executeUpdate();
+
+        }
+    }
+    public static void updateCate(Category category)
+    {
+        final String query = "UPDATE categories SET  name = :name, parent_id = :parent_id WHERE categories_id = :categories_id";
+        try(Connection con = DbUtils.getConnection()){
+            con.createQuery(query)
+                    .addParameter("categories_id",category.getCategories_id())
+                    .addParameter("name", category.getName())
+                    .addParameter("parent_id",category.getParent_id())
+                    .executeUpdate();
+
+        }
+    }
+    public static void deleteCate(int categories_id)
+    {
+        final String query = "DELETE FROM categories WHERE categories_id = :categories_id";
+        try(Connection con = DbUtils.getConnection()){
+            con.createQuery(query)
+                    .addParameter("categories_id",categories_id)
+                    .executeUpdate();
+
+        }
+    }
+
 
 }

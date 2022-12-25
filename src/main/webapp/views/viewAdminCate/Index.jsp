@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<jsp:useBean id="categories" type="java.util.List<com.example.edit.beans.Category>" scope="request"/>
 
 
 
@@ -15,7 +15,7 @@ Begin content
   <div class="container">
     <div class="card">
       <div class="card-header d-flex justify-content-md-between">
-        <span class="text-title">Bài Viết</span>
+        <span class="text-title">Categories</span>
         <div class="d-flex">
           <form class="form-inline " >
             <div class="p-1 rounded rounded-pill shadow " style="background: white">
@@ -27,7 +27,7 @@ Begin content
               </div>
             </div>
           </form>
-          <a href="#" class="btn btn-success btn-lg ml-5 "><i class="bi bi-plus-square "></i></a>
+          <a href="${pageContext.request.contextPath}/Admin/Category/Add" class="btn btn-success btn-lg ml-5 "><i class="bi bi-plus-square "></i></a>
         </div>
       </div>
       <div class="body">
@@ -41,35 +41,17 @@ Begin content
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td class="d-flex " style="font-size: 20px">
-              <a href="#" type="button" class="btn link"><i class="bi bi-pencil-square"></i></a>
-              <a href="#" type="button" class="btn link"><i class="bi bi-trash"></i></a>
-              <a href="#" type="button" class="btn link"><i class="bi bi-eye"></i></a>
-            </td>
-
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td style="font-size: 20px">
-              <a href="#" type="button" class="btn btn-secondary btn-sm"><i class="bi bi-pencil-square"></i></a>
-              <a href="#" type="button" class="btn btn-secondary btn-sm"><i class="bi bi-trash"></i></a>
-              <a href="#" type="button" class="btn btn-secondary btn-sm"><i class="bi bi-eye"></i></a>
-            </td>
-
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td style="font-size: 20px">
-              <a href="#" type="button" class="btn btn-secondary btn-sm"><i class="bi bi-pencil-square"></i></a>
-              <a href="#" type="button" class="btn btn-secondary btn-sm"><i class="bi bi-trash"></i></a>
-              <a href="#" type="button" class="btn btn-secondary btn-sm"><i class="bi bi-eye"></i></a>
-            </td>
-          </tr>
+          <c:forEach items="${categories}" var="k">
+            <tr>
+              <th scope="row">${k.categories_id}</th>
+              <td>${k.name}</td>
+              <td class="d-flex " style="font-size: 20px">
+                <a href="${pageContext.request.contextPath}/Admin/Category/Update?id=${k.categories_id}" type="button" class="btn link"><i class="bi bi-pencil-square"></i></a>
+                <a href="${pageContext.request.contextPath}/Admin/Category/Delete?id=${k.categories_id}" role="button" class="btn link"><i class="bi bi-trash"></i></a>
+                <a href="${pageContext.request.contextPath}/Admin/Category/Update?id=${k.categories_id}" type="button" class="btn link"><i class="bi bi-eye"></i></a>
+              </td>
+            </tr>
+          </c:forEach>
           </tbody>
         </table>
       </div>

@@ -19,7 +19,7 @@
                             </div>
                         </div>
                     </form>
-                    <a href="#" class="btn btn-success btn-lg ml-5 "><i class="bi bi-plus-square "></i></a>
+                    <a href="${pageContext.request.contextPath}/Admin/Tag/Add" class="btn btn-success btn-lg ml-5 "><i class="bi bi-plus-square "></i></a>
                 </div>
             </div>
             <c:choose>
@@ -34,7 +34,7 @@
                             <thead class="thead-dark">
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">Tag Name</th>
+                                <th scope="col">Tags Name</th>
                                 <th scope="col">Action</th>
 
                             </tr>
@@ -45,8 +45,8 @@
                                     <th scope="row">${c.tags_id}</th>
                                     <td>${c.value}</td>
                                     <td class="d-flex " style="font-size: 20px">
-                                        <a href="#" type="button" class="btn link"><i class="bi bi-pencil-square"></i></a>
-                                        <a href="#" type="button" class="btn link"><i class="bi bi-trash"></i></a>
+                                        <a href="${pageContext.request.contextPath}/Admin/Tag/Update?id=${c.tags_id}" type="button" class="btn link"><i class="bi bi-pencil-square"></i></a>
+                                        <a href="${pageContext.request.contextPath}/Admin/Tag/Delete?id=${c.tags_id}" type="button" class="btn link"><i class="bi bi-trash"></i></a>
                                         <a href="#" type="button" class="btn link"><i class="bi bi-eye"></i></a>
                                     </td>
                                 </tr>

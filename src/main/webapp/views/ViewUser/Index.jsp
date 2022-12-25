@@ -128,9 +128,9 @@
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
                                         <div class="row">
-                                            <span class="col-4">User: </span>
+                                            <span class="col-4">Username: </span>
                                             <div class="col-8">
-                                                <span>${authUser.username}</span>
+                                                <input class="w-75" type="text" name="username" id="#txtUsername" value="${authUser.username}" readonly>
                                             </div>
                                         </div>
                                     </li>
@@ -138,7 +138,7 @@
                                         <div class="row">
                                             <span class="col-4">Password: </span>
                                             <div class="col-8">
-                                                <span>${authUser.password}</span>
+                                                <input class="w-75" type="password" name="password" id="#txtPass" value="${authUser.password}" readonly>
                                             </div>
                                         </div>
                                     </li>

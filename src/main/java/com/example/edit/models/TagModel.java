@@ -1,6 +1,7 @@
 package com.example.edit.models;
 
 import com.example.edit.Utils.DbUtils;
+import com.example.edit.beans.Category;
 import com.example.edit.beans.Tag;
 import com.example.edit.beans.User;
 import org.sql2o.Connection;
@@ -36,5 +37,50 @@ public class TagModel {
             return true;
         }
 
+    }
+    public static Tag findTagById(int tags_id) {
+        final String query = "SELECT * FROM tags WHERE tags_id = :tags_id";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Tag> list = con.createQuery(query)
+                    .addParameter("tags_id", tags_id)
+                    .executeAndFetch(Tag.class);
+
+            if (list.size() == 0) {
+                return null;
+            }
+
+            return list.get(0);
+        }
+    }
+    public static void addTag(Tag tag)
+    {
+        final String query = "INSERT INTO tags (value) VALUES (:value)";
+        try(Connection con = DbUtils.getConnection()){
+            con.createQuery(query)
+                    .addParameter("value", tag.getValue())
+                    .executeUpdate();
+
+        }
+    }
+    public static void updateTage(Tag tag)
+    {
+        final String query = "UPDATE tags SET  value = :value WHERE tags_id = :tags_id";
+        try(Connection con = DbUtils.getConnection()){
+            con.createQuery(query)
+                    .addParameter("tags_id",tag.getTags_id())
+                    .addParameter("value", tag.getValue())
+                    .executeUpdate();
+
+        }
+    }
+    public static void deleteTag(int tags_id)
+    {
+        final String query = "DELETE FROM tags WHERE tags_id = :tags_id";
+        try(Connection con = DbUtils.getConnection()){
+            con.createQuery(query)
+                    .addParameter("tags_id",tags_id)
+                    .executeUpdate();
+
+        }
     }
 }
