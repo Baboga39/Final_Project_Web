@@ -3,7 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
-<d:posts>
+<d:web>
+    <jsp:attribute name="css">
+        <link rel="stylesheet" href="/css/posts.css">
+    </jsp:attribute>
     <jsp:body>
         <br><br><br><br>
         <div class="content">
@@ -139,4 +142,4 @@
         </div>
         </div>
     </jsp:body>
-</d:posts>
+</d:web>
