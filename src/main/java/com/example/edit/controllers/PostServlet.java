@@ -90,8 +90,8 @@ public class PostServlet extends HttpServlet {
                     if (tmp.startsWith("filename")) {
                         int idx = tmp.indexOf("=") + 2;
                         String filename = tmp.substring(idx, tmp.length() - 1);
-
-                        String targetDir = this.getServletContext().getRealPath("public/user-avatars");
+                    //   http://localhost:8080/Edit/image/Article/A3.jpg
+                        String targetDir = this.getServletContext().getRealPath("image/Article");
                         File dir = new File(targetDir);
                         if (!dir.exists()) {
                             dir.mkdir();
