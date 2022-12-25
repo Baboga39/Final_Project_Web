@@ -39,12 +39,8 @@ public class ArticlePostsServlet extends HttpServlet {
             case "/Search":
                 String text = request.getParameter("search");
                 List<Articles> listA = ArticleModel.findSearch(text);
-                List<Category> listC = CategoryModel.findAll();
-                List<Category> listP = CategoryModel.findByParentId(2);
                 List<Tag> listT = TagModel.findByindex();
                 request.setAttribute("Day",getCurrentDate());
-                request.setAttribute("listC", listC);
-                request.setAttribute("listP", listP);
                 request.setAttribute("tags", listT);
                 request.setAttribute("listA", listA);
                 ServletUtils.forward("/views/viewArticlePosts/Search.jsp", request, response);

@@ -15,7 +15,7 @@
                             <ul class="navbar-nav mr-auto">
                                 <c:forEach items="${tags}" var="o">
                                     <li class="nav-item active">
-                                        <a href="#" class=" link-cate mr-3" style="font-size: 10px; color: black;">${o.value}</a>
+                                        <a href="${pageContext.request.contextPath}/Post/Tag?tid=${o.tags_id}" class=" link-cate mr-3" style="font-size: 10px; color: black;">${o.value}</a>
                                     </li>
                                 </c:forEach>
                             </ul>

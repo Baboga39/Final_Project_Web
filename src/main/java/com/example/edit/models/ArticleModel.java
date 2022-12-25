@@ -29,6 +29,18 @@ public class ArticleModel {
             return list.get(0);
         }
     }
+    public static List<Articles> getArticleByTag(int tags_id){
+        final String query = "SELECT articles.article_id,articles.title,articles.publish_date,articles.views,articles.abstracts,articles.content,articles.categories_id,articles.premium,articles.writer_id,articles.status_id,articles.avatar,articles.image_content,articles.categoryName FROM tags INNER JOIN tags_articles  ON tags.tags_id = tags_articles.tags_id  INNER JOIN articles on tags_articles.article_id = articles.article_id WHERE tags.tags_id = :tags_id";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Articles> list = con.createQuery(query)
+                    .addParameter("tags_id", tags_id)
+                    .executeAndFetch(Articles.class);
+            if (list.size() == 0){
+                return null;
+            }
+            return list;
+        }
+    }
     public static List<Articles> findRand5SameCat(int article_id){
         final String query = "SELECT * FROM articles WHERE categories_id=" +
                 "(SELECT categories_id FROM articles WHERE article_id= :article_id) ORDER BY RAND() LIMIT 5";
@@ -43,8 +55,7 @@ public class ArticleModel {
         }
     }
     public static List<Tag> findTagByArtId(int article_id){
-        final String query = "SELECT tags.`value` from tags INNER JOIN tags_articles " +
-                "ON tags.tags_id=tags_articles.tags_id WHERE tags_articles.article_id= :article_id";
+        final String query = "SELECT tags.tags_id, tags.`value` from tags INNER JOIN tags_articles ON tags.tags_id=tags_articles.tags_id WHERE tags_articles.article_id= :article_id";
         try (Connection con = DbUtils.getConnection()) {
             List<Tag> list = con.createQuery(query)
                     .addParameter("article_id", article_id)

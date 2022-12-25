@@ -42,6 +42,9 @@ public class PostServlet extends HttpServlet {
             case "/Category":
                 getArticleByCate(request,response);
                 break;
+            case "/Tag":
+                getArticleByTag(request,response);
+                break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
                 break;
@@ -126,5 +129,17 @@ public class PostServlet extends HttpServlet {
         request.setAttribute("list", list);
         request.setAttribute("listCa", listCa);
         ServletUtils.forward("/views/viewArticlePosts/Index.jsp", request, response);
+    }
+    private static java.sql.Date getCurrentDate() {
+        java.util.Date today = new java.util.Date();
+        return new java.sql.Date(today.getTime());
+    }
+    private void getArticleByTag(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String tid = request.getParameter("tid");
+        int tagId = Integer.parseInt(tid);
+        request.setAttribute("Day",getCurrentDate());
+        List<Articles> listA = ArticleModel.getArticleByTag(tagId);
+        request.setAttribute("listA", listA);
+        ServletUtils.forward("/views/viewArticlePosts/Search.jsp", request, response);
     }
 }

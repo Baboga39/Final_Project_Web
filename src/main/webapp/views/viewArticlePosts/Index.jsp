@@ -12,7 +12,7 @@
         <div class="content">
 
             <c:forEach items="${listCa}" var="o">
-            <h1>${o.name}</h1>
+            <h1><a href="">${o.name}</a></h1>
             </c:forEach>
 
     <c:if test="${check eq true}">
@@ -31,7 +31,7 @@
                     <div class="col-md-6 mb-4">
                         <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
                             <img src="${pageContext.request.contextPath}/image/Article/${listOne.avatar}" class="img-fluid" />
-                            <a href="#!">
+                            <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
                                 <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                             </a>
                         </div>
@@ -47,7 +47,8 @@
                             #tag #tag #tag
                             <i class="close fas fa-times"></i>
                         </div>
-                        <button type="button" class="btn btn-primary">Tìm hiểu ngay</button>
+                        <button type="button" class="btn btn-primary"><a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}" style="    text-decoration: none;
+                    color: white;">Tìm hiểu ngay</a></button>
                     </div>
                 </div>
             </section>
@@ -61,8 +62,8 @@
                             <!-- Featured image -->
                             <div class="bg-image hover-overlay shadow-1-strong ripple rounded-5 mb-4"
                                  data-mdb-ripple-color="light">
-                                <img style="    max-width: 90% !important;" src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="img-fluid" />
-                                <a href="#!">
+                                <img style="    max-width: 90% !important;     height: 286px;" src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="img-fluid" />
+                                <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
                                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                                 </a>
                             </div>
@@ -105,11 +106,11 @@
                             <li class="media my-4">
                                 <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="mr-3 img-fluid d-block w-25  " alt="...">
                                 <div class="media-body">
-                                    <a href="#">
+                                    <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
                                         <h4 class="mt-0 mb-1">${o.title}</h4>
                                     </a>
                                     <span class="badge badge-pill badge-primary">${o.categoryName}</span>
-                                    <p> >${o.abstracts}
+                                    <p> ${o.abstracts}
                                     </p>
                                     <p>#tag #tag #tag</p>
                                     <p><i class="bi bi-calendar mr-2"></i>${o.publish_date}</p>

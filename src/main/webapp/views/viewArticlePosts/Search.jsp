@@ -6,7 +6,6 @@
         <div class="tag mb-3">
             <div class="navbar-expand-lg">
                 <div class="container-sm d-flex justify-content-sm-between">
-                    <a class="navbar-brand mb-0 h1 mt-1" href="#"><i class="bi bi-backspace-reverse-fill" style="color: #3f3f3f"></i></a>
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav mr-auto">
                             <c:forEach items="${tags}" var="o">
@@ -22,10 +21,6 @@
                 </div>
             </div>
         </div>
-
-
-
-        <hr class="mt-5">
         <div class="new-news">
             <div class="container">
                 <div class="text-heading border-danger" style="font-size: 25px"><i class="bi bi-align-start"></i>
@@ -36,7 +31,7 @@
                             <li class="media my-4">
                                 <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="mr-3 img-fluid d-block w-25  " alt="...">
                                 <div class="media-body">
-                                    <a href="#">
+                                    <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
                                         <h4 class="mt-0 mb-1">${o.title}</h4>
                                     </a>
                                     <p> ${o.abstracts} </p>

@@ -1,6 +1,7 @@
 package com.example.edit.models;
 
 import com.example.edit.Utils.DbUtils;
+import com.example.edit.beans.Articles;
 import com.example.edit.beans.Category;
 import com.example.edit.beans.Tag;
 import com.example.edit.beans.User;
@@ -83,4 +84,6 @@ public class TagModel {
 
         }
     }
+
+
 }
