@@ -286,7 +286,9 @@ public class ArticleModel {
         }
     }
     public  static  void addNews(Articles a){
-        final String query = "INSERT INTO articles (title, publish_date, views, abstracts, content, categories_id, premium, writer_id, status_id, avatar, image_content) VALUES (:title,:publish_date,:views,:abstracts,:content,:categories_id,:premium,:writer_id,:status_id,:avatar,:image_content)\n";
+        final String query = "INSERT INTO articles (title, publish_date, views, abstracts, content, categories_id, premium, " +
+                "writer_id, status_id, avatar, image_content, categoryName) VALUES (:title,:publish_date,:views,:abstracts," +
+                ":content,:categories_id,:premium,:writer_id,:status_id,:avatar,:image_content,:categoryName)\n";
         try(Connection con  = DbUtils.getConnection())
         {
                      con.createQuery(query)
@@ -301,6 +303,7 @@ public class ArticleModel {
                     .addParameter("status_id",a.getStatus_id())
                     .addParameter("avatar",a.getAvatar())
                     .addParameter("image_content",a.getImage_content())
+                    .addParameter("categoryName",a.getCategoryName())
                     .executeUpdate();
         }
     }

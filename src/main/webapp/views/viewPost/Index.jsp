@@ -1,15 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="d" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<jsp:useBean id="categories" scope="request" type="java.util.List<com.example.edit.beans.Category>"/>
+<jsp:useBean id="tags" scope="request" type="java.util.List<com.example.edit.beans.Tag>"/>
 
-
-<d:web>
+<t:web>
   <jsp:attribute name="js">
-    <script src="https://cdn.tiny.cloud/1/x0hb0bn8pkdrphzctxpeuv04rxybmsnkj27z60lwkvfkum2s/tinymce/5/tinymce.min.js"
-            referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/1jp8ineln53u6yy75unwd6d2dmxjp1y71wz8b7sfsp6qjo0x/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>s
     <script>
         tinymce.init({
+            entity_encoding : "raw",
             selector: '#txtContent',
             placeholder: 'Type content here',
             height: 450,
@@ -31,23 +32,31 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="txtTitle">Title</label>
-                        <input type="text" class="form-control" id="txtTitle" name="Title" autofocus />
+                        <input type="text" class="form-control" id="txtTitle" name="title" autofocus />
                     </div>
                     <div class="form-group">
                         <label for="txtAbstracts">Abstracts</label>
-                        <input type="text" class="form-control" id="txtAbstracts" name="Abstracts" autofocus />
+                        <input type="text" class="form-control" id="txtAbstracts" name="abstracts"  />
                     </div>
                     <div class="form-group">
-                        <label for="txtCategories">Categories</label>
-                        <input type="text" class="form-control" id="txtCategories" name="Categories" autofocus />
+                        <label for="txtCategory">Categories</label>
+                        <select id="txtCategory" class="form-control" name="name">
+                            <c:forEach items="${categories}" var="c">
+                                <option>${c.name}</option>
+                            </c:forEach>
+                        </select>
                     </div>
                     <div class="form-group">
-                        <label for="txtTags">Tags</label>
-                        <input type="text" class="form-control" id="txtTags" name="Tags" autofocus />
+                        <label for="txtTag">Tags</label>
+                        <select id="txtTag" name="Tag" class="form-control" multiple="multiple">
+                            <c:forEach items="${tags}" var="c">
+                                <option>${c.value}</option>
+                            </c:forEach>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="txtContent">Content</label>
-                        <textarea id="txtContent" name="Content"></textarea>
+                        <textarea id="txtContent" name="content"></textarea>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -59,4 +68,4 @@
             </div>
         </form>
     </jsp:body>
-</d:web>
+</t:web>
