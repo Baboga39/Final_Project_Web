@@ -31,16 +31,26 @@ public class ArticleModel {
             return list.get(0);
         }
     }
-    public static List<Articles> getArticleByTag(int tags_id){
-        final String query = "SELECT articles.article_id,articles.title,articles.publish_date,articles.views,articles.abstracts,articles.content,articles.categories_id,articles.premium,articles.writer_id,articles.status_id,articles.avatar,articles.image_content,articles.categoryName FROM tags INNER JOIN tags_articles  ON tags.tags_id = tags_articles.tags_id  INNER JOIN articles on tags_articles.article_id = articles.article_id WHERE tags.tags_id = :tags_id  and status_id= 102";
+    public static List<Articles> getArticleByTag(int tags_id ,int index){
+        final String query = "SELECT articles.article_id,articles.title,articles.publish_date,articles.views,articles.abstracts,articles.content,articles.categories_id,articles.premium,articles.writer_id,articles.status_id,articles.avatar,articles.image_content,articles.categoryName FROM tags INNER JOIN tags_articles  ON tags.tags_id = tags_articles.tags_id  INNER JOIN articles on tags_articles.article_id = articles.article_id WHERE tags.tags_id = :tags_id  and status_id= 102 LIMIT :index,6 ";
         try (Connection con = DbUtils.getConnection()) {
             List<Articles> list = con.createQuery(query)
                     .addParameter("tags_id", tags_id)
+                    .addParameter("index",index)
                     .executeAndFetch(Articles.class);
             if (list.size() == 0){
                 return null;
             }
             return list;
+        }
+    }
+    public static int getTotalArtilceByTag(int tags_id) {
+        final String query = "SELECT articles.article_id,articles.title,articles.publish_date,articles.views,articles.abstracts,articles.content,articles.categories_id,articles.premium,articles.writer_id,articles.status_id,articles.avatar,articles.image_content,articles.categoryName FROM tags INNER JOIN tags_articles  ON tags.tags_id = tags_articles.tags_id  INNER JOIN articles on tags_articles.article_id = articles.article_id WHERE tags.tags_id = :tags_id  and status_id= 102";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Articles> list=  con.createQuery(query)
+                    .addParameter("tags_id",tags_id)
+                    .executeAndFetch(Articles.class);
+            return list.size();
         }
     }
     public static List<Articles> findRand5SameCat(int article_id){
