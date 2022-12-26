@@ -11,7 +11,9 @@ import java.util.List;
 public class ArticleModel {
 
     public static List<Articles> findDraftArticles() {
-        final String query = "select * from articles where status_id=104";
+        final String query = "SELECT articles.article_id,articles.title,articles.publish_date,articles.views," +
+                "articles.abstracts,articles.categoryName,users.second_name,articles.premium\n" +
+                "FROM users INNER JOIN articles on users.user_id=articles.writer_id  WHERE status_id=104";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .executeAndFetch(Articles.class);
@@ -80,7 +82,7 @@ public class ArticleModel {
         }
     }
     public static List<Comments> findComment(int article_id){
-        final String query = "SELECT users.user_id,comment,create_date from comments " +
+        final String query = "SELECT users.second_name,comment,create_date from comments " +
                 "INNER JOIN users ON comments.user_id=users.user_id WHERE article_id= :article_id";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
@@ -88,15 +90,7 @@ public class ArticleModel {
                     .executeAndFetch(Comments.class);
         }
     }
-    public static List<User> findAuthorComment(int article_id){
-        final String query = "SELECT users.second_name from comments INNER JOIN " +
-                "users on comments.user_id=users.user_id WHERE article_id= :article_id";
-        try (Connection con = DbUtils.getConnection()) {
-            return con.createQuery(query)
-                    .addParameter("article_id",article_id)
-                    .executeAndFetch(User.class);
-        }
-    }
+
     public static List<Articles> findTop5() {
         final String query = "SELECT * FROM articles ORDER BY views DESC LIMIT 0,5";
         try (Connection con = DbUtils.getConnection()) {

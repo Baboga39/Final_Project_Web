@@ -31,13 +31,10 @@ public class ArticleDetailServlet extends HttpServlet {
                 request.setAttribute("listRand5SameCat",listRand5);
 
                 List<Tag> listTag = ArticleModel.findTagByArtId(articleID);
-                request.setAttribute("listTag",listTag);
+                request.setAttribute("tags",listTag);
 
                 List<Comments> listComment = ArticleModel.findComment(articleID);
-                request.setAttribute("listComment",listComment);
-
-                List<User> listAuthor = ArticleModel.findAuthorComment(articleID);
-                request.setAttribute("listAuthor",listAuthor);
+                request.setAttribute("comments",listComment);
 
                 User user = ArticleModel.findAuthor(articleID);
                 Articles article = ArticleModel.findById(articleID);
