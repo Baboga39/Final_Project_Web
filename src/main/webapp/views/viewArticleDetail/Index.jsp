@@ -17,6 +17,9 @@
                             <img class="img-fluid w-100" src="${pageContext.request.contextPath}/image/Article/${article.avatar}" style="object-fit: cover;">
                             <div class="bg-white border border-top-0 p-4">
                                 <div class="mb-3">
+                                    <c:if test="${checkPre ==true}">
+                                    <img src="https://tse2.mm.bing.net/th?id=OIP.usAcnyD4C2JZwdZ_gksHmgHaEv&pid=Api&P=0" style="    max-width: 8%;">
+                                    </c:if>
                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">${article.categoryName}</a>
                                     <a class="text-body" href="">${article.publish_date}</a>
                                 </div>

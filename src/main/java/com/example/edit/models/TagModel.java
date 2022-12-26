@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TagModel {
+    //Tìm tất cả các Tag
     public static List<Tag> findAll() {
         final String query = "SELECT * FROM tags";
         try (Connection con = DbUtils.getConnection()) {
@@ -18,13 +19,16 @@ public class TagModel {
                     .executeAndFetch(Tag.class);
         }
     }
+    //Tìm Tag theo index
     public  static List<Tag> findByindex() {
         final String query = "SELECT  tags.tags_id, tags.`value`FROM tags LEFT JOIN tags_articles " +
                 "ON tags.tags_id = tags_articles.tags_id WHERE index_id =1 LIMIT 4;";
-        try (Connection con = DbUtils.getConnection()) {
+        try(Connection con =DbUtils.getConnection())
+        {
             return con.createQuery(query)
                     .executeAndFetch(Tag.class);
         }
+
     }
     public static boolean checkTagById(int tags_id) {
         String query = "select * from tags where tags_id = :tags_id";

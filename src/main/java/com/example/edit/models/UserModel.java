@@ -36,7 +36,7 @@ public class UserModel {
                     .executeUpdate();
         }
     }
-
+    // Reset mật khẩu qua Email
     public static void edit(String pass, String email) {
 
         String updateSql = "UPDATE users SET password = :password WHERE email= :email";
@@ -48,22 +48,20 @@ public class UserModel {
         }
 
     }
-
+    //Tìm User theo email
     public static User findByEmail(String email) {
         final String query = "select user_id,username,password,`name`,second_name,email FROM users  where email = :email";
-        try (Connection con = DbUtils.getConnection()) {
-            List<User> list = con.createQuery(query)
+       try ( Connection con = DbUtils.getConnection()){
+                    List<User> list = con.createQuery(query)
                     .addParameter("email", email)
-                    .executeAndFetch(User.class);
+                            .executeAndFetch(User.class);
             if (list.size() == 0) {
                 return null;
             }
-
             return list.get(0);
         }
     }
-
-
+    //Lấy tài khoản theo email
     public static User getNameUserByEmail(String email) {
         String query = "SELECT name FROM users WHERE email= :email";
         try (Connection con = DbUtils.getConnection()) {
@@ -78,7 +76,7 @@ public class UserModel {
         }
     }
 
-
+    //Tìm User theo Username
     public static User findByUsername(String username) {
         final String query = "select * from users where username = :username";
         try (Connection con = DbUtils.getConnection()) {
@@ -92,6 +90,7 @@ public class UserModel {
             return list.get(0);
         }
     }
+    //Tìm User theo Uid
     public static User findById(int user_id) {
         final String query = "select * from users where user_id = :user_id";
         try (Connection con = DbUtils.getConnection()) {
@@ -104,6 +103,7 @@ public class UserModel {
             return list.get(0);
         }
     }
+    //Chỉnh sửa thông tin User
     public static void editUser(int user_id, String name , String email, LocalDate date_of_birth, String second_name) {
 
         String updateSql = "UPDATE users SET email=:email,second_name= :second_name ,date_of_birth= :date_of_birth,`name`= :name WHERE user_id= :user_id";
@@ -117,6 +117,7 @@ public class UserModel {
                     .executeUpdate();
         }
     }
+    //Chỉnh sửa Account User
     public static void editAcc(int user_id,String password,String username) {
 
         String updateSql = "UPDATE users SET `password`= :password, username= :username WHERE user_id= :user_id ";
@@ -128,6 +129,7 @@ public class UserModel {
                     .executeUpdate();
         }
     }
+    //Thêm Account Pre
     public static void editAccPre(int user_id,LocalDate issue_at ) {
 
         String updateSql = "UPDATE users SET issue_at = :issue_at WHERE user_id= :user_id ";
@@ -142,6 +144,7 @@ public class UserModel {
     static final String PASSWORD = "Ngochai0612";
     static final String SUBJECT = "Quên mật khẩu.";
     static final String SUBJECTS = "Xác nhận thông tin.";
+    // Lấy mã Otp
     public static String getOtp(String email) {
         String query = "SELECT otp FROM users WHERE email= :email";
         try (Connection con = DbUtils.getConnection()) {
@@ -157,7 +160,7 @@ public class UserModel {
             }
         }
     }
-
+    //Kiểm tra xem Otp có trùng không
     public static boolean checkOtp(String otp, String email) {
         String query = "SELECT otp_exp FROM users WHERE otp= :otp AND email= :email";
         try (Connection con = DbUtils.getConnection()) {
@@ -172,6 +175,7 @@ public class UserModel {
             }
         }
     }
+    //Gửi mail cho người dùng xác nhận thông tin gia hạn tài khoản
     public static void sendMailToEmailConfirm(String email, String Content) {
         String fromEmail = ACCOUNT;
         try {
@@ -201,6 +205,7 @@ public class UserModel {
             e.printStackTrace();
         }
     }
+    // Gửi mail mã Otp cho khách hàng
     public static void sendMailToEmail(String email, String Content) {
         String fromEmail = ACCOUNT;
         try {
@@ -231,6 +236,7 @@ public class UserModel {
         }
     }
 
+    //Lấy User theo Email
     public static User getUserByEmail(String email) {
         String query = "SELECT name FROM users WHERE email= :email";
         try (Connection con = DbUtils.getConnection()) {
@@ -244,7 +250,7 @@ public class UserModel {
             }
         }
     }
-
+    // Kiểm tra Username có trùng không
     public static boolean checkByUserName(String username) {
         String query = "select * from users where username = :username";
         try (Connection con = DbUtils.getConnection()) {
@@ -257,6 +263,7 @@ public class UserModel {
             return true;
         }
     }
+    // Kiểm tra tài khoản người dùng còn hạn hay không
     public static boolean checkEx(int user_id) {
         String query = "SELECT * FROM users WHERE expiration >  DATEDIFF (CURRENT_DATE(),issue_at) AND user_id = :user_id";
         try (Connection con = DbUtils.getConnection()) {

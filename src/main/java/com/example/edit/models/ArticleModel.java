@@ -31,6 +31,7 @@ public class ArticleModel {
             return list.get(0);
         }
     }
+    //Lấy bài viết để phân trang theo Tag
     public static List<Articles> getArticleByTag(int tags_id ,int index){
         final String query = "SELECT articles.article_id,articles.title,articles.publish_date,articles.views,articles.abstracts,articles.content,articles.categories_id,articles.premium,articles.writer_id,articles.status_id,articles.avatar,articles.image_content,articles.categoryName FROM tags INNER JOIN tags_articles  ON tags.tags_id = tags_articles.tags_id  INNER JOIN articles on tags_articles.article_id = articles.article_id WHERE tags.tags_id = :tags_id  and status_id= 102 LIMIT :index,6 ";
         try (Connection con = DbUtils.getConnection()) {
@@ -44,6 +45,7 @@ public class ArticleModel {
             return list;
         }
     }
+    //Lấy tổng số bài viết để phân trang theo Tag
     public static int getTotalArtilceByTag(int tags_id) {
         final String query = "SELECT articles.article_id,articles.title,articles.publish_date,articles.views,articles.abstracts,articles.content,articles.categories_id,articles.premium,articles.writer_id,articles.status_id,articles.avatar,articles.image_content,articles.categoryName FROM tags INNER JOIN tags_articles  ON tags.tags_id = tags_articles.tags_id  INNER JOIN articles on tags_articles.article_id = articles.article_id WHERE tags.tags_id = :tags_id  and status_id= 102";
         try (Connection con = DbUtils.getConnection()) {
@@ -100,7 +102,7 @@ public class ArticleModel {
                     .executeAndFetch(Comments.class);
         }
     }
-
+    // Lấy top 5  bài viết xem nhiều nhất
     public static List<Articles> findTop5() {
         final String query = "SELECT * FROM articles WHERE  status_id= 102 ORDER BY views DESC LIMIT 0,5 ";
         try (Connection con = DbUtils.getConnection()) {
@@ -108,7 +110,7 @@ public class ArticleModel {
                     .executeAndFetch(Articles.class);
         }
     }
-
+    // Lấy top 10 bài viết xem nhiều nhất  kể từ 5 cái trên
     public static List<Articles> findTop10() {
         final String query = "SELECT * FROM articles where  status_id= 102 ORDER BY views DESC LIMIT 5,5  ";
         try (Connection con = DbUtils.getConnection()) {
@@ -116,7 +118,7 @@ public class ArticleModel {
                     .executeAndFetch(Articles.class);
         }
     }
-
+    //Tìm top 4 bài viết mới nhất
     public static List<Articles> findTop4() {
         final String query = "SELECT \n" +
                 "    *\n" +
@@ -131,6 +133,7 @@ public class ArticleModel {
                     .executeAndFetch(Articles.class);
         }
     }
+    //Tìm top 3 bài viết mới nhất trong tuần
     public static List<Articles> findTop3() {
         final String query = "SELECT \n" +
                 "    *\n" +
@@ -145,6 +148,7 @@ public class ArticleModel {
                     .executeAndFetch(Articles.class);
         }
     }
+    // Top 4 bài viết xem nhiều nhất mọi chuyên mục
     public static List<Articles> findTop5New() {
         final String query = "SELECT *  FROM articles WHERE  publish_date <=CURRENT_DATE()  and status_id= 102 ORDER BY publish_date DESC LIMIT 2,4";
         try (Connection con = DbUtils.getConnection()) {
@@ -152,6 +156,7 @@ public class ArticleModel {
                     .executeAndFetch(Articles.class);
         }
     }
+    // Top 1 bài viết mới nhất trong tuần qua
     public static Articles fin1() {
         final String query = "SELECT *  FROM articles WHERE publish_date <=CURRENT_DATE()  and status_id= 102 ORDER BY publish_date DESC LIMIT 5";
         try (Connection con = DbUtils.getConnection()) {
@@ -160,6 +165,7 @@ public class ArticleModel {
             return  list.get(0);
         }
     }
+    //Top 5 bài viết xem nhiều nhất mọi chuyên mục kể từ cái thứ 5
     public static List<Articles> findTop5NewNext() {
         final String query = "SELECT *\n" +
                 "FROM\n" +
@@ -167,7 +173,7 @@ public class ArticleModel {
                 "                WHERE\n" +
                 "                    publish_date <=CURRENT_DATE() and status_id= 102 \n" +
                 "                ORDER BY publish_date DESC\n" +
-                "                LIMIT 6,5";
+                "                LIMIT 5,5";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .executeAndFetch(Articles.class);
@@ -198,6 +204,7 @@ public class ArticleModel {
             }
         }
     }
+    //Top 5 mỗi chuyên mục kể từ chuyên mục 1
     public static List<Articles> findTop10Cate() {
         int count = getAllCate();
         List<Articles> list= new ArrayList<>();
@@ -207,6 +214,7 @@ public class ArticleModel {
         }
         return list;
     }
+    //Top 10 chuyên mục kể từ chuyên mục 5
     public static List<Articles> findTop10CateNext() {
         int count = getAllCate();
         List<Articles> list= new ArrayList<>();
@@ -216,6 +224,7 @@ public class ArticleModel {
         }
         return list;
     }
+    // Tìm kiếm theo Search
     public static List<Articles> findSearch(String text) {
         final String query = "SELECT * FROM articles WHERE MATCH(title,content,abstracts) AGAINST(:text)  and status_id= 102" ;
         try (Connection con = DbUtils.getConnection()) {
@@ -224,6 +233,7 @@ public class ArticleModel {
                     .executeAndFetch(Articles.class);
         }
     }
+    // Lấy tổng bài viết khi tìm kiếm từ khóa
     public static int getTotalArtilceBySearh(String text) {
         final String query = "SELECT * FROM articles WHERE MATCH(title,content,abstracts) AGAINST(:text)  and status_id= 102";
         try (Connection con = DbUtils.getConnection()) {
@@ -233,6 +243,7 @@ public class ArticleModel {
             return list.size();
         }
     }
+    // Lấy tất cả bài viết đã tìm kiếm xong chia thành 6 bài để phân trang
     public static List<Articles> findSearchPagging(String text, int index) {
         final String query = "SELECT * FROM articles WHERE MATCH(title,content,abstracts) AGAINST(:text)  and status_id= 102 LIMIT :index,6 ";
         try (Connection con = DbUtils.getConnection()) {
@@ -242,6 +253,7 @@ public class ArticleModel {
                     .executeAndFetch(Articles.class);
         }
     }
+    // Lấy các bài viết theo id danh mục
     public static List<Articles> getArticleByCate(int categories_id) {
         final String query = "SELECT * FROM articles WHERE categories_id = :categories_id   and status_id= 102";
         try (Connection con = DbUtils.getConnection()) {
@@ -250,6 +262,7 @@ public class ArticleModel {
                     .executeAndFetch(Articles.class);
         }
     }
+    // Lấy tôổng số bài viết trong 1 danh mục
     public static int getTotalArtilceByCate(int categories_id) {
         final String query = "SELECT * FROM articles WHERE categories_id = :categories_id  and status_id= 102 ";
         try (Connection con = DbUtils.getConnection()) {
@@ -259,6 +272,7 @@ public class ArticleModel {
             return list.size();
         }
     }
+    // Lấy các bài viết theo danh mục chọn ra 6 bài phân thành 1 trang
     public static List<Articles> getArticleToPagging(int categories_id, int index) {
         final String query = "SELECT * FROM articles WHERE categories_id = :categories_id  and status_id= 102 LIMIT :index,6 ";
         try (Connection con = DbUtils.getConnection()) {
@@ -274,6 +288,20 @@ public class ArticleModel {
             return con.createQuery(query)
                     .addParameter("categories_id",categories_id)
                     .executeAndFetch(Articles.class);
+        }
+    }
+    // Kiểm tra bài viết có thuộc dạng prenium hay không
+    public static boolean checkPre( int article_id) {
+        String query = "SELECT * FROM articles WHERE premium =1 AND  article_id = :article_id";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Articles> list = con.createQuery(query)
+                    .addParameter("article_id", article_id)
+                    .executeAndFetch(Articles.class);
+            if (list.size() == 0) {
+                return false;
+            } else {
+                return true;
+            }
         }
     }
 }

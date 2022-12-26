@@ -36,8 +36,16 @@ public class ArticleDetailServlet extends HttpServlet {
                 List<Comments> listComment = ArticleModel.findComment(articleID);
                 request.setAttribute("comments",listComment);
 
+                boolean checkPre = ArticleModel.checkPre(articleID);
                 User user = ArticleModel.findAuthor(articleID);
                 Articles article = ArticleModel.findById(articleID);
+                if (checkPre ==true)
+                {
+                    request.setAttribute("checkPre",true);
+                }
+                else {
+                    request.setAttribute("checkPre",false);
+                }
                 if(article==null){
                     ServletUtils.redirect("/Home", request, response);
                 } else{

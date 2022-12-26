@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryModel {
+    //Tìm tất cả danh mục không có parentId
     public static List<Category> findAll() {
         final String query = "SELECT * FROM categories WHERE parent_id  is  null";
         try (Connection con = DbUtils.getConnection()) {
@@ -24,6 +25,7 @@ public class CategoryModel {
                     .executeAndFetch(Category.class);
         }
     }
+    // Tìm danh mục con của một danh mục
     public static List<Category> findByParentId(int parent_id) {
         final String query = "SELECT * FROM categories WHERE parent_id= :parent_id ";
         try (Connection con = DbUtils.getConnection()) {
@@ -47,6 +49,7 @@ public class CategoryModel {
                     .executeAndFetch(Category.class);
         }
     }
+    // Tìm danh mục con của một danh mục
     public static List<Category> getCateChilds(int categories_id) {
         final String query = "SELECT * FROM categories WHERE parent_id = :categories_id";
         try (Connection con = DbUtils.getConnection()) {
@@ -68,6 +71,7 @@ public class CategoryModel {
             return true;
         }
     }
+    //Lấy danh mục theo category Id
     public static List<Category> getCateByID(int cateId) {
         final String query = "SELECT * FROM categories WHERE categories_id = :cateId LIMIT 1";
         try (Connection con = DbUtils.getConnection()) {
