@@ -49,7 +49,7 @@
                         </li>
                     </c:forEach>
                     <li class="page-item">
-                        <a class="page-link" href="${pageContext.request.contextPath}/Posts/PaggingSearch?tid=${tid}&&index=${indexNext}">Next</a>
+                        <a class="page-link" href="${pageContext.request.contextPath}/Post/Tag?tid=${tid}&&index=${indexNext}">Next</a>
                     </li>
                 </ul>
             </nav>
