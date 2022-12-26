@@ -276,4 +276,12 @@ public class ArticleModel {
                     .executeAndFetch(Articles.class);
         }
     }
+    public static List<Articles> findAll(){
+        final String query = "SELECT articles.*,second_name FROM articles" +
+                "                INNER JOIN users ON articles.writer_id = users.user_id";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .executeAndFetch(Articles.class);
+        }
+    }
 }

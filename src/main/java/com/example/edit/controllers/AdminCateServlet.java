@@ -112,6 +112,7 @@ public class AdminCateServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         String name = request.getParameter("name");
+
         Category category = new Category(0,name,0);
         CategoryModel.addCate(category);
         ServletUtils.redirect("/Admin/Category",request,response);
