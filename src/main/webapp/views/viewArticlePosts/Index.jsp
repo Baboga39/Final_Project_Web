@@ -45,7 +45,7 @@
                             #tag #tag #tag
                             <i class="close fas fa-times"></i>
                         </div>
-                        <button type="button" class="btn btn-primary"><a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}" style="    text-decoration: none;
+                        <button type="button" class="btn btn-primary"><a href="${pageContext.request.contextPath}/Detail?article_id=${listOne.article_id}" style="    text-decoration: none;
                     color: white;">Tìm hiểu ngay</a></button>
                     </div>
                 </div>
