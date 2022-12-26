@@ -1,101 +1,105 @@
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:useBean id="articles" scope="request" type="java.util.List<com.example.edit.beans.Articles>"/>
+<jsp:useBean id="draftArt" scope="request" type="java.util.List<com.example.edit.beans.Articles>"/>
 
-<t:editor>
-  <jsp:body>
-  <div class="container">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <div class="text-top-heading-main float-left mt-5">Control Panel</div>
-    </div>
-    <div class="card shadow mb-4 mt-5">
-      <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Articles</h6>
-      </div>
-      <c:choose>
-        <c:when test="${articles.size() == 0}">
-          <div class="card-header py-3">
-            <h6 class="text-center">Không có dữ liệu phù hợp !</h6>
+<t:main>
+  <!--
+  Begin content
+  -->
+  <div class="content-cate mt-5">
+    <div class="container">
+      <div class="card w-100 h-100 shadow">
+        <div class="card-header d-flex justify-content-md-between">
+          <span class="text-title">Draft Articles</span>
+          <div class="d-flex">
+            <form class="form-inline " >
+              <div class="p-1 rounded rounded-pill shadow " style="background: white">
+                <div class="input-group text-white">
+                  <input type="search" placeholder="Nhập vào đây" aria-describedby="button-addon1" class="form-control border-0 rounded rounded-pill bg-light">
+                  <div class="input-group-append">
+                    <button id="button-addon1" type="submit" class="btn btn-link"><i class="bi bi-search" style="color: black"></i></button>
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
-        </c:when>
-        <c:otherwise>
+        </div>
+        <div class="body">
           <table class="table">
             <thead class="thead-dark">
             <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Date</th>
-              <th>Abstract</th>
-              <th>Category</th>
-              <th>Tag</th>
-              <th>Writer</th>
-              <th>Content</th>
-              <th>Status</th>
-              <th>Reason</th>
-              <th>Time</th>
-              <th colspan="2">Action</th>
+              <th scope="col">ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Date</th>
+              <th scope="col">Views</th>
+              <th scope="col">Abstract</th>
+              <th scope="col">Category</th>
+              <th scope="col">Writer</th>
+              <th scope="col">Status</th>
+              <th scope="col">Premium</th>
+              <th scope="col">Action</th>
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${articles}" var="c">
+            <c:forEach items="${draftArt}" var="r">
               <tr>
-                <td>${c.articleId}</td>
-                <td>${c.title}</td>
-                <td>${c.publishDate}</td>
-                <td>${c.abstracts}</td>
-                <td>
-                  <select class="browser-default custom-select">
-                    <option selected>Thể Thao</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
+                <th scope="row">${r.article_id}</th>
+                <td>${r.title}</td>
+                <td>${r.publish_date}</td>
+                <td>${r.views}</td>
+                <td>${r.abstracts}</td>
+                <td>${r.categoryName}</td>
+                <td>${r.second_name}</td>
+                <td><span class="badge badge-danger">draft</span></td>
+                <c:choose>
+                  <c:when test="${r.premium == true}">
+                    <td><span class="badge badge-success"><i class="bi bi-check-square"></i></span></td>
+                  </c:when>
+                  <c:when test="${r.premium == false}">
+                    <td><span class="badge badge-danger"><i class="bi bi-check-square"></i></span></td>
+                  </c:when>
+                  <c:otherwise></c:otherwise>
+                </c:choose>
+                <td class="d-flex justify-content-sm-between" style="font-size: 20px">
+                  <a href="#" type="button" class="btn Update.jsplink"><i class="bi bi-trash"></i></a>
+                  <a href="#" type="button" class="btn link"><i class="bi bi-check-square"></i></a>
+                  <a href="${pageContext.request.contextPath}/Detail?article_id=${r.article_id}" type="button" class="btn link"><i class="bi bi-eye"></i></a>
                 </td>
-                <td>
-                  <select class="browser-default custom-select">
-                    <option selected>Tag</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                </td>
-                <td>${c.writerId}</td>
-                <td>${c.content}</td>
-                <td><div class="card text-white bg-danger mb-4">draft</div></td>
-                <td><textarea name="" cols="10" rows="2"></textarea></td>
-                <td><input type="date"></td>
-                <td><button type="button" class="btn btn-outline-danger"><span class="bi bi-x"></span></button></td>
-                <td><button type="button" class="btn btn-outline-success"><span class="bi bi-check"></span></button></td>
               </tr>
             </c:forEach>
             </tbody>
           </table>
-        </c:otherwise>
-      </c:choose>
-
-      <div class="card-footer">
-        <div class="pag d-flex justify-content-sm-end">
-          <nav aria-label="...">
-            <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+        </div>
+        <div class="card-footer d-flex justify-content-md-between">
+          <span class="text-title">Footer</span>
+          <div class="d-flex justify-content-md-between">
+            <a href="#" class="link mr-5 mt-2">View All</a>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  </jsp:body>
-</t:editor>
+
+  <!--
+  End content
+  -->
+</t:main>

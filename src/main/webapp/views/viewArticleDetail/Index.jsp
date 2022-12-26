@@ -3,9 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <jsp:useBean id="article" scope="request" type="com.example.edit.beans.Articles"/>
-
-<jsp:useBean id="listComment" scope="request" type="java.util.List<com.example.edit.beans.Comments>" />
-<jsp:useBean id="listAuthor" scope="request" type="java.util.List<com.example.edit.beans.User>" />
+<jsp:useBean id="comments" scope="request" type="java.util.List<com.example.edit.beans.Comments>" />
 
 <d:detail>
     <jsp:body>
@@ -43,17 +41,15 @@
                                 <h4 class="m-0 text-uppercase font-weight-bold"> Comments</h4>
                             </div>
                             <div class="bg-white border border-top-0 p-4">
-                                <c:forEach items="${listComment}" var="c">
-                                    <c:forEach items="${listAuthor}" var="a">
+                                <c:forEach items="${comments}" var="c">
                                         <div class="media mb-4">
                                             <img src="https://cdn.vectorstock.com/i/1000x1000/38/05/male-face-avatar-logo-template-pictograph-vector-11333805.webp" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
                                             <div class="media-body">
-                                                <h6><a class="text-secondary font-weight-bold" href="#">${a.second_name}</a> <small><i>${c.create_date}</i></small></h6>
+                                                <h6><a class="text-secondary font-weight-bold" href="#">${c.second_name}</a> <small><i>${c.create_date}</i></small></h6>
                                                 <p>${c.comment}</p>
                                                 <button class="btn btn-sm btn-outline-secondary">Reply</button>
                                             </div>
                                         </div>
-                                    </c:forEach>
                                 </c:forEach>
                             </div>
                         </div>

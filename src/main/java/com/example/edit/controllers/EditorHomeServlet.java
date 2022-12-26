@@ -2,6 +2,7 @@ package com.example.edit.controllers;
 
 import com.example.edit.Utils.ServletUtils;
 import com.example.edit.beans.Articles;
+import com.example.edit.beans.User;
 import com.example.edit.models.ArticleModel;
 
 import javax.servlet.ServletException;
@@ -22,10 +23,14 @@ public class EditorHomeServlet extends HttpServlet {
         }
         switch (path) {
             case "/Index":
+
                 List<Articles> list = ArticleModel.findDraftArticles();
-                request.setAttribute("articles", list);
+                request.setAttribute("draftArt",list);
                 ServletUtils.forward("/views/viewEditorHome/Index.jsp", request, response);
                 break;
+            //case "/Approve":
+
+
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
                 break;
