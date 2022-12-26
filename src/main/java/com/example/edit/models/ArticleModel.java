@@ -13,14 +13,14 @@ public class ArticleModel {
     public static List<Articles> findDraftArticles() {
         final String query = "SELECT articles.article_id,articles.title,articles.publish_date,articles.views," +
                 "articles.abstracts,articles.categoryName,users.second_name,articles.premium\n" +
-                "FROM users INNER JOIN articles on users.user_id=articles.writer_id  WHERE status_id=104";
+                "FROM users INNER JOIN articles on users.user_id=articles.writer_id  WHERE  status_id=104";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .executeAndFetch(Articles.class);
         }
     }
     public static Articles findById(int article_id) {
-        final String query = "select * from articles where article_id = :article_id";
+        final String query = "select * from articles where article_id = :article_id  and status_id= 102";
         try (Connection con = DbUtils.getConnection()) {
             List<Articles> list = con.createQuery(query)
                     .addParameter("article_id", article_id)
@@ -32,7 +32,7 @@ public class ArticleModel {
         }
     }
     public static List<Articles> getArticleByTag(int tags_id){
-        final String query = "SELECT articles.article_id,articles.title,articles.publish_date,articles.views,articles.abstracts,articles.content,articles.categories_id,articles.premium,articles.writer_id,articles.status_id,articles.avatar,articles.image_content,articles.categoryName FROM tags INNER JOIN tags_articles  ON tags.tags_id = tags_articles.tags_id  INNER JOIN articles on tags_articles.article_id = articles.article_id WHERE tags.tags_id = :tags_id";
+        final String query = "SELECT articles.article_id,articles.title,articles.publish_date,articles.views,articles.abstracts,articles.content,articles.categories_id,articles.premium,articles.writer_id,articles.status_id,articles.avatar,articles.image_content,articles.categoryName FROM tags INNER JOIN tags_articles  ON tags.tags_id = tags_articles.tags_id  INNER JOIN articles on tags_articles.article_id = articles.article_id WHERE tags.tags_id = :tags_id  and status_id= 102";
         try (Connection con = DbUtils.getConnection()) {
             List<Articles> list = con.createQuery(query)
                     .addParameter("tags_id", tags_id)
@@ -92,7 +92,7 @@ public class ArticleModel {
     }
 
     public static List<Articles> findTop5() {
-        final String query = "SELECT * FROM articles ORDER BY views DESC LIMIT 0,5";
+        final String query = "SELECT * FROM articles WHERE  status_id= 102 ORDER BY views DESC LIMIT 0,5 ";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .executeAndFetch(Articles.class);
@@ -100,7 +100,7 @@ public class ArticleModel {
     }
 
     public static List<Articles> findTop10() {
-        final String query = "SELECT * FROM articles ORDER BY views DESC LIMIT 5,5";
+        final String query = "SELECT * FROM articles where  status_id= 102 ORDER BY views DESC LIMIT 5,5  ";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .executeAndFetch(Articles.class);
@@ -113,7 +113,7 @@ public class ArticleModel {
                 "FROM\n" +
                 "    articles\n" +
                 "WHERE\n" +
-                "    publish_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 10080 MINUTE)\n" +
+                "    publish_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 10080 MINUTE)  and status_id= 102\n" +
                 "ORDER BY views DESC\n" +
                 "LIMIT 4,4\n";
         try (Connection con = DbUtils.getConnection()) {
@@ -127,7 +127,7 @@ public class ArticleModel {
                 "FROM\n" +
                 "    articles\n" +
                 "WHERE\n" +
-                "    publish_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 10080 MINUTE)\n" +
+                "    publish_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 10080 MINUTE)  and status_id= 102\n" +
                 "ORDER BY views DESC\n" +
                 "LIMIT 2,2\n";
         try (Connection con = DbUtils.getConnection()) {
@@ -136,14 +136,14 @@ public class ArticleModel {
         }
     }
     public static List<Articles> findTop5New() {
-        final String query = "SELECT *  FROM articles WHERE publish_date <=CURRENT_DATE() ORDER BY publish_date DESC LIMIT 2,4";
+        final String query = "SELECT *  FROM articles WHERE  publish_date <=CURRENT_DATE()  and status_id= 102 ORDER BY publish_date DESC LIMIT 2,4";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .executeAndFetch(Articles.class);
         }
     }
     public static Articles fin1() {
-        final String query = "SELECT *  FROM articles WHERE publish_date <=CURRENT_DATE() ORDER BY publish_date DESC LIMIT 5";
+        final String query = "SELECT *  FROM articles WHERE publish_date <=CURRENT_DATE()  and status_id= 102 ORDER BY publish_date DESC LIMIT 5";
         try (Connection con = DbUtils.getConnection()) {
             List<Articles> list = con.createQuery(query)
                     .executeAndFetch(Articles.class);
@@ -155,7 +155,7 @@ public class ArticleModel {
                 "FROM\n" +
                 "               articles\n" +
                 "                WHERE\n" +
-                "                    publish_date <=CURRENT_DATE()\n" +
+                "                    publish_date <=CURRENT_DATE() and status_id= 102 \n" +
                 "                ORDER BY publish_date DESC\n" +
                 "                LIMIT 6,5";
         try (Connection con = DbUtils.getConnection()) {
@@ -165,7 +165,7 @@ public class ArticleModel {
     }
 
     public static int getAllCate() {
-        final String query = "SELECT * FROM categories";
+        final String query = "SELECT * FROM categories ";
         try (Connection con = DbUtils.getConnection()) {
             List<Category> list = con.createQuery(query)
                     .executeAndFetch(Category.class);
@@ -176,7 +176,7 @@ public class ArticleModel {
     public static Articles  findTopCate(int categories_id)
     {
 
-        final String query="SELECT * FROM articles WHERE categories_id= :categories_id ORDER BY views DESC LIMIT 1";
+        final String query="SELECT * FROM articles WHERE categories_id= :categories_id  and status_id= 102 ORDER BY views DESC LIMIT 1";
         try (Connection con = DbUtils.getConnection()) {
            List<Articles> list = con.createQuery(query)
                    .addParameter("categories_id",categories_id)
@@ -207,7 +207,7 @@ public class ArticleModel {
         return list;
     }
     public static List<Articles> findSearch(String text) {
-        final String query = "SELECT * FROM articles WHERE MATCH(title,content,abstracts) AGAINST(:text)";
+        final String query = "SELECT * FROM articles WHERE MATCH(title,content,abstracts) AGAINST(:text)  and status_id= 102" ;
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .addParameter("text",text)
@@ -215,7 +215,7 @@ public class ArticleModel {
         }
     }
     public static int getTotalArtilceBySearh(String text) {
-        final String query = "SELECT * FROM articles WHERE MATCH(title,content,abstracts) AGAINST(:text)";
+        final String query = "SELECT * FROM articles WHERE MATCH(title,content,abstracts) AGAINST(:text)  and status_id= 102";
         try (Connection con = DbUtils.getConnection()) {
             List<Articles> list=  con.createQuery(query)
                     .addParameter("text",text)
@@ -224,7 +224,7 @@ public class ArticleModel {
         }
     }
     public static List<Articles> findSearchPagging(String text, int index) {
-        final String query = "SELECT * FROM articles WHERE MATCH(title,content,abstracts) AGAINST(:text) LIMIT :index,6 ";
+        final String query = "SELECT * FROM articles WHERE MATCH(title,content,abstracts) AGAINST(:text)  and status_id= 102 LIMIT :index,6 ";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .addParameter("text",text)
@@ -233,7 +233,7 @@ public class ArticleModel {
         }
     }
     public static List<Articles> getArticleByCate(int categories_id) {
-        final String query = "SELECT * FROM articles WHERE categories_id = :categories_id ";
+        final String query = "SELECT * FROM articles WHERE categories_id = :categories_id   and status_id= 102";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .addParameter("categories_id",categories_id)
@@ -241,7 +241,7 @@ public class ArticleModel {
         }
     }
     public static int getTotalArtilceByCate(int categories_id) {
-        final String query = "SELECT * FROM articles WHERE categories_id = :categories_id ";
+        final String query = "SELECT * FROM articles WHERE categories_id = :categories_id  and status_id= 102 ";
         try (Connection con = DbUtils.getConnection()) {
             List<Articles> list=  con.createQuery(query)
                     .addParameter("categories_id",categories_id)
@@ -250,7 +250,7 @@ public class ArticleModel {
         }
     }
     public static List<Articles> getArticleToPagging(int categories_id, int index) {
-        final String query = "SELECT * FROM articles WHERE categories_id = :categories_id LIMIT :index,6 ";
+        final String query = "SELECT * FROM articles WHERE categories_id = :categories_id  and status_id= 102 LIMIT :index,6 ";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .addParameter("categories_id",categories_id)
@@ -259,7 +259,7 @@ public class ArticleModel {
         }
     }
     public static List<Articles> getArticleByCateList3(int categories_id) {
-        final String query = "SELECT * FROM articles WHERE categories_id = :categories_id LIMIT 2,3 ";
+        final String query = "SELECT * FROM articles WHERE categories_id = :categories_id  and status_id= 102 LIMIT 2,3 ";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .addParameter("categories_id",categories_id)
