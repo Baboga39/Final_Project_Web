@@ -35,22 +35,35 @@
                <input type="text" class="form-control w-75" name="title"  placeholder="Nhập vào đây..">
              </div>
 
+
              <div class="form-group">
                <label >views</label>
                <input type="text" class="form-control w-75" name="views"  placeholder="Nhập vào đây..">
              </div>
              <div class="form-group">
                <label >Abstract</label>
-               <input type="text" class="form-control w-75" name="abstracts"  placeholder="Nhập vào đây..">
+               <textarea  class="form-control w-75" name="abstracts"  placeholder="Nhập vào đây..">
+               </textarea>
              </div>
              <div class="form-group">
                <label >Content</label>
                <textarea class="form-control w-75" name="content" id="txtContent" placeholder="Nhập vào đây.."/>
                </textarea>
              </div>
-
-
-
+             <div class="form-group">
+               <label for="exampleFormControlSelect1">Categories</label>
+               <select class="form-control" id="exampleFormControlSelect1" name="categories_id">
+                <c:forEach items="${listCate}" var="k">
+                  <option value="${k.categories_id}">${k.name}</option>
+                </c:forEach>
+               </select>
+             </div>
+             <div class="form-check mt-3 mb-2">
+               <label class="form-check-label" for="defaultCheck1">
+                 Premium
+               </label>
+               <input class="form-check-inpu ml-3" type="checkbox" value="" id="defaultCheck1">
+             </div>
 
              <div class="form-group">
                <label >Avatar</label>
@@ -60,7 +73,6 @@
                <label >Image Content</label>
                <input type="text" class="form-control w-75" name="image_content"  placeholder="Nhập vào đây..">
              </div>
-
            </div>
            <div class="card-footer">
              <div class="row float-right mr-5">

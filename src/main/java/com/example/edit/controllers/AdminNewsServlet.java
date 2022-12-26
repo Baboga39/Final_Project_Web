@@ -4,14 +4,12 @@ import com.example.edit.Utils.ServletUtils;
 import com.example.edit.beans.*;
 import com.example.edit.models.ArticleModel;
 import com.example.edit.models.CategoryModel;
-import com.example.edit.models.TagModel;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 import static java.time.LocalDate.now;
@@ -35,6 +33,8 @@ public class AdminNewsServlet extends HttpServlet {
                 }
                 break;
             case "/Add":
+                List<Category> listCate = CategoryModel.findAllIn();
+                request.setAttribute("listCate",listCate);
                 ServletUtils.forward("/views/viewAdminNews/Add.jsp", request, response);
                 break;
             default:
@@ -52,9 +52,6 @@ public class AdminNewsServlet extends HttpServlet {
             case "/Add":
                 addNews(request, response);
                 break;
-            case "/Update":
-                updateNews(request, response);
-                break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
                 break;
@@ -63,13 +60,24 @@ public class AdminNewsServlet extends HttpServlet {
     }
 
     private void addNews(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String title = request.getParameter("title");
+
+        int views = Integer.parseInt(request.getParameter("views"));
+        String abstracts = request.getParameter("abstracts");
+        String content = request.getParameter("content");
+        int categories_id = Integer.parseInt(request.getParameter("categories_id"));
+        boolean premium = request.getParameter("premium") !=null;
+        String avatar = request.getParameter("avatar");
+        String image_content = request.getParameter("image_content");
+        Date date = new Date(System.currentTimeMillis());
+        Articles articles = new Articles(0,title,date,views,abstracts,content,categories_id,premium,4,104,avatar,image_content);
+
+
+        ArticleModel.addNews(articles);
+
 
 
         ServletUtils.redirect("/Admin/News", request,response);
-
-
-
-
     }
 
     private void updateNews(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
