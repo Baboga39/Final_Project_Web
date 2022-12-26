@@ -10,7 +10,7 @@
         <div class="content">
 
             <c:forEach items="${listCa}" var="o">
-            <h1><a href="">${o.name}</a></h1>
+            <h1><a href="" style="    color: #333 !important;">${o.name}</a></h1>
             </c:forEach>
 
     <c:if test="${check eq true}">
@@ -69,7 +69,7 @@
                             <!-- Article data -->
                             <div class="row mb-3">
                                 <div class="col-6">
-                                    <a href="" class="text-info">
+                                    <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}" class="text-info">
                                         <i class="fas fa-plane"></i>
                                         <span class="badge badge-pill badge-primary">${o.categoryName}</span>
                                     </a>
@@ -81,7 +81,7 @@
                             </div>
 
                             <!-- Article title and description -->
-                            <a href="" class="text-dark">
+                            <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}" class="text-dark">
                                 <h5><b>${o.title}</b></h5>
                                 <p>
                                         ${o.abstracts}
@@ -125,16 +125,17 @@
             <nav class="my-4" aria-label="...">
                 <ul class="pagination pagination-circle justify-content-center">
                     <li class="page-item">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                        <a class="page-link" href="${pageContext.request.contextPath}/Post/Pagging?cid=${listOne.categories_id}&index=${indexPre}" tabindex="-1" aria-disabled="true">Previous</a>
                     </li>
-                    <li class="page-item active" aria-current="page">
-                        <a class="page-link" href="#">1 <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <c:forEach begin="1" end="${EndPage}" var="i">
+                        <li class="page-item ">
+                            <a  class="${tag==i?"active":" page-link "}"
+                                href="${pageContext.request.contextPath}/Post/Pagging?cid=${listOne.categories_id}&index=${i}"> ${i}
+                                <span class="sr-only">(current)</span></a>
+                        </li>
+                    </c:forEach>
                     <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
+                        <a class="page-link" href="${pageContext.request.contextPath}/Post/Pagging?cid=${listOne.categories_id}&index=${indexNext}">Next</a>
                     </li>
                 </ul>
             </nav>

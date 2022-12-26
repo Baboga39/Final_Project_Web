@@ -45,6 +45,9 @@ public class PostServlet extends HttpServlet {
             case "/Tag":
                 getArticleByTag(request,response);
                 break;
+            case "/Pagging":
+                paggingByCate(request,response);
+                break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
                 break;
@@ -116,7 +119,21 @@ public class PostServlet extends HttpServlet {
     private void getArticleByCate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String cid = request.getParameter("cid");
         int cateId = Integer.parseInt(cid);
-        List<Articles> list = ArticleModel.getArticleByCate(cateId);
+        String indexPage = request.getParameter("index");
+        if(indexPage==null)
+        {
+            indexPage="1";
+        }
+        int index =Integer.parseInt(indexPage);
+        int indexNext = index+1;
+        int indexPre = index-1;
+        index = (index - 1) * 6;
+        int count  = ArticleModel.getTotalArtilceByCate(cateId);
+        int endPage = count/6;
+        if(count  % 6!=0 ) {
+            endPage++;
+        }
+        List<Articles> list = ArticleModel.getArticleToPagging(cateId,index);
         Articles listOne = ArticleModel.findTopCate(cateId);
         boolean check = CategoryModel.checkCate(cateId);
         List<Articles> listT = ArticleModel.getArticleByCateList3(cateId);
@@ -128,6 +145,10 @@ public class PostServlet extends HttpServlet {
         request.setAttribute("check", check);
         request.setAttribute("list", list);
         request.setAttribute("listCa", listCa);
+        request.setAttribute("tag", index);
+        request.setAttribute("indexNext", indexNext);
+        request.setAttribute("indexPre", indexPre);
+        request.setAttribute("EndPage",endPage);
         ServletUtils.forward("/views/viewArticlePosts/Index.jsp", request, response);
     }
     private static java.sql.Date getCurrentDate() {
@@ -141,5 +162,41 @@ public class PostServlet extends HttpServlet {
         List<Articles> listA = ArticleModel.getArticleByTag(tagId);
         request.setAttribute("listA", listA);
         ServletUtils.forward("/views/viewArticlePosts/Search.jsp", request, response);
+    }
+    private void paggingByCate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        String cid = request.getParameter("cid");
+        String indexPage = request.getParameter("index");
+        int cids =Integer.parseInt(cid);
+        if(indexPage==null)
+        {
+            indexPage="1";
+        }
+        int index =Integer.parseInt(indexPage);
+        int indexNext = index+1;
+        int indexPre = index-1;
+        index = (index - 1) * 6;
+        int count  = ArticleModel.getTotalArtilceByCate(cids);
+        int endPage = count/6;
+        if(count  % 6!=0 ) {
+            endPage++;
+        }
+        List<Articles> list = ArticleModel.getArticleToPagging(cids,index);
+        Articles listOne = ArticleModel.findTopCate(cids);
+        boolean check = CategoryModel.checkCate(cids);
+        List<Articles> listT = ArticleModel.getArticleByCateList3(cids);
+        List<Category> listC =CategoryModel.getCateChilds(cids);
+        List<Category> listCa =CategoryModel.getCateByID(cids);
+        request.setAttribute("listC", listC);
+        request.setAttribute("listT", listT);
+        request.setAttribute("listOne", listOne);
+        request.setAttribute("check", check);
+        request.setAttribute("list", list);
+        request.setAttribute("listCa", listCa);
+        request.setAttribute("tag", index);
+        request.setAttribute("indexNext", indexNext);
+        request.setAttribute("indexPre", indexPre);
+        request.setAttribute("EndPage",endPage);
+        ServletUtils.forward("/views/viewArticlePosts/Index.jsp", request, response);
     }
 }

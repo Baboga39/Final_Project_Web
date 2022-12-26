@@ -37,13 +37,35 @@ public class ArticlePostsServlet extends HttpServlet {
                 ServletUtils.forward("/views/viewArticlePosts/Index.jsp", request, response);
                 break;
             case "/Search":
+                response.setContentType("text/html;charset=UTF-8");
                 String text = request.getParameter("search");
-                List<Articles> listA = ArticleModel.findSearch(text);
+                String indexPage = request.getParameter("index");;
+                if(indexPage==null)
+                {
+                    indexPage="1";
+                }
+                int index =Integer.parseInt(indexPage);
+                int indexNext = index+1;
+                int indexPre = index-1;
+                index = (index - 1) * 6;
+                int count  = ArticleModel.getTotalArtilceBySearh(text);
+                int endPage = count/6;
+                if(count  % 6!=0 ) {
+                    endPage++;
+                }
+                List<Articles> listA = ArticleModel.findSearchPagging(text, index);
                 List<Tag> listT = TagModel.findByindex();
                 request.setAttribute("Day",getCurrentDate());
                 request.setAttribute("tags", listT);
                 request.setAttribute("listA", listA);
+                request.setAttribute("text", text);
+                request.setAttribute("EndPage",endPage);
+                request.setAttribute("indexNext", indexNext);
+                request.setAttribute("indexPre", indexPre);
                 ServletUtils.forward("/views/viewArticlePosts/Search.jsp", request, response);
+                break;
+            case "/PaggingSearch":
+                paggingSearch(request,response);
                 break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
@@ -54,5 +76,33 @@ public class ArticlePostsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    }
+    private void paggingSearch(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        String text = request.getParameter("search");
+        String indexPage = request.getParameter("index");;
+        if(indexPage==null)
+        {
+            indexPage="1";
+        }
+        int index =Integer.parseInt(indexPage);
+        int indexNext = index+1;
+        int indexPre = index-1;
+        index = (index - 1) * 6;
+        int count  = ArticleModel.getTotalArtilceBySearh(text);
+        int endPage = count/6;
+        if(count  % 6!=0 ) {
+            endPage++;
+        }
+        List<Articles> listA = ArticleModel.findSearchPagging(text, index);
+        List<Tag> listT = TagModel.findByindex();
+        request.setAttribute("Day",getCurrentDate());
+        request.setAttribute("tags", listT);
+        request.setAttribute("listA", listA);
+        request.setAttribute("text", text);
+        request.setAttribute("EndPage",endPage);
+        request.setAttribute("indexNext", indexNext);
+        request.setAttribute("indexPre", indexPre);
+        ServletUtils.forward("/views/viewArticlePosts/Search.jsp", request, response);
     }
 }

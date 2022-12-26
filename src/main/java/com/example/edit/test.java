@@ -16,7 +16,12 @@ import java.util.List;
 public class test {
 
     public static void main(String[] args) {
-        boolean a = UserModel.checkEx(5);
-        System.out.println(a);
+        int cout = ArticleModel.getTotalArtilceByCate(4);
+        List<Articles> list = ArticleModel.getArticleToPagging(4,1);
+        System.out.println(cout);
+        for (Articles a : list)
+        {
+            System.out.println(a.getAbstracts());
+        }
     }
 }

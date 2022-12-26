@@ -45,6 +45,26 @@
                 </div>
             </div>
         </div>
+        <div>
+            <nav class="my-4" aria-label="...">
+                <ul class="pagination pagination-circle justify-content-center">
+                    <li class="page-item">
+                        <a class="page-link" href="${pageContext.request.contextPath}/Posts/PaggingSearch?search=${text}&index=${indexPre}" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                    <c:forEach begin="1" end="${EndPage}" var="i">
+                        <li class="page-item ">
+                            <a  class="${tag==i?"active":" page-link "}"
+                                href="${pageContext.request.contextPath}/Posts/PaggingSearch?search=${text}&index=${i}"> ${i}
+                                <span class="sr-only">(current)</span></a>
+                        </li>
+                    </c:forEach>
+                    <li class="page-item">
+                        <a class="page-link" href="${pageContext.request.contextPath}/Posts/PaggingSearch?search=${text}&index=${indexNext}">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
 
     </div>
 </d:web>

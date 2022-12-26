@@ -220,11 +220,47 @@ public class ArticleModel {
                     .executeAndFetch(Articles.class);
         }
     }
+    public static int getTotalArtilceBySearh(String text) {
+        final String query = "SELECT * FROM articles WHERE MATCH(title,content,abstracts) AGAINST(:text)";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Articles> list=  con.createQuery(query)
+                    .addParameter("text",text)
+                    .executeAndFetch(Articles.class);
+            return list.size();
+        }
+    }
+    public static List<Articles> findSearchPagging(String text, int index) {
+        final String query = "SELECT * FROM articles WHERE MATCH(title,content,abstracts) AGAINST(:text) LIMIT :index,6 ";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .addParameter("text",text)
+                    .addParameter("index",index)
+                    .executeAndFetch(Articles.class);
+        }
+    }
     public static List<Articles> getArticleByCate(int categories_id) {
         final String query = "SELECT * FROM articles WHERE categories_id = :categories_id ";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .addParameter("categories_id",categories_id)
+                    .executeAndFetch(Articles.class);
+        }
+    }
+    public static int getTotalArtilceByCate(int categories_id) {
+        final String query = "SELECT * FROM articles WHERE categories_id = :categories_id ";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Articles> list=  con.createQuery(query)
+                    .addParameter("categories_id",categories_id)
+                    .executeAndFetch(Articles.class);
+            return list.size();
+        }
+    }
+    public static List<Articles> getArticleToPagging(int categories_id, int index) {
+        final String query = "SELECT * FROM articles WHERE categories_id = :categories_id LIMIT :index,6 ";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .addParameter("categories_id",categories_id)
+                    .addParameter("index",index)
                     .executeAndFetch(Articles.class);
         }
     }
