@@ -16,8 +16,8 @@ import java.util.List;
 public class test {
 
     public static void main(String[] args) {
-        int cout = ArticleModel.getTotalArtilceByCate(4);
-        List<Articles> list = ArticleModel.getArticleToPagging(4,1);
+        int cout = ArticleModel.getTotalArtilceByTag(1);
+        List<Articles> list = ArticleModel.getArticleByTag(1,2);
         System.out.println(cout);
         for (Articles a : list)
         {

@@ -156,12 +156,32 @@ public class PostServlet extends HttpServlet {
         return new java.sql.Date(today.getTime());
     }
     private void getArticleByTag(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        String indexPage = request.getParameter("index");
         String tid = request.getParameter("tid");
         int tagId = Integer.parseInt(tid);
+        if(indexPage==null)
+        {
+            indexPage="1";
+        }
+        int index =Integer.parseInt(indexPage);
+        int indexNext = index+1;
+        int indexPre = index-1;
+        index = (index - 1) * 6;
+        int count  = ArticleModel.getTotalArtilceByTag(tagId);
+        int endPage = count/6;
+        if(count  % 6!=0 ) {
+            endPage++;
+        }
         request.setAttribute("Day",getCurrentDate());
-        List<Articles> listA = ArticleModel.getArticleByTag(tagId);
+        List<Articles> listA = ArticleModel.getArticleByTag(tagId,index);
         request.setAttribute("listA", listA);
-        ServletUtils.forward("/views/viewArticlePosts/Search.jsp", request, response);
+        request.setAttribute("tag", index);
+        request.setAttribute("tid", tid);
+        request.setAttribute("indexNext", indexNext);
+        request.setAttribute("indexPre", indexPre);
+        request.setAttribute("EndPage",endPage);
+        ServletUtils.forward("/views/viewArticlePosts/SearchTag.jsp", request, response);
     }
     private void paggingByCate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
