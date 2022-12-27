@@ -138,6 +138,26 @@ public class CategoryModel {
 
         }
     }
+    public static Category findCatByName(String name) {
+        final String query = "SELECT * FROM categories WHERE name = :name";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Category> list = con.createQuery(query)
+                    .addParameter("name", name)
+                    .executeAndFetch(Category.class);
 
+            if (list.size() == 0) {
+                return null;
+            }
+
+            return list.get(0);
+        }
+    }
+    public static List<Category> findAllCat() {
+        final String query = "SELECT * FROM categories ";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .executeAndFetch(Category.class);
+        }
+    }
 
 }

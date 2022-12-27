@@ -7,6 +7,7 @@ import org.sql2o.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ArticleModel {
     public  static List<Articles> findAll(){
@@ -329,6 +330,28 @@ public class ArticleModel {
             List<Articles> list = con.createQuery(query)
                     .executeAndFetch(Articles.class);
             return list.size();
+        }
+    }
+    public  static  void addNews(Articles a){
+        final String query = "INSERT INTO articles (title, publish_date, views, abstracts, content, categories_id, premium, " +
+                "writer_id, status_id, avatar, image_content, categoryName) VALUES (:title,:publish_date,:views,:abstracts," +
+                ":content,:categories_id,:premium,:writer_id,:status_id,:avatar,:image_content,:categoryName)\n";
+        try(Connection con  = DbUtils.getConnection())
+        {
+                     con.createQuery(query)
+                    .addParameter("title",a.getTitle())
+                    .addParameter("publish_date",a.getPublish_date())
+                    .addParameter("views",a.getViews())
+                    .addParameter("abstracts", a.getAbstracts())
+                    .addParameter("content",a.getContent())
+                    .addParameter("categories_id",a.getCategories_id())
+                    .addParameter("premium",a.isPremium())
+                    .addParameter("writer_id",a.getWriter_id())
+                    .addParameter("status_id",a.getStatus_id())
+                    .addParameter("avatar",a.getAvatar())
+                    .addParameter("image_content",a.getImage_content())
+                    .addParameter("categoryName",a.getCategoryName())
+                    .executeUpdate();
         }
     }
 }

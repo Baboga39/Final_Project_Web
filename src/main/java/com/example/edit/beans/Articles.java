@@ -1,6 +1,7 @@
 package com.example.edit.beans;
 
 import javax.xml.crypto.Data;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Articles {
@@ -20,9 +21,40 @@ public class Articles {
 
     private String second_name;
 
+    public Articles(int article_id, String title, Date publish_date, int views, String abstracts, String content, int categories_id, boolean premium, int writer_id, int status_id, String avatar, String image_content) {
+        this.article_id = article_id;
+        this.title = title;
+        this.publish_date = publish_date;
+        this.views = views;
+        this.abstracts = abstracts;
+        this.content = content;
+        this.categories_id = categories_id;
+        this.premium = premium;
+        this.writer_id = writer_id;
+        this.status_id = status_id;
+        this.avatar = avatar;
+        this.image_content = image_content;
+    }
+
+    public Articles(int article_id, String title, Date publish_date, int views, String abstracts, String content, int categories_id, boolean premium, int writer_id, int status_id, String avatar, String image_content, String categoryName) {
+        this.article_id = article_id;
+        this.title = title;
+        this.publish_date = publish_date;
+        this.views = views;
+        this.abstracts = abstracts;
+        this.content = content;
+        this.categories_id = categories_id;
+        this.premium = premium;
+        this.writer_id = writer_id;
+        this.status_id = status_id;
+        this.avatar = avatar;
+        this.image_content = image_content;
+        this.categoryName = categoryName;
+    }
+
     public Articles(int article_id, String title, Date publish_date, int views, String abstracts, String content,
                     int categories_id, boolean premium, int writer_id, int status_id, String avatar, String image_content,
-                    String categoryName,String second_name) {
+                    String categoryName, String second_name) {
         this.article_id = article_id;
         this.title = title;
         this.publish_date = publish_date;
@@ -167,6 +199,7 @@ public class Articles {
                 ", avatar='" + avatar + '\'' +
                 ", image_content='" + image_content + '\'' +
                 ", categoryName='" + categoryName + '\'' +
+                ", second_name='" + second_name + '\'' +
                 '}';
     }
 }
