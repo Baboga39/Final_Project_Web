@@ -5,7 +5,6 @@
 <jsp:useBean id="list" scope="request" type="java.util.List<com.example.edit.beans.Articles>"/>
 
 <t:main>
-
     <jsp:body>
         <div class="container mt-5">
             <div class="content-cate mt-5">
@@ -57,7 +56,6 @@
                                         <td>${a.abstracts}</td>
                                         <td>${a.categoryName}</td>
                                         <td>${a.second_name}</td>
-
                                         <td>
                                             <c:if test="${a.status_id == 104}">
                                                 <span class="badge badge-primary">not check</span>
@@ -86,9 +84,9 @@
                                         <td>...</td>
                                         <td>...</td>
                                         <td class="d-flex justify-content-sm-between" style="font-size: 20px">
-                                            <a href="#" type="button" class="btn link"><i class="bi bi-pencil-square"></i></a>
-                                            <a href="#" type="button" class="btn link"><i class="bi bi-trash"></i></a>
-                                            <a href="#" type="button" class="btn link"><i class="bi bi-eye"></i></a>
+                                            <a href="${pageContext.request.contextPath}/Admin/News/Update?id=${a.article_id}" type="button" class="btn link"><i class="bi bi-pencil-square"></i></a>
+                                            <a href="${pageContext.request.contextPath}/Admin/News/Delete?id=${a.article_id}" type="button" class="btn link"><i class="bi bi-trash"></i></a>
+                                            <a href="${pageContext.request.contextPath}/Admin/News/Detail?id=${a.article_id}" type="button" class="btn link"><i class="bi bi-eye"></i></a>
                                         </td>
                                     </tr>
                                 </c:forEach>

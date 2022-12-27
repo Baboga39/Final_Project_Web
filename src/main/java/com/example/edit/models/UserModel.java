@@ -1,6 +1,7 @@
 package com.example.edit.models;
 
 import com.example.edit.Utils.DbUtils;
+import com.example.edit.beans.Category;
 import com.example.edit.beans.Tag;
 import com.example.edit.beans.User;
 import org.sql2o.Connection;
@@ -276,5 +277,28 @@ public class UserModel {
             return true;
         }
     }
+    public static List<User> listPhongVien(int role_id)
+    {
+        final String query = "select * from users where role_id = :role_id";
+        try(Connection con = DbUtils.getConnection()){
+            return con.createQuery(query)
+                    .addParameter("role_id",role_id)
+                    .executeAndFetch(User.class);
+        }
+    }
 
+    public static User findCatBySecondName(String second_name) {
+        final String query = "SELECT * FROM users WHERE second_name = :second_name";
+        try (Connection con = DbUtils.getConnection()) {
+            List<User> list = con.createQuery(query)
+                    .addParameter("second_name", second_name)
+                    .executeAndFetch(User.class);
+
+            if (list.size() == 0) {
+                return null;
+            }
+
+            return list.get(0);
+        }
+    }
 }

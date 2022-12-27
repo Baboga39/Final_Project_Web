@@ -98,7 +98,7 @@ public class CategoryModel {
     {
         final String query = "INSERT INTO categories (name) VALUES (:name)";
         try(Connection con = DbUtils.getConnection()){
-            con.createQuery(query)
+                        con.createQuery(query)
                     .addParameter("name", category.getName())
                     .executeUpdate();
 
@@ -138,7 +138,6 @@ public class CategoryModel {
 
         }
     }
-    // Lấy danh mục theo tên
     public static Category findCatByName(String name) {
         final String query = "SELECT * FROM categories WHERE name = :name";
         try (Connection con = DbUtils.getConnection()) {
