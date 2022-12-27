@@ -239,7 +239,7 @@ public class UserModel {
 
     //Lấy User theo Email
     public static User getUserByEmail(String email) {
-        String query = "SELECT name FROM users WHERE email= :email";
+        String query = "SELECT * FROM users WHERE email= :email";
         try (Connection con = DbUtils.getConnection()) {
             List<User> list = con.createQuery(query)
                     .addParameter("email", email)

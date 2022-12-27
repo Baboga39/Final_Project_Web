@@ -18,6 +18,13 @@ public class Comments {
         this.create_date = create_date;
         this.second_name = second_name;
     }
+    public Comments(int comment_id, int article_id, int user_id, String comment, LocalDateTime create_date){
+        this.comment_id = comment_id;
+        this.article_id = article_id;
+        this.user_id = user_id;
+        this.comment = comment;
+        this.create_date = create_date;
+    }
     public Comments(){}
 
     public int getComment_id() {
