@@ -3,22 +3,26 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 
-<d:posts>
-
+<d:web>
+<jsp:attribute name="css">
+    <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+</jsp:attribute>
     <jsp:body>
         <br><br><br><br>
         <div class="content">
 
             <c:forEach items="${listCa}" var="o">
-            <h1><a href="" style="    color: #333 !important;">${o.name}</a></h1>
+            <h1 style="text-align: center; border-bottom: 3px solid black; text-transform: uppercase;">
+                <a href="" style="    color: #333 !important;">${o.name}</a>
+            </h1>
             </c:forEach>
 
     <c:if test="${check eq true}">
-            <div class="menu_two">
+            <div class="menu_two" style="border-bottom: 3px solid rgb(234, 222, 207); margin-bottom: 16px;">
                 <ul class="nav justify-content-center">
                     <c:forEach items="${listC}" var="o">
                     <li class="nav-item">
-                        <a class="link nav-link active" href="${pageContext.request.contextPath}/Post/Category?cid=${o.categories_id}">${o.name}</a>
+                        <a style="color: #333" class="link nav-link active" href="${pageContext.request.contextPath}/Post/Category?cid=${o.categories_id}">${o.name}</a>
                     </li>
                     </c:forEach>
                 </ul>
@@ -142,4 +146,4 @@
         </div>
         </div>
     </jsp:body>
-</d:posts>
+</d:web>
