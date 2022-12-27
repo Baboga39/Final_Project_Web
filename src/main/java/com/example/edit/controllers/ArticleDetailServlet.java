@@ -26,7 +26,6 @@ public class ArticleDetailServlet extends HttpServlet {
         switch (path) {
             case "/Index":
                 int articleID = Integer.parseInt(request.getParameter("article_id"));
-
                 List<Articles> listRand5 = ArticleModel.findRand5SameCat(articleID);
                 request.setAttribute("listRand5SameCat",listRand5);
 

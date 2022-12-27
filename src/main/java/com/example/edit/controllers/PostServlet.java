@@ -9,12 +9,9 @@ import com.example.edit.models.CategoryModel;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.List;
-import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
 
@@ -47,6 +44,9 @@ public class PostServlet extends HttpServlet {
                 break;
             case "/Pagging":
                 paggingByCate(request,response);
+                break;
+            case "/Premium":
+                getArticlePre(request,response);
                 break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
@@ -117,6 +117,7 @@ public class PostServlet extends HttpServlet {
         ServletUtils.forward("/views/viewPost/Index.jsp", request, response);
     }
     private void getArticleByCate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
         String cid = request.getParameter("cid");
         int cateId = Integer.parseInt(cid);
         String indexPage = request.getParameter("index");
@@ -139,6 +140,11 @@ public class PostServlet extends HttpServlet {
         List<Articles> listT = ArticleModel.getArticleByCateList3(cateId);
         List<Category> listC =CategoryModel.getCateChilds(cateId);
         List<Category> listCa =CategoryModel.getCateByID(cateId);
+        List<Category> lisAllCate = CategoryModel.findAllIn();
+        List<Category> list5cate  = CategoryModel.find5Cate();
+        session.setAttribute("list5cate",list5cate);
+        session.setAttribute("lisAllCate",lisAllCate);
+        session.setMaxInactiveInterval(6000);
         request.setAttribute("listC", listC);
         request.setAttribute("listT", listT);
         request.setAttribute("listOne", listOne);
@@ -157,6 +163,7 @@ public class PostServlet extends HttpServlet {
     }
     private void getArticleByTag(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session =request.getSession();
         String indexPage = request.getParameter("index");
         String tid = request.getParameter("tid");
         int tagId = Integer.parseInt(tid);
@@ -175,6 +182,11 @@ public class PostServlet extends HttpServlet {
         }
         request.setAttribute("Day",getCurrentDate());
         List<Articles> listA = ArticleModel.getArticleByTag(tagId,index);
+        List<Category> lisAllCate = CategoryModel.findAllIn();
+        List<Category> list5cate  = CategoryModel.find5Cate();
+        session.setAttribute("list5cate",list5cate);
+        session.setAttribute("lisAllCate",lisAllCate);
+        session.setMaxInactiveInterval(6000);
         request.setAttribute("listA", listA);
         request.setAttribute("tag", index);
         request.setAttribute("tid", tid);
@@ -185,6 +197,7 @@ public class PostServlet extends HttpServlet {
     }
     private void paggingByCate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session =request.getSession();
         String cid = request.getParameter("cid");
         String indexPage = request.getParameter("index");
         int cids =Integer.parseInt(cid);
@@ -207,6 +220,11 @@ public class PostServlet extends HttpServlet {
         List<Articles> listT = ArticleModel.getArticleByCateList3(cids);
         List<Category> listC =CategoryModel.getCateChilds(cids);
         List<Category> listCa =CategoryModel.getCateByID(cids);
+        List<Category> lisAllCate = CategoryModel.findAllIn();
+        List<Category> list5cate  = CategoryModel.find5Cate();
+        session.setAttribute("list5cate",list5cate);
+        session.setAttribute("lisAllCate",lisAllCate);
+        session.setMaxInactiveInterval(6000);
         request.setAttribute("listC", listC);
         request.setAttribute("listT", listT);
         request.setAttribute("listOne", listOne);
@@ -218,5 +236,35 @@ public class PostServlet extends HttpServlet {
         request.setAttribute("indexPre", indexPre);
         request.setAttribute("EndPage",endPage);
         ServletUtils.forward("/views/viewArticlePosts/Index.jsp", request, response);
+    }private void getArticlePre(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        String indexPage = request.getParameter("index");
+        if(indexPage==null)
+        {
+            indexPage="1";
+        }
+        int index =Integer.parseInt(indexPage);
+        int indexNext = index+1;
+        int indexPre = index-1;
+        index = (index - 1) * 6;
+        int count  = ArticleModel.getTotalArticlePre();
+        int endPage = count/6;
+        if(count  % 6!=0 ) {
+            endPage++;
+        }
+        List<Articles> list = ArticleModel.getArticlePre(index);
+        List<Category> lisAllCate = CategoryModel.findAllIn();
+        List<Category> list5cate  = CategoryModel.find5Cate();
+        session.setAttribute("list5cate",list5cate);
+        session.setAttribute("lisAllCate",lisAllCate);
+        session.setMaxInactiveInterval(6000);
+        request.setAttribute("list", list);
+        request.setAttribute("tag", index);
+        request.setAttribute("Day",getCurrentDate());
+        request.setAttribute("indexNext", indexNext);
+        request.setAttribute("indexPre", indexPre);
+        request.setAttribute("EndPage",endPage);
+        ServletUtils.forward("/views/viewArticlePosts/Prenium.jsp", request, response);
     }
+
 }

@@ -15,6 +15,15 @@
                         </a>
                     </li>
                     </c:forEach>
+                    <c:if test="${checkEx eq true}">
+                    <li class="nav-item text-category " style="font-size: 14px;
+    width: 78px;
+    text-align: center;;">
+                        <a  class="link nav-link"  href="${pageContext.request.contextPath}/Post/Premium" aria-expanded="false">
+                            PREMIUM
+                        </a>
+                    </li>
+                    </c:if>
                             <c:if test="${authUser.role_id == 1}">
                             <li class="nav-item text-category " style="font-size: 14px;">
                                 <a class="link nav-link" href="${pageContext.request.contextPath}/Admin/Home/Index" aria-expanded="false">
@@ -24,7 +33,7 @@
                         </c:if>
                         <c:if test="${authUser.role_id == 3} ">
                             <li class="nav-item text-category " style="font-size: 14px;">
-                                <a class="link nav-link" href="${pageContext.request.contextPath}/Admin/Home/Index" aria-expanded="false">
+                                <a  href="${pageContext.request.contextPath}/Admin/Home/Index" aria-expanded="false">
                                     Reporter
                                 </a>
                             </li>

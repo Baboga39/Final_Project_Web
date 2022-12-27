@@ -9,7 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleModel {
-
+    public  static List<Articles> findAll(){
+        final String query="SELECT * FROM articles ";
+        try(Connection con = DbUtils.getConnection()){
+            return con.createQuery(query)
+                    .executeAndFetch(Articles.class);
+        }
+    }
     public static List<Articles> findDraftArticles() {
         final String query = "SELECT articles.article_id,articles.title,articles.publish_date,articles.views," +
                 "articles.abstracts,articles.categoryName,users.second_name,articles.premium\n" +
@@ -302,6 +308,27 @@ public class ArticleModel {
             } else {
                 return true;
             }
+        }
+    }
+    public static List<Articles> getArticlePre( int index) {
+        String query = "SELECT * FROM articles WHERE premium =1 LIMIT :index,6";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Articles> list = con.createQuery(query)
+                    .addParameter("index",index)
+                    .executeAndFetch(Articles.class);
+            if (list.size() == 0) {
+                return null;
+            } else {
+                return list;
+            }
+        }
+    }
+    public static int getTotalArticlePre( ) {
+        String query = "SELECT * FROM articles WHERE premium =1 ";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Articles> list = con.createQuery(query)
+                    .executeAndFetch(Articles.class);
+            return list.size();
         }
     }
 }

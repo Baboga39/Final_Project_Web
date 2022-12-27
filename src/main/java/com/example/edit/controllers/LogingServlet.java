@@ -2,10 +2,8 @@ package com.example.edit.controllers;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.example.edit.Utils.ServletUtils;
-import com.example.edit.beans.AccountFace;
-import com.example.edit.beans.AccountGG;
-import com.example.edit.beans.Tag;
-import com.example.edit.beans.User;
+import com.example.edit.beans.*;
+import com.example.edit.models.CategoryModel;
 import com.example.edit.models.TagModel;
 import com.example.edit.models.UserModel;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -61,6 +59,11 @@ public class LogingServlet extends HttpServlet {
                     session.setAttribute("mess", mess);
                     session.setAttribute("authGg", true);
                     session.setAttribute("authUserGg",usergg);;
+                    List<Category> lisAllCate = CategoryModel.findAllIn();
+                    List<Category> list5cate  = CategoryModel.find5Cate();
+                    session.setAttribute("list5cate",list5cate);
+                    session.setAttribute("lisAllCate",lisAllCate);
+                    session.setMaxInactiveInterval(6000);
                     String url = "/Home";
                     ServletUtils.forward(url,request,response);
                 }
@@ -77,6 +80,11 @@ public class LogingServlet extends HttpServlet {
                     AccountFace user = getUserInfoFace(accessToken);
                     List<Tag> list = TagModel.findAll();
                     HttpSession session = request.getSession();
+                    List<Category> lisAllCate = CategoryModel.findAllIn();
+                    List<Category> list5cate  = CategoryModel.find5Cate();
+                    session.setAttribute("list5cate",list5cate);
+                    session.setAttribute("lisAllCate",lisAllCate);
+                    session.setMaxInactiveInterval(6000);
                     session.setAttribute("auth", true);
                     session.setAttribute("authUser",user);;
                     String url = "/Home";
