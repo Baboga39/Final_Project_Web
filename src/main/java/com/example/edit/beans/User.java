@@ -19,6 +19,7 @@ public class User {
     private int otp;
     private int otp_exp;
 
+
     public User() {     }
 
     public User(int user_id, String username, String password, String name, LocalDate issue_at, int expiration, int role_id, String second_name, LocalDate dateOfBirth, String email, int otp, int otp_exp) {

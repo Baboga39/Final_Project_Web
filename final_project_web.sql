@@ -11,7 +11,7 @@
  Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 26/12/2022 16:11:20
+ Date: 27/12/2022 14:12:51
 */
 
 SET NAMES utf8mb4;
@@ -119,7 +119,7 @@ CREATE TABLE `comments`  (
   INDEX `user_id`(`user_id` ASC) USING BTREE,
   CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`article_id`) REFERENCES `articles` (`article_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 96 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 95 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of comments
@@ -233,7 +233,7 @@ CREATE TABLE `editor_manage_categories`  (
   INDEX `category_id`(`category_id` ASC) USING BTREE,
   CONSTRAINT `editor_manage_categories_ibfk_1` FOREIGN KEY (`editor_id`) REFERENCES `users` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `editor_manage_categories_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`categories_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of editor_manage_categories
@@ -247,7 +247,7 @@ CREATE TABLE `tags`  (
   `tags_id` int NOT NULL AUTO_INCREMENT,
   `value` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`tags_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tags
@@ -333,25 +333,37 @@ CREATE TABLE `users`  (
   `email` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `otp` int NOT NULL,
   `otp_exp` int NOT NULL,
+  `categories_id` int NULL DEFAULT NULL,
   PRIMARY KEY (`user_id`) USING BTREE,
-  INDEX `role_id`(`role_id` ASC) USING BTREE
+  INDEX `role_id`(`role_id` ASC) USING BTREE,
+  INDEX `categories_id`(`categories_id` ASC) USING BTREE,
+  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`categories_id`) REFERENCES `categories` (`categories_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
 ) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'AdminHai', '$2a$12$5eHAh5KPVOWyq.nE3D6mTOVM6SWQV.M1EIt6eFqSlTnhf/JpurXJ.', 'Hải', '2022-12-25', 7, 4, 'Ngọc Hải', '2022-12-13', 'ngochai0612002@gmail.com', 1, 1);
-INSERT INTO `users` VALUES (2, 'PvKhoa', '123456', 'Khoa', '2022-12-09', 7, 3, 'Khoa', '2022-12-13', 'khoa@gmail.com', 1, 1);
-INSERT INTO `users` VALUES (3, 'UserLuong', '123456', 'Lương', '2022-12-09', 7, 2, 'Lương', '2022-12-13', 'Luong@gmail.com', 1, 1);
-INSERT INTO `users` VALUES (4, 'name', '1', 'Phúc', '2022-12-09', 7, 4, 'Phúc', '2022-12-13', 'Phuc@gmail.com', 1, 1);
-INSERT INTO `users` VALUES (5, 'AdminDat', '$2a$12$ZfkcbrfdE23tRjZlUKXjiuyUxNq.KY5ey.uyPfTSVqjtjnQ7yVmrC', 'Đạt', '2022-12-25', 7, 1, 'Tiến Đạt', '2022-12-25', 'ngochai06122002@gmail.com', 1, 1);
-INSERT INTO `users` VALUES (6, 'PvHieu', '123456', 'Hieu', '2022-12-21', 7, 3, 'Hồng Hiệu', '2022-12-22', 'Hieu@gmai.com', 1, 1);
-INSERT INTO `users` VALUES (7, 'UserCuong', '123456', 'Cường', '2022-12-22', 7, 1, 'Minh Cường', '2022-12-22', 'Cuong@gmail.com', 1, 1);
-INSERT INTO `users` VALUES (8, 'BTVHoang', '123456', 'Hoàng', '2022-12-21', 7, 1, 'Việt Hoàng', '2022-12-22', 'Hoang@gmail.com', 1, 1);
-INSERT INTO `users` VALUES (9, 'AdminHieu', '123456', 'Hiếu ', '2022-12-21', 7, 1, 'Bá Hiếu', '2022-12-21', 'Hieu@gmail.com', 1, 1);
-INSERT INTO `users` VALUES (10, 'PvTrong', '123456', 'Trọng', '2022-12-21', 7, 1, 'Hữu Trọng', '2022-12-21', 'Trong@gmail.com', 1, 1);
-INSERT INTO `users` VALUES (14, 'name', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'baboga', '2022-12-24', 1, 2, '1', '2022-12-24', 'ngochai06122002@gmail.com', 1, 1);
-INSERT INTO `users` VALUES (15, 'abb', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'acc', '2022-12-24', 1, 2, '1', '2022-12-01', 'ngochai06122002@gmail.com', 1, 1);
-INSERT INTO `users` VALUES (16, 'acc', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'acc', '2022-12-25', 1, 2, 'abb', '2022-12-25', 'ngochai06122002@gmail.com', 1, 1);
+INSERT INTO `users` VALUES (1, 'AdminHai', '$2a$12$5eHAh5KPVOWyq.nE3D6mTOVM6SWQV.M1EIt6eFqSlTnhf/JpurXJ.', 'Hải', '2022-12-27', 7, 4, 'Ngọc Hải', '2022-12-13', 'ngochai0612002@gmail.com', 1, 1, 4);
+INSERT INTO `users` VALUES (2, 'PvKhoa', '123456', 'Khoa', '2022-12-09', 7, 3, 'Khoa', '2022-12-13', 'khoa@gmail.com', 1, 1, NULL);
+INSERT INTO `users` VALUES (3, 'UserLuong', '123456', 'Lương', '2022-12-09', 7, 2, 'Lương', '2022-12-13', 'Luong@gmail.com', 1, 1, NULL);
+INSERT INTO `users` VALUES (4, 'name', '1', 'Phúc', '2022-12-09', 7, 4, 'Phúc', '2022-12-13', 'Phuc@gmail.com', 1, 1, NULL);
+INSERT INTO `users` VALUES (5, 'AdminDat', '$2a$12$ZfkcbrfdE23tRjZlUKXjiuyUxNq.KY5ey.uyPfTSVqjtjnQ7yVmrC', 'Đạt', '2022-12-25', 7, 1, 'Tiến Đạt', '2022-12-25', 'ngochai06122002@gmail.com', 1, 1, NULL);
+INSERT INTO `users` VALUES (6, 'PvHieu', '123456', 'Hieu', '2022-12-21', 7, 3, 'Hồng Hiệu', '2022-12-22', 'Hieu@gmai.com', 1, 1, NULL);
+INSERT INTO `users` VALUES (7, 'UserCuong', '123456', 'Cường', '2022-12-22', 7, 1, 'Minh Cường', '2022-12-22', 'Cuong@gmail.com', 1, 1, NULL);
+INSERT INTO `users` VALUES (8, 'BTVHoang', '123456', 'Hoàng', '2022-12-21', 7, 1, 'Việt Hoàng', '2022-12-22', 'Hoang@gmail.com', 1, 1, NULL);
+INSERT INTO `users` VALUES (9, 'AdminHieu', '123456', 'Hiếu ', '2022-12-21', 7, 1, 'Bá Hiếu', '2022-12-21', 'Hieu@gmail.com', 1, 1, NULL);
+INSERT INTO `users` VALUES (10, 'PvTrong', '123456', 'Trọng', '2022-12-21', 7, 1, 'Hữu Trọng', '2022-12-21', 'Trong@gmail.com', 1, 1, NULL);
+INSERT INTO `users` VALUES (14, 'BTVDong', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Đông', '2022-12-24', 7, 4, 'Hoàng Đông', '2022-12-24', 'ngochai06122002@gmail.com', 1, 1, 3);
+INSERT INTO `users` VALUES (15, 'BTVTram', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trâm', '2022-12-24', 7, 4, 'Anh Trâm', '2022-12-01', 'ngochai06122002@gmail.com', 1, 1, 2);
+INSERT INTO `users` VALUES (16, 'BTVTrong', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trọng', '2022-12-25', 7, 4, 'Hữu Trọng', '2022-12-25', 'ngochai06122002@gmail.com', 1, 1, 1);
+INSERT INTO `users` VALUES (17, 'BTVTien', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Tiên', '2022-12-25', 7, 4, 'Viết Tiên', '2022-12-25', 'ngochai06122002@gmail.com', 1, 1, 4);
+INSERT INTO `users` VALUES (18, 'BTVPhuoc', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Phước', '2022-12-25', 7, 4, 'Hửu Phước', '2022-12-25', 'ngochai06122002@gmail.com', 1, 1, 5);
+INSERT INTO `users` VALUES (19, 'BTVNhan', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Nhân', '2022-12-25', 7, 4, 'Trung Nhân', '2022-12-25', 'ngochai06122002@gmail.com', 1, 1, 6);
+INSERT INTO `users` VALUES (20, 'BTVLong', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Long', '2022-12-25', 7, 4, 'Tiến Long', '2022-12-25', 'ngochai06122002@gmail.com', 1, 1, 7);
+INSERT INTO `users` VALUES (21, 'BTVLam', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Lâm', '2022-12-25', 7, 4, 'Hoàng Lâm', '2022-12-25', 'ngochai06122002@gmail.com', 1, 1, 8);
+INSERT INTO `users` VALUES (22, 'BTVTuan', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Tuấn', '2022-12-25', 7, 4, 'Anh Tuấn', '2022-12-25', 'ngochai06122002@gmail.com', 1, 1, 9);
+INSERT INTO `users` VALUES (23, 'BTVHoang', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Hoàng', '2022-12-25', 7, 4, 'Thanh Hoàng', '2022-12-25', 'ngochai06122002@gmail.com', 1, 1, 1);
+INSERT INTO `users` VALUES (24, 'BTVThuy', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Thủy', '2022-12-25', 7, 4, 'Thanh Thủy', '2022-12-25', 'ngochai06122002@gmail.com', 1, 1, 10);
+INSERT INTO `users` VALUES (25, 'BTVTrang', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trọng', '2022-12-25', 7, 4, 'Ngọc Trang', '2022-12-25', 'ngochai06122002@gmail.com', 1, 1, 9);
 
 SET FOREIGN_KEY_CHECKS = 1;
