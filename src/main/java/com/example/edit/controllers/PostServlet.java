@@ -40,9 +40,6 @@ public class PostServlet extends HttpServlet {
 
                 ServletUtils.forward("/views/viewPost/Index.jsp", request, response);
                 break;
-            case "/Upload":
-                ServletUtils.forward("/views/viewPost/Upload.jsp", request, response);
-                break;
             case "/Category":
                 getArticleByCate(request,response);
                 break;
@@ -72,51 +69,12 @@ public class PostServlet extends HttpServlet {
             case "/Index":
                 postArticles(request, response);
                 break;
-            case "/Upload":
-                postUpload(request, response);
-                break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
                 break;
         }
     }
 
-    private void postUpload(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println(request.getParameter("ProName"));
-
-        // Collection<Part> parts = request.getParts();
-        // System.out.println(parts.size());
-
-        for (Part part : request.getParts()) {
-            // System.out.println(part.getName());
-            // for (String headerName : part.getHeaderNames()) {
-            //   System.out.println(headerName);
-            // }
-
-            if (part.getName().equals("fuMain")) {
-                String contentDisposition = part.getHeader("content-disposition");
-                // System.out.println(contentDisposition);
-                String[] items = contentDisposition.split(";");
-                for (String s : items) {
-                    String tmp = s.trim();
-                    if (tmp.startsWith("filename")) {
-                        int idx = tmp.indexOf("=") + 2;
-                        String filename = tmp.substring(idx, tmp.length() - 1);
-                        //   http://localhost:8080/Edit/image/Article/A3.jpg
-                        String targetDir = this.getServletContext().getRealPath("image/Article");
-                        File dir = new File(targetDir);
-                        if (!dir.exists()) {
-                            dir.mkdir();
-                        }
-                        String destination = targetDir + "/" + filename;
-                        part.write(destination);
-                    }
-                }
-            }
-        }
-
-        ServletUtils.forward("/views/viewPost/Upload.jsp", request, response);
-    }
     private void postArticles(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String title = request.getParameter("title");
         Date publish_date = getCurrentDate();
@@ -132,12 +90,30 @@ public class PostServlet extends HttpServlet {
 
         int writer_id = 2;
         int status_id = 104;
-        String avatar = "";
         String image_content = "";
 
-        Articles a = new Articles(0,title,publish_date,views,abstracts,content,categories_id,premium,
-                writer_id,status_id,avatar,image_content,categoryName);
-        ArticleModel.addNews(a);
+        for (Part part : request.getParts()){
+            if (part.getName().equals("avatar")) {
+                String contentDisposition = part.getHeader("content-disposition");
+                String[] items = contentDisposition.split(";");
+                for (String s : items) {
+                    String tmp = s.trim();
+                    if (tmp.startsWith("filename")) {
+                        int idx = tmp.indexOf("=") + 2;
+                        String avatar = tmp.substring(idx, tmp.length() - 1);
+                        String targetDir = this.getServletContext().getRealPath("image/Article/");
+                        String destination = targetDir + avatar;
+                        part.write(destination);
+
+                        Articles a = new Articles(0,title,publish_date,views,abstracts,content,categories_id,premium,
+                                writer_id,status_id,avatar,image_content,categoryName);
+                        ArticleModel.addNews(a);
+                    }
+                }
+            }
+        }
+
+
         ServletUtils.redirect("/Post",request,response);
     }
 

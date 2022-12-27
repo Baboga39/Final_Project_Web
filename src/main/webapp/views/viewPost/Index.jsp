@@ -6,8 +6,18 @@
 <jsp:useBean id="tags" scope="request" type="java.util.List<com.example.edit.beans.Tag>"/>
 
 <t:web>
-  <jsp:attribute name="js">
+    <jsp:attribute name="css">
+      <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+    </jsp:attribute>
+
+    <jsp:attribute name="js">
     <script src="https://cdn.tiny.cloud/1/1jp8ineln53u6yy75unwd6d2dmxjp1y71wz8b7sfsp6qjo0x/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>s
+    <script src="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.5.0/js/fileinput.min.js"></script>
+    <script>
+        $('#avatar').fileinput({
+            allowedFileExtensions: ['jpg','png','gif']
+        });
+    </script>
     <script>
         tinymce.init({
             entity_encoding : "raw",
@@ -22,9 +32,10 @@
         });
     </script>
   </jsp:attribute>
+
     <jsp:body>
         <br><br><br>
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <div class="card">
                 <h4 class="card-header" >
                     <div class="text-center">ARTICLES POST</div>
@@ -57,6 +68,10 @@
                     <div class="form-group">
                         <label for="txtContent">Content</label>
                         <textarea id="txtContent" name="content"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label >Avatar</label>
+                        <input id="avatar" name="avatar" type="file"/>
                     </div>
                 </div>
                 <div class="card-footer">
