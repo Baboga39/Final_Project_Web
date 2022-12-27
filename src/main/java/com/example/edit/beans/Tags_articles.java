@@ -1,15 +1,16 @@
 package com.example.edit.beans;
 
 public class Tags_articles {
-    private int tag_id;
+    private int tags_id;
     private int article_id;
+    private int index_id;
 
-    public int getTag_id() {
-        return tag_id;
+    public int getTags_id() {
+        return tags_id;
     }
 
-    public void setTag_id(int tag_id) {
-        this.tag_id = tag_id;
+    public void setTags_id(int tags_id) {
+        this.tags_id = tags_id;
     }
 
     public int getArticle_id() {
@@ -20,15 +21,27 @@ public class Tags_articles {
         this.article_id = article_id;
     }
 
-    public Tags_articles(int tag_id, int article_id) {
-        this.tag_id = tag_id;
-        this.article_id = article_id;
+    public int getIndex_id() {
+        return index_id;
     }
 
+    public void setIndex_id(int index_id) {
+        this.index_id = index_id;
+    }
+
+    public Tags_articles(int tags_id, int article_id) {
+        this.tags_id = tags_id;
+        this.article_id = article_id;
+    }
+    public Tags_articles(int tags_id, int article_id, int index_id) {
+        this.tags_id = tags_id;
+        this.article_id = article_id;
+        this.index_id = index_id;
+    }
     @Override
     public String toString() {
         return "Tags_articles{" +
-                "tag_id=" + tag_id +
+                "tags_id=" + tags_id +
                 ", article_id=" + article_id +
                 '}';
     }

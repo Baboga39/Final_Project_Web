@@ -4,16 +4,14 @@ import com.example.edit.Utils.ServletUtils;
 import com.example.edit.beans.Articles;
 import com.example.edit.beans.Category;
 import com.example.edit.beans.Tag;
-import com.example.edit.models.ArticleModel;
 import com.example.edit.models.CategoryModel;
 import com.example.edit.models.TagModel;
-import com.example.edit.models.UserModel;
+import com.example.edit.models.ArticleModel;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 
 @WebServlet(name = "HomeServlet", value = "/Home/*")

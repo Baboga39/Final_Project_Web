@@ -72,9 +72,7 @@ public class AdminNewsServlet extends HttpServlet {
         Date date = new Date(System.currentTimeMillis());
         Articles articles = new Articles(0,title,date,views,abstracts,content,categories_id,premium,4,104,avatar,image_content);
 
-
         ArticleModel.addNews(articles);
-
 
 
         ServletUtils.redirect("/Admin/News", request,response);

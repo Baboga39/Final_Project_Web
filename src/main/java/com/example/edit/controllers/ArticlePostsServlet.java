@@ -2,11 +2,9 @@ package com.example.edit.controllers;
 
 import com.example.edit.Utils.ServletUtils;
 import com.example.edit.beans.Articles;
-import com.example.edit.beans.Category;
 import com.example.edit.beans.Tag;
-import com.example.edit.models.ArticleModel;
-import com.example.edit.models.CategoryModel;
 import com.example.edit.models.TagModel;
+import com.example.edit.models.ArticleModel;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

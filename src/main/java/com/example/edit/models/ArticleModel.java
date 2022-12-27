@@ -17,6 +17,7 @@ public class ArticleModel {
                     .executeAndFetch(Articles.class);
         }
     }
+    //Lấy các bài viết chưa được duyệt
     public static List<Articles> findDraftArticles() {
         final String query = "SELECT articles.article_id,articles.title,articles.publish_date,articles.views," +
                 "articles.abstracts,articles.categoryName,users.second_name,articles.premium\n" +
@@ -26,11 +27,24 @@ public class ArticleModel {
                     .executeAndFetch(Articles.class);
         }
     }
+    //Lấy bài viết theo id
     public static Articles findById(int article_id) {
         final String query = "select * from articles where article_id = :article_id  and status_id= 102";
         try (Connection con = DbUtils.getConnection()) {
             List<Articles> list = con.createQuery(query)
                     .addParameter("article_id", article_id)
+                    .executeAndFetch(Articles.class);
+            if (list.size() == 0){
+                return null;
+            }
+            return list.get(0);
+        }
+    }
+    //Lấy id bài viết max
+    public static Articles findArtByMaxID(){
+        final String query = "SELECT max(article_id) as article_id FROM articles " ;
+        try (Connection con = DbUtils.getConnection()) {
+            List<Articles> list = con.createQuery(query)
                     .executeAndFetch(Articles.class);
             if (list.size() == 0){
                 return null;
@@ -62,6 +76,7 @@ public class ArticleModel {
             return list.size();
         }
     }
+    // Lấy 5 bài viết ngẫu nhiên cùng chuyên mục
     public static List<Articles> findRand5SameCat(int article_id){
         final String query = "SELECT * FROM articles WHERE categories_id=" +
                 "(SELECT categories_id FROM articles WHERE article_id= :article_id) ORDER BY RAND() LIMIT 5";
@@ -75,6 +90,7 @@ public class ArticleModel {
             return list;
         }
     }
+    // Lấy các tag theo id bài viết
     public static List<Tag> findTagByArtId(int article_id){
         final String query = "SELECT tags.tags_id, tags.`value` from tags INNER JOIN tags_articles ON tags.tags_id=tags_articles.tags_id WHERE tags_articles.article_id= :article_id";
         try (Connection con = DbUtils.getConnection()) {
@@ -87,6 +103,7 @@ public class ArticleModel {
             return list;
         }
     }
+    //lấy tên tác giả của bài viết
     public static User findAuthor(int article_id) {
         final String query = "SELECT users.second_name FROM articles INNER JOIN users " +
                 "ON articles.writer_id=users.user_id WHERE articles.article_id= :article_id";
@@ -100,6 +117,7 @@ public class ArticleModel {
             return list.get(0);
         }
     }
+    // Lấy những thông tin về comments của bài viết
     public static List<Comments> findComment(int article_id){
         final String query = "SELECT users.second_name,comment,create_date from comments " +
                 "INNER JOIN users ON comments.user_id=users.user_id WHERE article_id= :article_id";
@@ -201,9 +219,9 @@ public class ArticleModel {
 
         final String query="SELECT * FROM articles WHERE categories_id= :categories_id  and status_id= 102 ORDER BY views DESC LIMIT 1";
         try (Connection con = DbUtils.getConnection()) {
-           List<Articles> list = con.createQuery(query)
-                   .addParameter("categories_id",categories_id)
-                   .executeAndFetch(Articles.class);
+            List<Articles> list = con.createQuery(query)
+                    .addParameter("categories_id",categories_id)
+                    .executeAndFetch(Articles.class);
             if (list.size() == 0) {
                 return null;
             } else {
@@ -338,7 +356,7 @@ public class ArticleModel {
                 ":content,:categories_id,:premium,:writer_id,:status_id,:avatar,:image_content,:categoryName)\n";
         try(Connection con  = DbUtils.getConnection())
         {
-                     con.createQuery(query)
+            con.createQuery(query)
                     .addParameter("title",a.getTitle())
                     .addParameter("publish_date",a.getPublish_date())
                     .addParameter("views",a.getViews())

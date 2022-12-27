@@ -2,7 +2,6 @@ package com.example.edit.controllers;
 
 import com.example.edit.Utils.ServletUtils;
 import com.example.edit.beans.Articles;
-import com.example.edit.beans.User;
 import com.example.edit.models.ArticleModel;
 
 import javax.servlet.ServletException;

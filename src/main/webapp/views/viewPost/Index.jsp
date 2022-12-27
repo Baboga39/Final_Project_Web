@@ -59,7 +59,7 @@
                     </div>
                     <div class="form-group">
                         <label for="txtTag">Tags</label>
-                        <select id="txtTag" name="Tag" class="form-control" multiple="multiple">
+                        <select id="txtTag" name="value" class="form-control" multiple="multiple">
                             <c:forEach items="${tags}" var="c">
                                 <option>${c.value}</option>
                             </c:forEach>
