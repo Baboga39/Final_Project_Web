@@ -176,6 +176,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", otp=" + otp +
                 ", otp_exp=" + otp_exp +
+                ", premium=" + premium +
                 '}';
     }
 }

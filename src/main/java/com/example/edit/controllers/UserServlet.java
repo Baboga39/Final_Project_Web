@@ -199,7 +199,7 @@ public class UserServlet extends HttpServlet {
         BCrypt.Result result = BCrypt.verifyer().verify(edit.getPassword().toCharArray(), edit.getPassword());
         UserModel.editUser(edit.getUserId(),name,email,date_of_birth,secondName);
         session.setAttribute("auth", true);
-        session.setAttribute("authUser",new User(edit.getUserId(),edit.getUsername(),edit.getPassword(),name,edit.getIssueAt(),edit.getExpiration(),edit.getRole_id(),secondName,date_of_birth,email,edit.getOtp(),edit.getOtp_exp()));
+        session.setAttribute("authUser",new User(edit.getUserId(),edit.getUsername(),edit.getPassword(),name,edit.getIssueAt(),edit.getExpiration(),edit.getRole_id(),secondName,date_of_birth,email,edit.getOtp(),edit.getOtp_exp(), edit.isPremium()));
         ServletUtils.forward("/views/ViewUser/Index.jsp", request, response);
     }
     private void editAcc(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -213,7 +213,7 @@ public class UserServlet extends HttpServlet {
         UserModel.editAcc(edit.getUserId(),bcryptHashString,username);
         User a = UserModel.findById(edit.getUserId());
         session.setAttribute("auth", true);
-        session.setAttribute("authUser",new User(edit.getUserId(),username,bcryptHashString,edit.getName(),edit.getIssueAt(),edit.getExpiration(),edit.getRole_id(),edit.getSecond_name(),edit.getDateOfBirth(),edit.getEmail(),edit.getOtp(),edit.getOtp_exp()));
+        session.setAttribute("authUser",new User(edit.getUserId(),username,bcryptHashString,edit.getName(),edit.getIssueAt(),edit.getExpiration(),edit.getRole_id(),edit.getSecond_name(),edit.getDateOfBirth(),edit.getEmail(),edit.getOtp(),edit.getOtp_exp(),edit.isPremium()));
         ServletUtils.forward("/views/ViewUser/Index.jsp", request, response);
     }
     private void editPre(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -245,7 +245,7 @@ public class UserServlet extends HttpServlet {
             session.setAttribute("checkEx", false);
         }
         session.setAttribute("auth", true);
-        session.setAttribute("authUser",new User(edit.getUserId(),edit.getUsername(),edit.getPassword(),edit.getName(),date,edit.getExpiration(),edit.getRole_id(),edit.getSecond_name(),edit.getDateOfBirth(),edit.getEmail(),edit.getOtp(),edit.getOtp_exp()));
+        session.setAttribute("authUser",new User(edit.getUserId(),edit.getUsername(),edit.getPassword(),edit.getName(),date,edit.getExpiration(),edit.getRole_id(),edit.getSecond_name(),edit.getDateOfBirth(),edit.getEmail(),edit.getOtp(),edit.getOtp_exp(),edit.isPremium()));
         ServletUtils.forward("/views/ViewUser/Index.jsp", request, response);
     }
 }

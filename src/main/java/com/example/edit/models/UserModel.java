@@ -20,7 +20,7 @@ import java.util.Properties;
 public class UserModel {
 
     public static void add(User c) {
-        String insertSql = "INSERT INTO users (username, password, name, issue_at, expiration, role_id, second_name, date_of_birth, email, otp, otp_exp) VALUES (:username,:password,:name,:issue_at,:expiration,:role_id,:second_name,:date_of_birth,:email,:otp,:otp_exp)";
+        String insertSql = "INSERT INTO users (username, password, name, issue_at, expiration, role_id, second_name, date_of_birth, email, otp, otp_exp,premium) VALUES (:username,:password,:name,:issue_at,:expiration,:role_id,:second_name,:date_of_birth,:email,:otp,:otp_exp,:premium)";
         try (Connection con = DbUtils.getConnection()) {
             con.createQuery(insertSql)
                     .addParameter("username", c.getUsername())
@@ -34,6 +34,7 @@ public class UserModel {
                     .addParameter("email", c.getEmail())
                     .addParameter("otp_exp", c.getOtp_exp())
                     .addParameter("otp", c.getOtp())
+                    .addParameter("premium",c.isPremium())
                     .executeUpdate();
         }
     }
@@ -299,6 +300,44 @@ public class UserModel {
             }
 
             return list.get(0);
+        }
+    }
+    public static List<User> findAll()
+    {
+        final String query = "select * from users";
+        try(Connection con = DbUtils.getConnection()){
+            return con.createQuery(query)
+                    .executeAndFetch(User.class);
+        }
+    }
+    public static void deleteUser(int user_id)
+    {
+        final String query = "DELETE FROM users WHERE user_id = :user_id";
+        try(Connection con = DbUtils.getConnection()){
+            con.createQuery(query)
+                    .addParameter("user_id",user_id)
+                    .executeUpdate();
+
+        }
+    }
+    public static void updateUser(User c) {
+        String insertSql = "UPDATE users SET  username = :username, password = :password, name = :name, issue_at = :issue_at, expiration = :expiration, role_id = :role_id, second_name = :second_name, date_of_birth = :date_of_birth, email = :email, otp = :otp, otp_exp = :otp_exp,premium = :premium WHERE user_id = :user_id";
+        try (Connection con = DbUtils.getConnection()) {
+            con.createQuery(insertSql)
+                    .addParameter("user_id",c.getUserId())
+                    .addParameter("username", c.getUsername())
+                    .addParameter("password", c.getPassword())
+                    .addParameter("name", c.getName())
+                    .addParameter("issue_at", c.getIssueAt())
+                    .addParameter("expiration", c.getExpiration())
+                    .addParameter("role_id", c.getRole_id())
+                    .addParameter("second_name", c.getSecond_name())
+                    .addParameter("date_of_birth", c.getDateOfBirth())
+                    .addParameter("email", c.getEmail())
+                    .addParameter("otp_exp", c.getOtp_exp())
+                    .addParameter("otp", c.getOtp())
+                    .addParameter("premium",c.isPremium())
+                    .executeUpdate();
         }
     }
 }
