@@ -46,8 +46,8 @@
                                 ${listOne.abstracts}
                         </p>
                         <div class="chip">
-                            #tag #tag #tag
-                            <i class="close fas fa-times"></i>
+                            <p><i class="bi bi-hash mr-2"></i>${o.categoryName}</p>
+
                         </div>
                         <button type="button" class="btn btn-primary"><a href="${pageContext.request.contextPath}/Detail?article_id=${listOne.article_id}" style="    text-decoration: none;
                     color: white;">Tìm hiểu ngay</a></button>
@@ -74,7 +74,7 @@
                             <div class="row mb-3">
                                 <div class="col-6">
                                     <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}" class="text-info">
-                                        <i class="fas fa-plane"></i>
+
                                         <span class="badge badge-pill badge-primary">${o.categoryName}</span>
                                     </a>
                                 </div>
@@ -92,8 +92,8 @@
                                 </p>
                             </a>
                             <div class="chip">
-                                #tag #tag #tag
-                                <i class="close fas fa-times"></i>
+                                <p><i class="bi bi-hash mr-2"></i>${o.categoryName}</p>
+
                             </div>
 
                             <hr />
@@ -114,7 +114,7 @@
                                     <span class="badge badge-pill badge-primary">${o.categoryName}</span>
                                     <p> ${o.abstracts}
                                     </p>
-                                    <p>#tag #tag #tag</p>
+                                    <p><i class="bi bi-hash mr-2"></i>${o.categoryName}</p>
                                     <p><i class="bi bi-calendar mr-2"></i>${o.publish_date}</p>
                                 </div>
                             </li>
