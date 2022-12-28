@@ -19,10 +19,13 @@ public class User {
     private int otp;
     private int otp_exp;
 
+    private  boolean premium;
+
 
     public User() {     }
 
-    public User(int user_id, String username, String password, String name, LocalDate issue_at, int expiration, int role_id, String second_name, LocalDate dateOfBirth, String email, int otp, int otp_exp) {
+    public User(int user_id, String username, String password, String name, LocalDate issue_at, int expiration,
+                int role_id, String second_name, LocalDate dateOfBirth, String email, int otp, int otp_exp) {
         this.user_id = user_id;
         this.username = username;
         this.password = password;
@@ -35,6 +38,23 @@ public class User {
         this.email = email;
         this.otp = otp;
         this.otp_exp = otp_exp;
+    }
+
+    public User(int user_id, String username, String password, String name, LocalDate issue_at, int expiration,
+                int role_id, String second_name, LocalDate dateOfBirth, String email, int otp, int otp_exp, boolean premium) {
+        this.user_id = user_id;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.issue_at = issue_at;
+        this.expiration = expiration;
+        this.role_id = role_id;
+        this.second_name = second_name;
+        this.date_of_Birth = dateOfBirth;
+        this.email = email;
+        this.otp = otp;
+        this.otp_exp = otp_exp;
+        this.premium = premium;
     }
 
     public int getUserId() {
@@ -131,6 +151,14 @@ public class User {
 
     public void setOtp_exp(int otp_exp) {
         this.otp_exp = otp_exp;
+    }
+
+    public boolean isPremium() {
+        return premium;
+    }
+
+    public void setPremium(boolean premium) {
+        this.premium = premium;
     }
 
     @Override

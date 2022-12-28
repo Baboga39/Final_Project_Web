@@ -79,7 +79,7 @@ public class UserModel {
 
     //Tìm User theo Username
     public static User findByUsername(String username) {
-        final String query = "select * from users where username = :username";
+        final String query = "select user_id,username,password,name from users where username = :username";
         try (Connection con = DbUtils.getConnection()) {
             List<User> list = con.createQuery(query)
                     .addParameter("username", username)
