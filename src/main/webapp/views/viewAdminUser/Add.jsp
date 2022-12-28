@@ -30,7 +30,7 @@
                 <div class="container">
                     <div class="card">
                         <div class="card-header d-flex justify-content-md-between">
-                            <span class="text-title">Users</span>
+                            <span class="text-title">Add Users</span>
                         </div>
                         <div class="card-body ml-5">
                             <div class="form-group">

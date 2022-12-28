@@ -23,7 +23,6 @@
                                     </div>
                                 </div>
                             </form>
-                            <a href="${pageContext.request.contextPath}/Admin/User/Add" class="btn btn-success btn-lg ml-3 ">Add Users<i class="bi bi-plus-square ml-3"></i></a>
                         </div>
                     </div>
                     <div class="body">
@@ -52,18 +51,18 @@
                                     <td>${k.name}</td>
                                     <td>${k.second_name}</td>
                                     <td>${k.issueAt}</td>
-                                        <c:if test="${k.role_id==1}">
-                                            <td>Admin</td>
-                                        </c:if>
-                                        <c:if test="${k.role_id==2}">
-                                            <td>User</td>
-                                        </c:if>
-                                        <c:if test="${k.role_id==3}">
-                                            <td>Phóng viên</td>
-                                        </c:if>
-                                        <c:if test="${k.role_id==4}">
-                                            <td>Biên tập viên</td>
-                                        </c:if>
+                                    <c:if test="${k.role_id==1}">
+                                        <td>Admin</td>
+                                    </c:if>
+                                    <c:if test="${k.role_id==2}">
+                                        <td>User</td>
+                                    </c:if>
+                                    <c:if test="${k.role_id==3}">
+                                        <td>Phóng viên</td>
+                                    </c:if>
+                                    <c:if test="${k.role_id==4}">
+                                        <td>Biên tập viên</td>
+                                    </c:if>
                                     <td>${k.dateOfBirth}</td>
                                     <td>${k.email}</td>
                                     <c:if test="${k.premium eq true}">
@@ -77,9 +76,7 @@
                                         </td>
                                     </c:if>
                                     <td class="d-flex " style="font-size: 20px">
-                                        <a href="${pageContext.request.contextPath}/Admin/User/Update?id=${k.userId}" type="button" class="btn link"><i class="bi bi-pencil-square"></i></a>
-                                        <a href="${pageContext.request.contextPath}/Admin/User/Delete?id=${k.userId}" role="button" class="btn link"><i class="bi bi-trash"></i></a>
-                                        <a href="${pageContext.request.contextPath}/Admin/User/Detail?id=${k.userId}" type="button" class="btn link"><i class="bi bi-eye"></i></a>
+                                        <a href="${pageContext.request.contextPath}/Admin/User/Account/Extend?id=${k.userId}" type="button" class="btn link"><i class="bi bi-plus-square"></i></a>
                                     </td>
                                 </tr>
                             </c:forEach>

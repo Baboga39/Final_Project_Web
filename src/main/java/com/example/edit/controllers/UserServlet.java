@@ -59,7 +59,7 @@ public class UserServlet extends HttpServlet {
                 ServletUtils.forward("/views/ViewUser/EditAcc.jsp",request,response);
                 break;
             case "/Extend":
-                ServletUtils.forward("/views/ViewUser/Extend.jsp",request,response);
+                ServletUtils.forward("/views/ViewUser/Account.jsp",request,response);
                 break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);

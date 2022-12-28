@@ -4,9 +4,11 @@ import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.example.edit.Utils.ServletUtils;
 import com.example.edit.beans.Articles;
 import com.example.edit.beans.Category;
+import com.example.edit.beans.Editor_manage_categories;
 import com.example.edit.beans.User;
 import com.example.edit.models.ArticleModel;
 import com.example.edit.models.CategoryModel;
+import com.example.edit.models.EditorManageModel;
 import com.example.edit.models.UserModel;
 
 import javax.servlet.*;
@@ -47,7 +49,6 @@ public class AdminUserServlet extends HttpServlet {
                     id2 = Integer.parseInt(request.getParameter("id"));
                 } catch (NumberFormatException e) {
                 }
-
                 User u = UserModel.findById(id2);
                 if (u != null) {
                     request.setAttribute("Users", u);
@@ -71,6 +72,38 @@ public class AdminUserServlet extends HttpServlet {
                     ServletUtils.redirect("/Admin/User", request, response);
                 }
                 break;
+            case "/Account":
+                List<User> lists = UserModel.findAll();
+                request.setAttribute("list", lists);
+                ServletUtils.forward("/views/viewAdminUser/Account.jsp",request,response);
+                break;
+            case "/Account/Extend":
+                int id4 = 0;
+                try {
+                    id4 = Integer.parseInt(request.getParameter("id"));
+                } catch (NumberFormatException e) {
+                }
+                LocalDate date = LocalDate.now();
+                UserModel.editAccPre(id4,date);
+                ServletUtils.redirect("/Admin/User/Account", request, response);
+                break;
+            case "/EditCate":
+                List<User> listBTV = UserModel.listBTV();
+                request.setAttribute("list", listBTV);
+                ServletUtils.forward("/views/viewAdminUser/EditCate.jsp",request,response);
+                break;
+            case "/EditCate/Edit":
+                int id5 = 0;
+                try {
+                    id5 = Integer.parseInt(request.getParameter("id"));
+                } catch (NumberFormatException e) {
+                }
+                List<Editor_manage_categories> listCateById = EditorManageModel.listCateByIdUser(id5);
+                List<Category> listCates = CategoryModel.findAllIn();
+                request.setAttribute("listCateById",listCateById);
+                request.setAttribute("listCate",listCates);
+                ServletUtils.forward("/views/viewAdminUser/Edit.jsp",request,response);
+                break;
             case "/Add":
                 ServletUtils.forward("/views/viewAdminUser/Add.jsp",request,response);
                 break;
@@ -90,10 +123,28 @@ public class AdminUserServlet extends HttpServlet {
             case "/Update":
                 updateUser(request, response);
                 break;
+            case "/EditCate/Edit":
+                editBTVCate(request,response);
+                break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
                 break;
         }
+    }
+    private void editBTVCate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
+
+        int btv_id = Integer.parseInt(request.getParameter("id"));
+
+        int id_cate = Integer.parseInt(request.getParameter("cate_id"));
+
+        Editor_manage_categories c = new Editor_manage_categories(0,btv_id,id_cate);
+        EditorManageModel.addBTVCate(c);
+
+
+        ServletUtils.redirect("/Admin/User",request,response);
     }
     private void addUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

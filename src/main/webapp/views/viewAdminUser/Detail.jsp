@@ -12,7 +12,7 @@
                 <div class="container">
                     <div class="card w-100 h-100 shadow">
                         <div class="card-header d-flex justify-content-md-between">
-                            <span class="text-title">Bài Viết</span>
+                            <span class="text-title">User - Chi tiết</span>
                         </div>
                         <div class="body">
                             <table class="table">

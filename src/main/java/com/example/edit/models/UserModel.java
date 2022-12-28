@@ -134,7 +134,7 @@ public class UserModel {
     //Thêm Account Pre
     public static void editAccPre(int user_id,LocalDate issue_at ) {
 
-        String updateSql = "UPDATE users SET issue_at = :issue_at WHERE user_id= :user_id ";
+        String updateSql = "UPDATE users SET issue_at = :issue_at, premium = 1 WHERE user_id= :user_id ";
         try (Connection con = DbUtils.getConnection()) {
             con.createQuery(updateSql)
                     .addParameter("issue_at", issue_at)
@@ -297,6 +297,14 @@ public class UserModel {
         try(Connection con = DbUtils.getConnection()){
             return con.createQuery(query)
                     .addParameter("role_id",role_id)
+                    .executeAndFetch(User.class);
+        }
+    }
+    public static List<User> listBTV()
+    {
+        final String query = "select * from users where role_id = 4";
+        try(Connection con = DbUtils.getConnection()){
+            return con.createQuery(query)
                     .executeAndFetch(User.class);
         }
     }
