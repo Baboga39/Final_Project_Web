@@ -11,8 +11,8 @@
         <div class="container-fluid">
             <div class="container">
                 <div class="row">
-                    <c:if test="${ (checkPre == false && checkEx == false) || (checkPre == false && sessionScope.auth == false)
-                    || (checkPre == false && checkEx== true) || (checkPre == true && checkEx== true) }">
+                    <c:if test="${ (checkPre == false && checkAccPre == false) || (checkPre == false && sessionScope.auth == false)
+                    || (checkPre == false && checkEx== true  && checkAccPre == true ) || (checkPre == true && checkEx== true  && checkAccPre == true) }">
                         <div class="col-lg-8">
                             <!-- News Detail Start -->
                             <div class="position-relative mb-3">
@@ -115,6 +115,16 @@
                             </div>
                         </div>
                     </c:if>
+                    <c:if test="${checkPre == true && sessionScope.auth == false}">
+                        <div class="col-lg-8">
+                            <!-- News Detail Start -->
+                            <div class="position-relative mb-3">
+                                <img src="https://tse2.mm.bing.net/th?id=OIP.usAcnyD4C2JZwdZ_gksHmgHaEv&pid=Api&P=0" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                <p>Xin vui lòng đăng nhập tài khoản VIP</p>
+                            </div>
+                        </div>
+                    </c:if>
+
                 </div>
             </div>
         </div>

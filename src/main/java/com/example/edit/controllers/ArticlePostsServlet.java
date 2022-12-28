@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -35,32 +36,57 @@ public class ArticlePostsServlet extends HttpServlet {
                 ServletUtils.forward("/views/viewArticlePosts/Index.jsp", request, response);
                 break;
             case "/Search":
-                response.setContentType("text/html;charset=UTF-8");
-                String text = request.getParameter("search");
-                String indexPage = request.getParameter("index");;
-                if(indexPage==null)
-                {
-                    indexPage="1";
-                }
-                int index =Integer.parseInt(indexPage);
-                int indexNext = index+1;
-                int indexPre = index-1;
-                index = (index - 1) * 6;
-                int count  = ArticleModel.getTotalArtilceBySearh(text);
-                int endPage = count/6;
-                if(count  % 6!=0 ) {
-                    endPage++;
-                }
-                List<Articles> listA = ArticleModel.findSearchPagging(text, index);
-                List<Tag> listT = TagModel.findByindex();
-                request.setAttribute("Day",getCurrentDate());
-                request.setAttribute("tags", listT);
-                request.setAttribute("listA", listA);
-                request.setAttribute("text", text);
-                request.setAttribute("EndPage",endPage);
-                request.setAttribute("indexNext", indexNext);
-                request.setAttribute("indexPre", indexPre);
-                ServletUtils.forward("/views/viewArticlePosts/Search.jsp", request, response);
+              try {
+                  response.setContentType("text/html;charset=UTF-8");
+                  HttpSession session =request.getSession();
+                  String text = request.getParameter("search");
+                  String indexPage = request.getParameter("index");;
+                  if(indexPage==null)
+                  {
+                      indexPage="1";
+                  }
+                  int index =Integer.parseInt(indexPage);
+                  int indexNext = index+1;
+                  int indexPre = index-1;
+                  index = ((index - 1) * 7);
+                  int count  = ArticleModel.getTotalArtilceBySearh(text);
+                  int endPage = count/6;
+                  if(count  % 6!=0 ) {
+                      endPage++;
+                  }
+                  if (session.getAttribute("checkAccPre") == null)
+                  {
+                      System.out.println("a");
+                      List<Articles> listA = ArticleModel.findSearchPagging(text, index);
+                      request.setAttribute("listA", listA);
+                  }
+                  else {
+                      boolean checkPreUser=  (boolean) session.getAttribute("checkAccPre");
+                      if(checkPreUser == true)
+                      {
+                          System.out.println("c");
+                          List<Articles> listA = ArticleModel.findSearchPaggingToPre(text,index);
+                          request.setAttribute("listA", listA);
+                      }
+                      else {
+                          List<Articles> listA = ArticleModel.findSearchPagging(text, index);
+                          request.setAttribute("listA", listA);
+                      }
+                  }
+
+                  List<Tag> listT = TagModel.findByindex();
+                  request.setAttribute("Day",getCurrentDate());
+                  request.setAttribute("tags", listT);
+                  request.setAttribute("text", text);
+                  request.setAttribute("EndPage",endPage);
+                  request.setAttribute("indexNext", indexNext);
+                  request.setAttribute("indexPre", indexPre);
+                  ServletUtils.forward("/views/viewArticlePosts/Search.jsp", request, response);
+              }
+              catch (Exception e)
+              {
+                  e.printStackTrace();
+              }
                 break;
             case "/PaggingSearch":
                 paggingSearch(request,response);
@@ -86,17 +112,36 @@ public class ArticlePostsServlet extends HttpServlet {
         int index =Integer.parseInt(indexPage);
         int indexNext = index+1;
         int indexPre = index-1;
-        index = (index - 1) * 6;
+        index = ((index - 1) * 7);
         int count  = ArticleModel.getTotalArtilceBySearh(text);
         int endPage = count/6;
         if(count  % 6!=0 ) {
             endPage++;
         }
-        List<Articles> listA = ArticleModel.findSearchPagging(text, index);
+        HttpSession session =request.getSession();
+
+        if (session.getAttribute("checkAccPre")== null)
+
+        {
+            List<Articles> listA = ArticleModel.findSearchPagging(text, index);
+            request.setAttribute("listA", listA);
+        }
+        else {
+            boolean checkPreUser=  (boolean) session.getAttribute("checkAccPre");
+            if(checkPreUser == true)
+            {
+                List<Articles> listA = ArticleModel.findSearchPaggingToPre(text,index);
+                request.setAttribute("listA", listA);
+            }
+            else {
+                List<Articles> listA = ArticleModel.findSearchPagging(text, index);
+                request.setAttribute("listA", listA);
+            }
+        }
         List<Tag> listT = TagModel.findByindex();
         request.setAttribute("Day",getCurrentDate());
         request.setAttribute("tags", listT);
-        request.setAttribute("listA", listA);
+
         request.setAttribute("text", text);
         request.setAttribute("EndPage",endPage);
         request.setAttribute("indexNext", indexNext);

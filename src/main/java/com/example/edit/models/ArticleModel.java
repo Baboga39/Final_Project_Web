@@ -65,7 +65,20 @@ public class ArticleModel {
     }
     //Lấy bài viết để phân trang theo Tag
     public static List<Articles> getArticleByTag(int tags_id ,int index){
-        final String query = "SELECT articles.article_id,articles.title,articles.publish_date,articles.views,articles.abstracts,articles.content,articles.categories_id,articles.premium,articles.writer_id,articles.status_id,articles.avatar,articles.image_content,articles.categoryName FROM tags INNER JOIN tags_articles  ON tags.tags_id = tags_articles.tags_id  INNER JOIN articles on tags_articles.article_id = articles.article_id WHERE tags.tags_id = :tags_id  and status_id= 102 LIMIT :index,6 ";
+        final String query = "SELECT articles.article_id,articles.title,articles.publish_date,articles.views,articles.abstracts,articles.content,articles.categories_id,articles.premium,articles.writer_id,articles.status_id,articles.avatar,articles.categoryName FROM tags INNER JOIN tags_articles  ON tags.tags_id = tags_articles.tags_id  INNER JOIN articles on tags_articles.article_id = articles.article_id WHERE tags.tags_id = :tags_id  and status_id= 102 LIMIT :index,6 ";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Articles> list = con.createQuery(query)
+                    .addParameter("tags_id", tags_id)
+                    .addParameter("index",index)
+                    .executeAndFetch(Articles.class);
+            if (list.size() == 0){
+                return null;
+            }
+            return list;
+        }
+    }
+    public static List<Articles> getArticleByTagToPre(int tags_id ,int index){
+        final String query = "SELECT articles.article_id,articles.title,articles.publish_date,articles.views,articles.abstracts,articles.content,articles.categories_id,articles.premium,articles.writer_id,articles.status_id,articles.avatar,articles.categoryName FROM tags INNER JOIN tags_articles  ON tags.tags_id = tags_articles.tags_id  INNER JOIN articles on tags_articles.article_id = articles.article_id WHERE tags.tags_id = :tags_id  and status_id= 102 ORDER BY premium DESC  LIMIT :index,6 ";
         try (Connection con = DbUtils.getConnection()) {
             List<Articles> list = con.createQuery(query)
                     .addParameter("tags_id", tags_id)
@@ -79,7 +92,7 @@ public class ArticleModel {
     }
     //Lấy tổng số bài viết để phân trang theo Tag
     public static int getTotalArtilceByTag(int tags_id) {
-        final String query = "SELECT articles.article_id,articles.title,articles.publish_date,articles.views,articles.abstracts,articles.content,articles.categories_id,articles.premium,articles.writer_id,articles.status_id,articles.avatar,articles.image_content,articles.categoryName FROM tags INNER JOIN tags_articles  ON tags.tags_id = tags_articles.tags_id  INNER JOIN articles on tags_articles.article_id = articles.article_id WHERE tags.tags_id = :tags_id  and status_id= 102";
+        final String query = "SELECT articles.article_id,articles.title,articles.publish_date,articles.views,articles.abstracts,articles.content,articles.categories_id,articles.premium,articles.writer_id,articles.status_id,articles.avatar,articles.categoryName FROM tags INNER JOIN tags_articles  ON tags.tags_id = tags_articles.tags_id  INNER JOIN articles on tags_articles.article_id = articles.article_id WHERE tags.tags_id = :tags_id  and status_id= 102";
         try (Connection con = DbUtils.getConnection()) {
             List<Articles> list=  con.createQuery(query)
                     .addParameter("tags_id",tags_id)
@@ -277,7 +290,16 @@ public class ArticleModel {
     }
     // Lấy tất cả bài viết đã tìm kiếm xong chia thành 6 bài để phân trang
     public static List<Articles> findSearchPagging(String text, int index) {
-        final String query = "SELECT * FROM articles WHERE MATCH(title,content,abstracts) AGAINST(:text)  and status_id= 102 LIMIT :index,6 ";
+        final String query = "SELECT * FROM articles WHERE MATCH(title,content,abstracts) AGAINST(:text)  and status_id= 102  LIMIT :index,6 ";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .addParameter("text",text)
+                    .addParameter("index",index)
+                    .executeAndFetch(Articles.class);
+        }
+    }
+    public static List<Articles> findSearchPaggingToPre(String text, int index) {
+        final String query = " SELECT * FROM articles WHERE MATCH(title,content,abstracts) AGAINST(:text)  and status_id= 102  ORDER BY premium DESC LIMIT :index,6";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .addParameter("text",text)
@@ -307,6 +329,15 @@ public class ArticleModel {
     // Lấy các bài viết theo danh mục chọn ra 6 bài phân thành 1 trang
     public static List<Articles> getArticleToPagging(int categories_id, int index) {
         final String query = "SELECT * FROM articles WHERE categories_id = :categories_id  and status_id= 102 LIMIT :index,6 ";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .addParameter("categories_id",categories_id)
+                    .addParameter("index",index)
+                    .executeAndFetch(Articles.class);
+        }
+    }
+    public static List<Articles> getArticleToPaggingPre(int categories_id, int index) {
+        final String query = "SELECT * FROM articles WHERE categories_id = :categories_id  and status_id= 102 ORDER BY premium DESC  LIMIT :index,6 ";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .addParameter("categories_id",categories_id)

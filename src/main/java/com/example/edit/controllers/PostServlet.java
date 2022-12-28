@@ -1,10 +1,7 @@
 package com.example.edit.controllers;
 
 import com.example.edit.Utils.ServletUtils;
-import com.example.edit.beans.Articles;
-import com.example.edit.beans.Category;
-import com.example.edit.beans.Tag;
-import com.example.edit.beans.Tags_articles;
+import com.example.edit.beans.*;
 import com.example.edit.models.ArticleModel;
 import com.example.edit.models.CategoryModel;
 import com.example.edit.models.TagArticleModel;
@@ -151,7 +148,24 @@ public class PostServlet extends HttpServlet {
         if(count  % 6!=0 ) {
             endPage++;
         }
-        List<Articles> list = ArticleModel.getArticleToPagging(cateId,index);
+        if (session.getAttribute("checkAccPre")== null)
+
+        {
+            List<Articles> listA = ArticleModel.getArticleToPagging(cateId,index);
+            request.setAttribute("listA", listA);
+        }
+        else {
+            boolean checkPreUser=  (boolean) session.getAttribute("checkAccPre");
+            if(checkPreUser == true)
+            {
+                List<Articles> listA = ArticleModel.getArticleToPaggingPre(cateId,index);
+                request.setAttribute("listA", listA);
+            }
+            else {
+                List<Articles> listA = ArticleModel.getArticleToPagging(cateId,index);
+                request.setAttribute("listA", listA);
+            }
+        }
         Articles listOne = ArticleModel.findTopCate(cateId);
         boolean check = CategoryModel.checkCate(cateId);
         List<Articles> listT = ArticleModel.getArticleByCateList3(cateId);
@@ -166,7 +180,6 @@ public class PostServlet extends HttpServlet {
         request.setAttribute("listT", listT);
         request.setAttribute("listOne", listOne);
         request.setAttribute("check", check);
-        request.setAttribute("list", list);
         request.setAttribute("listCa", listCa);
         request.setAttribute("tag", index);
         request.setAttribute("indexNext", indexNext);
@@ -191,20 +204,36 @@ public class PostServlet extends HttpServlet {
         int index =Integer.parseInt(indexPage);
         int indexNext = index+1;
         int indexPre = index-1;
-        index = (index - 1) * 6;
+        index = ((index - 1) * 7) -1 ;
         int count  = ArticleModel.getTotalArtilceByTag(tagId);
         int endPage = count/6;
         if(count  % 6!=0 ) {
             endPage++;
         }
         request.setAttribute("Day",getCurrentDate());
-        List<Articles> listA = ArticleModel.getArticleByTag(tagId,index);
+        if (session.getAttribute("checkAccPre")== null)
+
+        {
+            List<Articles> listA = ArticleModel.getArticleByTag(tagId,index);
+            request.setAttribute("listA", listA);
+        }
+        else {
+            boolean checkPreUser=  (boolean) session.getAttribute("checkAccPre");
+            if(checkPreUser == true)
+            {
+                List<Articles> listA = ArticleModel.getArticleByTagToPre(tagId,index);
+                request.setAttribute("listA", listA);
+            }
+            else {
+                List<Articles> listA = ArticleModel.getArticleByTag(tagId,index);
+                request.setAttribute("listA", listA);
+            }
+        }
         List<Category> lisAllCate = CategoryModel.findAllIn();
         List<Category> list5cate  = CategoryModel.find5Cate();
         session.setAttribute("list5cate",list5cate);
         session.setAttribute("lisAllCate",lisAllCate);
         session.setMaxInactiveInterval(6000);
-        request.setAttribute("listA", listA);
         request.setAttribute("tag", index);
         request.setAttribute("tid", tid);
         request.setAttribute("indexNext", indexNext);
@@ -225,13 +254,30 @@ public class PostServlet extends HttpServlet {
         int index =Integer.parseInt(indexPage);
         int indexNext = index+1;
         int indexPre = index-1;
-        index = (index - 1) * 6;
+        index = ((index - 1) * 7) -1 ;
         int count  = ArticleModel.getTotalArtilceByCate(cids);
         int endPage = count/6;
         if(count  % 6!=0 ) {
             endPage++;
         }
-        List<Articles> list = ArticleModel.getArticleToPagging(cids,index);
+        if (session.getAttribute("checkAccPre")== null)
+
+        {
+            List<Articles> listA = ArticleModel.getArticleToPagging(cids,index);
+            request.setAttribute("listA", listA);
+        }
+        else {
+            boolean checkPreUser=  (boolean) session.getAttribute("checkAccPre");
+            if(checkPreUser == true)
+            {
+                List<Articles> listA = ArticleModel.getArticleToPaggingPre(cids,index);
+                request.setAttribute("listA", listA);
+            }
+            else {
+                List<Articles> listA = ArticleModel.getArticleToPagging(cids,index);
+                request.setAttribute("listA", listA);
+            }
+        }
         Articles listOne = ArticleModel.findTopCate(cids);
         boolean check = CategoryModel.checkCate(cids);
         List<Articles> listT = ArticleModel.getArticleByCateList3(cids);
@@ -246,7 +292,6 @@ public class PostServlet extends HttpServlet {
         request.setAttribute("listT", listT);
         request.setAttribute("listOne", listOne);
         request.setAttribute("check", check);
-        request.setAttribute("list", list);
         request.setAttribute("listCa", listCa);
         request.setAttribute("tag", index);
         request.setAttribute("indexNext", indexNext);
@@ -263,7 +308,7 @@ public class PostServlet extends HttpServlet {
         int index =Integer.parseInt(indexPage);
         int indexNext = index+1;
         int indexPre = index-1;
-        index = (index - 1) * 6;
+        index = ((index - 1) * 7) -1 ;
         int count  = ArticleModel.getTotalArticlePre();
         int endPage = count/6;
         if(count  % 6!=0 ) {
