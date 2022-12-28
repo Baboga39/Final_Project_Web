@@ -96,7 +96,8 @@ public class PostServlet extends HttpServlet {
     private void postArticles(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String title = request.getParameter("title");
-        Date publish_date = getCurrentDate();
+        Date create_date = getCurrentDate();
+        Date publish_date = Date.valueOf("1111-11-11");
         Random r = new Random();
         int views= r.nextInt(1000);
         String abstracts = request.getParameter("abstracts");
@@ -106,7 +107,7 @@ public class PostServlet extends HttpServlet {
         int categories_id = category.getCategories_id();
         boolean premium = false;
         int writer_id = 4;
-        int status_id = 102;
+        int status_id = 104;
 
         for (Part part : request.getParts()){
             if (part.getName().equals("avatar")) {
@@ -121,8 +122,8 @@ public class PostServlet extends HttpServlet {
                         String destination = targetDir + avatar;
                         part.write(destination);
 
-                        Articles a = new Articles(0,title,publish_date,views,abstracts,content,categories_id,premium,
-                                writer_id,status_id,avatar,categoryName);
+                        Articles a = new Articles(0,title,create_date,publish_date,views,abstracts,content,
+                                categories_id,premium, writer_id,status_id,avatar,categoryName);
                         ArticleModel.addNews(a);
                     }
                 }

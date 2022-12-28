@@ -113,7 +113,7 @@ public class AdminNewsServlet extends HttpServlet {
                 addNews(request, response);
                 break;
             case "/Update":
-                updateNews(request, response);
+                //updateNews(request, response);
                 break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
@@ -133,8 +133,9 @@ public class AdminNewsServlet extends HttpServlet {
         int catetogy_id = category.getCategories_id();
         String categoriesName = request.getParameter("categories_name");
         boolean premium = request.getParameter("premium") !=null;
-        String image_content = "";
-        Date date = new Date(System.currentTimeMillis());
+
+        Date create_date = new Date(System.currentTimeMillis());
+        Date publish_date = null;
         for (Part part : request.getParts()){
             if (part.getName().equals("avatar")) {
                 String contentDisposition = part.getHeader("content-disposition");
@@ -147,7 +148,7 @@ public class AdminNewsServlet extends HttpServlet {
                         String targetDir = this.getServletContext().getRealPath("image/Article/");
                         String destination = targetDir + avatar;
                         part.write(destination);
-                        Articles articles = new Articles(0,title,date,views,abstracts,content,catetogy_id,premium,4,104,avatar,image_content,categoriesName);
+                        Articles articles = new Articles(0,title,create_date,publish_date,views,abstracts,content,catetogy_id,premium,4,104,avatar,categoriesName);
                         ArticleModel.addNews(articles);
                     }
                 }
@@ -157,7 +158,7 @@ public class AdminNewsServlet extends HttpServlet {
         ServletUtils.redirect("/Admin/News", request,response);
     }
 
-    private void updateNews(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    /*private void updateNews(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         String title = request.getParameter("title");
@@ -202,5 +203,5 @@ public class AdminNewsServlet extends HttpServlet {
         }
 
         ServletUtils.redirect("/Admin/News", request,response);
-    }
+    }*/
 }

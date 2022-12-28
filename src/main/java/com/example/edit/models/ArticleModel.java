@@ -358,13 +358,15 @@ public class ArticleModel {
         }
     }
     public  static  void addNews(Articles a){
-        final String query = "INSERT INTO articles(title, publish_date, views, abstracts, content, categories_id, premium, " +
-                "writer_id, status_id, avatar, categoryName) VALUES (:title,:publish_date,:views,:abstracts," +
+        final String query = "INSERT INTO articles(title, create_date, publish_date, views, abstracts, content, " +
+                "categories_id, premium, writer_id, status_id, avatar, categoryName) " +
+                "VALUES (:title,:create_date,:publish_date,:views,:abstracts," +
                 ":content,:categories_id,:premium,:writer_id,:status_id,:avatar,:categoryName)\n";
         try(Connection con  = DbUtils.getConnection())
         {
             con.createQuery(query)
                     .addParameter("title",a.getTitle())
+                    .addParameter("create_date",a.getCreate_date())
                     .addParameter("publish_date",a.getPublish_date())
                     .addParameter("views",a.getViews())
                     .addParameter("abstracts", a.getAbstracts())
@@ -390,15 +392,16 @@ public class ArticleModel {
     }
     public  static  void updateNews(Articles a)
     {
-        final String query = "UPDATE articles SET  title = :title, publish_date = :publish_date, views = :views, " +
-                "abstracts = :abstracts, content = :content, categories_id = :categories_id, premium = :premium," +
-                " writer_id = :writer_id, status_id = :status_id, avatar = :avatar, , categoryName = :categoryName " +
-                "WHERE article_id = :article_id \n";
+        final String query = "UPDATE articles SET  title = :title, create_date= :create_date,publish_date = :publish_date, " +
+                "views = :views, abstracts = :abstracts, content = :content, categories_id = :categories_id, " +
+                "premium = :premium, writer_id = :writer_id, status_id = :status_id, avatar = :avatar, " +
+                "categoryName = :categoryName WHERE article_id = :article_id \n";
         try(Connection con  = DbUtils.getConnection())
         {
             con.createQuery(query)
                     .addParameter("article_id",a.getArticle_id())
                     .addParameter("title",a.getTitle())
+                    .addParameter("create_date",a.getCreate_date())
                     .addParameter("publish_date",a.getPublish_date())
                     .addParameter("views",a.getViews())
                     .addParameter("abstracts", a.getAbstracts())
