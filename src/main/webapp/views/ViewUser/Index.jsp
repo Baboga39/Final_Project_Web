@@ -88,14 +88,17 @@
                                             </div>
                                         </div>
                                     </li>
-                                    <li class="list-group-item">
-                                        <div class="row mt-4">
+                                    <c:if test="${authUser.role_id == 3}">
+                                        <li class="list-group-item">
+                                            <div class="row mt-4">
                                                 <span class="col-4">Name Writer: </span>
                                                 <div class="col-6">
                                                     <span>${authUser.second_name}</span>
                                                 </div>
-                                        </div>
-                                    </li>
+                                            </div>
+                                        </li>
+                                    </c:if>
+
                                     <li class="list-group-item">
                                         <div class="row mt-4">
                                             <span class="col-4">Email: </span>
@@ -145,12 +148,12 @@
                                     <li class="list-group-item">
                                         <div class="row">
                                             <span class="col-4">Status: </span>
-                                            <c:if test="${checkEx eq true}">
+                                            <c:if test="${checkEx eq true && checkAccPre eq true}">
                                             <div class="col-8">
                                                 <span>Vip</span>
                                             </div>
                                             </c:if>
-                                            <c:if test="${checkEx eq false}">
+                                            <c:if test="${checkEx eq false  && checkAccPre eq true}">
                                                 <div class="col-8">
                                                     <span>Hết hạn</span>
                                                 </div>

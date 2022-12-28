@@ -106,7 +106,7 @@
                             <!-- Tags End -->
                         </div>
                     </c:if>
-                    <c:if test="${checkPre == true && checkEx== false}">
+                    <c:if test="${checkPre == true && checkEx== false && checkAccPre == true}">
                         <div class="col-lg-8">
                             <!-- News Detail Start -->
                             <div class="position-relative mb-3">

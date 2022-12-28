@@ -111,7 +111,6 @@ public class UserServlet extends HttpServlet {
             {
                 HttpSession session = request.getSession();
                 int Ex = user.getUserId();
-                boolean a = UserModel.checkEx(Ex);
                 if (UserModel.checkEx(Ex) == true)
                 {
                     session.setAttribute("checkEx", true);
@@ -119,6 +118,15 @@ public class UserServlet extends HttpServlet {
                 else
                 {
                     session.setAttribute("checkEx", false);
+                }
+
+                if (UserModel.checkAccPre(Ex) == true)
+                {
+                    session.setAttribute("checkAccPre", true);
+                }
+                else
+                {
+                    session.setAttribute("checkAccPre", false);
                 }
                 session.setAttribute("auth", true);
                 session.setAttribute("authUser",user);;

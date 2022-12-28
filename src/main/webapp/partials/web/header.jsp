@@ -15,7 +15,7 @@
                         </a>
                     </li>
                     </c:forEach>
-                    <c:if test="${checkEx eq true}">
+                    <c:if test="${checkEx eq true && checkAccPre == true}">
                     <li class="nav-item text-category " style="font-size: 14px;
     width: 78px;
     text-align: center;;">
@@ -27,7 +27,7 @@
                             <c:if test="${authUser.role_id == 1}">
                             <li class="nav-item text-category " style="font-size: 14px;">
                                 <a class="link nav-link" href="${pageContext.request.contextPath}/Admin/Home/Index" aria-expanded="false">
-                                    Administrator
+                                    Admin
                                 </a>
                             </li>
                         </c:if>

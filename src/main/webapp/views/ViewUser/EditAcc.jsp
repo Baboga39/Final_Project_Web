@@ -146,13 +146,13 @@
                       <li class="list-group-item">
                         <div class="row">
                           <span class="col-4">Status: </span>
-                          <c:if test="${checkEx eq true}">
+                          <c:if test="${checkEx eq true && checkAccPre eq true}">
                             <div class="col-6 d-flex justify-content-between">
                               <span>Vip</span>
                               <a href="${pageContext.request.contextPath}/User/Extend"><i class="bi bi-plus-circle"></i></a>
                             </div>
                           </c:if>
-                          <c:if test="${checkEx eq false}">
+                          <c:if test="${checkEx eq false && checkAccPre eq true}">
                             <div class="col-6 d-flex justify-content-between">
                               <span>Hết hạn</span>
                               <a href="${pageContext.request.contextPath}/User/Extend" class=""><i class="bi bi-plus-circle"></i></a>

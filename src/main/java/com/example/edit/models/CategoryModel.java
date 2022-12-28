@@ -36,7 +36,7 @@ public class CategoryModel {
     }
 
     public static List<Category> find5Cate() {
-        final String query = "SELECT * FROM categories ORDER BY categories_id  LIMIT 0,5";
+        final String query = "SELECT * FROM categories ORDER BY categories_id  LIMIT 0,4";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .executeAndFetch(Category.class);

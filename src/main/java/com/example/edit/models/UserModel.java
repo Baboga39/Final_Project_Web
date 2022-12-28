@@ -80,7 +80,7 @@ public class UserModel {
 
     //Tìm User theo Username
     public static User findByUsername(String username) {
-        final String query = "select user_id,username,password,name from users where username = :username";
+        final String query = "select * from users where username = :username";
         try (Connection con = DbUtils.getConnection()) {
             List<User> list = con.createQuery(query)
                     .addParameter("username", username)
@@ -267,7 +267,20 @@ public class UserModel {
     }
     // Kiểm tra tài khoản người dùng còn hạn hay không
     public static boolean checkEx(int user_id) {
-        String query = "SELECT * FROM users WHERE expiration >  DATEDIFF (CURRENT_DATE(),issue_at) AND user_id = :user_id";
+        String query = "SELECT * FROM users WHERE expiration >=  DATEDIFF (CURRENT_DATE(),issue_at) AND user_id = :user_id";
+        try (Connection con = DbUtils.getConnection()) {
+            List<User> list = con.createQuery(query)
+                    .addParameter("user_id", user_id)
+                    .executeAndFetch(User.class);
+            if (list.size() == 0) {
+                return false;
+            }
+            return true;
+        }
+    }
+    // Check phải Account Pre ko
+    public static boolean checkAccPre(int user_id) {
+        String query = "SELECT * FROM users WHERE  user_id = :user_id AND premium = 1";
         try (Connection con = DbUtils.getConnection()) {
             List<User> list = con.createQuery(query)
                     .addParameter("user_id", user_id)

@@ -163,12 +163,12 @@
                       <li class="list-group-item">
                         <div class="row">
                           <span class="col-4">Status: </span>
-                          <c:if test="${checkEx eq true}">
+                          <c:if test="${checkEx eq true && checkAccPre eq true}">
                             <div class="col-8">
                               <span>Vip</span>
                             </div>
                           </c:if>
-                          <c:if test="${checkEx eq false}">
+                          <c:if test="${checkEx eq false && checkAccPre eq true}">
                             <div class="col-8">
                               <span>Hết hạn</span>
                             </div>
