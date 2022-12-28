@@ -17,6 +17,7 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
+import java.util.Random;
 
 
 @WebServlet(name = "PostServlet", value = "/Post/*")
@@ -96,16 +97,16 @@ public class PostServlet extends HttpServlet {
 
         String title = request.getParameter("title");
         Date publish_date = getCurrentDate();
-        int views = 0;
+        Random r = new Random();
+        int views= r.nextInt(1000);
         String abstracts = request.getParameter("abstracts");
         String content = request.getParameter("content");
         String categoryName = request.getParameter("name");
         Category category = CategoryModel.findCatByName(categoryName);
         int categories_id = category.getCategories_id();
         boolean premium = false;
-        int writer_id = 2;
+        int writer_id = 4;
         int status_id = 102;
-        String image_content = "";
 
         for (Part part : request.getParts()){
             if (part.getName().equals("avatar")) {
@@ -121,18 +122,11 @@ public class PostServlet extends HttpServlet {
                         part.write(destination);
 
                         Articles a = new Articles(0,title,publish_date,views,abstracts,content,categories_id,premium,
-                                writer_id,status_id,avatar,image_content,categoryName);
+                                writer_id,status_id,avatar,categoryName);
                         ArticleModel.addNews(a);
                     }
                 }
-            }/*else {
-                String avatar = "";
-                Articles a = new Articles(0,title,publish_date,views,abstracts,content,categories_id,premium,
-                        writer_id,status_id,avatar,image_content,categoryName);
-                ArticleModel.addNews(a);
-                break;
-            }*/
-
+            }
         }
 
         ServletUtils.redirect("/Post",request,response);

@@ -226,9 +226,9 @@ public class ArticleModel {
 
         final String query="SELECT * FROM articles WHERE categories_id= :categories_id  and status_id= 102 ORDER BY views DESC LIMIT 1";
         try (Connection con = DbUtils.getConnection()) {
-           List<Articles> list = con.createQuery(query)
-                   .addParameter("categories_id",categories_id)
-                   .executeAndFetch(Articles.class);
+            List<Articles> list = con.createQuery(query)
+                    .addParameter("categories_id",categories_id)
+                    .executeAndFetch(Articles.class);
             if (list.size() == 0) {
                 return null;
             } else {
@@ -358,12 +358,12 @@ public class ArticleModel {
         }
     }
     public  static  void addNews(Articles a){
-        final String query = "INSERT INTO articles (title, publish_date, views, abstracts, content, categories_id, premium, " +
-                "writer_id, status_id, avatar, image_content, categoryName) VALUES (:title,:publish_date,:views,:abstracts," +
-                ":content,:categories_id,:premium,:writer_id,:status_id,:avatar,:image_content,:categoryName)\n";
+        final String query = "INSERT INTO articles(title, publish_date, views, abstracts, content, categories_id, premium, " +
+                "writer_id, status_id, avatar, categoryName) VALUES (:title,:publish_date,:views,:abstracts," +
+                ":content,:categories_id,:premium,:writer_id,:status_id,:avatar,:categoryName)\n";
         try(Connection con  = DbUtils.getConnection())
         {
-                     con.createQuery(query)
+            con.createQuery(query)
                     .addParameter("title",a.getTitle())
                     .addParameter("publish_date",a.getPublish_date())
                     .addParameter("views",a.getViews())
@@ -374,7 +374,6 @@ public class ArticleModel {
                     .addParameter("writer_id",a.getWriter_id())
                     .addParameter("status_id",a.getStatus_id())
                     .addParameter("avatar",a.getAvatar())
-                    .addParameter("image_content",a.getImage_content())
                     .addParameter("categoryName",a.getCategoryName())
                     .executeUpdate();
         }
@@ -391,7 +390,10 @@ public class ArticleModel {
     }
     public  static  void updateNews(Articles a)
     {
-        final String query = "UPDATE articles SET  title = :title, publish_date = :publish_date, views = :views, abstracts = :abstracts, content = :content, categories_id = :categories_id, premium = :premium, writer_id = :writer_id, status_id = :status_id, avatar = :avatar, image_content = :image_content, categoryName = :categoryName WHERE article_id = :article_id \n";
+        final String query = "UPDATE articles SET  title = :title, publish_date = :publish_date, views = :views, " +
+                "abstracts = :abstracts, content = :content, categories_id = :categories_id, premium = :premium," +
+                " writer_id = :writer_id, status_id = :status_id, avatar = :avatar, , categoryName = :categoryName " +
+                "WHERE article_id = :article_id \n";
         try(Connection con  = DbUtils.getConnection())
         {
             con.createQuery(query)
@@ -406,7 +408,6 @@ public class ArticleModel {
                     .addParameter("writer_id",a.getWriter_id())
                     .addParameter("status_id",a.getStatus_id())
                     .addParameter("avatar",a.getAvatar())
-                    .addParameter("image_content",a.getImage_content())
                     .addParameter("categoryName",a.getCategoryName())
                     .executeUpdate();
         }

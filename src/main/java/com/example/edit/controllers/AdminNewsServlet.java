@@ -179,8 +179,6 @@ public class AdminNewsServlet extends HttpServlet {
 
         int id = Integer.parseInt(request.getParameter("id"));
 
-        String image_content = "";
-
         Date publish_date = new Date(System.currentTimeMillis());
 
         for (Part part : request.getParts()){
@@ -195,7 +193,8 @@ public class AdminNewsServlet extends HttpServlet {
                         String targetDir = this.getServletContext().getRealPath("image/Article/");
                         String destination = targetDir + avatar;
                         part.write(destination);
-                        Articles articles = new Articles(id,title,publish_date,views,abstracts,content,catetogy_id,premium,writer_id,status_id,avatar, image_content,categoriesName,nameWriter);
+                        Articles articles = new Articles(id,title,publish_date,views,abstracts,content,catetogy_id,
+                                premium,writer_id,status_id,avatar,categoriesName,nameWriter);
                         ArticleModel.updateNews(articles);
                     }
                 }

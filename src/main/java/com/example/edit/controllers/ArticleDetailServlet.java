@@ -77,7 +77,7 @@ public class ArticleDetailServlet extends HttpServlet {
                 int article_id = Integer.parseInt(request.getParameter("article_id"));
 
                 String email = request.getParameter("email");
-                User user = UserModel.getUserByEmail(email);
+                User user = UserModel.findByEmail(email);
                 int user_id = user.getUserId();
                 String comment = request.getParameter("comment");
                 LocalDateTime create_date = LocalDateTime.now();

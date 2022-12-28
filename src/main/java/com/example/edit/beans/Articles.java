@@ -16,12 +16,11 @@ public class Articles {
     private int writer_id;
     private int status_id;
     private String avatar;
-    private String image_content;
     private String categoryName;
 
     private String second_name;
 
-    public Articles(int article_id, String title, Date publish_date, int views, String abstracts, String content, int categories_id, boolean premium, int writer_id, int status_id, String avatar, String image_content) {
+    public Articles(int article_id, String title, Date publish_date, int views, String abstracts, String content, int categories_id, boolean premium, int writer_id, int status_id, String avatar, String categoryName) {
         this.article_id = article_id;
         this.title = title;
         this.publish_date = publish_date;
@@ -33,27 +32,11 @@ public class Articles {
         this.writer_id = writer_id;
         this.status_id = status_id;
         this.avatar = avatar;
-        this.image_content = image_content;
-    }
-
-    public Articles(int article_id, String title, Date publish_date, int views, String abstracts, String content, int categories_id, boolean premium, int writer_id, int status_id, String avatar, String image_content, String categoryName) {
-        this.article_id = article_id;
-        this.title = title;
-        this.publish_date = publish_date;
-        this.views = views;
-        this.abstracts = abstracts;
-        this.content = content;
-        this.categories_id = categories_id;
-        this.premium = premium;
-        this.writer_id = writer_id;
-        this.status_id = status_id;
-        this.avatar = avatar;
-        this.image_content = image_content;
         this.categoryName = categoryName;
     }
 
     public Articles(int article_id, String title, Date publish_date, int views, String abstracts, String content,
-                    int categories_id, boolean premium, int writer_id, int status_id, String avatar, String image_content,
+                    int categories_id, boolean premium, int writer_id, int status_id, String avatar,
                     String categoryName, String second_name) {
         this.article_id = article_id;
         this.title = title;
@@ -66,7 +49,6 @@ public class Articles {
         this.writer_id = writer_id;
         this.status_id = status_id;
         this.avatar = avatar;
-        this.image_content = image_content;
         this.categoryName = categoryName;
         this.second_name = second_name;
     }
@@ -159,14 +141,6 @@ public class Articles {
         this.avatar = avatar;
     }
 
-    public String getImage_content() {
-        return image_content;
-    }
-
-    public void setImage_content(String image_content) {
-        this.image_content = image_content;
-    }
-
     public String getCategoryName() {
         return categoryName;
     }
@@ -197,7 +171,6 @@ public class Articles {
                 ", writer_id=" + writer_id +
                 ", status_id=" + status_id +
                 ", avatar='" + avatar + '\'' +
-                ", image_content='" + image_content + '\'' +
                 ", categoryName='" + categoryName + '\'' +
                 ", second_name='" + second_name + '\'' +
                 '}';
