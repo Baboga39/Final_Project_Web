@@ -56,7 +56,6 @@ public class ArticlePostsServlet extends HttpServlet {
                   }
                   if (session.getAttribute("checkAccPre") == null)
                   {
-                      System.out.println("a");
                       List<Articles> listA = ArticleModel.findSearchPagging(text, index);
                       request.setAttribute("listA", listA);
                   }
@@ -64,7 +63,6 @@ public class ArticlePostsServlet extends HttpServlet {
                       boolean checkPreUser=  (boolean) session.getAttribute("checkAccPre");
                       if(checkPreUser == true)
                       {
-                          System.out.println("c");
                           List<Articles> listA = ArticleModel.findSearchPaggingToPre(text,index);
                           request.setAttribute("listA", listA);
                       }
