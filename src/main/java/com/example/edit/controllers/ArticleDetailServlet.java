@@ -75,18 +75,21 @@ public class ArticleDetailServlet extends HttpServlet {
         switch (path) {
             case "/Comment":
                 int article_id = Integer.parseInt(request.getParameter("article_id"));
-
                 String email = request.getParameter("email");
-                User user = UserModel.findByEmail(email);
-                int user_id = user.getUserId();
                 String comment = request.getParameter("comment");
                 LocalDateTime create_date = LocalDateTime.now();
 
-                Comments comments = new Comments(0,article_id,user_id,comment,create_date);
-                CommentModel.addComment(comments);
-
-                ServletUtils.redirect("/Detail?article_id="+ article_id,request,response);
-                break;
+                User user = UserModel.findByEmail(email);
+                if (user != null){
+                    int user_id = user.getUserId();
+                    Comments comments = new Comments(0,article_id,user_id,comment,create_date);
+                    CommentModel.addComment(comments);
+                    ServletUtils.redirect("/Detail?article_id="+ article_id,request,response);
+                }
+                else {
+                    //request.setAttribute("Error",true);
+                    ServletUtils.redirect("/Detail/Comment?article_id="+ article_id,request,response);
+                }
         }
     }
 }

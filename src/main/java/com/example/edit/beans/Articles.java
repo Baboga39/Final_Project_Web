@@ -7,6 +7,8 @@ import java.util.Date;
 public class Articles {
     private int article_id;
     private String title;
+
+    private  Date create_date;
     private Date publish_date;
     private int views;
     private String abstracts;
@@ -20,9 +22,11 @@ public class Articles {
 
     private String second_name;
 
-    public Articles(int article_id, String title, Date publish_date, int views, String abstracts, String content, int categories_id, boolean premium, int writer_id, int status_id, String avatar, String categoryName) {
+    public Articles(int article_id, String title, Date create_date,Date publish_date, int views, String abstracts, String content,
+                    int categories_id, boolean premium, int writer_id, int status_id, String avatar, String categoryName) {
         this.article_id = article_id;
         this.title = title;
+        this.create_date = create_date;
         this.publish_date = publish_date;
         this.views = views;
         this.abstracts = abstracts;
@@ -35,11 +39,12 @@ public class Articles {
         this.categoryName = categoryName;
     }
 
-    public Articles(int article_id, String title, Date publish_date, int views, String abstracts, String content,
-                    int categories_id, boolean premium, int writer_id, int status_id, String avatar,
+    public Articles(int article_id, String title, Date create_date,Date publish_date, int views, String abstracts,
+                    String content, int categories_id, boolean premium, int writer_id, int status_id, String avatar,
                     String categoryName, String second_name) {
         this.article_id = article_id;
         this.title = title;
+        this.create_date = create_date;
         this.publish_date = publish_date;
         this.views = views;
         this.abstracts = abstracts;
@@ -67,6 +72,14 @@ public class Articles {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Date getCreate_date() {
+        return create_date;
+    }
+
+    public void setCreate_date(Date create_date) {
+        this.create_date = create_date;
     }
 
     public Date getPublish_date() {
