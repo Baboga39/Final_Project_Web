@@ -487,3 +487,4 @@ INSERT INTO `users` VALUES (24, 'BTVThuy', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUW
 INSERT INTO `users` VALUES (25, 'BTVTrang', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trọng', '2022-12-25', 7, 3, 'Ngọc Trang', '2022-12-25', 'ngochai06122002@gmail.com', 1, 1, 0);
 
 SET FOREIGN_KEY_CHECKS = 1;
+
