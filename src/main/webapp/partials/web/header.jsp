@@ -9,42 +9,42 @@
             <div class="collapse navbar-collapse ml-5">
                 <ul class="navbar-nav mr-auto mt-2">
                     <c:forEach items="${sessionScope.list5cate}" var="o">
-                    <li class="nav-item text-category " style="font-size: 14px;">
-                        <a class="link nav-link" href="${pageContext.request.contextPath}/Post/Category?cid=${o.categories_id}" aria-expanded="false">
-                                ${o.name}
-                        </a>
-                    </li>
+                        <li class="nav-item text-category " style="font-size: 14px;">
+                            <a class="link nav-link" href="${pageContext.request.contextPath}/Post/Category?cid=${o.categories_id}" aria-expanded="false">
+                                    ${o.name}
+                            </a>
+                        </li>
                     </c:forEach>
                     <c:if test="${checkEx eq true && checkAccPre == true}">
-                    <li class="nav-item text-category " style="font-size: 14px;
+                        <li class="nav-item text-category " style="font-size: 14px;
     width: 78px;
     text-align: center;;">
-                        <a  class="link nav-link"  href="${pageContext.request.contextPath}/Post/Premium" aria-expanded="false">
-                            PREMIUM
-                        </a>
-                    </li>
+                            <a  class="link nav-link"  href="${pageContext.request.contextPath}/Post/Premium" aria-expanded="false">
+                                PREMIUM
+                            </a>
+                        </li>
                     </c:if>
-                            <c:if test="${authUser.role_id == 1}">
-                            <li class="nav-item text-category " style="font-size: 14px;">
-                                <a class="link nav-link" href="${pageContext.request.contextPath}/Admin/Home/Index" aria-expanded="false">
-                                    Admin
-                                </a>
-                            </li>
-                        </c:if>
-                        <c:if test="${authUser.role_id == 3} ">
-                            <li class="nav-item text-category " style="font-size: 14px;">
-                                <a  href="${pageContext.request.contextPath}/Admin/Home/Index" aria-expanded="false">
-                                    Reporter
-                                </a>
-                            </li>
-                        </c:if>
-                        <c:if test="${authUser.role_id == 4}">
-                            <li class="nav-item text-category " style="font-size: 14px;">
-                                <a class="link nav-link" href="${pageContext.request.contextPath}/Admin/Home/Index" aria-expanded="false">
-                                    Editor
-                                </a>
-                            </li>
-                        </c:if>
+                    <c:if test="${authUser.role_id == 1}">
+                        <li class="nav-item text-category " style="font-size: 14px;">
+                            <a class="link nav-link" href="${pageContext.request.contextPath}/Admin/Home/Index" aria-expanded="false">
+                                Admin
+                            </a>
+                        </li>
+                    </c:if>
+                    <c:if test="${authUser.role_id == 3} ">
+                        <li class="nav-item text-category " style="font-size: 14px;">
+                            <a  href="${pageContext.request.contextPath}/Post/" aria-expanded="false">
+                                Reporter
+                            </a>
+                        </li>
+                    </c:if>
+                    <c:if test="${authUser.role_id == 4}">
+                        <li class="nav-item text-category " style="font-size: 14px;">
+                            <a class="link nav-link" href="${pageContext.request.contextPath}/Editor/Home/ " aria-expanded="false">
+                                Editor
+                            </a>
+                        </li>
+                    </c:if>
                     <li class=" nav-item dropdown text-category">
                         <a class="nav-link show-modal" href="#" role="button" data-toggle="modal" data-target="#myModal" aria-expanded="false">
                             <i class="bi bi-grid ml-2" style="font-size: 17px"></i>
@@ -129,7 +129,7 @@
                                 <div class="nav-item dropdown text-category mt-1 ml-4">
                                     <a class="nav-link" href="#" data-toggle="dropdown" role="button"  aria-expanded="false">
                                         <div class="row">
-                                                <span class="user-action"><img src="${sessionScope.authUserGg.picture}" class="avatar" alt="Avatar"></span>
+                                            <span class="user-action"><img src="${sessionScope.authUserGg.picture}" class="avatar" alt="Avatar"></span>
                                             <h5 class="text-category mt-2" style="font-size: 14px">Hi, <b>${sessionScope.authUserGg.name}</b></h5>
                                         </div>
 

@@ -47,25 +47,25 @@
               <tr>
                 <th scope="row">${r.article_id}</th>
                 <td>${r.title}</td>
-                <td>${r.publish_date}</td>
+                <td>${r.create_date}</td>
                 <td>${r.views}</td>
                 <td>${r.abstracts}</td>
                 <td>${r.categoryName}</td>
                 <td>${r.second_name}</td>
                 <td><span class="badge badge-danger">draft</span></td>
                 <c:choose>
-                  <c:when test="${r.premium == true}">
+                  <c:when test="${r.premium eq true}">
                     <td><span class="badge badge-success"><i class="bi bi-check-square"></i></span></td>
                   </c:when>
-                  <c:when test="${r.premium == false}">
-                    <td><span class="badge badge-danger"><i class="bi bi-check-square"></i></span></td>
+                  <c:when test="${r.premium eq false}">
+                    <td><span class="badge badge-danger"><i class="bi bi-x-square"></i></span></td>
                   </c:when>
                   <c:otherwise></c:otherwise>
                 </c:choose>
                 <td class="d-flex justify-content-sm-between" style="font-size: 20px">
                   <a href="#" type="button" class="btn Update.jsplink"><i class="bi bi-trash"></i></a>
                   <a href="#" type="button" class="btn link"><i class="bi bi-check-square"></i></a>
-                  <a href="${pageContext.request.contextPath}/Detail?article_id=${r.article_id}" type="button" class="btn link"><i class="bi bi-eye"></i></a>
+                  <a href="${pageContext.request.contextPath}/Editor/Home/Detail?article_id=${r.article_id}" type="button" class="btn link"><i class="bi bi-eye"></i></a>
                 </td>
               </tr>
             </c:forEach>

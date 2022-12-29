@@ -2,6 +2,7 @@ package com.example.edit.controllers;
 
 import com.example.edit.Utils.ServletUtils;
 import com.example.edit.beans.Articles;
+import com.example.edit.beans.User;
 import com.example.edit.models.ArticleModel;
 
 import javax.servlet.ServletException;
@@ -28,7 +29,22 @@ public class EditorHomeServlet extends HttpServlet {
                 ServletUtils.forward("/views/viewEditorHome/Index.jsp", request, response);
                 break;
             //case "/Approve":
-
+            case "/Detail":
+                int id2 = 0;
+                try {
+                    id2 = Integer.parseInt(request.getParameter("article_id"));
+                } catch (NumberFormatException e) {
+                }
+                Articles c = ArticleModel.findByIdAll(id2);
+                User u = ArticleModel.findAuthor(id2);
+                if (c != null) {
+                    request.setAttribute("User",u);
+                    request.setAttribute("Articles", c);
+                    ServletUtils.forward("/views/viewEditorHome/Detail.jsp", request, response);
+                } else {
+                    ServletUtils.redirect("/Editor/Home", request, response);
+                }
+                break;
 
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);

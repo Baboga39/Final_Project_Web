@@ -19,7 +19,7 @@ public class ArticleModel {
         }
     }
     public static List<Articles> findDraftArticles() {
-        final String query = "SELECT articles.article_id,articles.title,articles.publish_date,articles.views," +
+        final String query = "SELECT articles.article_id,articles.create_date,articles.title,articles.publish_date,articles.views," +
                 "articles.abstracts,articles.categoryName,users.second_name,articles.premium\n" +
                 "FROM users INNER JOIN articles on users.user_id=articles.writer_id  WHERE  status_id=104";
         try (Connection con = DbUtils.getConnection()) {
