@@ -142,7 +142,14 @@ public class PostServlet extends HttpServlet {
         int index =Integer.parseInt(indexPage);
         int indexNext = index+1;
         int indexPre = index-1;
-        index = (index - 1) * 6;
+        if(index ==  1)
+        {
+            index =0 ;
+        }
+        else
+        {
+            index = (index -1) * 6 ;
+        }
         int count  = ArticleModel.getTotalArtilceByCate(cateId);
         int endPage = count/6;
         if(count  % 6!=0 ) {
@@ -204,7 +211,14 @@ public class PostServlet extends HttpServlet {
         int index =Integer.parseInt(indexPage);
         int indexNext = index+1;
         int indexPre = index-1;
-        index = ((index - 1) * 7) -1 ;
+        if(index ==  1)
+        {
+            index =0 ;
+        }
+        else
+        {
+            index = (index -1) * 6 ;
+        }
         int count  = ArticleModel.getTotalArtilceByTag(tagId);
         int endPage = count/6;
         if(count  % 6!=0 ) {
@@ -254,7 +268,14 @@ public class PostServlet extends HttpServlet {
         int index =Integer.parseInt(indexPage);
         int indexNext = index+1;
         int indexPre = index-1;
-        index = ((index - 1) * 7) -1 ;
+        if(index ==  1)
+        {
+            index =0 ;
+        }
+        else
+        {
+            index = (index -1) * 6 ;
+        }
         int count  = ArticleModel.getTotalArtilceByCate(cids);
         int endPage = count/6;
         if(count  % 6!=0 ) {
@@ -308,7 +329,11 @@ public class PostServlet extends HttpServlet {
         int index =Integer.parseInt(indexPage);
         int indexNext = index+1;
         int indexPre = index-1;
-        index = ((index - 1) * 7) -1 ;
+        if(index ==  1)
+        {
+            index =0 ;
+        }
+        index = (index -1) * 6 ;
         int count  = ArticleModel.getTotalArticlePre();
         int endPage = count/6;
         if(count  % 6!=0 ) {
