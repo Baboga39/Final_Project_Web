@@ -39,7 +39,7 @@
                                         <div class="box" style="height:  600px">
                                             <div class="overlay-img" style="height:  600px"> <img src="${pageContext.request.contextPath}/image/Article/${find1.avatar}" class="img-fluid h-100" alt="..."></div>
                                             <div class="carousel-caption d-none d-md-block text-img text-left">
-                                                <a href="#" class="link-cate nav-link"> ${find1.categoryName} </a>
+                                                <a href="${pageContext.request.contextPath}/Post/Category?cid=${find1.categories_id}" class="link-cate nav-link"> ${find1.categoryName} </a>
                                                 <p> ${find1.title}.</p>
                                                 <h5>${find1.publish_date}</h5>
                                                 <button class="btn btn-sm btn-outline-light" onclick="location.href='${pageContext.request.contextPath}/Detail?article_id=${find1.article_id}';">Xem Thêm</button>
@@ -51,7 +51,7 @@
                                             <div class="box" style="height:  600px">
                                                 <div class="overlay-img h-100" style="height:  600px"> <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="img-fluid h-100" alt="..."></div>
                                                 <div class="carousel-caption d-none d-md-block text-img text-left">
-                                                    <a href="#" class="link-cate nav-link"> ${o.categoryName} </a>
+                                                    <a href="${pageContext.request.contextPath}/Post/Category?cid=${o.categories_id}" class="link-cate nav-link"> ${o.categoryName} </a>
                                                     <p> ${o.title}.</p>
                                                     <h5>${o.publish_date}</h5>
                                                     <button class="btn btn-sm btn-outline-light" onclick="location.href='${pageContext.request.contextPath}/Detail?article_id=${o.article_id}';">Xem Thêm</button>

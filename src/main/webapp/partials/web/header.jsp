@@ -31,9 +31,9 @@
                             </a>
                         </li>
                     </c:if>
-                    <c:if test="${authUser.role_id == 3} ">
+                    <c:if test="${authUser.role_id == 3}">
                         <li class="nav-item text-category " style="font-size: 14px;">
-                            <a  href="${pageContext.request.contextPath}/Post/" aria-expanded="false">
+                            <a class="link nav-link"  href="${pageContext.request.contextPath}/Post/" aria-expanded="false">
                                 Reporter
                             </a>
                         </li>

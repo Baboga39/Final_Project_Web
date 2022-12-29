@@ -17,7 +17,7 @@
                         <div class="card text-white bg-dark mb-3 shadow-lg" style="max-width: 18rem;">
                             <div class="card-body">
                                 <p class="text-white text-center"><i class="bi bi-person-badge-fill" style="font-size: 40px"></i></p>
-                                <p class="text-white text-center">100</p>
+                                <p class="text-white text-center">${allUser}</p>
                                 <p class="text-white text-center">Số lượng người dùng</p>
                             </div>
                         </div>
@@ -26,7 +26,7 @@
                         <div class="card text-white bg-dark mb-3 shadow" style="max-width: 18rem;">
                             <div class="card-body">
                                 <p class="text-white text-center"><i class="bi bi-newspaper" style="font-size: 40px"></i></p>
-                                <p class="text-white text-center">100</p>
+                                <p class="text-white text-center">${allArticle}</p>
                                 <p class="text-white text-center">Số Lượng Bài Viết</p>
                             </div>
                         </div>
@@ -35,8 +35,8 @@
                         <div class="card text-white bg-dark mb-3 shadow" style="max-width: 18rem;">
                             <div class="card-body">
                                 <p class="text-white text-center"><i class="bi bi-newspaper" style="font-size: 40px"></i></p>
-                                <p class="text-white text-center">100</p>
-                                <p class="text-white text-center">Số Lượng Bài Viết</p>
+                                <p class="text-white text-center">${allCate}</p>
+                                <p class="text-white text-center">Số Lượng Phân Mục</p>
                             </div>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                         <div class="card text-white bg-dark mb-3 shadow" style="max-width: 18rem;">
                             <div class="card-body">
                                 <p class="text-white text-center"><i class="bi bi-newspaper" style="font-size: 40px"></i></p>
-                                <p class="text-white text-center">100</p>
+                                <p class="text-white text-center">${allUser}</p>
                                 <p class="text-white text-center">Số Lượng Bài Viết</p>
                             </div>
                         </div>
@@ -58,42 +58,20 @@
                 <div class="text-heading border-danger" style="font-size: 25px"><i class="bi bi-align-start"></i>
                     Nổi bật</div>
                 <div class="row row-cols-3 mt-5">
+                    <c:forEach items="${listtop3}" var="o">
                     <div class="col">
                         <div class="card h-100 shadow" style="width: 20rem;">
-                            <a href="#">
-                                <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
+                            <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
+                                <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="card-img-top " alt="Avatar" style="    height: 201px;">
                                 <div class="card-body">
-                                    <p class="card-title">Some quick example text to build on the card title </p>
-                                    <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                    <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
+                                    <p class="card-title"> ${o.title}. </p>
+                                    <p><i class="bi bi-hash mr-2"></i>${o.categoryName}</p>
+                                    <p><i class="bi bi-calendar mr-2"></i>${o.publish_date}</p>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="card h-100 shadow" style="width: 20rem;">
-                            <a href="#">
-                                <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                <div class="card-body">
-                                    <p class="card-title">Some quick example text to build on the card title </p>
-                                    <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                    <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card h-100 shadow" style="width: 20rem;">
-                            <a href="#">
-                                <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                <div class="card-body">
-                                    <p class="card-title">Some quick example text to build on the card title </p>
-                                    <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                    <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
 
                 <!--.Carousel-->
@@ -116,69 +94,22 @@
 
                             <!-- Carousel items -->
                             <div class="carousel-inner">
-
                                 <div class="carousel-item active">
                                     <div class="row row-cols-5">
+                                        <c:forEach items="${listtop}" var="o">
                                         <div class="col">
                                             <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
+                                                <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
+                                                    <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" style=" height: 164px !important" class="card-img-top" alt="...">
                                                     <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
+                                                        <p class="card-title">${o.title} </p>
+                                                        <p><i class="bi bi-hash mr-2"></i>${o.categoryName}</p>
+                                                        <p><i class="bi bi-calendar mr-2"></i> ${o.publish_date} </p>
                                                     </div>
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
+                                        </c:forEach>
                                     </div>
                                     <!--.row-->
                                 </div>
@@ -186,68 +117,20 @@
 
                                 <div class="carousel-item ">
                                     <div class="row row-cols-5">
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
+                                        <c:forEach items="${listtopnext}" var="o">
+                                            <div class="col">
+                                                <div class="card h-100 shadow" style="width: 13rem;">
+                                                    <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
+                                                        <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" style=" height: 164px !important" class="card-img-top" alt="...">
+                                                        <div class="card-body">
+                                                            <p class="card-title">${o.title} </p>
+                                                            <p><i class="bi bi-hash mr-2"></i>${o.categoryName}</p>
+                                                            <p><i class="bi bi-calendar mr-2"></i> ${o.publish_date} </p>
+                                                        </div>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-
+                                        </c:forEach>
                                     <!--.row-->
                                 </div>
                                 <!--.item-->
@@ -286,66 +169,20 @@
 
                                 <div class="carousel-item active">
                                     <div class="row row-cols-5">
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
+                                        <c:forEach items="${listtop5NewinWeek}" var="o">
+                                            <div class="col">
+                                                <div class="card h-100 shadow" style="width: 13rem;">
+                                                    <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
+                                                        <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" style=" height: 164px !important" class="card-img-top" alt="...">
+                                                        <div class="card-body">
+                                                            <p class="card-title">${o.title} </p>
+                                                            <p><i class="bi bi-hash mr-2"></i>${o.categoryName}</p>
+                                                            <p><i class="bi bi-calendar mr-2"></i> ${o.publish_date} </p>
+                                                        </div>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
+                                        </c:forEach>
                                     </div>
                                     <!--.row-->
                                 </div>
@@ -353,66 +190,20 @@
 
                                 <div class="carousel-item ">
                                     <div class="row row-cols-5">
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
+                                        <c:forEach items="${listtop5NewinWeekNext}" var="o">
+                                            <div class="col">
+                                                <div class="card h-100 shadow" style="width: 13rem;">
+                                                    <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
+                                                        <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" style=" height: 164px !important" class="card-img-top" alt="...">
+                                                        <div class="card-body">
+                                                            <p class="card-title">${o.title} </p>
+                                                            <p><i class="bi bi-hash mr-2"></i>${o.categoryName}</p>
+                                                            <p><i class="bi bi-calendar mr-2"></i> ${o.publish_date} </p>
+                                                        </div>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 13rem;">
-                                                <a href="#">
-                                                    <img src="./img/bongbauduc.jpg" class="card-img-top h-50" alt="...">
-                                                    <div class="card-body">
-                                                        <p class="card-title">Some quick example text to build on the card title </p>
-                                                        <p><i class="bi bi-hash mr-2"></i>Chuyên mục</p>
-                                                        <p><i class="bi bi-calendar mr-2"></i>12/09/2022</p>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
+                                        </c:forEach>
                                     </div>
 
                                     <!--.row-->
@@ -448,215 +239,54 @@
                             <div class="carousel-inner d-flex ml-3">
 
                                 <div class="carousel-item active">
-                                    <div class="row row-cols-4">
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="./img/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
+                                    <div class="row row-cols-5">
+                                        <c:forEach items="${list10Cate}" var="k">
+                                            <div class="col">
+                                                <div class="card h-100 shadow" style="width: 13rem;">
+                                                    <div class="box-cate" style="height: 350px">
+                                                        <a href="${pageContext.request.contextPath}/Detail?article_id=${k.article_id}">
+                                                            <img src="${pageContext.request.contextPath}/image/Article/${k.avatar}" alt="" class="d-block img-fluid h-100">
+                                                            <div class="box-cate-content carousel-caption d-none d-md-block text-img">
+                                                                <span href="${pageContext.request.contextPath}/Post/Category?cid=${k.categories_id}" class="link-cate">${k.categoryName}</span>
+                                                            </div>
+                                                            <div class="overlay-content">
+                                                                <h5 class="title"  style="font-size: 15px">${k.title}</h5>
+                                                                <p class="description">${k.publish_date}</p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="./img/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="./img/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="./img/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </c:forEach>
                                     </div>
                                     <!--.row-->
                                 </div>
                                 <!--.item-->
 
                                 <div class="carousel-item">
-                                    <div class="row row-cols-4">
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="./img/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
+                                    <div class="row row-cols-5">
+                                        <c:forEach items="${list10CateNext}" var="k">
+                                            <div class="col">
+                                                <div class="card h-100 shadow" style="width: 13rem;">
+                                                    <div class="box-cate" style="height: 350px">
+                                                        <a href="${pageContext.request.contextPath}/Detail?article_id=${k.article_id}">
+                                                            <img src="${pageContext.request.contextPath}/image/Article/${k.avatar}" alt="" class="d-block img-fluid h-100">
+                                                            <div class="box-cate-content carousel-caption d-none d-md-block text-img">
+                                                                <span href="${pageContext.request.contextPath}/Post/Category?cid=${k.categories_id}" class="link-cate">${k.categoryName}</span>
+                                                            </div>
+                                                            <div class="overlay-content">
+                                                                <h5 class="title" style="font-size: 15px">${k.title}</h5>
+                                                                <p class="description">${k.publish_date}</p>
+                                                            </div>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="./img/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="./img/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="./img/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </c:forEach>
                                     </div>
                                     <!--.row-->
                                 </div>
                                 <!--.item-->
-                                <div class="carousel-item">
-                                    <div class="row row-cols-4">
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="./img/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="./img/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="./img/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="card h-100 shadow" style="width: 15rem;">
-                                                <div class="box-cate">
-                                                    <a href="#">
-                                                        <img src="./img/xehoi.jpg" alt="" class="d-block img-fluid h-100">
-                                                        <div class="box-cate-content carousel-caption d-none d-md-block text-img">
-                                                            <span href="#" class="link-cate">Chuyên mục</span>
-                                                        </div>
-                                                        <div class="overlay-content">
-                                                            <h5 class="title">Some representative placeholder content for the second slide.</h5>
-                                                            <p class="description">Some representative placeholder content for the first slide.</p>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--.row-->
-                                </div>
                             </div>
                             <!--.carousel-inner-->
                             <button class="carousel-control-prev" type="button" data-target="#blogCate" data-slide="prev">

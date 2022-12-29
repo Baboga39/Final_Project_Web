@@ -187,7 +187,7 @@ public class ArticleModel {
                 "WHERE\n" +
                 "    publish_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 10080 MINUTE)  and status_id= 102\n" +
                 "ORDER BY views DESC\n" +
-                "LIMIT 2,2\n";
+                "LIMIT 2,3\n";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .executeAndFetch(Articles.class);
@@ -208,6 +208,21 @@ public class ArticleModel {
             List<Articles> list = con.createQuery(query)
                     .executeAndFetch(Articles.class);
             return  list.get(0);
+        }
+    }
+    public static List<Articles> get5ArticleNewinWeek() {
+        final String query = "SELECT *  FROM articles WHERE publish_date <=CURRENT_DATE()  and status_id= 102 ORDER BY publish_date DESC LIMIT 0,5";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .executeAndFetch(Articles.class);
+
+        }
+    }
+    public static List<Articles> get5ArticleNewinWeekNext() {
+        final String query = "SELECT *  FROM articles WHERE publish_date <=CURRENT_DATE()  and status_id= 102 ORDER BY publish_date DESC LIMIT 6,5";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .executeAndFetch(Articles.class);
         }
     }
     //Top 5 bài viết xem nhiều nhất mọi chuyên mục kể từ cái thứ 5
@@ -233,7 +248,38 @@ public class ArticleModel {
             return  list.size();
         }
     }
-
+    public static int getAllArticle() {
+        final String query = "SELECT * FROM articles ";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Articles> list = con.createQuery(query)
+                    .executeAndFetch(Articles.class);
+            return  list.size();
+        }
+    }
+    public static int getAllTag() {
+        final String query = "SELECT * FROM tags ";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Tag> list = con.createQuery(query)
+                    .executeAndFetch(Tag.class);
+            return  list.size();
+        }
+    }
+    public static int getAllUser() {
+        final String query = "SELECT * FROM users ";
+        try (Connection con = DbUtils.getConnection()) {
+            List<User> list = con.createQuery(query)
+                    .executeAndFetch(User.class);
+            return  list.size();
+        }
+    }
+    public static int getAllCateAdmin() {
+        final String query = "SELECT * FROM categories ";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Category> list = con.createQuery(query)
+                    .executeAndFetch(Category.class);
+            return  list.size();
+        }
+    }
     public static Articles  findTopCate(int categories_id)
     {
 
