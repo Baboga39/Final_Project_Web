@@ -41,7 +41,7 @@ Begin Sidebar
                         <div id="collapseOne2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne2">
                             <div class="panel-body">
                                 <div class="row">
-                                    <a href="${pageContext.request.contextPath}/Admin/Category/" class="dropdown-item text-par-heading">Quản lí</a>
+                                    <a href="${pageContext.request.contextPath}/Admin/Tag/" class="dropdown-item text-par-heading">Quản lí</a>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@ Begin Sidebar
                         <div id="collapseOne3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne1">
                             <div class="panel-body">
                                 <div class="row">
-                                    <a href="${pageContext.request.contextPath}/Admin/Category/" class="dropdown-item text-par-heading">Quản lí</a>
+                                    <a href="${pageContext.request.contextPath}/Admin/News/" class="dropdown-item text-par-heading">Quản lí</a>
                                 </div>
                             </div>
                         </div>
@@ -77,13 +77,13 @@ Begin Sidebar
                         <div id="collapseOne4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne4">
                             <div class="panel-body">
                                 <div class="row">
-                                    <a href="#" class="dropdown-item text-par-heading mr-1">Quản lí</a>
+                                    <a href="${pageContext.request.contextPath}/Admin/User/" class="dropdown-item text-par-heading mr-1">Quản lí</a>
                                 </div>
                                 <div class="row">
-                                    <a href="#" class="dropdown-item text-par-heading mr-1">Phân danh mục</a>
+                                    <a href="${pageContext.request.contextPath}/Admin/User/EditCate" class="dropdown-item text-par-heading mr-1">Phân danh mục</a>
                                 </div>
                                 <div class="row">
-                                    <a href="#" class="dropdown-item text-par-heading mr-1">Gia hạn tài khoản</a>
+                                    <a href="${pageContext.request.contextPath}/Admin/User/Account" class="dropdown-item text-par-heading mr-1">Gia hạn tài khoản</a>
                                 </div>
                             </div>
                         </div>

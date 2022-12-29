@@ -113,7 +113,7 @@ public class AdminNewsServlet extends HttpServlet {
                 addNews(request, response);
                 break;
             case "/Update":
-                //updateNews(request, response);
+                updateNews(request, response);
                 break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
@@ -135,7 +135,8 @@ public class AdminNewsServlet extends HttpServlet {
         boolean premium = request.getParameter("premium") !=null;
 
         Date create_date = new Date(System.currentTimeMillis());
-        Date publish_date = null;
+        java.util.Date publish_date = Date.valueOf(request.getParameter("publish_date"));
+
         for (Part part : request.getParts()){
             if (part.getName().equals("avatar")) {
                 String contentDisposition = part.getHeader("content-disposition");
@@ -158,7 +159,7 @@ public class AdminNewsServlet extends HttpServlet {
         ServletUtils.redirect("/Admin/News", request,response);
     }
 
-    /*private void updateNews(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void updateNews(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         request.setCharacterEncoding("UTF-8");
         String title = request.getParameter("title");
@@ -170,6 +171,9 @@ public class AdminNewsServlet extends HttpServlet {
         int catetogy_id = category.getCategories_id();
         String categoriesName = request.getParameter("categories_name");
         boolean premium = request.getParameter("premium") !=null;
+        Date create_date = new Date(System.currentTimeMillis());
+        java.util.Date publish_date = Date.valueOf(request.getParameter("publish_date"));
+
 
         String second_name = request.getParameter("second_name");
         User user = UserModel.findCatBySecondName(second_name);
@@ -180,7 +184,6 @@ public class AdminNewsServlet extends HttpServlet {
 
         int id = Integer.parseInt(request.getParameter("id"));
 
-        Date publish_date = new Date(System.currentTimeMillis());
 
         for (Part part : request.getParts()){
             if (part.getName().equals("avatar")) {
@@ -194,8 +197,7 @@ public class AdminNewsServlet extends HttpServlet {
                         String targetDir = this.getServletContext().getRealPath("image/Article/");
                         String destination = targetDir + avatar;
                         part.write(destination);
-                        Articles articles = new Articles(id,title,publish_date,views,abstracts,content,catetogy_id,
-                                premium,writer_id,status_id,avatar,categoriesName,nameWriter);
+                        Articles articles = new Articles(id,title,create_date,publish_date,views,abstracts,content,catetogy_id,premium,writer_id,status_id,avatar,categoriesName,nameWriter);
                         ArticleModel.updateNews(articles);
                     }
                 }
@@ -203,5 +205,5 @@ public class AdminNewsServlet extends HttpServlet {
         }
 
         ServletUtils.redirect("/Admin/News", request,response);
-    }*/
+    }
 }

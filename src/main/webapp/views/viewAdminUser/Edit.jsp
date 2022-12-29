@@ -12,7 +12,7 @@
                 <div class="container">
                     <div class="card">
                         <div class="card-header d-flex justify-content-md-between">
-                            <span class="text-title">Danh mục quản lí</span>
+                            <span class="text-title">Danh mục quản lí - </span>
                         </div>
                             <div class="card-body">
                                 <ul class="list-group list-group-flush">
@@ -20,7 +20,7 @@
                                         <li class="list-group-item">
                                             <div class="d-flex justify-content-between">
                                                 <span>${a.name}</span>
-                                                <a href="#" role="button" class="link"><i class="bi bi-trash"></i></a>
+                                                <a href="${pageContext.request.contextPath}/Admin/User/EditCate/Edit/Delete?id_editmana=${a.id}&id=${a.editor_id}" role="button" class="link"><i class="bi bi-trash"></i></a>
                                             </div>
                                         </li>
                                     </c:forEach>

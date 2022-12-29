@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:useBean id="list" type="java.util.List<com.example.edit.beans.User>" scope="request"/>
+
 
 
 <t:main>
@@ -11,7 +11,7 @@
             <div class="container">
                 <div class="card">
                     <div class="card-header d-flex justify-content-md-between">
-                        <span class="text-title">Users</span>
+                        <span class="text-title">Users - Biên tập viên</span>
                         <div class="d-flex">
                             <form class="form-inline " >
                                 <div class="p-1 rounded rounded-pill shadow " style="background: white">

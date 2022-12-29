@@ -57,13 +57,13 @@
                                         <td>${a.categoryName}</td>
                                         <td>${a.second_name}</td>
                                         <td>
-                                            <c:if test="${a.status_id == 104}">
-                                                <span class="badge badge-primary">not check</span>
+                                            <c:if test="${a.status_id == 103}">
+                                                <span class="badge badge-primary">fail</span>
                                             </c:if>
                                             <c:if test="${a.status_id == 102}">
                                                 <span class="badge badge-success">push</span>
                                             </c:if>
-                                            <c:if test="${a.status_id == 103}">
+                                            <c:if test="${a.status_id == 104}">
                                                 <span class="badge badge-danger">draft</span>
                                             </c:if>
                                             <c:if test="${a.status_id == 101}">
@@ -96,26 +96,6 @@
                         </div>
                         <div class="card-footer d-flex justify-content-md-between">
                             <span class="text-title">Footer</span>
-                            <div class="d-flex justify-content-md-between">
-                                <a href="#" class="link mr-5 mt-2">View All</a>
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Previous">
-                                                <span aria-hidden="true">&laquo;</span>
-                                            </a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#" aria-label="Next">
-                                                <span aria-hidden="true">&raquo;</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
                         </div>
                     </div>
                 </div>

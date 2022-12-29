@@ -104,6 +104,15 @@ public class AdminUserServlet extends HttpServlet {
                 request.setAttribute("listCate",listCates);
                 ServletUtils.forward("/views/viewAdminUser/Edit.jsp",request,response);
                 break;
+            case "/EditCate/Edit/Delete":
+                int id6 = 0;
+                try {
+                    id6 = Integer.parseInt(request.getParameter("id_editmana"));
+                } catch (NumberFormatException e) {
+                }
+                EditorManageModel.DeleteEditorManage(id6);
+               ServletUtils.redirect("/Admin/User/EditCate",request,response);
+                break;
             case "/Add":
                 ServletUtils.forward("/views/viewAdminUser/Add.jsp",request,response);
                 break;

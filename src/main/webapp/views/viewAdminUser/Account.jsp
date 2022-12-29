@@ -11,7 +11,7 @@
             <div class="container">
                 <div class="card">
                     <div class="card-header d-flex justify-content-md-between">
-                        <span class="text-title">Users</span>
+                        <span class="text-title">Users - Tài Khoản</span>
                         <div class="d-flex">
                             <form class="form-inline " >
                                 <div class="p-1 rounded rounded-pill shadow " style="background: white">

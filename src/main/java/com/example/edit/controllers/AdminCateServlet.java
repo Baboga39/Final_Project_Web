@@ -27,6 +27,16 @@ public class AdminCateServlet extends HttpServlet {
                 request.setAttribute("categories", list);
                 ServletUtils.forward("/views/viewAdminCate/Index.jsp", request, response);
                 break;
+            case "/Detail/Delete":
+                int id5 = 0;
+                try {
+                    id5 = Integer.parseInt(request.getParameter("id"));
+                } catch (NumberFormatException e) {
+                }
+                CategoryModel.deleteCate(id5);
+                String url = "/Admin/Category/Detail?id="+id5;
+                ServletUtils.redirect("/Edit"+url,request,response);
+                break;
             case "/Delete":
                 int id = 0;
                 try {
@@ -64,23 +74,16 @@ public class AdminCateServlet extends HttpServlet {
                 } catch (NumberFormatException e) {
                 }
                 Category c3 = CategoryModel.findCateById(id3);
+                List<Category> categoryList = CategoryModel.findAllIn();
                 if (c3 != null) {
                     List<Category> listCon = CategoryModel.getCateChilds(id3);
                     request.setAttribute("categories", listCon);
+                    request.setAttribute("categoryList", categoryList);
                     request.setAttribute("category", c3);
                     ServletUtils.forward("/views/viewAdminCate/Detail.jsp", request, response);
                 } else {
                     ServletUtils.redirect("/Admin/Category", request, response);
                 }
-                break;
-            case "/Detail/Delete":
-                int id5 = 0;
-                try {
-                    id5 = Integer.parseInt(request.getParameter("id"));
-                } catch (NumberFormatException e) {
-                }
-                CategoryModel.deleteCate(id5);
-                ServletUtils.redirect("/Admin/Category/Detail",request,response);
                 break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
@@ -125,7 +128,9 @@ public class AdminCateServlet extends HttpServlet {
         String name = request.getParameter("name");
         Category category = new Category(0,name,parent_id);
         CategoryModel.addCateCon(category);
-        ServletUtils.redirect("/Admin/Category",request,response);
+
+        String url = "/Admin/Category/Detail?id=" +parent_id;
+        ServletUtils.redirect("/Edit"+url,request,response);
     }
     private void updateCate(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {

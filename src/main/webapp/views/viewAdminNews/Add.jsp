@@ -48,7 +48,10 @@
                <label >Title</label>
                <input type="text" class="form-control w-75" name="title"  placeholder="Nhập vào đây..">
              </div>
-
+             <div class="form-group">
+               <label >Publish Date</label>
+               <input type="date" name="publish_date" class="form-control w-75">
+             </div>
 
              <div class="form-group">
                <label >views</label>

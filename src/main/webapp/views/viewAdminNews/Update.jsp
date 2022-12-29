@@ -52,7 +52,7 @@
               </div>
               <div class="form-group">
                 <label>Publish Date</label>
-                <input type="text" id="date" class="form-control w-75" name="publish_date"  placeholder="${Articles.publish_date}">
+                <input type="date" id="publish_date" class="form-control w-75" name="publish_date"  placeholder="${Articles.publish_date}">
               </div>
               <div class="form-group">
                 <label >views</label>

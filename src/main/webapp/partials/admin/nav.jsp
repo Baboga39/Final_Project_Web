@@ -4,7 +4,7 @@
 <div class="w3-container">
     <nav class="navbar navbar-expand-xl navbar-dark bg-dark shadow-lg">
         <button type="button" class="close text-right mr-4 " onclick="w3_open()" aria-label="Open"><span aria-hidden="true"><i class="bi bi-list" style="color: white; font-size: 25px"></i></span></button>
-        <a href="#" class="navbar-brand">Brand<b>Name</b></a>
+        <a href="${pageContext.request.contextPath}/Admin/Home/" class="navbar-brand">Brand<b>Name</b></a>
         <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
             <div class="navbar-nav ml-auto">
                 <a href="#" class="nav-item nav-link active mr-2"><i class="bi bi-house"></i></a>

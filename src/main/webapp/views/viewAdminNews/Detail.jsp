@@ -33,6 +33,10 @@
                     <td>${Articles.title}</td>
                   </tr>
                   <tr>
+                    <th>Create Date:</th>
+                    <td>${Articles.create_date}</td>
+                  </tr>
+                  <tr>
                     <th>Publish Date:</th>
                     <td>${Articles.publish_date}</td>
                   </tr>
@@ -62,15 +66,22 @@
                   </tr>
                   <tr>
                     <th>Status:</th>
-                    <td>${Articles.status_id}</td>
+                    <c:if test="${Articles.status_id == 104}">
+                      <td >Chưa được duyệt</td>
+                    </c:if>
+                    <c:if test="${Articles.status_id == 102}">
+                      <td>Đã xuất bản</td>
+                    </c:if>
+                    <c:if test="${Articles.status_id == 103}">
+                      <td >Bị từ chối</td>
+                    </c:if>
+                    <c:if test="${Articles.status_id == 101}">
+                      <td >Đã được duyệt chờ xuất bản</td>
+                    </c:if>
                   </tr>
                   <tr>
                     <th>Avatar:</th>
-                    <td>${Articles.avatar}</td>
-                  </tr>
-                  <tr>
-                    <th>Image Content:</th>
-                    <td>${Articles.image_content}</td>
+                    <td><img src="${pageContext.request.contextPath}/image/Article/${Articles.avatar}" weight="400" height="400" alt=""></td>
                   </tr>
                 </tbody>
               </table>
