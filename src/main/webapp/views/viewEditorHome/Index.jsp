@@ -63,7 +63,7 @@
                   <c:otherwise></c:otherwise>
                 </c:choose>
                 <td class="d-flex justify-content-sm-between" style="font-size: 20px">
-                  <a href="#" type="button" class="btn Update.jsplink"><i class="bi bi-trash"></i></a>
+                  <a href="${pageContext.request.contextPath}/Editor/Home/Refuse?article_id=${r.article_id}" type="button" class="btn Update.jsplink"><i class="bi bi-trash"></i></a>
                   <a href="#" type="button" class="btn link"><i class="bi bi-check-square"></i></a>
                   <a href="${pageContext.request.contextPath}/Editor/Home/Detail?article_id=${r.article_id}" type="button" class="btn link"><i class="bi bi-eye"></i></a>
                 </td>

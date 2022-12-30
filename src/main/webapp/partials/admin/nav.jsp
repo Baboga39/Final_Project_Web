@@ -1,5 +1,6 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags/main.tag" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="authUser" scope="session" type="com.example.edit.beans.User"/>
 
 <div class="w3-container">
@@ -17,9 +18,9 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg-left" aria-labelledby="dropdownMenuButton">
                     <ul class="list-group">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">A third item</li>
+                        <c:if test="${authUser.role_id == 3}">
+                            <li class="list-group-item"><a href="${pageContext.request.contextPath}/Feedback">Feedback</a></li>
+                        </c:if>
                     </ul>
                     <p class="text-center m-0 p-0"><a href="#" class="small">View All</a></p>
                 </div>

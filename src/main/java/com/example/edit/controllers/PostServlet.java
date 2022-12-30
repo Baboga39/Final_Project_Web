@@ -152,8 +152,8 @@ public class PostServlet extends HttpServlet {
         String title = request.getParameter("title");
         Date create_date = getCurrentDate();
         Date publish_date = Date.valueOf("1111-11-11");
-        Random r = new Random();
-        int views= r.nextInt(1000);
+        int views= 0;
+
         String abstracts = request.getParameter("abstracts");
         String content = request.getParameter("content");
         String categoryName = request.getParameter("name");
