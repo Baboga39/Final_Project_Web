@@ -78,7 +78,7 @@
                                             <img class="img-fluid" src="${pageContext.request.contextPath}/image/Article/${r.avatar}" alt="" width="110">
                                             <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                                 <div class="mb-2">
-                                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="">${r.categoryName}</a>
+                                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="href="${pageContext.request.contextPath}/Post/Category?cid=${r.categories_id}">${r.categoryName}</a>
                                                     <a class="text-body" href=""><small>${r.publish_date}</small></a>
                                                 </div>
                                                 <a class="h6 m-0 text-secondary text-uppercase font-weight-bold"

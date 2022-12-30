@@ -159,18 +159,18 @@ public class PostServlet extends HttpServlet {
 
         {
             List<Articles> listA = ArticleModel.getArticleToPagging(cateId,index);
-            request.setAttribute("listA", listA);
+            request.setAttribute("list", listA);
         }
         else {
             boolean checkPreUser=  (boolean) session.getAttribute("checkAccPre");
             if(checkPreUser == true)
             {
                 List<Articles> listA = ArticleModel.getArticleToPaggingPre(cateId,index);
-                request.setAttribute("listA", listA);
+                request.setAttribute("list", listA);
             }
             else {
                 List<Articles> listA = ArticleModel.getArticleToPagging(cateId,index);
-                request.setAttribute("listA", listA);
+                request.setAttribute("list", listA);
             }
         }
         Articles listOne = ArticleModel.findTopCate(cateId);
@@ -285,18 +285,18 @@ public class PostServlet extends HttpServlet {
 
         {
             List<Articles> listA = ArticleModel.getArticleToPagging(cids,index);
-            request.setAttribute("listA", listA);
+            request.setAttribute("list", listA);
         }
         else {
             boolean checkPreUser=  (boolean) session.getAttribute("checkAccPre");
             if(checkPreUser == true)
             {
                 List<Articles> listA = ArticleModel.getArticleToPaggingPre(cids,index);
-                request.setAttribute("listA", listA);
+                request.setAttribute("list", listA);
             }
             else {
                 List<Articles> listA = ArticleModel.getArticleToPagging(cids,index);
-                request.setAttribute("listA", listA);
+                request.setAttribute("list", listA);
             }
         }
         Articles listOne = ArticleModel.findTopCate(cids);
@@ -333,7 +333,10 @@ public class PostServlet extends HttpServlet {
         {
             index =0 ;
         }
-        index = (index -1) * 6 ;
+        else
+        {
+            index = (index -1) * 6 ;
+        }
         int count  = ArticleModel.getTotalArticlePre();
         int endPage = count/6;
         if(count  % 6!=0 ) {

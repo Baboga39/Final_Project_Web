@@ -414,7 +414,7 @@ public class ArticleModel {
         }
     }
     public static List<Articles> getArticlePre( int index) {
-        String query = "SELECT * FROM articles WHERE premium =1 LIMIT :index,6";
+        String query = "SELECT * FROM articles WHERE premium = 1 LIMIT :index,6";
         try (Connection con = DbUtils.getConnection()) {
             List<Articles> list = con.createQuery(query)
                     .addParameter("index",index)
