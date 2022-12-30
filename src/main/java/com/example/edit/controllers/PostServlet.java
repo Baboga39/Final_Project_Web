@@ -40,6 +40,26 @@ public class PostServlet extends HttpServlet {
 
                 ServletUtils.forward("/views/viewPost/Index.jsp", request, response);
                 break;
+            case "/Waiting":
+                List<Articles> listWaiting = ArticleModel.findArticleByStatus(101);
+                request.setAttribute("listWaiting",listWaiting);
+                ServletUtils.forward("/views/viewPost/ListWaiting.jsp", request, response);
+                break;
+            case "/Draft":
+                List<Articles> listDraft = ArticleModel.findArticleByStatus(104);
+                request.setAttribute("listDraft",listDraft);
+                ServletUtils.forward("/views/viewPost/ListDraft.jsp", request, response);
+                break;
+            case "/Refused":
+                List<Articles> listRefused = ArticleModel.findArticleByStatus(103);
+                request.setAttribute("listRefused",listRefused);
+                ServletUtils.forward("/views/viewPost/ListRefused.jsp", request, response);
+                break;
+            case "/Published":
+                List<Articles> listPublished = ArticleModel.findArticleByStatus(102);
+                request.setAttribute("listPublished",listPublished);
+                ServletUtils.forward("/views/viewPost/ListPublished.jsp", request, response);
+                break;
             case "/Category":
                 getArticleByCate(request,response);
                 break;
@@ -103,7 +123,11 @@ public class PostServlet extends HttpServlet {
         Category category = CategoryModel.findCatByName(categoryName);
         int categories_id = category.getCategories_id();
         boolean premium = false;
-        int writer_id = 4;
+
+        HttpSession session = request.getSession();
+        User Author = (User) session.getAttribute("authUser");
+
+        int writer_id = Author.getUserId();
         int status_id = 104;
 
         for (Part part : request.getParts()){
