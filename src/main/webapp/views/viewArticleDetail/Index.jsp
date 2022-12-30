@@ -55,9 +55,12 @@
                                    </div>
                                </div>
                             <!-- News Detail End -->
+                            <c:if test="${checkPre == true && sessionScope.auth == true &&  checkEx== true}">
+
                             <button type="button" style="margin-bottom: 13px;
     margin-left: 635px;
 }" class="btn btn-secondary" id="download">Download</button>
+                            </c:if>
                             <!-- Comment List Start -->
                             <div class="mb-3">
                                 <div class="section-title mb-0">
