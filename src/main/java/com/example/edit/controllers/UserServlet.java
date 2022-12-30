@@ -59,7 +59,7 @@ public class UserServlet extends HttpServlet {
                 ServletUtils.forward("/views/ViewUser/EditAcc.jsp",request,response);
                 break;
             case "/Extend":
-                ServletUtils.forward("/views/ViewUser/Account.jsp",request,response);
+                ServletUtils.forward("/views/ViewUser/Extend.jsp",request,response);
                 break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
@@ -254,6 +254,14 @@ public class UserServlet extends HttpServlet {
         else
         {
             session.setAttribute("checkEx", false);
+        }
+        if (UserModel.checkAccPre(Ex) == true)
+        {
+            session.setAttribute("checkAccPre", true);
+        }
+        else
+        {
+            session.setAttribute("checkAccPre", false);
         }
         session.setAttribute("auth", true);
         session.setAttribute("authUser",new User(edit.getUserId(),edit.getUsername(),edit.getPassword(),edit.getName(),date,edit.getExpiration(),edit.getRole_id(),edit.getSecond_name(),edit.getDateOfBirth(),edit.getEmail(),edit.getOtp(),edit.getOtp_exp(),edit.isPremium()));

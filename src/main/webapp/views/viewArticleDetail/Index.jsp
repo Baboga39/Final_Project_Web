@@ -55,7 +55,9 @@
                                    </div>
                                </div>
                             <!-- News Detail End -->
-
+                            <button type="button" style="margin-bottom: 13px;
+    margin-left: 635px;
+}" class="btn btn-secondary" id="download">Download</button>
                             <!-- Comment List Start -->
                             <div class="mb-3">
                                 <div class="section-title mb-0">
@@ -143,9 +145,16 @@
                             </div>
                         </div>
                     </c:if>
+                    <c:if test="${checkPre == true && sessionScope.auth == true &&  checkEx== false}">
+                        <div class="col-lg-8">
+                            <!-- News Detail Start -->
+                            <div class="position-relative mb-3">
+                                <img src="https://tse2.mm.bing.net/th?id=OIP.usAcnyD4C2JZwdZ_gksHmgHaEv&pid=Api&P=0" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                <p>Xin vui lòng nâng cấp tài khoản VIP</p>
+                            </div>
+                        </div>
+                    </c:if>
                 </div>
-
-                <button type="button" class="btn btn-secondary" id="download">Download</button>
             </div>
         </div>
         <!-- News With Sidebar End -->
