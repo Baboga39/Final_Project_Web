@@ -12,6 +12,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 import java.util.List;
 import java.util.Random;
@@ -60,6 +61,16 @@ public class PostServlet extends HttpServlet {
                 request.setAttribute("listPublished",listPublished);
                 ServletUtils.forward("/views/viewPost/ListPublished.jsp", request, response);
                 break;
+            case "/Update":
+                int article_id = Integer.parseInt(request.getParameter("article_id"));
+                Articles article = ArticleModel.findByIdAll(article_id);
+                if(article == null){
+                    ServletUtils.redirect("/Post", request, response);
+                } else{
+                    request.setAttribute("article", article);
+                    ServletUtils.forward("/views/viewPost/Update.jsp", request, response);
+                }
+                break;
             case "/Category":
                 getArticleByCate(request,response);
                 break;
@@ -90,12 +101,38 @@ public class PostServlet extends HttpServlet {
                 postArticles(request, response);
                 postTagArticle(request,response);
                 break;
+            case "/Update":
+                update(request,response);
+                ServletUtils.redirect("/Post", request, response);
+                break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
                 break;
         }
     }
+    private void update(HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+        response.setContentType("text/html;charset=UTF-8");
+        request.setCharacterEncoding("UTF-8");
 
+        int article_id = Integer.parseInt(request.getParameter("article_id"));
+        Articles a = ArticleModel.findByIdAll(article_id);
+
+        String title = request.getParameter("title");
+        int views = Integer.parseInt(request.getParameter("views"));
+        String abstracts = request.getParameter("abstracts");
+        String content = request.getParameter("content");
+        String categoryName = a.getCategoryName();
+        int categories_id = a.getCategories_id();
+        boolean premium = a.isPremium();
+        java.util.Date create_date = Date.valueOf(request.getParameter("create_date"));
+        Date publish_date = (Date) a.getPublish_date();
+        int writer_id = a.getWriter_id();
+        int status_id = a.getStatus_id();
+        String avatar = a.getAvatar();
+
+        Articles articles = new Articles(article_id,title,create_date,publish_date,views,abstracts,content,categories_id,premium,writer_id,status_id,avatar,categoryName);
+        ArticleModel.updateNews(articles);
+    }
     private void postTagArticle(HttpServletRequest request, HttpServletResponse response) {
         Articles art = ArticleModel.findArtByMaxID();
         int article_id = art.getArticle_id();

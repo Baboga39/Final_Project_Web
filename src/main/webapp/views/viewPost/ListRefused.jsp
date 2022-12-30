@@ -38,6 +38,7 @@
               <th scope="col">Writer</th>
               <th scope="col">Status</th>
               <th scope="col">Premium</th>
+              <th scope="col">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -59,6 +60,9 @@
                     <td><span class="badge badge-danger"><i class="bi bi-x-square"></i></span></td>
                   </c:when>
                 </c:choose>
+                <td class="d-flex justify-content-sm-between" style="font-size: 20px">
+                  <a href="${pageContext.request.contextPath}/Post/Update?article_id=${r.article_id}" type="button" class="btn link"><i class="bi bi-pencil-square"></i></a>
+                </td>
               </tr>
             </c:forEach>
             </tbody>
