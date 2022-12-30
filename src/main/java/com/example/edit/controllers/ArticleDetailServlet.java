@@ -87,8 +87,7 @@ public class ArticleDetailServlet extends HttpServlet {
                     ServletUtils.redirect("/Detail?article_id="+ article_id,request,response);
                 }
                 else {
-                    //request.setAttribute("Error",true);
-                    ServletUtils.redirect("/Detail/Comment?article_id="+ article_id,request,response);
+                    ServletUtils.redirect("/User/Register",request,response);
                 }
         }
     }

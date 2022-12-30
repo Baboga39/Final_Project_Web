@@ -1,5 +1,7 @@
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags/main.tag" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="authUser" scope="session" type="com.example.edit.beans.User"/>
 <!--
 
 Begin Sidebar
@@ -11,86 +13,144 @@ Begin Sidebar
             <div class="logo h-50 w-75 ml-4">
                 <img src="../../html/img/tintuc.jpg" alt="" class="img-thumbnail">
             </div>
-            <h4 class="text-center mt-5 text-top-heading">ADMIN</h4>
-            <li class="nav-item text-center mt-5 text-heading">
-                <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingOne1">
-                            <a class="link nav-link" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
-                                <i class="bi bi-caret-down-fill"></i>Categories
-                            </a>
-                        </div>
-                        <div id="collapseOne1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne1">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <a href="${pageContext.request.contextPath}/Admin/Category/" class="dropdown-item text-par-heading">Quản lí</a>
+            <c:if test="${authUser.role_id == 1}">
+                <h4 class="text-center mt-5 text-top-heading">ADMIN</h4>
+                <li class="nav-item text-center mt-5 text-heading">
+                    <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne1">
+                                <a class="link nav-link" role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
+                                    <i class="bi bi-caret-down-fill"></i>Categories
+                                </a>
+                            </div>
+                            <div id="collapseOne1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <a href="${pageContext.request.contextPath}/Admin/Category/" class="dropdown-item text-par-heading">Quản lí</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </li>
-            <li class="nav-item text-center text-heading">
-                <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingOne2">
-                            <a class="link nav-link" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
-                                <i class="bi bi-caret-down-fill"></i>Tags
-                            </a>
-                        </div>
-                        <div id="collapseOne2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne2">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <a href="${pageContext.request.contextPath}/Admin/Tag/" class="dropdown-item text-par-heading">Quản lí</a>
+                </li>
+                <li class="nav-item text-center text-heading">
+                    <div class="panel-group" id="accordion2" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne2">
+                                <a class="link nav-link" role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
+                                    <i class="bi bi-caret-down-fill"></i>Tags
+                                </a>
+                            </div>
+                            <div id="collapseOne2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne2">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <a href="${pageContext.request.contextPath}/Admin/Tag/" class="dropdown-item text-par-heading">Quản lí</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </li>
-            <li class="nav-item text-center text-heading">
-                <div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingOne3">
-                            <a class="link nav-link" role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3">
-                                <i class="bi bi-caret-down-fill"></i>Articles
-                            </a>
-                        </div>
-                        <div id="collapseOne3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne1">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <a href="${pageContext.request.contextPath}/Admin/News/" class="dropdown-item text-par-heading">Quản lí</a>
+                </li>
+                <li class="nav-item text-center text-heading">
+                    <div class="panel-group" id="accordion3" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne3">
+                                <a class="link nav-link" role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3">
+                                    <i class="bi bi-caret-down-fill"></i>Articles
+                                </a>
+                            </div>
+                            <div id="collapseOne3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne1">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <a href="${pageContext.request.contextPath}/Admin/News/" class="dropdown-item text-par-heading">Quản lí</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </li>
-            <li class="nav-item text-center mt-3 text-heading">
-                <div class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingOne4">
-                            <a class="link nav-link" role="button" data-toggle="collapse" data-parent="#accordion4" href="#collapseOne4" aria-expanded="true" aria-controls="collapseOne4">
-                                <i class="bi bi-caret-down-fill"></i>Users
-                            </a>
-                        </div>
-                        <div id="collapseOne4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne4">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <a href="${pageContext.request.contextPath}/Admin/User/" class="dropdown-item text-par-heading mr-1">Quản lí</a>
-                                </div>
-                                <div class="row">
-                                    <a href="${pageContext.request.contextPath}/Admin/User/EditCate" class="dropdown-item text-par-heading mr-1">Phân danh mục</a>
-                                </div>
-                                <div class="row">
-                                    <a href="${pageContext.request.contextPath}/Admin/User/Account" class="dropdown-item text-par-heading mr-1">Gia hạn tài khoản</a>
+                </li>
+                <li class="nav-item text-center mt-3 text-heading">
+                    <div class="panel-group" id="accordion4" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne4">
+                                <a class="link nav-link" role="button" data-toggle="collapse" data-parent="#accordion4" href="#collapseOne4" aria-expanded="true" aria-controls="collapseOne4">
+                                    <i class="bi bi-caret-down-fill"></i>Users
+                                </a>
+                            </div>
+                            <div id="collapseOne4" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne4">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <a href="${pageContext.request.contextPath}/Admin/User/" class="dropdown-item text-par-heading mr-1">Quản lí</a>
+                                    </div>
+                                    <div class="row">
+                                        <a href="${pageContext.request.contextPath}/Admin/User/EditCate" class="dropdown-item text-par-heading mr-1">Phân danh mục</a>
+                                    </div>
+                                    <div class="row">
+                                        <a href="${pageContext.request.contextPath}/Admin/User/Account" class="dropdown-item text-par-heading mr-1">Gia hạn tài khoản</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </li>
-
+                </li>
+            </c:if>
+            <c:if test="${authUser.role_id == 4}">
+                <h4 class="text-center mt-5 text-top-heading">EDITOR</h4>
+            </c:if>
+            <c:if test="${authUser.role_id == 3}">
+                <h4 class="text-center mt-5 text-top-heading">REPORTTER</h4>
+                <li class="nav-item text-center mt-5 text-heading">
+                    <div class="panel-group" id="accordion_rep1" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne_rep1">
+                                <a class="link nav-link" role="button" data-toggle="collapse" data-parent="#accordion_rep1" href="#collapseOne_rep1" aria-expanded="true" aria-controls="collapseOne_rep1">
+                                    <i class="bi bi-caret-down-fill"></i>Post Articles
+                                </a>
+                            </div>
+                            <div id="collapseOne_rep1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne_rep1">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <a href="${pageContext.request.contextPath}/Post" class="dropdown-item text-par-heading">Post</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item text-center text-heading">
+                    <div class="panel-group" id="accordion_rep2" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne_rep2">
+                                <a class="link nav-link" role="button" data-toggle="collapse" data-parent="#accordion_rep2" href="#collapseOne_rep2" aria-expanded="true" aria-controls="collapseOne_rep2">
+                                    <i class="bi bi-caret-down-fill"></i>List Articles
+                                </a>
+                            </div>
+                            <div id="collapseOne_rep2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne_rep2">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <a href="${pageContext.request.contextPath}/Post/Waiting" class="dropdown-item text-par-heading">Waiting</a>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <a href="${pageContext.request.contextPath}/Post/Published" class="dropdown-item text-par-heading">Published</a>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <a href="${pageContext.request.contextPath}/Post/Refused" class="dropdown-item text-par-heading">Refused</a>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <a href="${pageContext.request.contextPath}/Post/Draft" class="dropdown-item text-par-heading">Draft</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </c:if>
         </div>
     </div>
 </div>
