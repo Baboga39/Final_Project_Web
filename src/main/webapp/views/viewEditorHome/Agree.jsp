@@ -53,7 +53,7 @@
           </div>
           <div class="card-footer">
             <div class="row float-right mr-5">
-              <a href="${pageContext.request.contextPath}/Admin/News/" class="btn btn-light btn-lg mr-4">Back</a>
+              <a href="${pageContext.request.contextPath}/Editor/Home" class="btn btn-light btn-lg mr-4">Back</a>
               <button type="submit" class="btn btn-outline-success btn-lg">Agree</button>
             </div>
           </div>

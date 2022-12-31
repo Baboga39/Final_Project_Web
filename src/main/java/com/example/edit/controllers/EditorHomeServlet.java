@@ -21,12 +21,13 @@ public class EditorHomeServlet extends HttpServlet {
         }
         switch (path) {
             case "/Index":
-
-                List<Articles> list = ArticleModel.findDraftArticles();
+                HttpSession session = request.getSession();
+                User editor = (User) session.getAttribute("authUser");
+                int editor_id = editor.getUserId();
+                List<Articles> list = ArticleModel.findDraftEditorManage(editor_id);
                 request.setAttribute("draftArt",list);
                 ServletUtils.forward("/views/viewEditorHome/Index.jsp", request, response);
                 break;
-            //case "/Approve":
             case "/Detail":
                 int id2 = 0;
                 try {

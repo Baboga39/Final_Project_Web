@@ -27,6 +27,17 @@ public class ArticleModel {
                     .executeAndFetch(Articles.class);
         }
     }
+    public static List<Articles> findDraftEditorManage(int user_id){
+        final String query = " SELECT users.second_name,articles.* FROM users INNER JOIN articles " +
+                "ON users.user_id=articles.writer_id INNER JOIN editor_manage_categories " +
+                "ON articles.categories_id=editor_manage_categories.category_id " +
+                "WHERE editor_manage_categories.editor_id= :user_id AND status_id=104";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .addParameter("user_id",user_id)
+                    .executeAndFetch(Articles.class);
+        }
+    }
     public static List<Articles> findArticleByStatus(int status_id){
         final String query = "SELECT articles.article_id,articles.create_date,articles.title,articles.publish_date,articles.views," +
                 "articles.abstracts,articles.categoryName,users.second_name,articles.premium\n" +
