@@ -63,8 +63,8 @@
                   <c:otherwise></c:otherwise>
                 </c:choose>
                 <td class="d-flex justify-content-sm-between" style="font-size: 20px">
-                  <a href="${pageContext.request.contextPath}/Editor/Home/Refuse?article_id=${r.article_id}" type="button" class="btn Update.jsplink"><i class="bi bi-trash"></i></a>
-                  <a href="#" type="button" class="btn link"><i class="bi bi-check-square"></i></a>
+                  <a href="${pageContext.request.contextPath}/Editor/Home/Refuse?article_id=${r.article_id}" type="button" class="btn link"><i class="bi bi-x-square"></i></a>
+                  <a href="${pageContext.request.contextPath}/Editor/Home/Agree?article_id=${r.article_id}" type="button" class="btn link"><i class="bi bi-check-square"></i></a>
                   <a href="${pageContext.request.contextPath}/Editor/Home/Detail?article_id=${r.article_id}" type="button" class="btn link"><i class="bi bi-eye"></i></a>
                 </td>
               </tr>
@@ -74,26 +74,6 @@
         </div>
         <div class="card-footer d-flex justify-content-md-between">
           <span class="text-title">Footer</span>
-          <div class="d-flex justify-content-md-between">
-            <a href="#" class="link mr-5 mt-2">View All</a>
-            <nav aria-label="Page navigation example">
-              <ul class="pagination">
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                  </a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                  <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                  </a>
-                </li>
-              </ul>
-            </nav>
-          </div>
         </div>
       </div>
     </div>

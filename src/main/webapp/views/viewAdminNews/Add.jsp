@@ -75,6 +75,15 @@
                 </c:forEach>
                </select>
              </div>
+             <div class="title">Danh sách Tag</div>
+             <div class="form-group">
+               <label for="txtTag">Tags</label>
+               <select id="txtTag" name="value" class="form-control " multiple="multiple">
+                 <c:forEach items="${tags}" var="c">
+                   <option>${c.value}</option>
+                 </c:forEach>
+               </select>
+             </div>
              <div class="form-check mt-3 mb-2">
                <label class="form-check-label" for="defaultCheck1">
                  Premium
@@ -105,7 +114,7 @@
            </div>
            <div class="card-footer">
              <div class="row float-right mr-5">
-               <a href="${pageContext.request.contextPath}/Admin/Category/Index" class="btn btn-light btn-lg mr-4">Back</a>
+               <a href="${pageContext.request.contextPath}/Admin/News/Index" class="btn btn-light btn-lg mr-4">Back</a>
                <button type="submit" class="btn btn-success btn-lg">Add Categories</button>
              </div>
            </div>

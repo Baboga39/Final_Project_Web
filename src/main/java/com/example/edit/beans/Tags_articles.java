@@ -38,11 +38,13 @@ public class Tags_articles {
         this.article_id = article_id;
         this.index_id = index_id;
     }
+
     @Override
     public String toString() {
         return "Tags_articles{" +
                 "tags_id=" + tags_id +
                 ", article_id=" + article_id +
+                ", index_id=" + index_id +
                 '}';
     }
 }

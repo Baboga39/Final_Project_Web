@@ -1,14 +1,8 @@
 package com.example.edit.controllers;
 
 import com.example.edit.Utils.ServletUtils;
-import com.example.edit.beans.Articles;
-import com.example.edit.beans.Category;
-import com.example.edit.beans.Tag;
-import com.example.edit.beans.User;
-import com.example.edit.models.ArticleModel;
-import com.example.edit.models.CategoryModel;
-import com.example.edit.models.TagModel;
-import com.example.edit.models.UserModel;
+import com.example.edit.beans.*;
+import com.example.edit.models.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -62,8 +56,11 @@ public class AdminNewsServlet extends HttpServlet {
                 } catch (NumberFormatException e) {
                 }
                 Articles c = ArticleModel.findByIdAll(id2);
+                List<Tag> listTag = ArticleModel.findTagByArtId(id2);
+
                 User u = ArticleModel.findAuthor(id2);
                 if (c != null) {
+                    request.setAttribute("tags",listTag);
                     request.setAttribute("User",u);
                     request.setAttribute("Articles", c);
                     ServletUtils.forward("/views/viewAdminNews/Detail.jsp", request, response);
@@ -74,6 +71,8 @@ public class AdminNewsServlet extends HttpServlet {
             case "/Add":
                 List<Category> listCate = CategoryModel.findAllIn();
                 List<User> listPv = UserModel.listPhongVien(3);
+                List<Tag> listTags = TagModel.findAll();
+                request.setAttribute("tags",listTags);
                 request.setAttribute("listPv",listPv);
                 request.setAttribute("listCate",listCate);
                 ServletUtils.forward("/views/viewAdminNews/Add.jsp", request, response);
@@ -87,15 +86,44 @@ public class AdminNewsServlet extends HttpServlet {
                 Articles c3 = ArticleModel.findByIdAll(id3);
                 List<User> listPvs = UserModel.listPhongVien(3);
                 List<Category> listCates = CategoryModel.findAllIn();
+                List<Tag> listTagId = ArticleModel.findTagByArtId(id3);
                 if (c3 != null) {
                     request.setAttribute("listCate",listCates);
                     request.setAttribute("listPv",listPvs);
-
+                    request.setAttribute("tags",listTagId);
                     request.setAttribute("Articles", c3);
                     ServletUtils.forward("/views/viewAdminNews/Update.jsp", request, response);
                 } else {
                     ServletUtils.redirect("/Admin/News", request, response);
                 }
+                break;
+            case "/EditTag":
+                int id7 = 0;
+                try {
+                    id7 = Integer.parseInt(request.getParameter("article_id"));
+                } catch (NumberFormatException e) {
+                }
+                Articles c7 = ArticleModel.findByIdAll(id7);
+                List<Tag> listTag7 = ArticleModel.findTagByArtIdKhoa(id7);
+                List<Tag> listTagAll = TagModel.findAll();
+                request.setAttribute("article",c7);
+                request.setAttribute("tags",listTag7);
+                request.setAttribute("listtag",listTagAll);
+                ServletUtils.forward("/views/viewAdminNews/EditTag.jsp", request, response);
+                break;
+            case "/EditTag/Delete":
+                int id4 = 0;
+                int id1 =0;
+                try {
+                    id4 = Integer.parseInt(request.getParameter("tags_id"));
+                    id1 = Integer.parseInt(request.getParameter("a_id"));
+                } catch (NumberFormatException e) {
+                }
+
+                TagArticleModel.deleteTagArt(id4);
+
+                String url ="/Admin/News/EditTag?article_id="+id1;
+                ServletUtils.redirect("/Edit"+url,request,response);
                 break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
@@ -109,8 +137,12 @@ public class AdminNewsServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String path = request.getPathInfo();
         switch (path) {
+            case "/EditTag":
+                addTags(request,response);
+                break;
             case "/Add":
                 addNews(request, response);
+                postTagArticle(request,response);
                 break;
             case "/Update":
                 updateNews(request, response);
@@ -121,7 +153,15 @@ public class AdminNewsServlet extends HttpServlet {
         }
 
     }
-
+    private void addTags(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int article_id = Integer.parseInt(request.getParameter("article_id"));
+        int tags_id = Integer.parseInt(request.getParameter("tags_id"));
+        int index = 0;
+        Tags_articles tagArticleModel = new Tags_articles(tags_id,article_id,index);
+        TagArticleModel.addTagArticle(tagArticleModel);
+        String url = "/Admin/News/EditTag?article_id="+article_id;
+        ServletUtils.redirect("/Edit"+url,request,response);
+    }
     private void addNews(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String title = request.getParameter("title");
 
@@ -205,5 +245,18 @@ public class AdminNewsServlet extends HttpServlet {
         }
 
         ServletUtils.redirect("/Admin/News", request,response);
+    }
+    private void postTagArticle(HttpServletRequest request, HttpServletResponse response) {
+        Articles art = ArticleModel.findArtByMaxID();
+        int article_id = art.getArticle_id();
+        String[] tagValue = request.getParameterValues("value");
+        int size = tagValue.length;
+        for (int i=0 ;i<size;i++){
+            Tag tag = TagArticleModel.findTagByTagName(tagValue[i]);
+            int tags_id = tag.getTags_id();
+
+            Tags_articles t = new Tags_articles(tags_id,article_id,0);
+            TagArticleModel.addTagArticle(t);
+        }
     }
 }

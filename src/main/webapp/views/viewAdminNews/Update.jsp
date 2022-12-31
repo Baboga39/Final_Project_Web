@@ -76,6 +76,21 @@
                   </c:forEach>
                 </select>
               </div>
+              <div class="title">Danh sách Tag</div>
+              <div class="border mt-3">
+                <ul class="list-group list-group-flush">
+                  <c:forEach items="${tags}" var="a">
+                    <li class="list-group-item">
+                      <div class="d-flex justify-content-between">
+                        <span>${a.value}</span>
+                      </div>
+                    </li>
+                  </c:forEach>
+                </ul>
+              </div>
+              <div class="mb-3 float-right">
+                <a href="${pageContext.request.contextPath}/Admin/News/EditTag?article_id=${Articles.article_id}">Chỉnh sửa Tags</a>
+              </div>
               <div class="form-check mt-3 mb-2">
                 <label class="form-check-label" for="defaultCheck1">
                   Premium
@@ -105,8 +120,8 @@
               </div>
             </div>
             <div class="card-footer">
-              <div class="row float-right mr-5">
-                <a href="${pageContext.request.contextPath}/Admin/Category/Index" class="btn btn-light btn-lg mr-4">Back</a>
+              <div class="row float-right mr-5 d-flex justify-content-between">
+                <a href="${pageContext.request.contextPath}/Admin/News/Index" class="btn btn-light btn-lg mr-4">Back</a>
                 <button type="submit" class="btn btn-success btn-lg">Add Categories</button>
               </div>
             </div>

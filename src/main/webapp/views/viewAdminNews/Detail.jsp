@@ -57,6 +57,22 @@
                     <td>${Articles.categoryName}</td>
                   </tr>
                   <tr>
+                    <th>Tags:</th>
+                    <td>
+                      <div>
+                        <ul>
+                          <c:forEach items="${tags}" var="a">
+                            <li>
+                              <div class="d-flex justify-content-between">
+                                <span>${a.value}</span>
+                              </div>
+                            </li>
+                          </c:forEach>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
                     <th>Premium:</th>
                     <td>${Articles.premium}</td>
                   </tr>
@@ -88,6 +104,7 @@
             </div>
             <div class="card-footer d-flex justify-content-md-between">
               <span class="text-title">Footer</span>
+              <a href="${pageContext.request.contextPath}/Admin/News/Index" class="btn btn-light btn-lg mr-4">Back</a>
             </div>
           </div>
         </div>

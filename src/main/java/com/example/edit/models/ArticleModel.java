@@ -135,6 +135,18 @@ public class ArticleModel {
             return list;
         }
     }
+    public static List<Tag> findTagByArtIdKhoa(int article_id){
+        final String query = "SELECT tags.tags_id, tags.`value`,article_id from tags INNER JOIN tags_articles ON tags.tags_id=tags_articles.tags_id WHERE tags_articles.article_id= :article_id";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Tag> list = con.createQuery(query)
+                    .addParameter("article_id", article_id)
+                    .executeAndFetch(Tag.class);
+            if (list.size() == 0){
+                return null;
+            }
+            return list;
+        }
+    }
     public static User findAuthor(int article_id) {
         final String query = "SELECT users.second_name FROM articles INNER JOIN users " +
                 "ON articles.writer_id=users.user_id WHERE articles.article_id= :article_id";
