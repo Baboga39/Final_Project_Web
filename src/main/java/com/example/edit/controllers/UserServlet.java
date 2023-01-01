@@ -2,10 +2,7 @@ package com.example.edit.controllers;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.example.edit.Utils.ServletUtils;
-import com.example.edit.beans.Articles;
-import com.example.edit.beans.Category;
-import com.example.edit.beans.Tag;
-import com.example.edit.beans.User;
+import com.example.edit.beans.*;
 import com.example.edit.models.ArticleModel;
 import com.example.edit.models.CategoryModel;
 import com.example.edit.models.TagModel;
@@ -151,6 +148,8 @@ public class UserServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("auth",false);
         session.setAttribute("authUser",new User());
+        session.setAttribute("authGg", false);
+        session.removeAttribute("authUserGg");
         session.removeAttribute("checkAccPre");
         session.removeAttribute("checkEx");
         session.removeAttribute("checkEx");

@@ -117,7 +117,7 @@
 
                                     </a>
                                     <div class="dropdown-menu" class="navbarDropdown">
-                                        <a href="${pageContext.request.contextPath}/User/Index" class="dropdown-item">Profile</a>
+                                        <a href="${pageContext.request.contextPath}/views/ViewUser/Index.jsp" class="dropdown-item">Profile</a>
                                         <div class="dropdown-divider"></div>
                                         <a href="javascript: $('#frmLogout').submit()" class="dropdown-item">Logout</a>
                                     </div>

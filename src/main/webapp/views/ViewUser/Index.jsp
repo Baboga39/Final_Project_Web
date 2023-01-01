@@ -239,22 +239,6 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li class="list-group-item">
-                                                <div class="row">
-                                                    <span class="col-4">Status: </span>
-                                                    <div class="col-8">
-                                                        <span>Vip</span>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <div class="row">
-                                                    <span class="col-4">Date: </span>
-                                                    <div class="col-8">
-                                                        <span>3 Day left</span>
-                                                    </div>
-                                                </div>
-                                            </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -268,7 +252,6 @@
                         </c:when>
                     </c:choose>
                 </div>
-
             </div>
 
         </div>
