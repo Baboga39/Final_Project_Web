@@ -264,3 +264,11 @@ body{
     margin: 10px auto;
     padding-left: 10px;
 }
+.verticalLine {
+    width: 1px;
+    background-color: silver;
+    height: 100%;
+    float: left;
+    border: 2px ridge silver ;
+    border-radius: 2px;
+}

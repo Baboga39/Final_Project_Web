@@ -18,8 +18,8 @@
                 <div class="row mt-5">
                     <ul class="list-unstyled mt-5">
                         <c:forEach items="${listA}" var="o">
-                            <li class="media my-4">
-                                <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="mr-3 img-fluid d-block w-25  " alt="...">
+                            <li class="media my-4" style="height: 250px">
+                                <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="mr-3 img-fluid d-block w-25  h-100" alt="...">
                                 <div class="media-body">
                                     <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
                                         <h4 class="mt-0 mb-1">${o.title}</h4>

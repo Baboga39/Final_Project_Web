@@ -20,7 +20,7 @@
                                 </c:forEach>
                             </ul>
                         </div>
-                        <div class="weather-item text-heading border-danger">TP.HCM 27°C  - CHỦ NHẬT - ${Day}</div>
+                        <div class="weather-item text-heading border-danger">TP.HCM - ${Day}</div>
                     </div>
                 </div>
             </div>
@@ -36,8 +36,8 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <div class="box" style="height:  600px">
-                                            <div class="overlay-img" style="height:  600px"> <img src="${pageContext.request.contextPath}/image/Article/${find1.avatar}" class="img-fluid h-100" alt="..."></div>
+                                        <div class="box" style="height:  700px">
+                                            <div class="overlay-img h-100"> <img src="${pageContext.request.contextPath}/image/Article/${find1.avatar}" class="img-fluid h-100 w-100" alt="..."></div>
                                             <div class="carousel-caption d-none d-md-block text-img text-left">
                                                 <a href="${pageContext.request.contextPath}/Post/Category?cid=${find1.categories_id}" class="link-cate nav-link"> ${find1.categoryName} </a>
                                                 <p> ${find1.title}.</p>
@@ -48,8 +48,8 @@
                                     </div>
                                     <c:forEach items="${listtop3}" var="o">
                                         <div class="carousel-item">
-                                            <div class="box" style="height:  600px">
-                                                <div class="overlay-img h-100" style="height:  600px"> <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="img-fluid h-100" alt="..."></div>
+                                            <div class="box" style="height:  700px">
+                                                <div class="overlay-img h-100"> <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="img-fluid h-100" alt="..."></div>
                                                 <div class="carousel-caption d-none d-md-block text-img text-left">
                                                     <a href="${pageContext.request.contextPath}/Post/Category?cid=${o.categories_id}" class="link-cate nav-link"> ${o.categoryName} </a>
                                                     <p> ${o.title}.</p>
@@ -79,15 +79,15 @@
                                 <div class="card-body">
                                     <ul class="list-unstyled">
                                         <c:forEach items="${listtop4}" var="o">
-                                            <li class="media">
-                                                <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" style="height: 115px !important  ;   margin-bottom: 12px;
-}" class="mr-3 img-fluid w-50" alt="...">
-                                                <div class="media-body">
-                                                    <a class="mt-0 mb-1" href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
+                                            <li class="media mt-2" style="height: 150px">
+                                                <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="img-fluid h-100 w-50">
+                                                <div class="media-body ml-3 w-75">
+                                                    <a class="mt-0 mb-1 " style="font-size: 14px" href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
                                                             ${o.title}
                                                     </a>
-                                                    <div class="row mt-1 mb-1 ml-1">
-                                                        <span>${o.categoryName}</span><span> - </span><span>${o.publish_date}</span>
+                                                    <div class="row  d-flex justify-content-around">
+                                                        <span class="badge badge-primary badge-pill">${o.categoryName}</span>
+                                                        <span>${o.publish_date}</span>
                                                     </div>
                                                 </div>
                                             </li>
@@ -121,7 +121,7 @@
                                                             <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" style="height: 164px !important" class="card-img-top h-50" alt="...">
                                                             <div class="card-body">
                                                                 <p class="card-title">${o.title}</p>
-                                                                <p><i class="bi bi-hash mr-2"></i>${o.categoryName}</p>
+                                                                <p class="badge badge-primary badge-pill"></i>${o.categoryName}</p>
                                                                 <p><i class="bi bi-calendar mr-2"></i> ${o.publish_date} </p>
                                                             </div>
                                                         </a>
@@ -145,7 +145,7 @@
                                                             <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" style="height: 164px !important" class="card-img-top h-50" alt="...">
                                                             <div class="card-body">
                                                                 <p class="card-title">${o.title}</p>
-                                                                <p><i class="bi bi-hash mr-2"></i>${o.categoryName}</p>
+                                                                <p class="badge badge-primary badge-pill" >${o.categoryName}</p>
                                                                 <p><i class="bi bi-calendar mr-2"></i> ${o.publish_date} </p>
                                                             </div>
                                                         </a>
@@ -182,17 +182,16 @@
                         Mới Nhất </div>
                     <div class="row mt-5">
                         <div class="col-6">
-                            <div class="box-new h-100">
+                            <div class="box-new" style="height: 500px">
                                 <a href="${pageContext.request.contextPath}/Detail?article_id=${find1.article_id}">
-                                    <img src="${pageContext.request.contextPath}/image/Article/${find1.avatar}" style="height: 504px !important;
-}" class="card-img-top" alt="...">
+                                    <img src="${pageContext.request.contextPath}/image/Article/${find1.avatar}" class="card-img-top h-75" alt="...">
                                 </a>
                                 <div class="box-new-menu">
                                     <a href="${pageContext.request.contextPath}/Detail?article_id=${find1.article_id}">
                                         <h4> ${find1.title} </h4>
                                     </a>
                                     <p style="font-size: 15px"> ${find1.abstracts}  </p>
-                                    <p><i class="bi bi-hash mr-2"></i>  ${find1.categoryName} </p>
+                                    <p class="badge badge-primary badge-pill">  ${find1.categoryName} </p>
                                     <p><i class="bi bi-calendar mr-2"></i> ${find1.publish_date} </p>
                                 </div>
                             </div>
@@ -200,17 +199,17 @@
                         <div class="col-6">
                             <div class="row row-cols-1 row-cols-md-2">
                                 <c:forEach items="${listtop5New}" var="o">
-                                    <div class="col mb-4">
-                                        <div class="box-new">
+                                    <div class="col mb-4" style="height: 250px">
+                                        <div class="box-new" style="height: 250px">
                                             <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
-                                                <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="card-img-top h-100" alt="...">
+                                                <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="card-img-top h-75" alt="...">
                                             </a>
                                             <div class="box-new-content-sm">
                                                 <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
                                                     <span class="" style="font-size: 15px"> ${o.title} </span>
                                                 </a>
                                                 <div class="d-flex justify-content-between">
-                                                    <span><i class="bi bi-hash mr-2"></i>  ${o.categoryName} </span>
+                                                    <span class="badge badge-primary badge-pill">  ${o.categoryName} </span>
                                                     <span><i class="bi bi-calendar mr-2"></i> ${o.publish_date} </span>
                                                 </div>
                                             </div>
@@ -221,17 +220,18 @@
                         </div>
 
                     </div>
+                    <hr>
                     <div class="row mt-5">
-                        <ul class="list-unstyled mt-5">
+                        <ul class="list-unstyled ">
                             <c:forEach items="${listtop5NewNext}" var="o">
-                                <li class="media my-4">
-                                    <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="mr-3 img-fluid d-block w-25  " alt="...">
+                                <li class="media my-4" style="height: 200px">
+                                    <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="mr-3 img-fluid d-block w-25 h-100" alt="...">
                                     <div class="media-body">
                                         <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
                                             <h4 class="mt-0 mb-1">${o.title}</h4>
                                         </a>
                                         <p> ${o.abstracts} </p>
-                                        <p><i class="bi bi-hash mr-2"></i>${o.categoryName}</p>
+                                        <p class="badge badge-primary badge-pill"> </i>${o.categoryName}</p>
                                         <p><i class="bi bi-calendar mr-2"></i> ${o.publish_date} </p>
                                     </div>
                                 </li>
