@@ -76,24 +76,23 @@
                                 <div class="h4 text-heading border-danger">
                                     Nổi Bật
                                 </div>
-                                <div class="card-body">
-                                    <ul class="list-unstyled">
-                                        <c:forEach items="${listtop4}" var="o">
-                                            <li class="media mt-2" style="height: 150px">
-                                                <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="img-fluid h-100 w-50">
-                                                <div class="media-body ml-3 w-75">
-                                                    <a class="mt-0 mb-1 " style="font-size: 14px" href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
-                                                            ${o.title}
-                                                    </a>
-                                                    <div class="row  d-flex justify-content-around">
-                                                        <span class="badge badge-primary badge-pill">${o.categoryName}</span>
-                                                        <span>${o.publish_date}</span>
+                                <ul class="list-unstyled">
+                                    <c:forEach items="${listtop4}" var="r">
+                                        <div class="bg-white ml-2">
+                                            <div class="d-flex align-items-center bg-white mb-3" style="height: 150px; width: 320px">
+                                                <img class="img-fluid h-100 w-50" src="${pageContext.request.contextPath}/image/Article/${r.avatar}" alt="">
+                                                <div class="h-100 w-50 d-flex flex-column justify-content-center border">
+                                                    <div class="mb-2" style="font-size: 15px">
+                                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="href="${pageContext.request.contextPath}/Post/Category?cid=${r.categories_id}">${r.categoryName}</a>
+                                                        <a class="text-body"><small>${r.publish_date}</small></a>
                                                     </div>
+                                                    <a class=" h6 m-0 text-secondary text-uppercase font-weight-bold" style="text-decoration: none;"
+                                                       href="${pageContext.request.contextPath}/Detail?article_id=${r.article_id}">${r.title}</a>
                                                 </div>
-                                            </li>
-                                        </c:forEach>
-                                    </ul>
-                                </div>
+                                            </div>
+                                        </div>
+                                    </c:forEach>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -120,8 +119,8 @@
                                                         <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
                                                             <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" style="height: 164px !important" class="card-img-top h-50" alt="...">
                                                             <div class="card-body">
-                                                                <p class="card-title">${o.title}</p>
-                                                                <p class="badge badge-primary badge-pill"></i>${o.categoryName}</p>
+                                                                <p class="card-title h6 m-0 text-secondary text-uppercase font-weight-bold">${o.title}</p>
+                                                                <p class="badge badge-primary badge-pill mt-2"></i>${o.categoryName}</p>
                                                                 <p><i class="bi bi-calendar mr-2"></i> ${o.publish_date} </p>
                                                             </div>
                                                         </a>
@@ -144,8 +143,8 @@
                                                         <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
                                                             <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" style="height: 164px !important" class="card-img-top h-50" alt="...">
                                                             <div class="card-body">
-                                                                <p class="card-title">${o.title}</p>
-                                                                <p class="badge badge-primary badge-pill" >${o.categoryName}</p>
+                                                                <p class="card-title h6 m-0 text-secondary text-uppercase font-weight-bold">${o.title}</p>
+                                                                <p class="badge badge-primary badge-pill mt-2" >${o.categoryName}</p>
                                                                 <p><i class="bi bi-calendar mr-2"></i> ${o.publish_date} </p>
                                                             </div>
                                                         </a>
@@ -188,7 +187,7 @@
                                 </a>
                                 <div class="box-new-menu">
                                     <a href="${pageContext.request.contextPath}/Detail?article_id=${find1.article_id}">
-                                        <h4> ${find1.title} </h4>
+                                        <p class="h4 mt-1 text-secondary text-uppercase font-weight-bold"> ${find1.title} </p>
                                     </a>
                                     <p style="font-size: 15px"> ${find1.abstracts}  </p>
                                     <p class="badge badge-primary badge-pill">  ${find1.categoryName} </p>
@@ -206,7 +205,7 @@
                                             </a>
                                             <div class="box-new-content-sm">
                                                 <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
-                                                    <span class="" style="font-size: 15px"> ${o.title} </span>
+                                                    <span class="h6 m-0 text-secondary text-uppercase font-weight-bold" style="font-size: 15px"> ${o.title} </span>
                                                 </a>
                                                 <div class="d-flex justify-content-between">
                                                     <span class="badge badge-primary badge-pill">  ${o.categoryName} </span>
@@ -222,13 +221,13 @@
                     </div>
                     <hr>
                     <div class="row mt-5">
-                        <ul class="list-unstyled ">
+                        <ul class="list-unstyled">
                             <c:forEach items="${listtop5NewNext}" var="o">
                                 <li class="media my-4" style="height: 200px">
                                     <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="mr-3 img-fluid d-block w-25 h-100" alt="...">
                                     <div class="media-body">
                                         <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
-                                            <h4 class="mt-0 mb-1">${o.title}</h4>
+                                            <h4 class="mt-0 mb-1 text-secondary text-uppercase font-weight-bold">${o.title}</h4>
                                         </a>
                                         <p> ${o.abstracts} </p>
                                         <p class="badge badge-primary badge-pill"> </i>${o.categoryName}</p>

@@ -6,6 +6,13 @@
 <jsp:useBean id="comments" scope="request" type="java.util.List<com.example.edit.beans.Comments>" />
 
 <t:detail>
+    <jsp:attribute name="css">
+        <style>
+            .contentnews img{
+                width: 100%;
+            }
+        </style>
+    </jsp:attribute>
     <jsp:attribute name="js">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" integrity="sha512-YcsIPGdhPK4P/uRW6/sruonlYj+Q7UHWeKfTAkBW+g83NKM+jMJFJ4iAPfSnVp7BKD4dKMHmVSvICUbE/V1sSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>        <script>
     const options ={
@@ -29,20 +36,20 @@
     <jsp:body>
         <div class="container-fluid" style="margin-top: 100px">
             <div class="container mt-5">
-                <div class="row">
+                <div class="row row-cols-2">
                     <c:if test="${ (checkPre == false && checkAccPre == false) || (checkPre == false && sessionScope.auth == false)
                     || (checkPre == false && checkEx== true  && checkAccPre == true ) || (checkPre == true && checkEx== true  && checkAccPre == true) }">
-                        <div class="col">
+                        <div class="col-8">
                             <!-- News Detail Start -->
                             <div class="position-relative mb-3" id="contents">
-                                   <img class="img-fluid w-100" src="${pageContext.request.contextPath}/image/Article/${article.avatar}" style="object-fit: cover;">
+                                   <img class="img-fluid w-100" style="height: 600px" src="${pageContext.request.contextPath}/image/Article/${article.avatar}">
                                    <div class="bg-white border border-top-0 p-4">
                                        <div class="mb-3">
                                            <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">${article.categoryName}</a>
                                            <a class="text-body" href="">${article.publish_date}</a>
                                        </div>
                                        <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">${article.title}</h1>
-                                       <p>${article.content}</p>
+                                       <div class="contentnews">${article.content}</div>
                                    </div>
                                    <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
                                        <div class="d-flex align-items-center">
@@ -98,14 +105,14 @@
                                 </div>
                                 <c:forEach items="${listRand5SameCat}" var="r">
                                     <div class="bg-white border border-top-0 p-3">
-                                        <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                                            <img class="img-fluid" src="${pageContext.request.contextPath}/image/Article/${r.avatar}" alt="" width="110">
-                                            <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                                <div class="mb-2">
+                                        <div class="d-flex align-items-center bg-white mb-3" style="height: 150px; width: 320px">
+                                            <img class="img-fluid h-100 w-50" src="${pageContext.request.contextPath}/image/Article/${r.avatar}" alt="">
+                                            <div class="h-100 w-50 d-flex flex-column justify-content-center border">
+                                                <div class="mb-2" style="font-size: 15px">
                                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="href="${pageContext.request.contextPath}/Post/Category?cid=${r.categories_id}">${r.categoryName}</a>
-                                                    <a class="text-body" href=""><small>${r.publish_date}</small></a>
+                                                    <a class="text-body"><small>${r.publish_date}</small></a>
                                                 </div>
-                                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold"
+                                                <a class=" h6 m-0 text-secondary text-uppercase font-weight-bold"
                                                    href="${pageContext.request.contextPath}/Detail?article_id=${r.article_id}">${r.title}</a>
                                             </div>
                                         </div>

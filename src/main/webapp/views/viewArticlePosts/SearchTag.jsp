@@ -7,7 +7,7 @@
             <div class="navbar-expand-lg">
                 <div class="container-sm d-flex justify-content-sm-between">
 
-                    <div class="weather-item text-heading border-danger">TP.HCM 27°C  - CHỦ NHẬT - ${Day}</div>
+                    <div class="weather-item text-heading border-danger">TP.HCM - ${Day}</div>
                 </div>
             </div>
         </div>
@@ -22,10 +22,10 @@
                                 <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="mr-3 img-fluid d-block w-25 h-100  " alt="...">
                                 <div class="media-body">
                                     <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
-                                        <h4 class="mt-0 mb-1">${o.title}</h4>
+                                        <h4 class="mt-0 mb-1 text-secondary text-uppercase font-weight-bold">${o.title}</h4>
                                     </a>
                                     <p> ${o.abstracts} </p>
-                                    <p><i class="bi bi-hash mr-2"></i>${o.categoryName}</p>
+                                    <p class="badge badge-primary badge-pill"></i>${o.categoryName}</p>
                                     <p><i class="bi bi-calendar mr-2"></i> ${o.publish_date} </p>
                                 </div>
                             </li>

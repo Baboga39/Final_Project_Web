@@ -1,5 +1,6 @@
 <%@ tag pageEncoding="utf-8" %>
 <%@attribute name="js" fragment="true" required="false" %>
+<%@attribute name="css" fragment="true" required="false" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
 
-
+    <jsp:invoke fragment="css" />
 </head>
 <body>
 

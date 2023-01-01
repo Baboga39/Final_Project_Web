@@ -40,7 +40,7 @@
                         <!--  -->
                         <div class="col-6">
                             <div class="badge badge-warning badge-pill mb-3">Tin mới nhất</div>
-                            <h4><strong><b>${listOne.title}</b></strong></h4>
+                            <h4 class="mt-0 mb-1 text-secondary text-uppercase font-weight-bold"><strong>${listOne.title}</strong></h4>
                             <p class="text-muted">
                                     ${listOne.abstracts}
                             </p>
@@ -83,7 +83,7 @@
 
                                     <!-- Article title and description -->
                                     <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}" class="text-dark">
-                                        <h5><b>${o.title}</b></h5>
+                                        <p class="mt-0 mb-1 text-secondary text-uppercase font-weight-bold h5">${o.title}</p>
                                     </a>
                                     <p>
                                             ${o.abstracts}
@@ -100,7 +100,7 @@
                                     <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="mr-3 img-fluid d-block w-25 h-100" alt="...">
                                     <div class="media-body">
                                         <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
-                                            <h4 class="mt-0 mb-1">${o.title}</h4>
+                                            <h4 class="mt-0 mb-1 text-secondary text-uppercase font-weight-bold">${o.title}</h4>
                                         </a>
                                         <span class="badge badge-pill badge-primary">${o.categoryName}</span>
                                         <p> ${o.abstracts}
