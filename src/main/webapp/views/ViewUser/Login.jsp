@@ -20,7 +20,7 @@
           <div class="col-md-6 col-lg-7">
             <div class="card-body p-4 p-lg-5 text-black">
               <div class="row justify-content-center">
-                <span class="h1 fw-bold mb-0">Logo</span>
+                <img src="${pageContext.request.contextPath}/image/logo11.png" class="img-fluid w-50" alt="...">
               </div>
               <div class="row justify-content-center">
                 <h5 class="fw-normal mb-3 mt-5 pb-3" style="letter-spacing: 2px;">Đăng nhập</h5>
@@ -34,14 +34,14 @@
                 <input type="password" id="txtPassword" name="password" placeholder="Password" class="form-control form-control-lg" />
               </div>
 
-               <t:if test="${hasError}">
-                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                   <strong>Login fail!</strong> ${errorMessage}
-                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                     <span aria-hidden="true">&times;</span>
-                   </button>
-                 </div>
-               </t:if>
+              <t:if test="${hasError}">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <strong>Login fail!</strong> ${errorMessage}
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+              </t:if>
 
               <div class="pt-1 mb-3 mt-3">
                 <button class="btn btn-dark btn-lg btn-block" type="submit">Login </button>
@@ -52,7 +52,7 @@
                 <p>or sign up with:</p>
                 <button type="button" class="btn btn-link btn-floating mx-1"
                         onclick="location.href='https://www.facebook.com/dialog/oauth?client_id=515625173274802&redirect_uri=http://localhost:8080/Edit/Loging/Facebook'">
-                <a href=""></a>
+                  <a href=""></a>
                   <i class="bi bi-facebook h3"></i>
                 </button>
 
