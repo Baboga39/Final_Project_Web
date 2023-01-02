@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <jsp:useBean id="article" scope="request" type="com.example.edit.beans.Articles"/>
 <jsp:useBean id="comments" scope="request" type="java.util.List<com.example.edit.beans.Comments>" />
@@ -15,23 +16,23 @@
     </jsp:attribute>
     <jsp:attribute name="js">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" integrity="sha512-YcsIPGdhPK4P/uRW6/sruonlYj+Q7UHWeKfTAkBW+g83NKM+jMJFJ4iAPfSnVp7BKD4dKMHmVSvICUbE/V1sSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>        <script>
-    const options ={
-        margin: 2,
-        fileName: "file.pdf",
-        image:{
-            type: "jpeg",
-            quality: 0.98
-        },
-        html2canvas:{
-            scale:1
-        },
-    }
-    $("#download").click(function (e){
-        e.preventDefault();
-        const element = document.getElementById("contents");
-        html2pdf().from(element).set(options).save();
-    })
-</script>
+        const options ={
+            margin: 2,
+            fileName: "file.pdf",
+            image:{
+                type: "jpeg",
+                quality: 0.98
+            },
+            html2canvas:{
+                scale:1
+            },
+        }
+        $("#download").click(function (e){
+            e.preventDefault();
+            const element = document.getElementById("contents");
+            html2pdf().from(element).set(options).save();
+        })
+    </script>
     </jsp:attribute>
     <jsp:body>
         <div class="container-fluid" style="margin-top: 100px">
@@ -42,29 +43,32 @@
                         <div class="col-8">
                             <!-- News Detail Start -->
                             <div class="position-relative mb-3" id="contents">
-                                   <img class="img-fluid w-100" style="height: 600px" src="${pageContext.request.contextPath}/image/Article/${article.avatar}">
-                                   <div class="bg-white border border-top-0 p-4">
-                                       <div class="mb-3">
-                                           <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">${article.categoryName}</a>
-                                           <a class="text-body" href="">${article.publish_date}</a>
-                                       </div>
-                                       <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">${article.title}</h1>
-                                       <div class="contentnews">${article.content}</div>
-                                   </div>
-                                   <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
-                                       <div class="d-flex align-items-center">
-                                           <img class="rounded-circle mr-2" src="${pageContext.request.contextPath}/image/user.png" width="25" height="25" alt="">
-                                           <span>${user.second_name}</span>
-                                       </div>
-                                       <div class="d-flex align-items-center">
-                                           <span class="ml-3"><i class="far fa-eye mr-2"></i>${article.views}</span>
-                                       </div>
-                                   </div>
-                               </div>
+                                <img class="img-fluid w-100" style="height: 600px" src="${pageContext.request.contextPath}/image/Article/${article.avatar}">
+                                <div class="bg-white border border-top-0 p-4">
+                                    <div class="mb-3">
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2" href="">${article.categoryName}</a>
+                                        <a class="text-body" href="">${article.publish_date}</a>
+                                    </div>
+                                    <h1 class="mb-3 text-secondary text-uppercase font-weight-bold">${article.title}</h1>
+                                    <div class="contentnews">${article.content}</div>
+                                </div>
+                                <div class="d-flex justify-content-between bg-white border border-top-0 p-4">
+                                    <div class="d-flex align-items-center">
+                                        <img class="rounded-circle mr-2" src="${pageContext.request.contextPath}/image/user.png" width="25" height="25" alt="">
+                                        <span>${user.second_name}</span>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                           <span class="ml-3">
+                                               <i class="far fa-eye mr-2"></i>
+                                               <fmt:formatNumber value="${article.views}" type="number"></fmt:formatNumber>
+                                           </span>
+                                    </div>
+                                </div>
+                            </div>
                             <!-- News Detail End -->
                             <c:if test="${checkPre == true && sessionScope.auth == true &&  checkEx== true}">
 
-                            <button type="button" style="margin-bottom: 13px;
+                                <button type="button" style="margin-bottom: 13px;
     margin-left: 635px;
 }" class="btn btn-secondary" id="download">Download</button>
                             </c:if>
@@ -101,7 +105,7 @@
                             <!-- 5 Related Articles -->
                             <div class="mb-3">
                                 <div class="section-title mb-0">
-                                    <h4 class="m-0 text-uppercase font-weight-bold">5 Related Articles</h4>
+                                    <h4 class="m-0 text-uppercase font-weight-bold">Related Articles</h4>
                                 </div>
                                 <c:forEach items="${listRand5SameCat}" var="r">
                                     <div class="bg-white border border-top-0 p-3">

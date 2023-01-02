@@ -284,5 +284,8 @@
         </div>
       </c:when>
     </c:choose>
+    </div>
+    </div>
+    </div>
   </jsp:body>
 </d:web>

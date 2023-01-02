@@ -5,7 +5,9 @@
 <div class="header">
     <nav class="navbar navbar-expand-lg navbar-light  shadow-sm sticky-top" style="background: #EAE9E8">
         <div class="container d-flex justify-content-between">
-            <a class="navbar-brand mb-0 h1" href="${pageContext.request.contextPath}/Home/Index">Brand Name</a>
+            <a class="navbar-brand mb-0 h1" href="${pageContext.request.contextPath}/Home/Index">
+                <img src="${pageContext.request.contextPath}/image/logo11.png" class="img-fluid w-100" alt="...">
+            </a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto mt-2 ml-3">
                     <c:forEach items="${sessionScope.list5cate}" var="o">
