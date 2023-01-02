@@ -31,7 +31,7 @@
                     <div class="row row-cols-2">
                         <div class="col-6">
                             <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
-                                <img src="${pageContext.request.contextPath}/image/Article/${listOne.avatar}" class="img-fluid h-100 w-100" />
+                                <img src="${pageContext.request.contextPath}/image/Article/${listOneTag.get(0).avatar}" class="img-fluid h-100 w-100" />
                                 <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
                                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                                 </a>
@@ -39,15 +39,20 @@
                         </div>
                         <!--  -->
                         <div class="col-6">
-                            <div class="badge badge-warning badge-pill mb-3">Tin mới nhất</div>
-                            <h4 class="mt-0 mb-1 text-secondary text-uppercase font-weight-bold"><strong>${listOne.title}</strong></h4>
+                            <div class="d-flex justify-content-between">
+                                <div class="badge badge-warning badge-pill mb-3">Tin mới nhất</div>
+                                <p><i class="bi bi-calendar mr-2"></i>${listOneTag.get(0).publish_date}</p>
+                            </div>
+                            <h4 class="mt-0 mb-1 text-secondary text-uppercase font-weight-bold"><strong>${listOneTag.get(0).title}</strong></h4>
                             <p class="text-muted">
-                                    ${listOne.abstracts}
+                                    ${listOneTag.get(0).abstracts}
                             </p>
                             <div class="chip">
-                                <p class="badge badge-primary badge-pill"></i>${listOne.categoryName}</p>
+                                <c:forEach items="${listOneTag}" var="l">
+                                    <p class="badge badge-info badge-pill"></i>${l.value}</p>
+                                </c:forEach>
                             </div>
-                            <a class="btn btn-outline-secondary" href="${pageContext.request.contextPath}/Detail?article_id=${listOne.article_id}">Tìm hiểu ngay</a>
+                            <a class="btn btn-outline-secondary" href="${pageContext.request.contextPath}/Detail?article_id=${listOneTag.get(0).article_id}">Tìm hiểu ngay</a>
                         </div>
                     </div>
                 </section>

@@ -19,8 +19,8 @@ public class Articles {
     private int status_id;
     private String avatar;
     private String categoryName;
-
     private String second_name;
+    private String value;
 
     public Articles(int article_id, String title, Date create_date,Date publish_date, int views, String abstracts, String content,
                     int categories_id, boolean premium, int writer_id, int status_id, String avatar, String categoryName) {
@@ -39,6 +39,23 @@ public class Articles {
         this.categoryName = categoryName;
     }
 
+    public Articles(int article_id, String title,Date publish_date, int views, String abstracts,
+                    String content, int categories_id, boolean premium, int writer_id, int status_id, String avatar,
+                    String categoryName, String value) {
+        this.article_id = article_id;
+        this.title = title;
+        this.publish_date = publish_date;
+        this.views = views;
+        this.abstracts = abstracts;
+        this.content = content;
+        this.categories_id = categories_id;
+        this.premium = premium;
+        this.writer_id = writer_id;
+        this.status_id = status_id;
+        this.avatar = avatar;
+        this.categoryName = categoryName;
+        this.value = value;
+    }
     public Articles(int article_id, String title, Date create_date,Date publish_date, int views, String abstracts,
                     String content, int categories_id, boolean premium, int writer_id, int status_id, String avatar,
                     String categoryName, String second_name) {
@@ -168,6 +185,14 @@ public class Articles {
 
     public void setSecond_name(String second_name) {
         this.second_name = second_name;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 
     @Override

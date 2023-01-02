@@ -190,8 +190,10 @@
                                         <p class="h4 mt-1 text-secondary text-uppercase font-weight-bold"> ${find1.title} </p>
                                     </a>
                                     <p style="font-size: 15px"> ${find1.abstracts}  </p>
-                                    <p class="badge badge-primary badge-pill">  ${find1.categoryName} </p>
-                                    <p><i class="bi bi-calendar mr-2"></i> ${find1.publish_date} </p>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="badge badge-primary badge-pill">${find1.categoryName} </p>
+                                        <p><i class="bi bi-calendar mr-2"></i> ${find1.publish_date} </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

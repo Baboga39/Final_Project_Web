@@ -63,10 +63,12 @@ public class PostServlet extends HttpServlet {
                 break;
             case "/Update":
                 int article_id = Integer.parseInt(request.getParameter("article_id"));
+                int checkStatus = ArticleModel.checkStatus(article_id);
                 Articles article = ArticleModel.findByIdAll(article_id);
                 if(article == null){
                     ServletUtils.redirect("/Post", request, response);
                 } else{
+                    request.setAttribute("checkStatus",checkStatus);
                     request.setAttribute("article", article);
                     ServletUtils.forward("/views/viewPost/Update.jsp", request, response);
                 }
@@ -234,6 +236,7 @@ public class PostServlet extends HttpServlet {
                 request.setAttribute("list", listA);
             }
         }
+        List<Articles> listOneTag = ArticleModel.findTopCateTag(cateId);
         Articles listOne = ArticleModel.findTopCate(cateId);
         boolean check = CategoryModel.checkCate(cateId);
         List<Articles> listT = ArticleModel.getArticleByCateList3(cateId);
@@ -247,6 +250,7 @@ public class PostServlet extends HttpServlet {
         request.setAttribute("listC", listC);
         request.setAttribute("listT", listT);
         request.setAttribute("listOne", listOne);
+        request.setAttribute("listOneTag", listOneTag);
         request.setAttribute("check", check);
         request.setAttribute("listCa", listCa);
         request.setAttribute("tag", index);

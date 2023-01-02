@@ -123,7 +123,7 @@ public class ArticleModel {
     }
     public static List<Articles> findRand5SameCat(int article_id){
         final String query = "SELECT * FROM articles WHERE categories_id=" +
-                "(SELECT categories_id FROM articles WHERE article_id= :article_id) ORDER BY RAND() LIMIT 5";
+                "(SELECT categories_id FROM articles WHERE article_id= :article_id) AND status_id=102 ORDER BY RAND() LIMIT 5";
         try (Connection con = DbUtils.getConnection()) {
             List<Articles> list = con.createQuery(query)
                     .addParameter("article_id", article_id)
@@ -178,6 +178,24 @@ public class ArticleModel {
             return con.createQuery(query)
                     .addParameter("article_id",article_id)
                     .executeAndFetch(Comments.class);
+        }
+    }
+    public static int checkStatus( int article_id) {
+        String query = "SELECT * FROM articles WHERE article_id = :article_id";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Articles> list = con.createQuery(query)
+                    .addParameter("article_id", article_id)
+                    .executeAndFetch(Articles.class);
+            if (list.size() != 0) {
+                if (list.get(0).getStatus_id() == 103){
+                    return 3;
+                }
+                else {
+                    return 4;
+                }
+            } else {
+                return -1;
+            }
         }
     }
     // Lấy top 5  bài viết xem nhiều nhất
@@ -311,6 +329,21 @@ public class ArticleModel {
             List<Category> list = con.createQuery(query)
                     .executeAndFetch(Category.class);
             return  list.size();
+        }
+    }
+    // Tương tự hàm dưới, có thêm list Tag
+    public static List<Articles>  findTopCateTag(int categories_id)
+    {
+        final String query="SELECT articles.article_id,articles.title,articles.abstracts,articles.publish_date," +
+                "articles.categoryName,articles.views,tags.`value`, articles.avatar FROM tags INNER JOIN tags_articles ON " +
+                "tags.tags_id=tags_articles.tags_id INNER JOIN articles ON " +
+                "tags_articles.article_id= articles.article_id WHERE articles.status_id=102  AND" +
+                " articles.categories_id= :categories_id AND articles.views=(SELECT Max(views) FROM articles " +
+                "WHERE articles.status_id=102  AND articles.categories_id= :categories_id) ORDER BY articles.views";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .addParameter("categories_id",categories_id)
+                    .executeAndFetch(Articles.class);
         }
     }
     public static Articles  findTopCate(int categories_id)
