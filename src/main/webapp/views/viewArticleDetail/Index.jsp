@@ -11,6 +11,10 @@
         <style>
             .contentnews img{
                 width: 100%;
+                height: 300px;
+            }
+            .listrand5 a{
+                text-decoration: none;
             }
         </style>
     </jsp:attribute>
@@ -103,7 +107,7 @@
                         <div class="col-lg-4">
 
                             <!-- 5 Related Articles -->
-                            <div class="mb-3">
+                            <div class="listrand5 mb-3">
                                 <div class="section-title mb-0">
                                     <h4 class="m-0 text-uppercase font-weight-bold">Related Articles</h4>
                                 </div>
@@ -112,11 +116,11 @@
                                         <div class="d-flex align-items-center bg-white mb-3" style="height: 150px; width: 320px">
                                             <img class="img-fluid h-100 w-50" src="${pageContext.request.contextPath}/image/Article/${r.avatar}" alt="">
                                             <div class="h-100 w-50 d-flex flex-column justify-content-center border">
-                                                <div class="mb-2" style="font-size: 15px">
+                                                <div class="mb-2" style="font-size: 13px">
                                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="${pageContext.request.contextPath}/Post/Category?cid=${r.categories_id}">${r.categoryName}</a>
                                                     <a class="text-body"><small>${r.publish_date}</small></a>
                                                 </div>
-                                                <a class=" h6 m-0 text-secondary text-uppercase font-weight-bold"
+                                                <a class=" m-0 text-secondary text-uppercase font-weight-bold" style="font-size: 15px"
                                                    href="${pageContext.request.contextPath}/Detail?article_id=${r.article_id}">${r.title}</a>
                                             </div>
                                         </div>

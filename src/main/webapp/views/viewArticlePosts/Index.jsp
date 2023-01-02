@@ -5,6 +5,18 @@
 
 <d:web>
 <jsp:attribute name="css">
+    <style>
+        .list3row a{
+            text-decoration: none;
+        }
+        .rowcontent:hover a{
+            text-decoration: none;
+            cursor: pointer;
+            color: #2d3436;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            transform: translate(0);
+        }
+    </style>
     <link href="https://cdn.jsdelivr.net/gh/kartik-v/bootstrap-fileinput@5.2.5/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 </jsp:attribute>
     <jsp:body>
@@ -30,7 +42,7 @@
                 <section class="border-bottom pb-4 mb-5">
                     <div class="row row-cols-2">
                         <div class="col-6">
-                            <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+                            <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" style="height: 350px" data-mdb-ripple-color="light">
                                 <img src="${pageContext.request.contextPath}/image/Article/${listOneTag.get(0).avatar}" class="img-fluid h-100 w-100" />
                                 <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
                                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
@@ -58,9 +70,9 @@
                 </section>
                 <!--  -->
                 <section>
-                    <div class="row gx-lg-5">
+                    <div class="list3row row gx-lg-5">
                         <c:forEach items="${listT}" var="o">
-                            <div class="col-lg-4">
+                            <div class="col-lg-4 rowcontent">
                                 <!-- News block -->
                                 <div style="height: 600px">
                                     <!-- Featured image -->
@@ -97,15 +109,16 @@
                             </div>
                         </c:forEach>
                     </div>
+                    <hr>
                     <!--  -->
-                    <div class="row mt-3">
+                    <div class="list3row row mt-3">
                         <ul class="list-unstyled">
                             <c:forEach items="${list}" var="o">
                                 <li class="media my-4" style="height: 250px">
                                     <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="mr-3 img-fluid d-block w-25 h-100" alt="...">
                                     <div class="media-body">
                                         <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
-                                            <h4 class="mt-0 mb-1 text-secondary text-uppercase font-weight-bold">${o.title}</h4>
+                                            <h4 class="mt-0 mb-1 text-secondary text-uppercase font-weight-bold" >${o.title}</h4>
                                         </a>
                                         <span class="badge badge-pill badge-primary">${o.categoryName}</span>
                                         <p> ${o.abstracts}

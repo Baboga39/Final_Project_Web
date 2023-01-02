@@ -130,9 +130,9 @@
                   </div>
                 </li>
               </ul>
-              <div class="row mt-2 mb-2">
-                <div class="col text-right">
-                  <button type="submit" class="btn btn-sm btn-outline-secondary alert-link nav-link text-heading">Cật nhập thông tin</button>
+              <div class="row mt-2 mb-2" style="width: 450px">
+                <div class="w-100 ml-4">
+                  <button type="submit" class="btn btn-sm btn-outline-secondary alert-link nav-link text-heading w-100">Cật nhập thông tin</button>
                 </div>
               </div>
             </div>

@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="d" tagdir="/WEB-INF/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:useBean id="authUser" scope="session" type="com.example.edit.beans.User"/>
 
 <d:web>
   <jsp:body>
@@ -23,7 +24,7 @@
                   <div class="row mt-5 justify-content-center">
                     <h5 class="fw-normal mt-2 mr-2" style="letter-spacing: 2px;">Email: </h5>
                     <div class="form-outline ml-4">
-                      <input name="email" type="email" id="form2Example17" placeholder="Email" class="form-control form-control-lg" />
+                      <input name="email" type="email" id="form2Example17" placeholder="Email" class="form-control form-control-lg" value="${authUser.email}" />
                     </div>
                   </div>
                   <div class="row mt-5 justify-content-center">

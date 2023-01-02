@@ -33,10 +33,11 @@
                                     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
                                     <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
                                     <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                                    <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <div class="box" style="height:  700px">
+                                        <div class="box" style="height:  600px">
                                             <div class="overlay-img h-100"> <img src="${pageContext.request.contextPath}/image/Article/${find1.avatar}" class="img-fluid h-100 w-100" alt="..."></div>
                                             <div class="carousel-caption d-none d-md-block text-img text-left">
                                                 <a href="${pageContext.request.contextPath}/Post/Category?cid=${find1.categories_id}" class="link-cate nav-link"> ${find1.categoryName} </a>
@@ -48,7 +49,7 @@
                                     </div>
                                     <c:forEach items="${listtop3}" var="o">
                                         <div class="carousel-item">
-                                            <div class="box" style="height:  700px">
+                                            <div class="box" style="height:  600px">
                                                 <div class="overlay-img h-100"> <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="img-fluid h-100" alt="..."></div>
                                                 <div class="carousel-caption d-none d-md-block text-img text-left">
                                                     <a href="${pageContext.request.contextPath}/Post/Category?cid=${o.categories_id}" class="link-cate nav-link"> ${o.categoryName} </a>
