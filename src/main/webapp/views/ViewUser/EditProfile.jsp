@@ -105,6 +105,7 @@
                     </div>
                   </div>
                 </li>
+                <c:if test="${authUser.role_id == 3}">
                 <li class="list-group-item">
                   <div class="row mt-4">
                     <span class="col-4">Name Writer: </span>
@@ -113,6 +114,7 @@
                     </div>
                   </div>
                 </li>
+                </c:if>
                 <li class="list-group-item">
                   <div class="row mt-4">
                     <span class="col-4">Email: </span>

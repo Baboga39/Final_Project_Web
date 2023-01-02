@@ -198,14 +198,14 @@ public class UserServlet extends HttpServlet {
         DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate date_of_birth = LocalDate.parse(strDate, df);
 
-        System.out.println(name);
-
-        System.out.println(date_of_birth);
-
         HttpSession session = request.getSession();
 
 
         User edit = (User) session.getAttribute("authUser");
+        if(edit.getRole_id() != 3 )
+        {
+            secondName = edit.getSecond_name();
+        }
         BCrypt.Result result = BCrypt.verifyer().verify(edit.getPassword().toCharArray(), edit.getPassword());
         UserModel.editUser(edit.getUserId(),name,email,date_of_birth,secondName);
         session.setAttribute("auth", true);
