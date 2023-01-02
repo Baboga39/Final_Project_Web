@@ -44,8 +44,8 @@
                         <div class="card text-white bg-dark mb-3 shadow" style="max-width: 18rem;">
                             <div class="card-body">
                                 <p class="text-white text-center"><i class="bi bi-newspaper" style="font-size: 40px"></i></p>
-                                <p class="text-white text-center">${allUser}</p>
-                                <p class="text-white text-center">Số Lượng Bài Viết</p>
+                                <p class="text-white text-center">${allTag}</p>
+                                <p class="text-white text-center">Số Lượng Nhãn Dán</p>
                             </div>
                         </div>
                     </div>
