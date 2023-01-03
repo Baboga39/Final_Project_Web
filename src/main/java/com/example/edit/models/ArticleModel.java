@@ -238,6 +238,13 @@ public class ArticleModel {
             return  list.get(0);
         }
     }
+    public static List<Articles> findTop3Admin() {
+        final String query = "SELECT * FROM articles WHERE publish_date  >= DATE_SUB(CURRENT_DATE(), INTERVAL 10080 MINUTE) and status_id= 102 ORDER BY views DESC LIMIT 0,3" ;
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .executeAndFetch(Articles.class);
+        }
+    }
     public static Articles find1New() {
         final String query = "SELECT * FROM articles WHERE  status_id= 102 ORDER BY views DESC";
         try (Connection con = DbUtils.getConnection()) {
@@ -279,7 +286,7 @@ public class ArticleModel {
                 "                WHERE\n" +
                 "                    publish_date <=CURRENT_DATE() and status_id= 102 \n" +
                 "                ORDER BY publish_date DESC\n" +
-                "                LIMIT 6,5";
+                "                LIMIT 5,5";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .executeAndFetch(Articles.class);

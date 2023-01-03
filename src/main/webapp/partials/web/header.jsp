@@ -114,7 +114,7 @@
                                     <a class="nav-link" href="#" data-toggle="dropdown" role="button"  aria-expanded="false">
                                         <div class="row">
                                             <span class="user-action"><img src="${sessionScope.authUserGg.picture}" class="avatar" alt="Avatar"></span>
-                                            <h5 class="text-category mt-2" style="font-size: 14px">Hi, <b>${sessionScope.authUserGg.name}</b></h5>
+                                            <h5 class="text-category mt-2" style="font-size: 11px">Hi, <b>${sessionScope.authUserGg.name}</b></h5>
                                         </div>
 
                                     </a>

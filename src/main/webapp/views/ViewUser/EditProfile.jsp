@@ -183,18 +183,13 @@
         </div>
         <div class="row mt-2">
           <div class="col text-right">
-            <button class="btn btn-lg btn-warning ">Nâng Cấp Tài Khoản</button>
+            <button  onclick="location.href='${pageContext.request.contextPath}/User/Extend'" class="btn btn-lg btn-warning ">Nâng Cấp Tài Khoản</button>
           </div>
         </div>
       </c:when>
       <c:when test="${authGg}">
         <div class="card-body py-5 px-md-5">
           <div>
-            <c:if test="${sessionScope.mess ne null}">
-              <div style="color: red;">
-                <p>${sessionScope.mess}</p>
-              </div>
-            </c:if>
             <h1 class="fw-bold mb-5 text-heading">User Profile</h1>
           </div>
           <div class="row row-cols-2">

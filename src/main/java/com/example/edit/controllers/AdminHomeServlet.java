@@ -29,7 +29,7 @@ public class AdminHomeServlet extends HttpServlet {
                 int allUser = ArticleModel.getAllUser();
                 List<Articles> listTop10CateNext = ArticleModel.findTop10CateNext();
                 List<Articles> listTop10Cate = ArticleModel.findTop10Cate();
-                List<Articles> listtop3 = ArticleModel.findTop3();
+                List<Articles> listtop3 = ArticleModel.findTop3Admin();
                 List<Tag> list = TagModel.findAll();
                 List<Articles> listtop5 = ArticleModel.findTop5();
                 List<Articles> listtop10 = ArticleModel.findTop10();

@@ -53,11 +53,11 @@ public class LogingServlet extends HttpServlet {
                     String accessToken=  getToken(code);
                     AccountGG usergg = getUserInfo(accessToken);
                     List<Tag> list = TagModel.findAll();
-                    String mess = "Bạn không được sửa đổi thông tin do chính sách của Google";
+                    String messGg = "Bạn không được sửa đổi thông tin do chính sách của Google";
                     request.setAttribute("tags", list);
                     HttpSession session = request.getSession();
-                    session.setAttribute("mess", mess);
                     session.setAttribute("authGg", true);
+                    session.setAttribute("messGg", messGg);
                     session.setAttribute("authUserGg",usergg);;
                     List<Category> lisAllCate = CategoryModel.findAllIn();
                     List<Category> list5cate  = CategoryModel.find5Cate();
@@ -147,7 +147,7 @@ public class LogingServlet extends HttpServlet {
                     User change= UserModel.findByEmail(email);
                     if(!pass.equals(confirm))
                     {
-                        String mess= "Nhập mật khẩu không đúng.";
+                        String mess= "Nhập lại mật khẩu không đúng.";
                         request.setAttribute("mess",mess);
                         request.getRequestDispatcher("/views/viewHome/ResetPass.jsp").forward(request,response);
                     }

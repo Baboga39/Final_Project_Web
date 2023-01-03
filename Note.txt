@@ -71,3 +71,10 @@ Article
 
 Tagindex
 1.TagHome
+
+Gmail:
+1. refersh-token.(để lấy authentication-token)
+Code là refersh-toke.
+Gửi code lên xong trả về authentication-token
+Sau đó gửi lại gg cái authentication để lấy dữ liệu.
+2.authentication-token.

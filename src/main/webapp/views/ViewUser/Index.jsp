@@ -176,6 +176,11 @@
                             <div class="card-body py-5 px-md-5">
                                 <div>
                                     <h1 class="fw-bold mb-5 text-heading">User Profile</h1>
+                                    <c:if test="${sessionScope.messGg ne null}">
+                                        <div style="color: red;">
+                                            <p>${sessionScope.mess}</p>
+                                        </div>
+                                    </c:if>
                                 </div>
                                 <div class="row row-cols-2">
                                     <div class="col-4 ml-3 shadow-lg" style="background: #f7f7f7">

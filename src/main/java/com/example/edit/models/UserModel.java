@@ -266,7 +266,7 @@ public class UserModel {
         }
     }
     // Kiểm tra tài khoản người dùng còn hạn hay không
-    public static boolean checkEx(int user_id) {
+    public static boolean  checkEx(int user_id) {
         String query = "SELECT * FROM users WHERE expiration >=  DATEDIFF (CURRENT_DATE(),issue_at) AND user_id = :user_id";
         try (Connection con = DbUtils.getConnection()) {
             List<User> list = con.createQuery(query)
