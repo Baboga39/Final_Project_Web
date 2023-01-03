@@ -24,7 +24,7 @@
                     <h4 class="mt-0 mb-1 text-secondary text-uppercase font-weight-bold">${o.title}</h4>
                   </a>
                   <p> ${o.abstracts} </p>
-                  <p class="badge badge-primary badge-pill"></i>${o.categoryName}</p>
+                  <a  style="color: white" class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="${pageContext.request.contextPath}/Post/Category?cid=${o.categories_id}">${o.categoryName}</a>
                   <p><i class="bi bi-calendar mr-2"></i> ${o.publish_date} </p>
                 </div>
               </li>
