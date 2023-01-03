@@ -34,10 +34,6 @@ public class HomeServlet extends HttpServlet {
                 List<Articles> listTop10CateNext = ArticleModel.findTop10CateNext();
                 List<Articles> listTop10Cate = ArticleModel.findTop10Cate();
                 List<Category> lisAllCate = CategoryModel.findAllIn();
-                List<Category> list5cate  = CategoryModel.find5Cate();
-                session.setAttribute("list5cate",list5cate);
-                session.setAttribute("lisAllCate",lisAllCate);
-                session.setMaxInactiveInterval(6000);
                 List<Category> list4cate  = CategoryModel.find4Cate();
                 List<Category> listC = CategoryModel.findAll();
                 List<Category> listP = CategoryModel.findByParentId(2);
@@ -49,9 +45,13 @@ public class HomeServlet extends HttpServlet {
                 List<Articles> listtop5New = ArticleModel.findTop5New();
                 List<Articles> listtop5NewNext = ArticleModel.findTop5NewNext();
                 Articles find1 = ArticleModel.fin1();
-                request.setAttribute("list5cate",list5cate);
+                Articles find1New = ArticleModel.find1New();
+                session.setAttribute("list4cate",list4cate);
+                session.setAttribute("lisAllCate",lisAllCate);
+                session.setMaxInactiveInterval(6000);
                 request.setAttribute("listtop3", listtop3);
                 request.setAttribute("find1", find1);
+                request.setAttribute("find1New", find1New);
                 request.setAttribute("listtop5New", listtop5New);
                 request.setAttribute("listtop5NewNext", listtop5NewNext);
                 request.setAttribute("listtop4", listtop4);

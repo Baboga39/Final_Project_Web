@@ -10,7 +10,7 @@
             </a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto mt-2 ml-3">
-                    <c:forEach items="${sessionScope.list5cate}" var="o">
+                    <c:forEach items="${sessionScope.list4cate}" var="o">
                         <li class="nav-item text-category" style="font-size: 16px;">
                             <a class="link nav-link" href="${pageContext.request.contextPath}/Post/Category?cid=${o.categories_id}" aria-expanded="false">
                                     ${o.name}

@@ -214,53 +214,48 @@ public class ArticleModel {
                     .executeAndFetch(Articles.class);
         }
     }
-    //Tìm top 4 bài viết mới nhất
+    //Tìm top 4 bài viết nổi bật nhất trong tuần kể từ top 3
     public static List<Articles> findTop4() {
-        final String query = "SELECT \n" +
-                "    *\n" +
-                "FROM\n" +
-                "    articles\n" +
-                "WHERE\n" +
-                "    publish_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 10080 MINUTE)  and status_id= 102\n" +
-                "ORDER BY views DESC\n" +
-                "LIMIT 4,4\n";
+        final String query = "SELECT * FROM articles WHERE publish_date  >= DATE_SUB(CURRENT_DATE(), INTERVAL 10080 MINUTE) and status_id= 102 ORDER BY views DESC LIMIT 3,4";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .executeAndFetch(Articles.class);
         }
     }
-    //Tìm top 3 bài viết mới nhất trong tuần
+    //Tìm top 3 bài viết nổi bật nhất trong tuần kể từ top 1
     public static List<Articles> findTop3() {
-        final String query = "SELECT \n" +
-                "    *\n" +
-                "FROM\n" +
-                "    articles\n" +
-                "WHERE\n" +
-                "    publish_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 10080 MINUTE)  and status_id= 102\n" +
-                "ORDER BY views DESC\n" +
-                "LIMIT 2,3\n";
+        final String query = "SELECT * FROM articles WHERE publish_date  >= DATE_SUB(CURRENT_DATE(), INTERVAL 10080 MINUTE) and status_id= 102 ORDER BY views DESC LIMIT 1,2" ;
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .executeAndFetch(Articles.class);
         }
     }
-    // Top 4 bài viết xem nhiều nhất mọi chuyên mục
-    public static List<Articles> findTop5New() {
-        final String query = "SELECT *  FROM articles WHERE  publish_date <=CURRENT_DATE()  and status_id= 102 ORDER BY publish_date DESC LIMIT 2,4";
-        try (Connection con = DbUtils.getConnection()) {
-            return con.createQuery(query)
-                    .executeAndFetch(Articles.class);
-        }
-    }
-    // Top 1 bài viết mới nhất trong tuần qua
     public static Articles fin1() {
-        final String query = "SELECT *  FROM articles WHERE publish_date <=CURRENT_DATE()  and status_id= 102 ORDER BY publish_date DESC LIMIT 5";
+        final String query = "SELECT * FROM articles WHERE publish_date  >= DATE_SUB(CURRENT_DATE(), INTERVAL 10080 MINUTE) and status_id= 102 ORDER BY views DESC";
         try (Connection con = DbUtils.getConnection()) {
             List<Articles> list = con.createQuery(query)
                     .executeAndFetch(Articles.class);
             return  list.get(0);
         }
     }
+    public static Articles find1New() {
+        final String query = "SELECT * FROM articles WHERE  status_id= 102 ORDER BY views DESC";
+        try (Connection con = DbUtils.getConnection()) {
+            List<Articles> list = con.createQuery(query)
+                    .executeAndFetch(Articles.class);
+            return  list.get(0);
+        }
+    }
+    // Top 4 bài viết mới nhất kể t bài 1
+    public static List<Articles> findTop5New() {
+        final String query = "SELECT *  FROM articles WHERE  publish_date <=CURRENT_DATE()  and status_id= 102 ORDER BY publish_date DESC LIMIT 1,4";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .executeAndFetch(Articles.class);
+        }
+    }
+    // Top 1 bài viết nỗi bật nhất trong tuần qua
+
     public static List<Articles> get5ArticleNewinWeek() {
         final String query = "SELECT *  FROM articles WHERE publish_date <=CURRENT_DATE()  and status_id= 102 ORDER BY publish_date DESC LIMIT 0,5";
         try (Connection con = DbUtils.getConnection()) {
@@ -276,7 +271,7 @@ public class ArticleModel {
                     .executeAndFetch(Articles.class);
         }
     }
-    //Top 5 bài viết xem nhiều nhất mọi chuyên mục kể từ cái thứ 5
+    //Top 5 bài viết mới nhất kể từ cái thứ 5
     public static List<Articles> findTop5NewNext() {
         final String query = "SELECT *\n" +
                 "FROM\n" +
@@ -284,7 +279,7 @@ public class ArticleModel {
                 "                WHERE\n" +
                 "                    publish_date <=CURRENT_DATE() and status_id= 102 \n" +
                 "                ORDER BY publish_date DESC\n" +
-                "                LIMIT 5,5";
+                "                LIMIT 6,5";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .executeAndFetch(Articles.class);

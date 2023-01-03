@@ -32,8 +32,7 @@
                                 <ol class="carousel-indicators">
                                     <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
                                     <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-                                    <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+                                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>\
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
@@ -183,17 +182,17 @@
                     <div class="row mt-5">
                         <div class="col-6">
                             <div class="box-new" style="height: 500px">
-                                <a href="${pageContext.request.contextPath}/Detail?article_id=${find1.article_id}">
-                                    <img src="${pageContext.request.contextPath}/image/Article/${find1.avatar}" class="card-img-top h-75" alt="...">
+                                <a href="${pageContext.request.contextPath}/Detail?article_id=${find1New.article_id}">
+                                    <img src="${pageContext.request.contextPath}/image/Article/${find1New.avatar}" class="card-img-top h-75" alt="...">
                                 </a>
                                 <div class="box-new-menu">
-                                    <a href="${pageContext.request.contextPath}/Detail?article_id=${find1.article_id}">
-                                        <p class="h4 mt-1 text-secondary text-uppercase font-weight-bold"> ${find1.title} </p>
+                                    <a href="${pageContext.request.contextPath}/Detail?article_id=${find1New.article_id}">
+                                        <p class="h4 mt-1 text-secondary text-uppercase font-weight-bold"> ${find1New.title} </p>
                                     </a>
-                                    <p style="font-size: 15px"> ${find1.abstracts}  </p>
+                                    <p style="font-size: 15px"> ${find1New.abstracts}  </p>
                                     <div class="d-flex justify-content-between">
-                                        <p class="badge badge-primary badge-pill">${find1.categoryName} </p>
-                                        <p><i class="bi bi-calendar mr-2"></i> ${find1.publish_date} </p>
+                                        <p class="badge badge-primary badge-pill">${find1New.categoryName} </p>
+                                        <p><i class="bi bi-calendar mr-2"></i> ${find1New.publish_date} </p>
                                     </div>
                                 </div>
                             </div>
