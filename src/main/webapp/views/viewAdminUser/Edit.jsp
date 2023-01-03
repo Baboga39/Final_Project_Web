@@ -12,7 +12,7 @@
                 <div class="container">
                     <div class="card">
                         <div class="card-header d-flex justify-content-md-between">
-                            <span class="text-title">Danh mục quản lí - </span>
+                            <span class="text-title">Danh mục quản lí</span>
                         </div>
                             <div class="card-body">
                                 <ul class="list-group list-group-flush">
@@ -40,7 +40,7 @@
                         <div class="card-footer">
                             <div class="row float-right mr-5">
                                 <a href="${pageContext.request.contextPath}/Admin/User/EditCate" class="btn btn-light btn-lg mr-4">Back</a>
-                                <button type="submit" class="btn btn-success btn-lg">Add Categories</button>
+                                <button type="submit" class="btn btn-success btn-lg">Add</button>
                             </div>
                         </div>
                     </div>

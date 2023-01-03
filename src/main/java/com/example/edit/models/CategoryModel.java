@@ -118,12 +118,11 @@ public class CategoryModel {
 
     public static void updateCate(Category category)
     {
-        final String query = "UPDATE categories SET  name = :name, parent_id = :parent_id WHERE categories_id = :categories_id";
+        final String query = "UPDATE categories SET  name = :name WHERE categories_id = :categories_id";
         try(Connection con = DbUtils.getConnection()){
             con.createQuery(query)
                     .addParameter("categories_id",category.getCategories_id())
                     .addParameter("name", category.getName())
-                    .addParameter("parent_id",category.getParent_id())
                     .executeUpdate();
 
         }
@@ -134,6 +133,16 @@ public class CategoryModel {
         try(Connection con = DbUtils.getConnection()){
             con.createQuery(query)
                     .addParameter("categories_id",categories_id)
+                    .executeUpdate();
+
+        }
+    }
+    public static void deleteCateCon(int parent_id)
+    {
+        final String query = "DELETE FROM categories WHERE parent_id = :parent_id";
+        try(Connection con = DbUtils.getConnection()){
+            con.createQuery(query)
+                    .addParameter("parent_id",parent_id)
                     .executeUpdate();
 
         }

@@ -15,7 +15,7 @@
     <div class="container">
       <div class="card">
         <div class="card-header d-flex justify-content-md-between">
-          <span class="text-title">Categories</span>
+          <span class="text-title">Add Categories</span>
         </div>
         <div class="card-body ml-5">
 
@@ -28,7 +28,7 @@
         <div class="card-footer">
           <div class="row float-right mr-5">
             <a href="${pageContext.request.contextPath}/Admin/Category/Index" class="btn btn-light btn-lg mr-4">Back</a>
-            <button type="submit" class="btn btn-success btn-lg">Add Categories</button>
+            <button type="submit" class="btn btn-success btn-lg">Add</button>
           </div>
         </div>
       </div>

@@ -24,11 +24,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="nav-item dropdown">
-                <a href="#" data-toggle="dropdown" class="nav-item nav-link dropdown-toggle user-action"><img src="${pageContext.request.contextPath}/image/user.png" class="avatar" alt="Avatar"> ${authUser.second_name} <b class="caret"></b></a>
-                <div class="dropdown-menu">
-                    <a href="${pageContext.request.contextPath}/views/ViewUser/Index.jsp" class="dropdown-item"><i class="fa fa-user-o"></i> Profile</a>
-                </div>
+            <div class="nav-item ">
+                <span  class="nav-item nav-link user-action"><img src="${pageContext.request.contextPath}/image/user.png" class="avatar" alt="Avatar"> ${authUser.second_name} <b class="caret"></b></span>
             </div>
         </div>
     </nav>

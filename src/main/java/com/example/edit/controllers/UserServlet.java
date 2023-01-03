@@ -153,11 +153,7 @@ public class UserServlet extends HttpServlet {
         session.removeAttribute("checkAccPre");
         session.removeAttribute("checkEx");
         session.removeAttribute("checkEx");
-        String url = request.getHeader("referer");
-        if(url == null)
-        {
-            url="/Home";
-        }
+        String url="/Home";
         ServletUtils.redirect(url,request,response);
     }
     private void registerUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -177,12 +173,11 @@ public class UserServlet extends HttpServlet {
         String email = request.getParameter("email");
 
         LocalDate issue_at = LocalDate.now();
-        int otpExp = 1;
-        int otp = 1;
-        int expiration = 1;
+        int otpExp = (int) Math.floor(((Math.random() * 899999) + 100000));
+        int expiration = 7;
         int roleId = 2;
 
-        User user = new User(0,username,bcryptHashString,name,issue_at,expiration,roleId,second_name,date_of_birth,email,otp,otpExp);
+        User user = new User(0,username,bcryptHashString,name,issue_at,expiration,roleId,second_name,date_of_birth,email,otpExp,otpExp);
         UserModel.add(user);
         ServletUtils.forward("/views/ViewUser/Register.jsp", request, response);
     }

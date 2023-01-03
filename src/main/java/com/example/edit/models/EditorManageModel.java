@@ -42,4 +42,14 @@ public class EditorManageModel {
                     .executeUpdate();
         }
     }
+    public static void DeleteByUserId(int editor_id)
+    {
+        final String query = "DELETE FROM editor_manage_categories WHERE editor_id = :editor_id";
+        try(Connection con = DbUtils.getConnection()){
+            con.createQuery(query)
+                    .addParameter("editor_id",editor_id)
+                    .executeUpdate();
+
+        }
+    }
 }

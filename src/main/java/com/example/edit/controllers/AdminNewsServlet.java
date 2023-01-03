@@ -46,6 +46,7 @@ public class AdminNewsServlet extends HttpServlet {
                     id = Integer.parseInt(request.getParameter("id"));
                 } catch (NumberFormatException e) {
                 }
+                TagArticleModel.DeleteTagByArt(id);
                 ArticleModel.deleteNews(id);
                 ServletUtils.redirect("/Admin/News",request,response);
                 break;
@@ -124,6 +125,21 @@ public class AdminNewsServlet extends HttpServlet {
 
                 String url ="/Admin/News/EditTag?article_id="+id1;
                 ServletUtils.redirect("/Edit"+url,request,response);
+                break;
+            case "/Draft":
+                List<Articles> list = ArticleModel.findDraft();
+                request.setAttribute("draftArt",list);
+                ServletUtils.forward("/views/viewAdminNews/Draft.jsp", request, response);
+                break;
+            case "/Draft/Edit":
+                int id8 =0;
+                try {
+                    id8 = Integer.parseInt(request.getParameter("article_id"));
+                } catch (NumberFormatException e) {
+                }
+                ArticleModel.UpdateDraft(id8);
+                String url2 = "/Admin/News/Draft";
+                ServletUtils.redirect("/Edit"+url2,request,response);
                 break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);

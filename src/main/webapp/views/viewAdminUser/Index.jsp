@@ -13,17 +13,7 @@
                     <div class="card-header d-flex justify-content-md-between">
                         <span class="text-title">Users</span>
                         <div class="d-flex">
-                            <form class="form-inline " >
-                                <div class="p-1 rounded rounded-pill shadow " style="background: white">
-                                    <div class="input-group text-white">
-                                        <input type="search" placeholder="Nhập vào đây" aria-describedby="button-addon1" class="form-control border-0 rounded rounded-pill bg-light">
-                                        <div class="input-group-append">
-                                            <button id="button-addon1" type="submit" class="btn btn-link"><i class="bi bi-search" style="color: black"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            <a href="${pageContext.request.contextPath}/Admin/User/Add" class="btn btn-success btn-lg ml-3 ">Add Users<i class="bi bi-plus-square ml-3"></i></a>
+                            <a href="${pageContext.request.contextPath}/Admin/User/Add" class="btn btn-success btn-lg ml-3 "><i class="bi bi-plus-square"></i></a>
                         </div>
                     </div>
                     <div class="body">

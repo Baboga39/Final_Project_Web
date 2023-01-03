@@ -11,19 +11,8 @@
             <div class="container">
                 <div class="card">
                     <div class="card-header d-flex justify-content-md-between">
-                        <span class="text-title">Users - Biên tập viên</span>
-                        <div class="d-flex">
-                            <form class="form-inline " >
-                                <div class="p-1 rounded rounded-pill shadow " style="background: white">
-                                    <div class="input-group text-white">
-                                        <input type="search" placeholder="Nhập vào đây" aria-describedby="button-addon1" class="form-control border-0 rounded rounded-pill bg-light">
-                                        <div class="input-group-append">
-                                            <button id="button-addon1" type="submit" class="btn btn-link"><i class="bi bi-search" style="color: black"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                        <span class="text-title">Users - Editor</span>
+
                     </div>
                     <div class="body">
                         <table class="table">
@@ -62,7 +51,7 @@
                                     </c:if>
                                     <td>${k.dateOfBirth}</td>
                                     <td>${k.email}</td>
-                                    <td class="d-flex " style="font-size: 20px">
+                                    <td class="" style="font-size: 20px">
                                         <a href="${pageContext.request.contextPath}/Admin/User/EditCate/Edit?id=${k.userId}" type="button" class="btn link"><i class="bi bi-pencil-square"></i></a>
                                     </td>
                                 </tr>
@@ -72,23 +61,6 @@
                     </div>
                     <div class="card-footer d-flex justify-content-md-between">
                         <span class="text-title">Footer</span>
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
                     </div>
                 </div>
             </div>

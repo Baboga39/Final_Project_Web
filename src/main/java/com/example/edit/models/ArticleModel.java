@@ -560,5 +560,24 @@ public class ArticleModel {
                     .executeUpdate();
         }
     }
+    public static List<Articles> findDraft(){
+        final String query = "SELECT users.second_name,articles.* FROM users INNER JOIN articles\n" +
+                "                ON users.user_id=articles.writer_id INNER JOIN editor_manage_categories\n" +
+                "                ON articles.categories_id=editor_manage_categories.category_id\n" +
+                "                WHERE status_id=104";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .executeAndFetch(Articles.class);
+        }
+    }
+    public static void UpdateDraft(int article_id)
+    {
+        final String query = "Update articles Set status_id = 102 WHERE article_id = :article_id";
+        try(Connection con = DbUtils.getConnection()){
+            con.createQuery(query)
+                    .addParameter("article_id",article_id)
+                    .executeUpdate();
+        }
+    }
 
 }

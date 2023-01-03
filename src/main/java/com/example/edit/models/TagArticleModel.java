@@ -60,4 +60,14 @@ public class TagArticleModel {
 
         }
     }
+    public static void DeleteTagByArt(int article_id)
+    {
+        final String query = "DELETE FROM tags_articles WHERE article_id = :article_id";
+        try(Connection con = DbUtils.getConnection()){
+            con.createQuery(query)
+                    .addParameter("article_id",article_id)
+                    .executeUpdate();
+
+        }
+    }
 }

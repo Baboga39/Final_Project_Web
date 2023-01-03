@@ -35,31 +35,31 @@
                         <div class="card-body ml-5">
                             <div class="form-group">
                                 <label for="txtName">Username</label>
-                                <input type="text" class="form-control w-75" id="txtUserName" name="username" placeholder="${Users.username}">
+                                <input type="text" class="form-control w-75" id="txtUserName" name="username" value="${Users.username}">
                             </div>
                             <div class="form-group">
                                 <label >Password</label>
-                                <input type="password" class="form-control w-75" id="txtPass" name="password" placeholder="${Users.password}">
+                                <input type="password" class="form-control w-75" id="txtPass" name="password" value="${Users.password}">
                             </div>
                             <div class="form-group">
                                 <label >Name</label>
-                                <input type="text" class="form-control w-75" id="txtName" name="name" placeholder="${Users.name}">
+                                <input type="text" class="form-control w-75" id="txtName" name="name" value="${Users.name}">
                             </div>
                             <div class="form-group">
                                 <label >Writer Name</label>
-                                <input type="text" class="form-control w-75" id="txtSeondName" name="secondname" placeholder="${Users.second_name}">
+                                <input type="text" class="form-control w-75" id="txtSeondName" name="secondname" value="${Users.second_name}">
                             </div>
                             <div class="form-group">
                                 <label>Issue Day</label>
-                                <input type="text" class="form-control w-75" id="txtIssuedat" name="issue_at"  placeholder="${Users.issueAt}">
+                                <input type="text" class="form-control w-75" id="txtIssuedat" name="issue_at"  value="${Users.issueAt}">
                             </div>
                             <div class="form-group">
                                 <label >Birthday</label>
-                                <input type="text" class="form-control w-75" id="txtBirthday" name="birthday" placeholder="${Users.dateOfBirth}">
+                                <input type="text" class="form-control w-75" id="txtBirthday" name="birthday" value="${Users.dateOfBirth}">
                             </div>
                             <div class="form-group">
                                 <label >Role</label>
-                                <select class="form-control" id="role" name="role_id">
+                                <select class="form-control w-75" id="role" name="role_id">
                                     <option value="1">Admin</option>
                                     <option value="2">User</option>
                                     <option value="3">Phóng viên</option>
@@ -68,10 +68,10 @@
                             </div>
                             <div class="form-group">
                                 <label for="txtName">Email</label>
-                                <input type="text" class="form-control w-75" id="txtEmail" name="email" placeholder="${Users.email}">
+                                <input type="text" class="form-control w-75" id="txtEmail" name="email" value="${Users.email}">
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="premium" value="" id="defaultCheck1">
+                                <input class="form-check-input" type="checkbox" name="premium" value="${Users.premium}" id="defaultCheck1">
                                 <label class="form-check-label" for="defaultCheck1">
                                     Premium
                                 </label>
@@ -80,7 +80,7 @@
                         <div class="card-footer">
                             <div class="row float-right mr-5">
                                 <a href="${pageContext.request.contextPath}/Admin/User/Index" class="btn btn-light btn-lg mr-4">Back</a>
-                                <button type="submit" class="btn btn-success btn-lg">Update User</button>
+                                <button type="submit" class="btn btn-success btn-lg">Update</button>
                             </div>
                         </div>
                     </div>

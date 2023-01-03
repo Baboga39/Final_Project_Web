@@ -59,7 +59,7 @@
                             </div>
                             <div class="form-group">
                                 <label >Role</label>
-                                <select class="form-control" id="role" name="role_id">
+                                <select class="form-control w-75" id="role" name="role_id">
                                     <option value="1">Admin</option>
                                     <option value="2">User</option>
                                     <option value="3">Phóng viên</option>
@@ -80,7 +80,7 @@
                         <div class="card-footer">
                             <div class="row float-right mr-5">
                                 <a href="${pageContext.request.contextPath}/Admin/User/Index" class="btn btn-light btn-lg mr-4">Back</a>
-                                <button type="submit" class="btn btn-success btn-lg">Add User</button>
+                                <button type="submit" class="btn btn-success btn-lg">Add</button>
                             </div>
                         </div>
                     </div>

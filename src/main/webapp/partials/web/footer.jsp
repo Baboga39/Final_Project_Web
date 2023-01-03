@@ -7,7 +7,9 @@
     <div class="container">
         <div class="row row-cols-2">
             <div class="col-7">
-                <a class="navbar-brand mb-0 h1" href="#">Brand Name</a>
+                <a class="navbar-brand mb-0 h1" href="${pageContext.request.contextPath}/Home/Index">
+                    <img src="${pageContext.request.contextPath}/image/logo11.png" class="img-fluid mt-1" alt="">
+                </a>
                 <ul>
                     <li>Tạp trí điện tử trực tuyến</li>
                     <li>Cơ quan chủ quản: Hội xuất bản Việt Nam</li>

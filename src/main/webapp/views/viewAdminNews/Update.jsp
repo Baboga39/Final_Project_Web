@@ -42,30 +42,30 @@
         <div class="container">
           <div class="card">
             <div class="card-header d-flex justify-content-md-between">
-              <span class="text-title">Bài Viết</span>
+              <span class="text-title">Update Articles</span>
             </div>
             <div class="card-body ml-5">
 
               <div class="form-group">
                 <label>Title</label>
-                <input type="text" class="form-control w-75" name="title"  placeholder="${Articles.title}">
+                <input type="text" class="form-control " name="title"   value="${Articles.title}">
               </div>
               <div class="form-group">
                 <label>Publish Date</label>
-                <input type="date" id="publish_date" class="form-control w-75" name="publish_date"  placeholder="${Articles.publish_date}">
+                <input type="date" id="publish_date" class="form-control " name="publish_date"  value="${Articles.publish_date}">
               </div>
               <div class="form-group">
                 <label >views</label>
-                <input type="text" class="form-control w-75" name="views"  placeholder="${Articles.views}">
+                <input type="text" class="form-control " name="views"  value="${Articles.views}">
               </div>
               <div class="form-group">
                 <label >Abstract</label>
-                <textarea  class="form-control w-75" name="abstracts"  placeholder="${Articles.abstracts}">
-               </textarea>
+                <input type="text"  class="form-control " name="abstracts"  value="${Articles.abstracts}">
+               </input>
               </div>
               <div class="form-group">
                 <label >Content</label>
-                <textarea class="form-control w-75" name="content" id="txtContent" placeholder="${Articles.content}"/>
+                <textarea class="form-control " name="content" id="txtContent" value="${Articles.content}"/>
                 </textarea>
               </div>
               <div class="form-group">
@@ -77,7 +77,7 @@
                 </select>
               </div>
               <div class="title">Danh sách Tag</div>
-              <div class="border mt-3">
+              <div class="border mt-1">
                 <ul class="list-group list-group-flush">
                   <c:forEach items="${tags}" var="a">
                     <li class="list-group-item">
@@ -91,13 +91,7 @@
               <div class="mb-3 float-right">
                 <a href="${pageContext.request.contextPath}/Admin/News/EditTag?article_id=${Articles.article_id}">Chỉnh sửa Tags</a>
               </div>
-              <div class="form-check mt-3 mb-2">
-                <label class="form-check-label" for="defaultCheck1">
-                  Premium
-                </label>
-                <input class="form-check-input ml-3" type="checkbox" value="" id="defaultCheck1">
-              </div>
-              <div class="form-group">
+              <div class="form-grou mt-3">
                 <label for="writer">Writer</label>
                 <select class="form-control" id="writer" name="second_name">
                   <c:forEach items="${listPv}" var="t">
@@ -114,15 +108,21 @@
                   <option value="104">Chưa được duyệt</option>
                 </select>
               </div>
+              <div class="form-group form-check mt-3 mb-3">
+                <label class="form-check-label" for="defaultCheck1">
+                  Premium
+                </label>
+                <input class="form-check-input ml-3" type="checkbox" value="${Articles.premium}" id="defaultCheck1">
+              </div>
               <div class="form-group">
                 <label >Avatar</label>
-                <input id="avatar1" name="avatar" type="file"/>
+                <input id="avatar1" name="avatar" type="file" value="${Articles.avatar}"/>
               </div>
             </div>
             <div class="card-footer">
               <div class="row float-right mr-5 d-flex justify-content-between">
                 <a href="${pageContext.request.contextPath}/Admin/News/Index" class="btn btn-light btn-lg mr-4">Back</a>
-                <button type="submit" class="btn btn-success btn-lg">Add Categories</button>
+                <button type="submit" class="btn btn-success btn-lg">Update</button>
               </div>
             </div>
           </div>

@@ -35,12 +35,8 @@
                </h4>
                <div class="card-body">
                    <div class="form-group">
-                       <label for="exampleFormControlSelect1">Categories</label>
-                       <select class="form-control w-75" id="exampleFormControlSelect1" name="name">
-                           <c:forEach items="${categoryList}" var="k">
-                               <option>${k.name}</option>
-                           </c:forEach>
-                       </select>
+                       <label>Categories</label>
+                       <input type="text" name="name" class="form-control w-75">
                    </div>
                    <button class="btn btn-success float-right" type="submit">Add Categories</button>
                </div>

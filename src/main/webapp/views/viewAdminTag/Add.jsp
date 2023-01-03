@@ -27,7 +27,7 @@
           <div class="card-footer">
             <div class="row float-right mr-5">
               <a href="${pageContext.request.contextPath}/Admin/Tag/Index" class="btn btn-light btn-lg mr-4">Back</a>
-              <button type="submit" class="btn btn-success btn-lg">Add Tags</button>
+              <button type="submit" class="btn btn-success btn-lg">Add</button>
             </div>
           </div>
         </div>

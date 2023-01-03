@@ -43,6 +43,7 @@ public class AdminCateServlet extends HttpServlet {
                     id = Integer.parseInt(request.getParameter("id"));
                 } catch (NumberFormatException e) {
                 }
+                CategoryModel.deleteCateCon(id);
                 CategoryModel.deleteCate(id);
                 ServletUtils.redirect("/Admin/Category",request,response);
                 break;
@@ -138,13 +139,7 @@ public class AdminCateServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         int id = Integer.parseInt(request.getParameter("categories_id"));
         String name = request.getParameter("name");
-        boolean checkParent = request.getParameter("checkParent") != null;
-        int parent_id = 0;
-        if(checkParent == true)
-        {
-            parent_id = 2;
-        }
-        Category category = new Category(id,name,parent_id);
+        Category category = new Category(id,name,0);
         CategoryModel.updateCate(category);
         ServletUtils.redirect("/Admin/Category",request,response);
     }

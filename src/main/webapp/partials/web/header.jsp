@@ -128,7 +128,7 @@
                         </c:when>
                         <c:otherwise>
                             <li class="nav-item dropdown text-category mt-1 ml-3">
-                                <a href="${pageContext.request.contextPath}/User/Login" class="text-category nav-link link" style="font-size: 20px">Login</a>
+                                <a href="${pageContext.request.contextPath}/User/Login" class="text-category nav-link link" style="font-size: 20px">LOGIN</a>
                             </li>
                         </c:otherwise>
                     </c:choose>

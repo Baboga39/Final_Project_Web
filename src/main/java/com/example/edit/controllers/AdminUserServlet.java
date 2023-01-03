@@ -40,6 +40,8 @@ public class AdminUserServlet extends HttpServlet {
                     id = Integer.parseInt(request.getParameter("id"));
                 } catch (NumberFormatException e) {
                 }
+
+                EditorManageModel.DeleteByUserId(id);
                 UserModel.deleteUser(id);
                 ServletUtils.redirect("/Admin/User",request,response);
                 break;
@@ -182,7 +184,7 @@ public class AdminUserServlet extends HttpServlet {
         int role_id = Integer.parseInt(request.getParameter("role_id"));
 
         int otpExp = (int) Math.floor(((Math.random() * 899999) + 100000));
-        int expiration = 1;
+        int expiration = 7;
 
         boolean premium = request.getParameter("premium")!=null;
 

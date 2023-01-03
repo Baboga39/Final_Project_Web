@@ -10,11 +10,11 @@ Begin Sidebar
     <div class="w3-sidebar w3-bar-block w3-card w3-animate-left shadow-lg " style="display:none; background:ghostwhite" id="mySidebar">
         <button type="button" class="close text-right mr-2 mt-3" onclick="w3_close()" aria-label="Close"><span aria-hidden="true"><i class="bi bi-arrow-bar-left" style="font-size: 30px"></i></span></button>
         <div class="sidebar-cate mt-5">
-            <div class="logo h-50 w-75 ml-4">
-                <img src="../../html/img/tintuc.jpg" alt="" class="img-thumbnail">
+            <div class="logo h-100 w-100">
+                <img src="${pageContext.request.contextPath}/image/logo11.png" alt="" class="img-fluid w-100 mt-5">
             </div>
             <c:if test="${authUser.role_id == 1}">
-                <h4 class="text-center mt-5 text-top-heading">ADMIN</h4>
+                <h4 class="text-center text-heading mt-5 text-top-heading">ADMIN</h4>
                 <li class="nav-item text-center mt-5 text-heading">
                     <div class="panel-group" id="accordion1" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">
@@ -64,6 +64,9 @@ Begin Sidebar
                                     <div class="row">
                                         <a href="${pageContext.request.contextPath}/Admin/News/" class="dropdown-item text-par-heading">Quản lí</a>
                                     </div>
+                                    <div class="row">
+                                        <a href="${pageContext.request.contextPath}/Admin/News/Draft" class="dropdown-item text-par-heading">Xuất bản</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -95,10 +98,10 @@ Begin Sidebar
                 </li>
             </c:if>
             <c:if test="${authUser.role_id == 4}">
-                <h4 class="text-center mt-5 text-top-heading">EDITOR</h4>
+                <h4 class="text-center text-heading mt-5 text-top-heading">EDITOR</h4>
             </c:if>
             <c:if test="${authUser.role_id == 3}">
-                <h4 class="text-center mt-5 text-top-heading">REPORTTER</h4>
+                <h4 class="text-center mt-5 text-heading text-top-heading">REPORTTER</h4>
                 <li class="nav-item text-center mt-5 text-heading">
                     <div class="panel-group" id="accordion_rep1" role="tablist" aria-multiselectable="true">
                         <div class="panel panel-default">

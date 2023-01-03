@@ -5,6 +5,20 @@
 
 
 <d:web>
+    <jsp:attribute name="css">
+        <style>
+            .noibat:hover .title-top4 {
+                text-decoration: none;
+                cursor: pointer;
+                text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+                transform: translate(0);
+            }
+            .noibat:hover img {
+                cursor: pointer;
+                opacity: 0.8;
+            }
+        </style>
+    </jsp:attribute>
     <jsp:body>
         <div class="content">
             <div class="tag mb-3">
@@ -78,16 +92,18 @@
                                 </div>
                                 <ul class="list-unstyled">
                                     <c:forEach items="${listtop4}" var="r">
-                                        <div class="bg-white ml-2">
+                                        <div class="bg-white ml-2 noibat">
                                             <div class="d-flex align-items-center bg-white mb-3" style="height: 150px; width: 320px">
                                                 <img class="img-fluid h-100 w-50" src="${pageContext.request.contextPath}/image/Article/${r.avatar}" alt="">
                                                 <div class="h-100 w-50 d-flex flex-column justify-content-center border">
-                                                    <div class="mb-2" style="font-size: 15px">
+                                                    <div class="mb-2 ml-1" style="font-size: 13px">
                                                         <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="${pageContext.request.contextPath}/Post/Category?cid=${r.categories_id}">${r.categoryName}</a>
                                                         <a class="text-body"><small>${r.publish_date}</small></a>
                                                     </div>
-                                                    <a class=" h6 m-0 text-secondary text-uppercase font-weight-bold" style="text-decoration: none;"
-                                                       href="${pageContext.request.contextPath}/Detail?article_id=${r.article_id}">${r.title}</a>
+                                                    <div class="title-top4 ml-1">
+                                                        <a class=" h6  text-uppercase font-weight-bold" style="text-decoration: none; color: black;font-size: 13px"
+                                                           href="${pageContext.request.contextPath}/Detail?article_id=${r.article_id}">${r.title}</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -119,7 +135,7 @@
                                                         <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
                                                             <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" style="height: 164px !important" class="card-img-top h-50" alt="...">
                                                             <div class="card-body">
-                                                                <p class="card-title h6 m-0 text-secondary text-uppercase font-weight-bold">${o.title}</p>
+                                                                <p class="card-title h6 m-0 text-uppercase font-weight-bold">${o.title}</p>
                                                                 <p class="badge badge-primary badge-pill mt-2"></i>${o.categoryName}</p>
                                                                 <p><i class="bi bi-calendar mr-2"></i> ${o.publish_date} </p>
                                                             </div>
@@ -143,7 +159,7 @@
                                                         <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
                                                             <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" style="height: 164px !important" class="card-img-top h-50" alt="...">
                                                             <div class="card-body">
-                                                                <p class="card-title h6 m-0 text-secondary text-uppercase font-weight-bold">${o.title}</p>
+                                                                <p class="card-title h6 m-0  text-uppercase font-weight-bold">${o.title}</p>
                                                                 <p class="badge badge-primary badge-pill mt-2" >${o.categoryName}</p>
                                                                 <p><i class="bi bi-calendar mr-2"></i> ${o.publish_date} </p>
                                                             </div>
@@ -161,10 +177,10 @@
                                 </div>
                                 <!--.carousel-inner-->
                                 <button class="carousel-control-prev" type="button" data-target="#blogCarousel" data-slide="prev">
-                                    <span class="" style="margin-right: 200px; color: black ;" aria-hidden="true"><i class="bi bi-arrow-left-square"></i></span>
+                                    <span  style="margin-right: 250px; color: black ;" aria-hidden="true"><i class="bi bi-arrow-left-square"></i></span>
                                 </button>
                                 <button class="carousel-control-next" type="button" data-target="#blogCarousel" data-slide="next">
-                                    <span class="" style="margin-left: 200px ;color: black" aria-hidden="true"><i class="bi bi-arrow-right-square"></i></span>
+                                    <span  style="margin-left: 250px ;color: black" aria-hidden="true"><i class="bi bi-arrow-right-square"></i></span>
                                 </button>
 
                             </div>
@@ -187,7 +203,7 @@
                                 </a>
                                 <div class="box-new-menu">
                                     <a href="${pageContext.request.contextPath}/Detail?article_id=${find1New.article_id}">
-                                        <p class="h4 mt-1 text-secondary text-uppercase font-weight-bold"> ${find1New.title} </p>
+                                        <p class="h4 mt-1 text-uppercase font-weight-bold title"> ${find1New.title} </p>
                                     </a>
                                     <p style="font-size: 15px"> ${find1New.abstracts}  </p>
                                     <div class="d-flex justify-content-between">
@@ -207,7 +223,7 @@
                                             </a>
                                             <div class="box-new-content-sm">
                                                 <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
-                                                    <span class="h6 m-0 text-secondary text-uppercase font-weight-bold" style="font-size: 15px"> ${o.title} </span>
+                                                    <span class="h6 m-0  text-uppercase font-weight-bold" style="font-size: 15px"> ${o.title} </span>
                                                 </a>
                                                 <div class="d-flex justify-content-between">
                                                     <span class="badge badge-primary badge-pill">  ${o.categoryName} </span>
@@ -229,7 +245,7 @@
                                     <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="mr-3 img-fluid d-block w-25 h-100" alt="...">
                                     <div class="media-body">
                                         <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
-                                            <h4 class="mt-0 mb-1 text-secondary text-uppercase font-weight-bold">${o.title}</h4>
+                                            <h4 class="mt-0 mb-1  text-uppercase font-weight-bold">${o.title}</h4>
                                         </a>
                                         <p> ${o.abstracts} </p>
                                         <p class="badge badge-primary badge-pill"> </i>${o.categoryName}</p>
