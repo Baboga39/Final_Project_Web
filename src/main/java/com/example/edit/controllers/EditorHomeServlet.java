@@ -79,9 +79,6 @@ public class EditorHomeServlet extends HttpServlet {
             case "/Agree":
                 updateNew(request,response);
                 break;
-            case "/Approve":
-                //Approve();
-                break;
             case "/Refuse":
                 int article_id = Integer.parseInt(request.getParameter("article_id"));
                 HttpSession session = request.getSession();
@@ -104,6 +101,9 @@ public class EditorHomeServlet extends HttpServlet {
 
                 Articles a = new Articles(article_id,title,create_date,publish_date,views,abstracts,content,categories_id,premium,writer_id,103,avatar,categoryName);
                 ArticleModel.updateNews(a);
+                Feedback feedback = new Feedback(0,editor_id,article_id,description);
+                FeedbackModel.addFeedback(feedback);
+                ServletUtils.redirect("/Edit/Editor/Home", request, response);
 
                 break;
             default:

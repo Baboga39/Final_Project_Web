@@ -12,18 +12,6 @@
       <div class="card w-100 h-100 shadow">
         <div class="card-header d-flex justify-content-md-between">
           <span class="text-title">Waiting Articles</span>
-          <div class="d-flex">
-            <form class="form-inline " >
-              <div class="p-1 rounded rounded-pill shadow " style="background: white">
-                <div class="input-group text-white">
-                  <input type="search" placeholder="Nhập vào đây" aria-describedby="button-addon1" class="form-control border-0 rounded rounded-pill bg-light">
-                  <div class="input-group-append">
-                    <button id="button-addon1" type="submit" class="btn btn-link"><i class="bi bi-search" style="color: black"></i></button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
         </div>
         <div class="body">
           <table class="table">
@@ -41,26 +29,26 @@
             </tr>
             </thead>
             <tbody>
-              <c:forEach items="${listWaiting}" var="r">
-                <tr>
-                  <th scope="row">${r.article_id}</th>
-                  <td>${r.title}</td>
-                  <td>${r.publish_date}</td>
-                  <td>${r.views}</td>
-                  <td>${r.abstracts}</td>
-                  <td>${r.categoryName}</td>
-                  <td>${r.second_name}</td>
-                  <td><span class="badge badge-warning">waiting</span></td>
-                  <c:choose>
-                    <c:when test="${r.premium eq true}">
-                      <td><span class="badge badge-success"><i class="bi bi-check-square"></i></span></td>
-                    </c:when>
-                    <c:when test="${r.premium eq false}">
-                      <td><span class="badge badge-danger"><i class="bi bi-x-square"></i></span></td>
-                    </c:when>
-                  </c:choose>
-                </tr>
-              </c:forEach>
+            <c:forEach items="${listWaiting}" var="r">
+              <tr>
+                <th scope="row">${r.article_id}</th>
+                <td>${r.title}</td>
+                <td>${r.publish_date}</td>
+                <td>${r.views}</td>
+                <td>${r.abstracts}</td>
+                <td>${r.categoryName}</td>
+                <td>${r.second_name}</td>
+                <td><span class="badge badge-warning">waiting</span></td>
+                <c:choose>
+                  <c:when test="${r.premium eq true}">
+                    <td><span class="badge badge-success"><i class="bi bi-check-square"></i></span></td>
+                  </c:when>
+                  <c:when test="${r.premium eq false}">
+                    <td><span class="badge badge-danger"><i class="bi bi-x-square"></i></span></td>
+                  </c:when>
+                </c:choose>
+              </tr>
+            </c:forEach>
             </tbody>
           </table>
         </div>

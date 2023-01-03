@@ -13,18 +13,6 @@
       <div class="card w-100 h-100 shadow">
         <div class="card-header d-flex justify-content-md-between">
           <span class="text-title">Draft Articles</span>
-          <div class="d-flex">
-            <form class="form-inline " >
-              <div class="p-1 rounded rounded-pill shadow " style="background: white">
-                <div class="input-group text-white">
-                  <input type="search" placeholder="Nhập vào đây" aria-describedby="button-addon1" class="form-control border-0 rounded rounded-pill bg-light">
-                  <div class="input-group-append">
-                    <button id="button-addon1" type="submit" class="btn btn-link"><i class="bi bi-search" style="color: black"></i></button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
         </div>
         <div class="body">
           <table class="table">
