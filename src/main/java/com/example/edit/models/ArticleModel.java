@@ -579,5 +579,21 @@ public class ArticleModel {
                     .executeUpdate();
         }
     }
-
+    public static void DeleteArtByIdCate(int categories_id)
+    {
+        final String query = "DELETE FROM articles WHERE categories_id = :categories_id";
+        try(Connection con = DbUtils.getConnection()){
+            con.createQuery(query)
+                    .addParameter("categories_id",categories_id)
+                    .executeUpdate();
+        }
+    }
+    public static List<Articles> getArticleByCateId(int categories_id) {
+        final String query = "SELECT * FROM articles WHERE categories_id = :categories_id";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .addParameter("categories_id",categories_id)
+                    .executeAndFetch(Articles.class);
+        }
+    }
 }

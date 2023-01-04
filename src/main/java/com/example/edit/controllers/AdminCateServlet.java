@@ -1,10 +1,10 @@
 package com.example.edit.controllers;
 
 import com.example.edit.Utils.ServletUtils;
+import com.example.edit.beans.Articles;
 import com.example.edit.beans.Category;
 import com.example.edit.beans.Tag;
-import com.example.edit.models.CategoryModel;
-import com.example.edit.models.TagModel;
+import com.example.edit.models.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -43,6 +43,13 @@ public class AdminCateServlet extends HttpServlet {
                     id = Integer.parseInt(request.getParameter("id"));
                 } catch (NumberFormatException e) {
                 }
+                List<Articles> listArt = ArticleModel.getArticleByCateId(id);
+                for(int i =0;i<listArt.size();i++)
+                {
+                    CommentModel.DeleteCmtByArtId(listArt.get(i).getArticle_id());
+                    TagArticleModel.DeleteTagByArt(listArt.get(i).getArticle_id());
+                }
+                ArticleModel.DeleteArtByIdCate(id);
                 CategoryModel.deleteCateCon(id);
                 CategoryModel.deleteCate(id);
                 ServletUtils.redirect("/Admin/Category",request,response);
