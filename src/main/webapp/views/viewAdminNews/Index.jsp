@@ -18,7 +18,7 @@
                         </div>
                         <div class="body">
                             <table class="table">
-                                <thead class="thead-dark">
+                                <thead class="thead-dark text-center">
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Title</th>
@@ -29,14 +29,11 @@
                                     <th scope="col">Writer</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Prenium</th>
-                                    <th scope="col">Content</th>
-                                    <th scope="col">Avatar</th>
-                                    <th scope="col">Image</th>
                                     <th scope="col">Action</th>
 
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="text-center">
                                 <c:forEach items="${list}" var="a">
                                     <tr>
                                         <th scope="row">${a.article_id}</th>
@@ -70,9 +67,6 @@
                                                 <span class="badge badge-danger"><i class="bi bi-x-square"></i></span>
                                             </td>
                                         </c:if>
-                                        <td>...</td>
-                                        <td>...</td>
-                                        <td>...</td>
                                         <td class="d-flex justify-content-sm-between" style="font-size: 20px">
                                             <a href="${pageContext.request.contextPath}/Admin/News/Update?id=${a.article_id}" type="button" class="btn link"><i class="bi bi-pencil-square"></i></a>
                                             <a href="${pageContext.request.contextPath}/Admin/News/Delete?id=${a.article_id}" type="button" class="btn link"><i class="bi bi-trash"></i></a>

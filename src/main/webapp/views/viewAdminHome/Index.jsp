@@ -34,7 +34,7 @@
                     <div class="col">
                         <div class="card text-white bg-dark mb-3 shadow" style="max-width: 18rem;">
                             <div class="card-body">
-                                <p class="text-white text-center"><i class="bi bi-newspaper" style="font-size: 40px"></i></p>
+                                <p class="text-white text-center"><i class="bi bi-card-list" style="font-size: 40px"></i></p>
                                 <p class="text-white text-center">${allCate}</p>
                                 <p class="text-white text-center">Số Lượng Phân Mục</p>
                             </div>
@@ -43,7 +43,7 @@
                     <div class="col">
                         <div class="card text-white bg-dark mb-3 shadow" style="max-width: 18rem;">
                             <div class="card-body">
-                                <p class="text-white text-center"><i class="bi bi-newspaper" style="font-size: 40px"></i></p>
+                                <p class="text-white text-center"><i class="bi bi-tags-fill" style="font-size: 40px"></i></p>
                                 <p class="text-white text-center">${allTag}</p>
                                 <p class="text-white text-center">Số Lượng Nhãn Dán</p>
                             </div>
@@ -303,7 +303,7 @@
             </div>
 
         </div>
-
+        </div>
 <!--
 End content
 -->

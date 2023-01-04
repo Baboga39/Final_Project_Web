@@ -63,19 +63,6 @@
                 <input type="text"  class="form-control " name="abstracts"  value="${Articles.abstracts}">
                </input>
               </div>
-              <div class="form-group">
-                <label >Content</label>
-                <textarea class="form-control " name="content" id="txtContent" value="${Articles.content}"/>
-                </textarea>
-              </div>
-              <div class="form-group">
-                <label for="exampleFormControlSelect1">Categories</label>
-                <select class="form-control" id="exampleFormControlSelect1" name="categories_name">
-                  <c:forEach items="${listCate}" var="k">
-                    <option >${k.name}</option>
-                  </c:forEach>
-                </select>
-              </div>
               <div class="title">Danh sách Tag</div>
               <div class="border mt-1">
                 <ul class="list-group list-group-flush">
@@ -90,6 +77,19 @@
               </div>
               <div class="mb-3 float-right">
                 <a href="${pageContext.request.contextPath}/Admin/News/EditTag?article_id=${Articles.article_id}">Chỉnh sửa Tags</a>
+              </div>
+              <div class="form-group mt-3">
+                <label >Content</label>
+                <textarea class="form-control" name="content" id="txtContent" placeholder="${Articles.content}"/>
+                </textarea>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Categories</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="categories_name">
+                  <c:forEach items="${listCate}" var="k">
+                    <option >${k.name}</option>
+                  </c:forEach>
+                </select>
               </div>
               <div class="form-grou mt-3">
                 <label for="writer">Writer</label>

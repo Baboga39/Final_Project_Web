@@ -14,7 +14,6 @@
                 transform: translate(0);
             }
             .noibat:hover img {
-                cursor: pointer;
                 opacity: 0.8;
             }
         </style>

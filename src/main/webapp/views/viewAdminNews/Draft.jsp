@@ -51,7 +51,7 @@
                   <c:otherwise></c:otherwise>
                 </c:choose>
                 <td class="d-flex justify-content-sm-between" style="font-size: 20px">
-                  <a href="${pageContext.request.contextPath}/Admin/News/Draft/Edit?article_id=${r.article_id}" type="button" class="btn link"><i class="bi bi-pencil-square"></i></a>
+                  <a href="${pageContext.request.contextPath}/Admin/News/Draft/Edit?article_id=${r.article_id}" type="button" class="btn link"><i class="bi bi-check-square"></i></a>
                 </td>
               </tr>
             </c:forEach>

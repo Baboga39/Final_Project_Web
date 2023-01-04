@@ -83,6 +83,7 @@
                         </div>
                         <div class="card-footer d-flex justify-content-md-between">
                             <span class="text-title">Footer</span>
+                            <a href="${pageContext.request.contextPath}/Admin/User/Index" class="btn btn-light btn-lg mr-4">Back</a>
                         </div>
                     </div>
                 </div>

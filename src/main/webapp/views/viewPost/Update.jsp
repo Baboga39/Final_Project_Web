@@ -78,7 +78,12 @@
                 <c:if test="${checkStatus == 4}">
                   <a href="${pageContext.request.contextPath}/Post/Draft" class="btn btn-primary btn-lg mr-4">Back</a>
                 </c:if>
-                <button type="submit" class="btn btn-success btn-lg">Update</button>
+                <c:if test="${checkStatus == 3}">
+                  <a href="${pageContext.request.contextPath}/Post/Refused" class="btn btn-success btn-lg">Update</a>
+                </c:if>
+                <c:if test="${checkStatus == 4}">
+                  <a href="${pageContext.request.contextPath}/Post/Draft" class="btn btn-success btn-lg">Update</a>
+                </c:if>
               </div>
             </div>
           </div>

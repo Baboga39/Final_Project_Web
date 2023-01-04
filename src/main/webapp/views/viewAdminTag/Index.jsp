@@ -38,7 +38,6 @@
                                        <td class="d-flex " style="font-size: 20px">
                                            <a href="${pageContext.request.contextPath}/Admin/Tag/Update?id=${c.tags_id}" type="button" class="btn link"><i class="bi bi-pencil-square"></i></a>
                                            <a href="${pageContext.request.contextPath}/Admin/Tag/Delete?id=${c.tags_id}" type="button" class="btn link"><i class="bi bi-trash"></i></a>
-                                           <a href="#" type="button" class="btn link"><i class="bi bi-eye"></i></a>
                                        </td>
                                    </tr>
                                </c:forEach>

@@ -19,17 +19,7 @@
             </div>
             <div class="col-5">
 
-                <ul class="mt-1 mb-0">
-                    <span class="mb-0">Đăng ký để nhận tin mới nhất</span>
-                    <li>
-                        <form class="form-inline mt-2">
-                            <div class="form-group mx-sm-3 mb-0">
-                                <label for="inputEmail" class="sr-only">Email</label>
-                                <input type="email" class="form-control-sm" id="inputEmail" placeholder="Email">
-                            </div>
-                            <button type="submit" class="btn btn-sm btn-primary mb-0">Đăng ký</button>
-                        </form>
-                    </li>
+                <ul class="mt-5 mb-0">
                     <li>Tòa soạn: Số 1 Võ Văn Ngân, Linh Chiểu, Thủ Đức</li>
                     <li>Hotline: 0999832122</li>
                     <li>Email liên hệ: utenews@gmail.com</li>

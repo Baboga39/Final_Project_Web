@@ -38,6 +38,7 @@
                        <label>Categories</label>
                        <input type="text" name="name" class="form-control w-75">
                    </div>
+                   <a href="${pageContext.request.contextPath}/Admin/Category/Index" class="btn btn-light mr-4">Back</a>
                    <button class="btn btn-success float-right" type="submit">Add Categories</button>
                </div>
            </div>
