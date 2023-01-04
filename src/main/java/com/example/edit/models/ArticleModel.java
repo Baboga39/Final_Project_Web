@@ -258,7 +258,7 @@ public class ArticleModel {
         }
     }
     public static Articles find1New() {
-        final String query = "SELECT * FROM articles WHERE  status_id= 102 ORDER BY views DESC";
+        final String query = "SELECT * FROM articles WHERE publish_date <=CURRENT_DATE() AND  status_id= 102 ORDER BY publish_date DESC";
         try (Connection con = DbUtils.getConnection()) {
             List<Articles> list = con.createQuery(query)
                     .executeAndFetch(Articles.class);
