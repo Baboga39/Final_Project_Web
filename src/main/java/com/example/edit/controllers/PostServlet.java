@@ -365,6 +365,7 @@ public class PostServlet extends HttpServlet {
             }
         }
         Articles listOne = ArticleModel.findTopCate(cids);
+        List<Articles> listOneTag = ArticleModel.findTopCateTag(cids);
         boolean check = CategoryModel.checkCate(cids);
         List<Articles> listT = ArticleModel.getArticleByCateList3(cids);
         List<Category> listC =CategoryModel.getCateChilds(cids);
@@ -376,6 +377,7 @@ public class PostServlet extends HttpServlet {
         session.setMaxInactiveInterval(6000);
         request.setAttribute("listC", listC);
         request.setAttribute("listT", listT);
+        request.setAttribute("listOneTag",listOneTag);
         request.setAttribute("listOne", listOne);
         request.setAttribute("check", check);
         request.setAttribute("listCa", listCa);
