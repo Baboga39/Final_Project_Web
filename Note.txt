@@ -82,3 +82,7 @@ Sau đó gửi lại gg cái authentication để lấy dữ liệu.
 Upload:
 Khi lấy ra file name thì lấy từ contentDisposition. Sau đó tác chuỗi từ dấu ;
 Sau đó bằng từ kí tự =; Bỏ qua 2 kí tự để lấy; Sau đó lấy đến cuối chuỗi.
+
+html2pdf: thư viện để thực hiện việc download file pdf
+tinymce: thư viện để viết content dưới dạng html
+datetimepicker: thư viện datetime
