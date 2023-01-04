@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -57,10 +58,17 @@ public class ArticleDetailServlet extends HttpServlet {
                 }
                 break;
             case "/Comment":
-                int artID = Integer.parseInt(request.getParameter("article_id"));
-                Articles art = ArticleModel.findById(artID);
-                request.setAttribute("art",art);
-                ServletUtils.forward("/views/viewArticleDetail/Comment.jsp", request, response);
+                HttpSession session = request.getSession();
+                User Author = (User) session.getAttribute("authUser");
+                if (Author != null){
+                    int artID = Integer.parseInt(request.getParameter("article_id"));
+                    Articles art = ArticleModel.findById(artID);
+                    request.setAttribute("art",art);
+                    ServletUtils.forward("/views/viewArticleDetail/Comment.jsp", request, response);
+                }
+                else {
+                    ServletUtils.redirect("/User/Register",request,response);
+                }
                 break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
@@ -75,20 +83,16 @@ public class ArticleDetailServlet extends HttpServlet {
         switch (path) {
             case "/Comment":
                 int article_id = Integer.parseInt(request.getParameter("article_id"));
-                String email = request.getParameter("email");
+                HttpSession session = request.getSession();
+                User Author = (User) session.getAttribute("authUser");
+                int user_id = Author.getUserId();
                 String comment = request.getParameter("comment");
                 LocalDateTime create_date = LocalDateTime.now();
 
-                User user = UserModel.findByEmail(email);
-                if (user != null){
-                    int user_id = user.getUserId();
-                    Comments comments = new Comments(0,article_id,user_id,comment,create_date);
-                    CommentModel.addComment(comments);
-                    ServletUtils.redirect("/Detail?article_id="+ article_id,request,response);
-                }
-                else {
-                    ServletUtils.redirect("/User/Register",request,response);
-                }
+                Comments comments = new Comments(0,article_id,user_id,comment,create_date);
+                CommentModel.addComment(comments);
+                ServletUtils.redirect("/Detail?article_id="+ article_id,request,response);
+
         }
     }
 }

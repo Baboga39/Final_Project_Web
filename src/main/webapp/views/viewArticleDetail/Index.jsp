@@ -19,7 +19,8 @@
         </style>
     </jsp:attribute>
     <jsp:attribute name="js">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" integrity="sha512-YcsIPGdhPK4P/uRW6/sruonlYj+Q7UHWeKfTAkBW+g83NKM+jMJFJ4iAPfSnVp7BKD4dKMHmVSvICUbE/V1sSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>        <script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" integrity="sha512-YcsIPGdhPK4P/uRW6/sruonlYj+Q7UHWeKfTAkBW+g83NKM+jMJFJ4iAPfSnVp7BKD4dKMHmVSvICUbE/V1sSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
         const options ={
             margin: 2,
             fileName: "file.pdf",
@@ -98,7 +99,7 @@
                             <div class="mb-3">
                                 <div class="section-title mb-0">
                                     <a href="${pageContext.request.contextPath}/Detail/Comment?article_id=${article.article_id}"
-                                       class="btn btn-primary font-weight-semi-bold py-2 px-3">Post a comments</a>
+                                       class="btn btn-primary font-weight-semi-bold py-2 px-3">Post a comment</a>
                                 </div>
                             </div>
                             <!-- Comment Form End -->
