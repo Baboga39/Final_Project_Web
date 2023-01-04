@@ -78,3 +78,7 @@ Code là refersh-toke.
 Gửi code lên xong trả về authentication-token
 Sau đó gửi lại gg cái authentication để lấy dữ liệu.
 2.authentication-token.
+
+Upload:
+Khi lấy ra file name thì lấy từ contentDisposition. Sau đó tác chuỗi từ dấu ;
+Sau đó bằng từ kí tự =; Bỏ qua 2 kí tự để lấy; Sau đó lấy đến cuối chuỗi.
