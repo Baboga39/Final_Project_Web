@@ -32,6 +32,9 @@ public class PostServlet extends HttpServlet {
         if (path == null || path.equals("/")) {
             path = "/Index";
         }
+        HttpSession session = request.getSession();
+        User writer = (User) session.getAttribute("authUser");
+        int writer_id = writer.getUserId();
         switch (path) {
             case "/Index":
                 List<Category> listCat = CategoryModel.findAllCat();
@@ -47,12 +50,12 @@ public class PostServlet extends HttpServlet {
                 ServletUtils.forward("/views/viewPost/ListWaiting.jsp", request, response);
                 break;
             case "/Draft":
-                List<Articles> listDraft = ArticleModel.findArticleByStatus(104);
+                List<Articles> listDraft = ArticleModel.findArticleByStatus2(104,writer_id);
                 request.setAttribute("listDraft",listDraft);
                 ServletUtils.forward("/views/viewPost/ListDraft.jsp", request, response);
                 break;
             case "/Refused":
-                List<Articles> listRefused = ArticleModel.findArticleByStatus(103);
+                List<Articles> listRefused = ArticleModel.findArticleByStatus2(103,writer_id);
                 request.setAttribute("listRefused",listRefused);
                 ServletUtils.forward("/views/viewPost/ListRefused.jsp", request, response);
                 break;
@@ -104,8 +107,15 @@ public class PostServlet extends HttpServlet {
                 postTagArticle(request,response);
                 break;
             case "/Update":
+                int article_id = Integer.parseInt(request.getParameter("article_id"));
+                int checkStatus = ArticleModel.checkStatus(article_id);
                 update(request,response);
-                ServletUtils.redirect("/Post", request, response);
+                if (checkStatus == 3){
+                    ServletUtils.redirect("/Edit/Post/Refused", request, response);
+                }
+                else if (checkStatus == 4){
+                    ServletUtils.redirect("/Edit/Post/Draft", request, response);
+                }
                 break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
@@ -134,6 +144,7 @@ public class PostServlet extends HttpServlet {
 
         Articles articles = new Articles(article_id,title,create_date,publish_date,views,abstracts,content,categories_id,premium,writer_id,status_id,avatar,categoryName);
         ArticleModel.updateNews(articles);
+
     }
     private void postTagArticle(HttpServletRequest request, HttpServletResponse response) {
         Articles art = ArticleModel.findArtByMaxID();

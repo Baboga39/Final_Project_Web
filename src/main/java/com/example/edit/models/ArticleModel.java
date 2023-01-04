@@ -48,6 +48,18 @@ public class ArticleModel {
                     .executeAndFetch(Articles.class);
         }
     }
+    public static List<Articles> findArticleByStatus2(int status_id, int writer_id){
+        final String query = "SELECT articles.article_id,articles.create_date,articles.title,articles.publish_date,articles.views," +
+                "articles.abstracts,articles.categoryName,users.second_name,articles.premium\n" +
+                "FROM users INNER JOIN articles on users.user_id=articles.writer_id  " +
+                "WHERE articles.status_id= :status_id AND articles.writer_id= :writer_id";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .addParameter("status_id",status_id)
+                    .addParameter("writer_id",writer_id)
+                    .executeAndFetch(Articles.class);
+        }
+    }
     public static Articles findById(int article_id) {
         final String query = "select * from articles where article_id = :article_id  and status_id= 102";
         try (Connection con = DbUtils.getConnection()) {
