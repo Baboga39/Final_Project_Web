@@ -87,6 +87,7 @@
                                     <!-- Article data -->
                                     <div class="row mb-3">
                                         <div class="col-6">
+
                                             <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}" class="text-info">
 
                                                 <span class="badge badge-pill badge-primary">${o.categoryName}</span>

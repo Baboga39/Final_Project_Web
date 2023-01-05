@@ -215,7 +215,7 @@
                         <div class="col-6">
                             <div class="row row-cols-1 row-cols-md-2">
                                 <c:forEach items="${listtop5New}" var="o">
-                                    <div class="col mb-4" style="height: 250px">
+                                    <div class="col mb-4" style="height: 300px">
                                         <div class="box-new" style="height: 250px">
                                             <a href="${pageContext.request.contextPath}/Detail?article_id=${o.article_id}">
                                                 <img src="${pageContext.request.contextPath}/image/Article/${o.avatar}" class="card-img-top h-75" alt="...">
