@@ -44,8 +44,7 @@
             <div class="container mt-5">
                 <div class="row row-cols-2">
                     <c:if test="${ (checkPre == false && checkAccPre == false  && checkEx== false) || (checkPre == false && sessionScope.auth == false )
-                    || (checkPre == false && checkEx== true  && checkAccPre == true ) || (checkPre == true && checkEx== true  && checkAccPre == true) || (sessionScope.auth == false && checkPre == false)
-                     || (checkPre == false && checkEx== false  && checkAccPre == true )}">
+                    || (checkPre == false && checkEx== true  && checkAccPre == true ) || (checkPre == false && checkEx== false  && checkAccPre == true )}">
                         <div class="col-8">
                             <!-- News Detail Start -->
                             <div class="position-relative mb-3" id="contents">
