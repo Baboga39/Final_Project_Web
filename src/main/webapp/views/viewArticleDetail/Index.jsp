@@ -43,8 +43,9 @@
         <div class="container-fluid" style="margin-top: 100px">
             <div class="container mt-5">
                 <div class="row row-cols-2">
-                    <c:if test="${ (checkPre == false && checkAccPre == false) || (checkPre == false && sessionScope.auth == false)
-                    || (checkPre == false && checkEx== true  && checkAccPre == true ) || (checkPre == true && checkEx== true  && checkAccPre == true) }">
+                    <c:if test="${ (checkPre == false && checkAccPre == false  && checkEx== false) || (checkPre == false && sessionScope.auth == false )
+                    || (checkPre == false && checkEx== true  && checkAccPre == true ) || (checkPre == true && checkEx== true  && checkAccPre == true) || (sessionScope.auth == false && checkPre == false)
+                     || (checkPre == false && checkEx== false  && checkAccPre == true )}">
                         <div class="col-8">
                             <!-- News Detail Start -->
                             <div class="position-relative mb-3" id="contents">
@@ -163,7 +164,7 @@
                             </div>
                         </div>
                     </c:if>
-                    <c:if test="${checkPre == true && sessionScope.auth == true &&  checkEx== false}">
+                    <c:if test="${checkPre == true && sessionScope.auth == true &&  checkAccPre== false}">
                         <div class="col-lg-8">
                             <!-- News Detail Start -->
                             <div class="position-relative mb-3">

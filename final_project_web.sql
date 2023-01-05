@@ -11,7 +11,7 @@
  Target Server Version : 80029
  File Encoding         : 65001
 
- Date: 04/01/2023 20:41:06
+ Date: 05/01/2023 13:31:36
 */
 
 SET NAMES utf8mb4;
@@ -859,37 +859,37 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'AdminHai', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Hải', '2022-12-27', 7, 1, 'Ngọc Hải', '2022-12-13', 'ngochai06122002@gmail.com', 566222, 566222, 1);
-INSERT INTO `users` VALUES (2, 'PvKhoa', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Khoa', '2022-12-09', 7, 3, 'Khoa', '2022-12-13', 'khoa@gmail.com', 656562, 656562, 1);
-INSERT INTO `users` VALUES (3, 'UserLuong', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Lương', '2022-12-09', 7, 2, 'Lương', '2022-12-13', 'Luong@gmail.com', 325236, 325236, 1);
-INSERT INTO `users` VALUES (4, 'PvPhuc', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Phúc', '2022-12-09', 7, 3, 'Phúc', '2022-12-13', 'Phuc@gmail.com', 552362, 552362, 1);
-INSERT INTO `users` VALUES (5, 'AdminDat', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Đạt', '2022-12-25', 7, 1, 'Tiến Đạt', '2022-12-25', 'Phuc@gmail.com', 102365, 102365, 1);
-INSERT INTO `users` VALUES (6, 'PvHieu', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Hieu', '2022-12-21', 7, 3, 'Hồng Hiệu', '2022-12-22', 'Hieu@gmai.com', 325526, 325526, 1);
-INSERT INTO `users` VALUES (7, 'UserCuong', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Cường', '2022-12-22', 7, 2, 'Minh Cường', '2022-12-22', 'Cuong@gmail.com', 333978, 333978, 1);
-INSERT INTO `users` VALUES (8, 'UserHoang', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Hoàng', '2022-12-21', 7, 2, 'Việt Hoàng', '2022-12-22', 'Hoang@gmail.com', 256648, 256648, 1);
-INSERT INTO `users` VALUES (9, 'UserHieu', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Hiếu ', '2022-12-21', 7, 2, 'Bá Hiếu', '2022-12-21', 'Hieu@gmail.com', 263549, 263549, 1);
-INSERT INTO `users` VALUES (10, 'PvTrong', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trọng', '2022-12-21', 7, 3, 'Hữu Trọng', '2022-12-21', 'Trong@gmail.com', 236523, 236523, 0);
-INSERT INTO `users` VALUES (14, 'BTVDong', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Đông', '2022-12-24', 7, 4, 'Hoàng Đông', '2022-12-24', 'Dong@gmail.com', 254785, 254785, 0);
-INSERT INTO `users` VALUES (15, 'BTVTram', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trâm', '2022-12-24', 7, 4, 'Anh Trâm', '2022-12-01', 'Tram@gmail.com', 855966, 855966, 0);
-INSERT INTO `users` VALUES (16, 'BTVTrong', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trọng', '2022-12-25', 7, 4, 'Hữu Trọng', '2022-12-25', 'Trong@gmail.com', 668552, 668552, 0);
-INSERT INTO `users` VALUES (17, 'BTVTien', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Tiên', '2022-12-25', 7, 4, 'Viết Tiên', '2022-12-25', 'Tien@gmail.com', 263658, 263658, 0);
-INSERT INTO `users` VALUES (18, 'UserPhuoc', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Phước', '2021-12-07', 7, 2, 'Hửu Phước', '2022-12-25', 'Phuoc@gmail.com', 933262, 933262, 0);
-INSERT INTO `users` VALUES (19, 'UserNhan', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Nhân', '2021-05-02', 7, 2, 'Trung Nhân', '2022-12-25', 'Nhan@gmail.com', 632563, 632563, 0);
-INSERT INTO `users` VALUES (20, 'UserLong', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Long', '2021-12-05', 7, 2, 'Tiến Long', '2022-12-25', 'Long@gmail.com', 652365, 652365, 1);
-INSERT INTO `users` VALUES (21, 'UserLam', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Lâm', '2019-03-19', 7, 2, 'Hoàng Lâm', '2022-12-25', 'Lam@gmail.com', 485968, 485968, 0);
-INSERT INTO `users` VALUES (22, 'UserTuan', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Tuấn', '2023-03-15', 7, 2, 'Anh Tuấn', '2022-12-25', 'Tuan@gmail.com', 563225, 563225, 0);
-INSERT INTO `users` VALUES (23, 'PvHoang', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Hoàng', '2022-12-25', 7, 3, 'Thanh Hoàng', '2022-12-25', 'Hoang@gmail.com', 563562, 563562, 1);
-INSERT INTO `users` VALUES (24, 'PvThuy', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Thủy', '2022-12-25', 7, 3, 'Thanh Thủy', '2022-12-25', 'Thuy@gmail.com', 254478, 254478, 1);
-INSERT INTO `users` VALUES (25, 'PvTrang', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2022-12-25', 7, 3, 'Ngọc Trang', '2022-12-25', 'Trang@gmail.com', 985696, 985696, 0);
-INSERT INTO `users` VALUES (26, 'BTVHung', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2022-12-25', 7, 4, 'Văn Hùng', '2022-12-25', 'Trang@gmail.com', 363253, 363253, 0);
-INSERT INTO `users` VALUES (27, 'BTVNgan', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2022-12-25', 7, 4, 'Kim Ngân', '2022-12-25', 'Trang@gmail.com', 636325, 636325, 0);
-INSERT INTO `users` VALUES (28, 'PvTrang', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2023-01-25', 7, 3, 'Thiên Trang', '2022-12-25', 'Trang@gmail.com', 252365, 252365, 0);
-INSERT INTO `users` VALUES (29, 'AdminThu', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2022-12-25', 7, 1, 'Anh Thư', '2022-12-25', 'Trang@gmail.com', 362533, 362533, 0);
-INSERT INTO `users` VALUES (30, 'UserHa', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2023-01-04', 7, 2, 'Nhật Hạ', '2022-12-25', 'Trang@gmail.com', 256255, 256255, 1);
-INSERT INTO `users` VALUES (31, 'UserTruong', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2023-01-04', 7, 2, 'Nhật Hạ', '2022-12-25', 'Trang@gmail.com', 253355, 253355, 1);
-INSERT INTO `users` VALUES (32, 'UserHong', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2023-01-04', 7, 2, 'Nhật Hạ', '2022-12-25', 'Trang@gmail.com', 254556, 254556, 1);
-INSERT INTO `users` VALUES (33, 'UserHien', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2023-01-04', 7, 2, 'Nhật Hạ', '2022-12-25', 'Trang@gmail.com', 236336, 236336, 1);
-INSERT INTO `users` VALUES (34, 'UserNhat', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2023-01-04', 7, 2, 'Nhật Hạ', '2022-12-25', 'Trang@gmail.com', 111456, 111456, 1);
-INSERT INTO `users` VALUES (35, 'UserQuy', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2023-01-04', 7, 2, 'Nhật Hạ', '2022-12-25', 'Trang@gmail.com', 365263, 365263, 1);
+INSERT INTO `users` VALUES (1, 'AdminHai', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Hải', '2023-01-05', 7, 1, 'Ngọc Hải', '2022-12-13', 'ngochai06122002@gmail.com', 566222, 566222, 1);
+INSERT INTO `users` VALUES (2, 'PvKhoa', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Khoa', '2023-01-05', 7, 3, 'Khoa', '2022-12-13', 'khoa@gmail.com', 656562, 656562, 1);
+INSERT INTO `users` VALUES (3, 'UserLuong', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Lương', '2023-01-05', 7, 2, 'Lương', '2022-12-13', 'Luong@gmail.com', 325236, 325236, 1);
+INSERT INTO `users` VALUES (4, 'PvPhuc', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Phúc', '2023-01-05', 7, 3, 'Phúc', '2022-12-13', 'Phuc@gmail.com', 552362, 552362, 1);
+INSERT INTO `users` VALUES (5, 'AdminDat', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Đạt', '2023-01-05', 7, 1, 'Tiến Đạt', '2022-12-25', 'Phuc@gmail.com', 102365, 102365, 1);
+INSERT INTO `users` VALUES (6, 'PvHieu', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Hieu', '2023-01-05', 7, 3, 'Hồng Hiệu', '2022-12-22', 'Hieu@gmai.com', 325526, 325526, 1);
+INSERT INTO `users` VALUES (7, 'UserCuong', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Cường', '2023-01-05', 7, 2, 'Minh Cường', '2022-12-22', 'Cuong@gmail.com', 333978, 333978, 1);
+INSERT INTO `users` VALUES (8, 'UserHoang', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Hoàng', '2023-01-05', 7, 2, 'Việt Hoàng', '2022-12-22', 'Hoang@gmail.com', 256648, 256648, 1);
+INSERT INTO `users` VALUES (9, 'UserHieu', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Hiếu ', '2023-01-05', 7, 2, 'Bá Hiếu', '2022-12-21', 'Hieu@gmail.com', 263549, 263549, 1);
+INSERT INTO `users` VALUES (10, 'PvTrong', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trọng', '2023-01-05', 7, 3, 'Hữu Trọng', '2022-12-21', 'Trong@gmail.com', 236523, 236523, 0);
+INSERT INTO `users` VALUES (14, 'BTVDong', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Đông', '2023-01-05', 7, 4, 'Hoàng Đông', '2022-12-24', 'Dong@gmail.com', 254785, 254785, 0);
+INSERT INTO `users` VALUES (15, 'BTVTram', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trâm', '2023-01-05', 7, 4, 'Anh Trâm', '2022-12-01', 'Tram@gmail.com', 855966, 855966, 0);
+INSERT INTO `users` VALUES (16, 'BTVTrong', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trọng', '2023-01-05', 7, 4, 'Hữu Trọng', '2022-12-25', 'Trong@gmail.com', 668552, 668552, 0);
+INSERT INTO `users` VALUES (17, 'BTVTien', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Tiên', '2023-01-05', 7, 4, 'Viết Tiên', '2022-12-25', 'Tien@gmail.com', 263658, 263658, 0);
+INSERT INTO `users` VALUES (18, 'UserPhuoc', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Phước', '2023-01-05', 7, 2, 'Hửu Phước', '2022-12-25', 'Phuoc@gmail.com', 933262, 933262, 0);
+INSERT INTO `users` VALUES (19, 'UserNhan', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Nhân', '2023-01-05', 7, 2, 'Trung Nhân', '2022-12-25', 'Nhan@gmail.com', 632563, 632563, 0);
+INSERT INTO `users` VALUES (20, 'UserLong', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Long', '2023-01-05', 7, 2, 'Tiến Long', '2022-12-25', 'Long@gmail.com', 652365, 652365, 1);
+INSERT INTO `users` VALUES (21, 'UserLam', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Lâm', '2023-01-05', 7, 2, 'Hoàng Lâm', '2022-12-25', 'Lam@gmail.com', 485968, 485968, 0);
+INSERT INTO `users` VALUES (22, 'UserTuan', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Tuấn', '2023-01-05', 7, 2, 'Anh Tuấn', '2022-12-25', 'Tuan@gmail.com', 563225, 563225, 0);
+INSERT INTO `users` VALUES (23, 'PvHoang', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Hoàng', '2023-01-05', 7, 3, 'Thanh Hoàng', '2022-12-25', 'Hoang@gmail.com', 563562, 563562, 1);
+INSERT INTO `users` VALUES (24, 'PvThuy', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Thủy', '2023-01-05', 7, 3, 'Thanh Thủy', '2022-12-25', 'Thuy@gmail.com', 254478, 254478, 1);
+INSERT INTO `users` VALUES (25, 'PvTrang', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2023-01-05', 7, 3, 'Ngọc Trang', '2022-12-25', 'Trang@gmail.com', 985696, 985696, 0);
+INSERT INTO `users` VALUES (26, 'BTVHung', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2023-01-05', 7, 4, 'Văn Hùng', '2022-12-25', 'Trang@gmail.com', 363253, 363253, 0);
+INSERT INTO `users` VALUES (27, 'BTVNgan', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2023-01-05', 7, 4, 'Kim Ngân', '2022-12-25', 'Trang@gmail.com', 636325, 636325, 0);
+INSERT INTO `users` VALUES (28, 'PvTrang', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2023-01-05', 7, 3, 'Thiên Trang', '2022-12-25', 'Trang@gmail.com', 252365, 252365, 0);
+INSERT INTO `users` VALUES (29, 'AdminThu', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2023-01-05', 7, 1, 'Anh Thư', '2022-12-25', 'Trang@gmail.com', 362533, 362533, 0);
+INSERT INTO `users` VALUES (30, 'UserHa', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2023-01-05', 7, 2, 'Nhật Hạ', '2022-12-25', 'Trang@gmail.com', 256255, 256255, 1);
+INSERT INTO `users` VALUES (31, 'UserTruong', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2023-01-05', 7, 2, 'Nhật Hạ', '2022-12-25', 'Trang@gmail.com', 253355, 253355, 1);
+INSERT INTO `users` VALUES (32, 'UserHong', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2023-01-05', 7, 2, 'Nhật Hạ', '2022-12-25', 'Trang@gmail.com', 254556, 254556, 1);
+INSERT INTO `users` VALUES (33, 'UserHien', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2023-01-05', 7, 2, 'Nhật Hạ', '2022-12-25', 'Trang@gmail.com', 236336, 236336, 1);
+INSERT INTO `users` VALUES (34, 'UserNhat', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2023-01-05', 7, 2, 'Nhật Hạ', '2022-12-25', 'Trang@gmail.com', 111456, 111456, 1);
+INSERT INTO `users` VALUES (35, 'UserQuy', '$2a$12$5MXNkilrp38TP6gyL2wyku1h/BAUWk.wcE82kQQK0NQ.0DS00wzOO', 'Trang', '2023-01-05', 7, 2, 'Nhật Hạ', '2022-12-25', 'Trang@gmail.com', 365263, 365263, 1);
 
 SET FOREIGN_KEY_CHECKS = 1;
