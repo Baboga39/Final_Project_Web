@@ -7,7 +7,6 @@ import java.util.Date;
 public class Articles {
     private int article_id;
     private String title;
-
     private  Date create_date;
     private Date publish_date;
     private int views;
@@ -21,6 +20,7 @@ public class Articles {
     private String categoryName;
     private String second_name;
     private String value;
+    private int editor_id;
 
     public Articles(int article_id, String title, Date create_date,Date publish_date, int views, String abstracts, String content,
                     int categories_id, boolean premium, int writer_id, int status_id, String avatar, String categoryName) {
@@ -73,6 +73,25 @@ public class Articles {
         this.avatar = avatar;
         this.categoryName = categoryName;
         this.second_name = second_name;
+    }
+    public Articles(int article_id, String title, Date create_date,Date publish_date, int views, String abstracts,
+                    String content, int categories_id, boolean premium, int writer_id, int status_id, String avatar,
+                    String categoryName, String second_name, int editor_id) {
+        this.article_id = article_id;
+        this.title = title;
+        this.create_date = create_date;
+        this.publish_date = publish_date;
+        this.views = views;
+        this.abstracts = abstracts;
+        this.content = content;
+        this.categories_id = categories_id;
+        this.premium = premium;
+        this.writer_id = writer_id;
+        this.status_id = status_id;
+        this.avatar = avatar;
+        this.categoryName = categoryName;
+        this.second_name = second_name;
+        this.editor_id = editor_id;
     }
 
     public int getArticle_id() {
@@ -193,6 +212,14 @@ public class Articles {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public int getEditor_id() {
+        return editor_id;
+    }
+
+    public void setEditor_id(int editor_id) {
+        this.editor_id = editor_id;
     }
 
     @Override

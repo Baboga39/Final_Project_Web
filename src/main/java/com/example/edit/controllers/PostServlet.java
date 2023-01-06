@@ -45,7 +45,7 @@ public class PostServlet extends HttpServlet {
                 ServletUtils.forward("/views/viewPost/Index.jsp", request, response);
                 break;
             case "/Waiting":
-                List<Articles> listWaiting = ArticleModel.findArticleByStatus(101);
+                List<Articles> listWaiting = ArticleModel.findArticleByStatus2(101, writer_id);
                 request.setAttribute("listWaiting",listWaiting);
                 ServletUtils.forward("/views/viewPost/ListWaiting.jsp", request, response);
                 break;
@@ -60,7 +60,7 @@ public class PostServlet extends HttpServlet {
                 ServletUtils.forward("/views/viewPost/ListRefused.jsp", request, response);
                 break;
             case "/Published":
-                List<Articles> listPublished = ArticleModel.findArticleByStatus(102);
+                List<Articles> listPublished = ArticleModel.findArticleByStatus2(102, writer_id);
                 request.setAttribute("listPublished",listPublished);
                 ServletUtils.forward("/views/viewPost/ListPublished.jsp", request, response);
                 break;

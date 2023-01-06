@@ -64,6 +64,22 @@ public class EditorHomeServlet extends HttpServlet {
                 request.setAttribute("article",c3);
                 ServletUtils.forward("/views/viewEditorHome/Agree.jsp", request, response);
                 break;
+            case "/List/Refuse":
+                HttpSession session1 = request.getSession();
+                User editor1 = (User) session1.getAttribute("authUser");
+                int editor_id1 = editor1.getUserId();
+                List<Articles> listRefuse = ArticleModel.findListRefuseEditor(editor_id1);
+                request.setAttribute("listRefuse",listRefuse);
+                ServletUtils.forward("/views/viewEditorHome/ListRefuse.jsp", request, response);
+                break;
+            case "/List/Agree":
+                HttpSession session2 = request.getSession();
+                User editor2 = (User) session2.getAttribute("authUser");
+                int editor_id2 = editor2.getUserId();
+                List<Articles> listAgree = ArticleModel.findListAgreeEditor(editor_id2);
+                request.setAttribute("listAgree",listAgree);
+                ServletUtils.forward("/views/viewEditorHome/ListAgree.jsp", request, response);
+                break;
             default:
                 ServletUtils.forward("/views/404.jsp", request, response);
                 break;
