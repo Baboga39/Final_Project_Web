@@ -4,10 +4,8 @@ import com.example.edit.Utils.DbUtils;
 import com.example.edit.beans.*;
 import org.sql2o.Connection;
 
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class ArticleModel {
     public  static List<Articles> findAll(){
@@ -35,16 +33,6 @@ public class ArticleModel {
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .addParameter("user_id",user_id)
-                    .executeAndFetch(Articles.class);
-        }
-    }
-    public static List<Articles> findArticleByStatus(int status_id){
-        final String query = "SELECT articles.article_id,articles.create_date,articles.title,articles.publish_date,articles.views," +
-                "articles.abstracts,articles.categoryName,users.second_name,articles.premium\n" +
-                "FROM users INNER JOIN articles on users.user_id=articles.writer_id  WHERE  status_id= :status_id";
-        try (Connection con = DbUtils.getConnection()) {
-            return con.createQuery(query)
-                    .addParameter("status_id",status_id)
                     .executeAndFetch(Articles.class);
         }
     }
@@ -208,6 +196,27 @@ public class ArticleModel {
             } else {
                 return -1;
             }
+        }
+    }
+    //Lấy danh sách bài viết mà btv duyệt
+    public static List<Articles> findListAgreeEditor(int editor_id){
+        final String query = "SELECT articles.*,users.second_name FROM editor_manage_categories INNER JOIN articles ON editor_manage_categories.category_id=articles.categories_id INNER JOIN users ON articles.writer_id=users.user_id WHERE articles.status_id=102 AND editor_manage_categories.editor_id= :editor_id OR articles.status_id=101";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .addParameter("editor_id",editor_id)
+                    .executeAndFetch(Articles.class);
+        }
+    }
+
+    //Lấy danh sách bài viết mà btv từ chối
+    public static List<Articles> findListRefuseEditor(int editor_id){
+        final String query = "SELECT articles.*, users.second_name FROM feedback INNER JOIN articles ON " +
+                "feedback.article_id=articles.article_id INNER JOIN users ON articles.writer_id=users.user_id " +
+                "WHERE feedback.editor_id= :editor_id";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .addParameter("editor_id",editor_id)
+                    .executeAndFetch(Articles.class);
         }
     }
     // Lấy top 5  bài viết xem nhiều nhất

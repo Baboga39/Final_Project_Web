@@ -97,9 +97,6 @@ Begin Sidebar
                     </div>
                 </li>
             </c:if>
-            <c:if test="${authUser.role_id == 4}">
-                <h4 class="text-center text-heading mt-5 text-top-heading">EDITOR</h4>
-            </c:if>
             <c:if test="${authUser.role_id == 3}">
                 <h4 class="text-center mt-5 text-heading text-top-heading">REPORTTER</h4>
                 <li class="nav-item text-center mt-5 text-heading">
@@ -147,6 +144,50 @@ Begin Sidebar
                                 <div class="panel-body">
                                     <div class="row">
                                         <a href="${pageContext.request.contextPath}/Post/Draft" class="dropdown-item text-par-heading">Draft</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </c:if>
+            <c:if test="${authUser.role_id == 4}">
+                <h4 class="text-center text-heading mt-5 text-top-heading">EDITOR</h4>
+                <li class="nav-item text-center mt-5 text-heading">
+                    <div class="panel-group" id="accordion_rep3" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne_rep3">
+                                <a class="link nav-link" role="button" data-toggle="collapse" data-parent="#accordion_rep3" href="#collapseOne_rep3" aria-expanded="true" aria-controls="collapseOne_rep3">
+                                    <i class="bi bi-caret-down-fill"></i>Draft Articles
+                                </a>
+                            </div>
+                            <div id="collapseOne_rep3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne_rep3">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <a href="${pageContext.request.contextPath}/Editor/Home" class="dropdown-item text-par-heading">Xử Lý</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item text-center text-heading">
+                    <div class="panel-group" id="accordion_rep4" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingOne_rep4">
+                                <a class="link nav-link" role="button" data-toggle="collapse" data-parent="#accordion_rep4" href="#collapseOne_rep4" aria-expanded="true" aria-controls="collapseOne_rep4">
+                                    <i class="bi bi-caret-down-fill"></i>List Articles
+                                </a>
+                            </div>
+                            <div id="collapseOne_rep4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne_rep4">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <a href="${pageContext.request.contextPath}/Editor/Home/List/Refuse" class="dropdown-item text-par-heading">Refuse</a>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <a href="${pageContext.request.contextPath}/Editor/Home/List/Agree" class="dropdown-item text-par-heading">Agree</a>
                                     </div>
                                 </div>
                             </div>
