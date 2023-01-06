@@ -425,7 +425,7 @@ public class ArticleModel {
         }
     }
     public static List<Articles> findSearchPaggingToPre(String text, int index) {
-        final String query = " SELECT * FROM articles WHERE MATCH(title,content,abstracts) AGAINST(:text)  and status_id= 102  ORDER BY premium, article_id DESC LIMIT :index,6";
+        final String query = " SELECT * FROM articles WHERE MATCH(title,content,abstracts) AGAINST(:text)  and status_id= 102  ORDER BY premium DESC , article_id   LIMIT :index,6";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .addParameter("text",text)
