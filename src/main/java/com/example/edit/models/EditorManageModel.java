@@ -52,4 +52,14 @@ public class EditorManageModel {
 
         }
     }
+    public static void DeleteByCate(int category_id)
+    {
+        final String query = "DELETE FROM editor_manage_categories WHERE category_id = :category_id";
+        try(Connection con = DbUtils.getConnection()){
+            con.createQuery(query)
+                    .addParameter("category_id",category_id)
+                    .executeUpdate();
+
+        }
+    }
 }

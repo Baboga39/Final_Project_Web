@@ -25,4 +25,13 @@ public class CommentModel {
                     .executeUpdate();
         }
     }
+    public static void DeleteCmtByUserId(int user_id)
+    {
+        final String query = "DELETE FROM comments WHERE user_id = :user_id";
+        try(Connection con = DbUtils.getConnection()){
+            con.createQuery(query)
+                    .addParameter("user_id",user_id)
+                    .executeUpdate();
+        }
+    }
 }

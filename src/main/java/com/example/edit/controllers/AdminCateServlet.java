@@ -33,6 +33,13 @@ public class AdminCateServlet extends HttpServlet {
                     id5 = Integer.parseInt(request.getParameter("id"));
                 } catch (NumberFormatException e) {
                 }
+                List<Articles> listArt2 = ArticleModel.getArticleByCateId(id5);
+                for(int i =0;i<listArt2.size();i++)
+                {
+                    CommentModel.DeleteCmtByArtId(listArt2.get(i).getArticle_id());
+                    TagArticleModel.DeleteTagByArt(listArt2.get(i).getArticle_id());
+                }
+                ArticleModel.DeleteArtByIdCate(id5);
                 CategoryModel.deleteCate(id5);
                 String url = "/Admin/Category/Detail?id="+id5;
                 ServletUtils.redirect("/Edit"+url,request,response);
@@ -43,6 +50,18 @@ public class AdminCateServlet extends HttpServlet {
                     id = Integer.parseInt(request.getParameter("id"));
                 } catch (NumberFormatException e) {
                 }
+                List<Category> cateconList = CategoryModel.findCatCon(id);
+                for(int j = 0;j<cateconList.size();j++)
+                {
+                    List<Articles> listArtCon = ArticleModel.getArticleByCateId(cateconList.get(j).getCategories_id());
+                    for(int t=0;t<listArtCon.size();t++)
+                    {
+                        CommentModel.DeleteCmtByArtId(listArtCon.get(t).getArticle_id());
+                        TagArticleModel.DeleteTagByArt(listArtCon.get(t).getArticle_id());
+                    }
+                    EditorManageModel.DeleteByCate(cateconList.get(j).getCategories_id());
+                    ArticleModel.DeleteArtByIdCate(cateconList.get(j).getCategories_id());
+                }
                 List<Articles> listArt = ArticleModel.getArticleByCateId(id);
                 for(int i =0;i<listArt.size();i++)
                 {
@@ -51,6 +70,7 @@ public class AdminCateServlet extends HttpServlet {
                 }
                 ArticleModel.DeleteArtByIdCate(id);
                 CategoryModel.deleteCateCon(id);
+                EditorManageModel.DeleteByCate(id);
                 CategoryModel.deleteCate(id);
                 ServletUtils.redirect("/Admin/Category",request,response);
                 break;

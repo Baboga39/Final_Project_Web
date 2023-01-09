@@ -6,10 +6,7 @@ import com.example.edit.beans.Articles;
 import com.example.edit.beans.Category;
 import com.example.edit.beans.Editor_manage_categories;
 import com.example.edit.beans.User;
-import com.example.edit.models.ArticleModel;
-import com.example.edit.models.CategoryModel;
-import com.example.edit.models.EditorManageModel;
-import com.example.edit.models.UserModel;
+import com.example.edit.models.*;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -40,7 +37,15 @@ public class AdminUserServlet extends HttpServlet {
                     id = Integer.parseInt(request.getParameter("id"));
                 } catch (NumberFormatException e) {
                 }
-
+                List<Articles> articlesList = ArticleModel.findByUserId(id);
+                for(int i=0;i<articlesList.size();i++)
+                {
+                    TagArticleModel.DeleteTagByArt(articlesList.get(i).getArticle_id());
+                    CommentModel.DeleteCmtByArtId(articlesList.get(i).getArticle_id());
+                    FeedbackModel.DeleteFeedByAId(articlesList.get(i).getArticle_id());
+                }
+                ArticleModel.DeleteArtByIdUser(id);
+                CommentModel.DeleteCmtByUserId(id);
                 EditorManageModel.DeleteByUserId(id);
                 UserModel.deleteUser(id);
                 ServletUtils.redirect("/Admin/User",request,response);

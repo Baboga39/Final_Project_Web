@@ -5,6 +5,7 @@ import com.example.edit.Utils.ServletUtils;
 import com.example.edit.beans.Category;
 import com.example.edit.beans.Tag;
 import com.example.edit.models.CategoryModel;
+import com.example.edit.models.TagArticleModel;
 import com.example.edit.models.TagModel;
 
 import javax.servlet.ServletException;
@@ -35,6 +36,7 @@ public class AdminTagServlet extends HttpServlet {
                     id = Integer.parseInt(request.getParameter("id"));
                 } catch (NumberFormatException e) {
                 }
+                TagArticleModel.deleteTagArt(id);
                 TagModel.deleteTag(id);
                 ServletUtils.redirect("/Admin/Tag",request,response);
                 break;

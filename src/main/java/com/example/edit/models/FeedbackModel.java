@@ -46,4 +46,13 @@ public class FeedbackModel {
             }
         }
     }
+    public static void DeleteFeedByAId(int article_id)
+    {
+        final String query = "DELETE FROM feedback WHERE article_id = :article_id";
+        try(Connection con = DbUtils.getConnection()){
+            con.createQuery(query)
+                    .addParameter("article_id",article_id)
+                    .executeUpdate();
+        }
+    }
 }

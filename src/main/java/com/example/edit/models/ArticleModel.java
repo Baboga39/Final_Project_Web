@@ -617,4 +617,21 @@ public class ArticleModel {
                     .executeAndFetch(Articles.class);
         }
     }
+    public static void DeleteArtByIdUser(int writer_id)
+    {
+        final String query = "DELETE FROM articles WHERE writer_id = :writer_id";
+        try(Connection con = DbUtils.getConnection()){
+            con.createQuery(query)
+                    .addParameter("writer_id",writer_id)
+                    .executeUpdate();
+        }
+    }
+    public static List<Articles> findByUserId(int writer_id){
+        final String query = "SELECT * FROM articles WHERE writer_id = :writer_id";
+        try (Connection con = DbUtils.getConnection()) {
+            return con.createQuery(query)
+                    .addParameter("writer_id",writer_id)
+                    .executeAndFetch(Articles.class);
+        }
+    }
 }
