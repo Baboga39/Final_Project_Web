@@ -12,18 +12,18 @@
                 <a href="${pageContext.request.contextPath}/Home" class="nav-item nav-link active mr-2"><i class="bi bi-house"></i> Home</a>
 
             </div>
-            <div class="dropdown">
-                <a href="#" data-toggle="dropdown" class="dropdown-link" aria-haspopup="true" aria-expanded="false">
-                    <span class="wrap-icon nav-item nav-link "><i class="bi bi-bell-fill"></i> Feedback</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg-left" aria-labelledby="dropdownMenuButton">
-                    <ul class="list-group">
-                        <c:if test="${authUser.role_id == 3}">
+            <c:if test="${authUser.role_id == 3}">
+                <div class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-link" aria-haspopup="true" aria-expanded="false">
+                        <span class="wrap-icon nav-item nav-link "><i class="bi bi-bell-fill"></i> Feedback</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg-left" aria-labelledby="dropdownMenuButton">
+                        <ul class="list-group">
                             <li class="list-group-item"><a href="${pageContext.request.contextPath}/Feedback">Feedback</a></li>
-                        </c:if>
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            </c:if>
             <div class="nav-item ">
                 <span  class="nav-item nav-link user-action"><img src="${pageContext.request.contextPath}/image/user.png" class="avatar" alt="Avatar"> ${authUser.second_name} <b class="caret"></b></span>
             </div>
