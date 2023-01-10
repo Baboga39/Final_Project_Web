@@ -65,6 +65,10 @@ public class ArticlePostsServlet extends HttpServlet {
                   if(count  % 6!=0 ) {
                       endPage++;
                   }
+                  if (indexNext > endPage)
+                  {
+                      indexNext = indexNext -1;
+                  }
                   if (session.getAttribute("checkAccPre") == null)
                   {
                       List<Articles> listA = ArticleModel.findSearchPagging(text, index);
@@ -137,6 +141,10 @@ public class ArticlePostsServlet extends HttpServlet {
         int endPage = count/6;
         if(count  % 6!=0 ) {
             endPage++;
+        }
+        if (indexNext > endPage)
+        {
+            indexNext = indexNext -1;
         }
         HttpSession session =request.getSession();
 

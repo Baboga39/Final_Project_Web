@@ -229,9 +229,14 @@ public class PostServlet extends HttpServlet {
             index = (index -1) * 6 ;
         }
         int count  = ArticleModel.getTotalArtilceByCate(cateId);
+
         int endPage = count/6;
         if(count  % 6!=0 ) {
             endPage++;
+        }
+        if (indexNext > endPage)
+        {
+            indexNext = indexNext -1;
         }
         if (session.getAttribute("checkAccPre")== null)
 
@@ -312,6 +317,10 @@ public class PostServlet extends HttpServlet {
         if(count  % 6!=0 ) {
             endPage++;
         }
+        if (indexNext > endPage)
+        {
+            indexNext = indexNext -1;
+        }
         request.setAttribute("Day",getCurrentDate());
         if (session.getAttribute("checkAccPre")== null)
 
@@ -369,9 +378,17 @@ public class PostServlet extends HttpServlet {
             index = (index -1) * 6 ;
         }
         int count  = ArticleModel.getTotalArtilceByCate(cids);
+        if (indexNext > count)
+        {
+            indexNext = indexNext -1;
+        }
         int endPage = count/6;
         if(count  % 6!=0 ) {
             endPage++;
+        }
+        if (indexNext > endPage)
+        {
+            indexNext = indexNext -1;
         }
         if (session.getAttribute("checkAccPre")== null)
 
@@ -436,9 +453,17 @@ public class PostServlet extends HttpServlet {
             index = (index -1) * 6 ;
         }
         int count  = ArticleModel.getTotalArticlePre();
+        if (indexNext > count)
+        {
+            indexNext = indexNext -1;
+        }
         int endPage = count/6;
         if(count  % 6!=0 ) {
             endPage++;
+        }
+        if (indexNext > endPage)
+        {
+            indexNext = indexNext -1;
         }
         List<Articles> list = ArticleModel.getArticlePre(index);
         List<Category> lisAllCate = CategoryModel.findAllIn();

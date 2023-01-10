@@ -67,6 +67,8 @@ public class UserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getPathInfo();
+        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
         switch (path) {
             case "/Register":
                 registerUser(request, response);

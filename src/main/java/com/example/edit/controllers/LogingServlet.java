@@ -96,7 +96,6 @@ public class LogingServlet extends HttpServlet {
                 }
                 break;
             case "/Email":
-
               try {
                   String email =request.getParameter("email");
                   String otp = UserModel.getOtp(email);
@@ -151,6 +150,7 @@ public class LogingServlet extends HttpServlet {
                         request.setAttribute("mess",mess);
                         request.getRequestDispatcher("/views/viewHome/ResetPass.jsp").forward(request,response);
                     }
+                    else
                     {
                         String mess= "Thay đổi thành công. Xin vui lòng đăng nhập";
                         String bcryptHashString = BCrypt.withDefaults().hashToString(12, pass.toCharArray());
