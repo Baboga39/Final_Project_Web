@@ -216,6 +216,10 @@ public class PostServlet extends HttpServlet {
         int index =Integer.parseInt(indexPage);
         int indexNext = index+1;
         int indexPre = index-1;
+        if (indexPre == 0)
+        {
+            indexPre = 1;
+        }
         if(index ==  1)
         {
             index =0 ;
@@ -251,13 +255,17 @@ public class PostServlet extends HttpServlet {
         Articles listOne = ArticleModel.findTopCate(cateId);
         boolean check = CategoryModel.checkCate(cateId);
         List<Articles> listT = ArticleModel.getArticleByCateList3(cateId);
+        // Tìm danh mục con
         List<Category> listC =CategoryModel.getCateChilds(cateId);
+        // Lấy tên danh muc
         List<Category> listCa =CategoryModel.getCateByID(cateId);
+        // Lấy tất cả danh mục
         List<Category> lisAllCate = CategoryModel.findAllIn();
         List<Category> list5cate  = CategoryModel.find5Cate();
         session.setAttribute("list5cate",list5cate);
         session.setAttribute("lisAllCate",lisAllCate);
         session.setMaxInactiveInterval(6000);
+
         request.setAttribute("listC", listC);
         request.setAttribute("listT", listT);
         request.setAttribute("listOne", listOne);
@@ -287,6 +295,10 @@ public class PostServlet extends HttpServlet {
         int index =Integer.parseInt(indexPage);
         int indexNext = index+1;
         int indexPre = index-1;
+        if (indexPre == 0)
+        {
+            indexPre = 1;
+        }
         if(index ==  1)
         {
             index =0 ;
@@ -344,6 +356,10 @@ public class PostServlet extends HttpServlet {
         int index =Integer.parseInt(indexPage);
         int indexNext = index+1;
         int indexPre = index-1;
+        if (indexPre == 0)
+        {
+            indexPre = 1;
+        }
         if(index ==  1)
         {
             index =0 ;
@@ -407,6 +423,10 @@ public class PostServlet extends HttpServlet {
         int index =Integer.parseInt(indexPage);
         int indexNext = index+1;
         int indexPre = index-1;
+        if (indexPre == 0)
+        {
+            indexPre = 1;
+        }
         if(index ==  1)
         {
             index =0 ;

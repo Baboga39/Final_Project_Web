@@ -86,3 +86,15 @@ Sau đó bằng từ kí tự =; Bỏ qua 2 kí tự để lấy; Sau đó lấy
 html2pdf: thư viện để thực hiện việc download file pdf
 tinymce: thư viện để viết content dưới dạng html
 datetimepicker: thư viện datetime
+
+Các file Tag nó sẽ lưu các đoạn link, Script, Fragment của trang JSP để phối hợp với các trang JSP chứa các nội dung xử lý thành một trang Web hoàn chỉnh
+
+Xài Bootrap 4,
+   entity_encoding : "raw",
+          selector: '#txtContent',
+          height: 450,
+          plugins: "paste image link autolink lists table media", --- Đính kèm
+          menubar: false,
+          toolbar:[
+                  "undo redo | bold italic underline strikethrough | numlist bullist | alignleft aligncenter alignright | forecolor backcolor | table link image media"
+          ]

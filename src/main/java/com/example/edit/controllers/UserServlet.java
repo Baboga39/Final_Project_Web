@@ -152,7 +152,6 @@ public class UserServlet extends HttpServlet {
         session.removeAttribute("authUserGg");
         session.removeAttribute("checkAccPre");
         session.removeAttribute("checkEx");
-        session.removeAttribute("checkEx");
         String url="/Home";
         ServletUtils.redirect(url,request,response);
     }

@@ -56,6 +56,10 @@ public class ArticlePostsServlet extends HttpServlet {
                   {
                       index = (index -1) * 6 ;
                   }
+                  if (indexPre == 0)
+                  {
+                      indexPre = 1;
+                  }
                   int count  = ArticleModel.getTotalArtilceBySearh(text);
                   int endPage = count/6;
                   if(count  % 6!=0 ) {
@@ -117,6 +121,10 @@ public class ArticlePostsServlet extends HttpServlet {
         int index =Integer.parseInt(indexPage);
         int indexNext = index+1;
         int indexPre = index-1;
+        if (indexPre == 0)
+        {
+            indexPre = 1;
+        }
         if(index ==  1)
         {
             index =0 ;

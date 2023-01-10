@@ -35,22 +35,32 @@ public class HomeServlet extends HttpServlet {
                 List<Articles> listTop10Cate = ArticleModel.findTop10Cate();
                 List<Category> lisAllCate = CategoryModel.findAllIn();
                 List<Category> list4cate  = CategoryModel.find4Cate();
-                List<Category> listC = CategoryModel.findAll();
-                List<Category> listP = CategoryModel.findByParentId(2);
+
                 List<Tag> list = TagModel.findByindex();
+
+                // 10 bài nhiều nhất mọi chuyên mục
                 List<Articles> listtop5 = ArticleModel.findTop5();
                 List<Articles> listtop10 = ArticleModel.findTop10();
+
+                // Tìm kiếm nổi bật nhất trong tuần
+                Articles find1 = ArticleModel.fin1();
                 List<Articles> listtop4 = ArticleModel.findTop4();
                 List<Articles> listtop3 = ArticleModel.findTop3();
+
+                // Mới nhất mọi chuyên mục
+                Articles find1New = ArticleModel.find1New();
                 List<Articles> listtop5New = ArticleModel.findTop5New();
                 List<Articles> listtop5NewNext = ArticleModel.findTop5NewNext();
-                Articles find1 = ArticleModel.fin1();
-                Articles find1New = ArticleModel.find1New();
+
+
                 session.setAttribute("list4cate",list4cate);
                 session.setAttribute("lisAllCate",lisAllCate);
                 session.setMaxInactiveInterval(6000);
+
                 request.setAttribute("listtop3", listtop3);
                 request.setAttribute("find1", find1);
+
+                // Top nổi bật
                 request.setAttribute("find1New", find1New);
                 request.setAttribute("listtop5New", listtop5New);
                 request.setAttribute("listtop5NewNext", listtop5NewNext);
@@ -59,8 +69,6 @@ public class HomeServlet extends HttpServlet {
                 request.setAttribute("listtop", listtop5);
                 request.setAttribute("listtopnext", listtop10);
                 request.setAttribute("tags", list);
-                request.setAttribute("listC", listC);
-                request.setAttribute("listP", listP);
                 request.setAttribute("listAllCate", lisAllCate);
                 request.setAttribute("list4cate",list4cate);
                 request.setAttribute("list10Cate",listTop10Cate);
