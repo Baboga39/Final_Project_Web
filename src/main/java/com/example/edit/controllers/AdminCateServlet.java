@@ -36,6 +36,7 @@ public class AdminCateServlet extends HttpServlet {
                 List<Articles> listArt2 = ArticleModel.getArticleByCateId(id5);
                 for(int i =0;i<listArt2.size();i++)
                 {
+                    FeedbackModel.DeleteFeedByAId(listArt2.get(i).getArticle_id());
                     CommentModel.DeleteCmtByArtId(listArt2.get(i).getArticle_id());
                     TagArticleModel.DeleteTagByArt(listArt2.get(i).getArticle_id());
                 }
@@ -58,6 +59,7 @@ public class AdminCateServlet extends HttpServlet {
                     {
                         CommentModel.DeleteCmtByArtId(listArtCon.get(t).getArticle_id());
                         TagArticleModel.DeleteTagByArt(listArtCon.get(t).getArticle_id());
+                        FeedbackModel.DeleteFeedByAId(listArtCon.get(t).getArticle_id());
                     }
                     EditorManageModel.DeleteByCate(cateconList.get(j).getCategories_id());
                     ArticleModel.DeleteArtByIdCate(cateconList.get(j).getCategories_id());
@@ -67,6 +69,7 @@ public class AdminCateServlet extends HttpServlet {
                 {
                     CommentModel.DeleteCmtByArtId(listArt.get(i).getArticle_id());
                     TagArticleModel.DeleteTagByArt(listArt.get(i).getArticle_id());
+                    FeedbackModel.DeleteFeedByAId(listArt.get(i).getArticle_id());
                 }
                 ArticleModel.DeleteArtByIdCate(id);
                 CategoryModel.deleteCateCon(id);

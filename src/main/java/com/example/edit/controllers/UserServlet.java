@@ -100,12 +100,13 @@ public class UserServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         User user = UserModel.findByUsername(username);
-        boolean check = UserModel.checkByUserName(username);
+        //boolean check = UserModel.checkByUserName(username);
         if(user != null)
         {
             BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
             if(result.verified)
             {
+                // Bật giá trị session
                 HttpSession session = request.getSession();
                 int Ex = user.getUserId();
                 if (UserModel.checkEx(Ex) == true)
@@ -151,6 +152,7 @@ public class UserServlet extends HttpServlet {
         session.setAttribute("authGg", false);
         session.removeAttribute("authUserGg");
         session.removeAttribute("checkAccPre");
+        session.removeAttribute("checkEx");
         session.removeAttribute("checkEx");
         String url="/Home";
         ServletUtils.redirect(url,request,response);

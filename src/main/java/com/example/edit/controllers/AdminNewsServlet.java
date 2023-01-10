@@ -46,6 +46,7 @@ public class AdminNewsServlet extends HttpServlet {
                     id = Integer.parseInt(request.getParameter("id"));
                 } catch (NumberFormatException e) {
                 }
+                FeedbackModel.DeleteFeedByAId(id);
                 CommentModel.DeleteCmtByArtId(id);
                 TagArticleModel.DeleteTagByArt(id);
                 ArticleModel.deleteNews(id);

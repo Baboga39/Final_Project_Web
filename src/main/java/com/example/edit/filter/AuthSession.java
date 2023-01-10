@@ -29,7 +29,7 @@ public class AuthSession implements Filter {
         boolean auth = (boolean) session.getAttribute("auth");
         if(auth == false)
         {
-            session.setAttribute("retUrl", request.getRequestURI());
+            //session.setAttribute("retUrl", request.getRequestURI());
             ServletUtils.redirect("/User/Login",request, (HttpServletResponse) res );
             return;
         }
