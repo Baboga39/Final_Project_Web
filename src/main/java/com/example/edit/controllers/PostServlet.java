@@ -139,7 +139,7 @@ public class PostServlet extends HttpServlet {
         java.util.Date create_date = Date.valueOf(request.getParameter("create_date"));
         Date publish_date = (Date) a.getPublish_date();
         int writer_id = a.getWriter_id();
-        int status_id = a.getStatus_id();
+        int status_id = 104;
         String avatar = a.getAvatar();
 
         Articles articles = new Articles(article_id,title,create_date,publish_date,views,abstracts,content,categories_id,premium,writer_id,status_id,avatar,categoryName);

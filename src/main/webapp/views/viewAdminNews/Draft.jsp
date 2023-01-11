@@ -40,7 +40,12 @@
                 <td>${r.abstracts}</td>
                 <td>${r.categoryName}</td>
                 <td>${r.second_name}</td>
-                <td><span class="badge badge-danger">draft</span></td>
+                <c:if test="${r.status_id == 101}">
+                  <td><span class="badge badge-warning">waiting</span></td>
+                </c:if>
+                <c:if test="${r.status_id == 104}">
+                  <td><span class="badge badge-danger">draft</span></td>
+                </c:if>
                 <c:choose>
                   <c:when test="${r.premium eq true}">
                     <td><span class="badge badge-success"><i class="bi bi-check-square"></i></span></td>

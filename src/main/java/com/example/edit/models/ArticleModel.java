@@ -585,7 +585,7 @@ public class ArticleModel {
         final String query = "SELECT users.second_name,articles.* FROM users INNER JOIN articles\n" +
                 "                ON users.user_id=articles.writer_id INNER JOIN editor_manage_categories\n" +
                 "                ON articles.categories_id=editor_manage_categories.category_id\n" +
-                "                WHERE status_id=104";
+                "                WHERE status_id=104 OR status_id=101";
         try (Connection con = DbUtils.getConnection()) {
             return con.createQuery(query)
                     .executeAndFetch(Articles.class);
