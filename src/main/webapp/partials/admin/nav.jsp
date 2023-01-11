@@ -8,10 +8,13 @@
         <button type="button" class="close text-right mr-4 " onclick="w3_open()" aria-label="Open"><span aria-hidden="true"><i class="bi bi-list" style="color: white; font-size: 25px"></i></span></button>
         <a href="${pageContext.request.contextPath}/Home" class="navbar-brand">UTE<b> NEWS</b></a>
         <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
-            <div class="navbar-nav ml-auto">
-                <a href="${pageContext.request.contextPath}/Admin/Home/Index" class="nav-item nav-link active mr-2"><i class="bi bi-house"></i> Home</a>
 
+            <div class="navbar-nav ml-auto">
+                <c:if test="${authUser.role_id == 1}">
+                <a href="${pageContext.request.contextPath}/Admin/Home/Index" class="nav-item nav-link active mr-2"><i class="bi bi-house"></i> Home</a>
+                </c:if>
             </div>
+
             <c:if test="${authUser.role_id == 3}">
                 <div class="dropdown">
                     <a href="#" data-toggle="dropdown" class="dropdown-link" aria-haspopup="true" aria-expanded="false">
