@@ -36,11 +36,12 @@
                                 <div class="form-group">
                                     <div class="input-group" style="   margin-bottom: 12px;">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                        <input id="email" name="pass" placeholder="Password" class="form-control"  type="password">
+                                        <input id="pass" name="pass" placeholder="Password" class="form-control"  type="password">
                                     </div>
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
                                         <input id="confirm" name="confirm" placeholder="Confirm Password" class="form-control"  type="password">
+                                        <input name="email" value="${email}" type="hidden" class="form-control"  type="text">
                                     </div>
                                 </div>
                                 <div class="form-group">

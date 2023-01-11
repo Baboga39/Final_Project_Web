@@ -148,6 +148,7 @@ public class LogingServlet extends HttpServlet {
                     {
                         String mess= "Nhập lại mật khẩu không đúng.";
                         request.setAttribute("mess",mess);
+                        request.setAttribute("email",email);
                         request.getRequestDispatcher("/views/viewHome/ResetPass.jsp").forward(request,response);
                     }
                     else

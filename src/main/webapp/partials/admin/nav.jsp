@@ -9,7 +9,7 @@
         <a href="${pageContext.request.contextPath}/Home" class="navbar-brand">UTE<b> NEWS</b></a>
         <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
             <div class="navbar-nav ml-auto">
-                <a href="${pageContext.request.contextPath}/Home" class="nav-item nav-link active mr-2"><i class="bi bi-house"></i> Home</a>
+                <a href="${pageContext.request.contextPath}/Admin/Home/Index" class="nav-item nav-link active mr-2"><i class="bi bi-house"></i> Home</a>
 
             </div>
             <c:if test="${authUser.role_id == 3}">
