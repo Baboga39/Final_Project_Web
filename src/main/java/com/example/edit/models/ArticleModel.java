@@ -490,7 +490,7 @@ public class ArticleModel {
     }
     // Kiểm tra bài viết có thuộc dạng prenium hay không
     public static boolean checkPre( int article_id) {
-        String query = "SELECT * FROM articles WHERE premium =1 AND  article_id = :article_id";
+        String query = "SELECT * FROM articles WHERE premium =1 AND  article_id = :article_id ";
         try (Connection con = DbUtils.getConnection()) {
             List<Articles> list = con.createQuery(query)
                     .addParameter("article_id", article_id)
@@ -503,7 +503,7 @@ public class ArticleModel {
         }
     }
     public static List<Articles> getArticlePre( int index) {
-        String query = "SELECT * FROM articles WHERE premium = 1 LIMIT :index,6";
+        String query = "SELECT * FROM articles WHERE premium = 1 and status_id= 102 LIMIT :index,6";
         try (Connection con = DbUtils.getConnection()) {
             List<Articles> list = con.createQuery(query)
                     .addParameter("index",index)
@@ -516,7 +516,7 @@ public class ArticleModel {
         }
     }
     public static int getTotalArticlePre( ) {
-        String query = "SELECT * FROM articles WHERE premium =1 ";
+        String query = "SELECT * FROM articles WHERE premium =1 and status_id= 102 ";
         try (Connection con = DbUtils.getConnection()) {
             List<Articles> list = con.createQuery(query)
                     .executeAndFetch(Articles.class);
